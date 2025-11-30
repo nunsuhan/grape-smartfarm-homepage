@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmSense - 분석 이야기</title>
+    <link rel="stylesheet" href="system.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html"><i class="fas fa-leaf"></i> FarmSense</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="system.html">시스템 개요</a></li>
+                <li><a href="data.html">데이터</a></li>
+                <li><a href="analysis.html" style="color: var(--primary-blue);">분석</a></li>
+                <li><a href="arch.html">아키텍처</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container hero-split">
+            <div class="hero-text">
+                <h1>이제 더 이상 감(感)으로<br>결정하지 마세요.</h1>
+                <p class="hero-message">과학적인 근거로<br><strong>확실하게!</strong></p>
+                <p style="font-size: 1.1rem; color: #555; margin-top: 20px;">
+                    "옆집 김씨가 약 친다니까 나도 쳐야 하나?"<br>
+                    이제 그런 고민 끝내세요. FarmSense가 정확한 타이밍을 알려드립니다.
+                </p>
+            </div>
+            <div class="hero-visual">
+                <div class="icon-circle"
+                    style="width: 150px; height: 150px; font-size: 4rem; background: var(--primary-blue);">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Models Section -->
+    <section id="models" class="reveal">
+        <div class="container">
+            <h2 class="section-title">데이터가 돈이 되는 순간들:<br>FarmSense의 4가지 똑똑한 분석 엔진</h2>
+            <div class="models-grid">
+                <div class="model-block">
+                    <h3>🌧️ "비 온다는데 물 빠짐은 괜찮을까?"</h3>
+                    <p style="margin-bottom: 10px; color: #666;"><strong>배수 위험도 분석</strong></p>
+                    <div class="model-flow">
+                        <span>강우량 예측</span> <i class="fas fa-plus"></i> <span>지금 땅 상태</span> <i
+                            class="fas fa-arrow-right"></i> <span>"사장님, 배수 펌프 점검하세요!"</span>
+                    </div>
+                </div>
+                <div class="model-block">
+                    <h3>🦠 "요즘 날씨가 딱 병 생길 날씨네"</h3>
+                    <p style="margin-bottom: 10px; color: #666;"><strong>병해 발생 위험 예측</strong></p>
+                    <div class="model-flow">
+                        <span>습도/온도</span> <i class="fas fa-plus"></i> <span>과거 발병 패턴</span> <i
+                            class="fas fa-arrow-right"></i> <span>"내일 탄저병 위험 높음! 방제 준비하세요."</span>
+                    </div>
+                </div>
+                <div class="model-block">
+                    <h3>📈 "우리 포도, 잘 크고 있는 걸까?"</h3>
+                    <p style="margin-bottom: 10px; color: #666;"><strong>생육 최적화 분석 (P-VAI)</strong></p>
+                    <div class="model-flow">
+                        <span>생육 지수 산출</span> <i class="fas fa-arrow-right"></i> <span>표준 생육과 비교</span> <i
+                            class="fas fa-arrow-right"></i> <span>"작년보다 3일 빠릅니다. 비료량 조절하세요."</span>
+                    </div>
+                </div>
+                <div class="model-block">
+                    <h3>💧 "물은 얼마나 줘야 딱 좋을까?"</h3>
+                    <p style="margin-bottom: 10px; color: #666;"><strong>관수/관비 최적화</strong></p>
+                    <div class="model-flow">
+                        <span>현재 수분</span> <i class="fas fa-plus"></i> <span>내일 날씨</span> <i
+                            class="fas fa-arrow-right"></i> <span>"오늘 오후 2시에 10분만 관수하세요."</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="reveal" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="section-title">만약 오늘 FarmSense를 켰다면?<br>(농가 3가지 스토리)</h2>
+            <div class="use-case-grid">
+                <div class="use-case-card" style="border: 1px solid #eee;">
+                    <div class="uc-icon">📱</div>
+                    <h3>김 사장님의 아침</h3>
+                    <p>"아침에 일어나니 알림이 와있더군요. '밤사이 습도가 높았습니다. 노균병 위험이 있으니 환기해주세요.' 바로 하우스 문 열러 갔죠. 덕분에 약값 아꼈습니다."</p>
+                </div>
+                <div class="use-case-card" style="border: 1px solid #eee;">
+                    <div class="uc-icon">☔</div>
+                    <h3>장마철의 박 여사님</h3>
+                    <p>"비가 억수같이 온다는데 걱정이 태산이었죠. 근데 앱에서 '현재 토양 수분이 낮아 50mm 비는 거뜬합니다'라고 하더라고요. 그날 밤 다리 뻗고 잤습니다."</p>
+                </div>
+                <div class="use-case-card" style="border: 1px solid #eee;">
+                    <div class="uc-icon">🍇</div>
+                    <h3>수확철 최 대표님</h3>
+                    <p>"당도가 안 올라서 고민이었는데, '일사량이 부족하니 잎을 좀 더 따주세요'라고 조언해주더군요. 시키는 대로 했더니 올해 최고 당도 찍었습니다."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="reveal">
+        <div class="container">
+            <h2>남들보다 한발 앞선 농사, 시작해보세요.</h2>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">분석 리포트 샘플 보기</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FarmSense. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="system.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmSense - 선택의 이유</title>
+    <link rel="stylesheet" href="system.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html"><i class="fas fa-leaf"></i> FarmSense</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="system.html">시스템 개요</a></li>
+                <li><a href="data.html">데이터</a></li>
+                <li><a href="analysis.html">분석</a></li>
+                <li><a href="arch.html" style="color: var(--primary-blue);">아키텍처</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container hero-split">
+            <div class="hero-text">
+                <h1>그래서, 왜 FarmSense를<br>선택해야 하죠?</h1>
+                <p class="hero-message">솔직한 <strong>5가지 이유</strong>를<br>말씀드릴게요.</p>
+                <p style="font-size: 1.1rem; color: #555; margin-top: 20px;">
+                    스마트팜 기계, 비싸게 주고 사서 창고에 박아두신 적 있나요?<br>
+                    저희는 '장식품'이 아닌, 진짜 '일꾼'을 만듭니다.
+                </p>
+            </div>
+            <div class="hero-visual">
+                <div class="icon-circle" style="width: 150px; height: 150px; font-size: 4rem; background: #333;">
+                    <i class="fas fa-thumbs-up"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentiation Section -->
+    <section id="differentiation" class="reveal">
+        <div class="container">
+            <div class="diff-list">
+                <div class="diff-item scroll-item">
+                    <h3>1. 포도 하나만 팝니다 (General vs. FarmSense)</h3>
+                    <p>다른 스마트팜은 딸기, 토마토 다 한다고 하죠? 저희는 <strong>포도만 연구했습니다.</strong><br>포도 농사꾼이 아니면 모르는 디테일, 저희는 압니다.</p>
+                </div>
+                <div class="diff-item scroll-item">
+                    <h3>2. 끊김 없는 데이터 (연속성)</h3>
+                    <p>잠깐 재고 마는 게 아닙니다. 1년 365일, 포도가 자라는 모든 순간을 영화처럼 기록합니다.<br>작년 이맘때 데이터와 비교해보면 답이 보입니다.</p>
+                </div>
+                <div class="diff-item scroll-item">
+                    <h3>3. 숫자와 사진을 같이 봅니다 (하이브리드)</h3>
+                    <p>센서 숫자만으로는 부족하죠. 잎사귀 사진까지 같이 분석해서<br>"습도는 괜찮은데 잎 색깔이 이상하네요?"라고 짚어냅니다.</p>
+                </div>
+                <div class="diff-item scroll-item">
+                    <h3>4. 근거 있는 잔소리 (RAG 검색)</h3>
+                    <p>"그냥 그렇게 하세요"가 아닙니다. "최신 농업 논문에 따르면 이럴 땐 이게 좋답니다"라고<br>확실한 근거를 대며 조언해드립니다.</p>
+                </div>
+                <div class="diff-item scroll-item">
+                    <h3>5. 할머니도 쓰는 쉬운 화면 (현장 중심 UX)</h3>
+                    <p>복잡한 그래프? 영어? 다 뺐습니다.<br>"지금 물 주세요", "문 여세요" 처럼 직관적이고 쉬운 말로 보여드립니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="reveal" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="section-title">복잡한 기술, 저희가 알아서 할게요.<br>궁금해하실 분들을 위해 살짝 보여드립니다.</h2>
+            <div class="arch-diagram">
+                <div class="arch-box">농장 현장</div>
+                <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="arch-box">IoT 센서</div>
+                <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="arch-box main-box">
+                    <strong>FarmSense 두뇌</strong><br>
+                    (클라우드 서버)
+                </div>
+                <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="arch-box">사장님 핸드폰</div>
+            </div>
+            <div class="tech-stack" style="margin-top: 30px;">
+                <p style="color: #666;">
+                    저희는 <strong>TimescaleDB</strong>로 데이터를 빠르게 저장하고,<br>
+                    <strong>RAG 기술</strong>로 최신 정보를 찾아내며,<br>
+                    <strong>React Native</strong>로 어떤 폰에서든 잘 보이게 만들었습니다.<br>
+                    (어려운 말이지만, '튼튼하고 똑똑하게 만들었다'는 뜻입니다!)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="reveal">
+        <div class="container">
+            <h2>믿음이 가시나요? 그럼 함께 하시죠.</h2>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">제휴 문의하기</button>
+                <button class="btn btn-outline">기술 소개서 다운로드</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FarmSense. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="system.js"></script>
+</body>
+
+</html>
