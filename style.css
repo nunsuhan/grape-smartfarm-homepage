@@ -315,3 +315,60 @@ footer p {
 .qa-sample .answer {
     color: var(--light-text);
 }
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.my-5 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* QA Essence Section */
+#qa-essence {
+    background-color: #fff;
+    padding: 100px 0;
+}
+
+.qa-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.qa-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.qa-content ul,
+.qa-content ol {
+    margin-left: 20px;
+    margin-bottom: 2rem;
+}
+
+.qa-content li {
+    margin-bottom: 10px;
+}
+
+.qa-content strong {
+    color: var(--primary-color);
+}
