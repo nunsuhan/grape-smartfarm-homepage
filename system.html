@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmSense - 데이터 기반 정밀 포도 재배 시스템</title>
+    <link rel="stylesheet" href="system.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html"><i class="fas fa-leaf"></i> FarmSense System</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">개요</a></li>
+                <li><a href="#data-source">데이터</a></li>
+                <li><a href="#models">분석 모델</a></li>
+                <li><a href="#architecture">아키텍처</a></li>
+                <li><a href="#differentiation">차별점</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section id="hero">
+        <div class="container hero-split">
+            <div class="hero-visual">
+                <div class="flow-step">
+                    <div class="icon-circle"><i class="fas fa-microchip"></i></div>
+                    <span>센서</span>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-step">
+                    <div class="icon-circle"><i class="fas fa-cloud-sun"></i></div>
+                    <span>기상</span>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-step">
+                    <div class="icon-circle"><i class="fas fa-brain"></i></div>
+                    <span>AI 분석</span>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-step">
+                    <div class="icon-circle"><i class="fas fa-check-circle"></i></div>
+                    <span>의사결정</span>
+                </div>
+            </div>
+            <div class="hero-text">
+                <h1>데이터 기반<br>정밀 포도 재배 시스템</h1>
+                <p class="hero-message">단순 모니터링이 아닌,<br><strong>지능형 의사결정 지원</strong></p>
+                <ul class="hero-list">
+                    <li><i class="fas fa-check"></i> 12종 환경 센서 데이터</li>
+                    <li><i class="fas fa-check"></i> 기상청 API 실시간 연동</li>
+                    <li><i class="fas fa-check"></i> AI 복합 분석 모델</li>
+                    <li><i class="fas fa-check"></i> 즉각적인 알림과 조언</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Data Source -->
+    <section id="data-source" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Data Source - 3 Pillars</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-microscope"></i></div>
+                    <h3>센서 데이터 (12종)</h3>
+                    <ul class="card-list">
+                        <li><strong>토양:</strong> 수분, 온도, EC, pH</li>
+                        <li><strong>대기:</strong> 온습도, CO2, 일사량</li>
+                        <li><strong>작물:</strong> 엽면습도, 결로</li>
+                        <li><strong>데이터 보존:</strong> 3년 이상 (TimescaleDB)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
+                    <h3>기상 데이터</h3>
+                    <ul class="card-list">
+                        <li><strong>실시간:</strong> 현재 날씨 초단기 예보</li>
+                        <li><strong>단기예보:</strong> 3일 상세 예보</li>
+                        <li><strong>중기예보:</strong> 주간 경향 분석</li>
+                        <li><strong>특징:</strong> GPS 기반 농장 위치 맞춤</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-camera"></i></div>
+                    <h3>작물 이미지</h3>
+                    <ul class="card-list">
+                        <li><strong>탄저병:</strong> 정확도 92%</li>
+                        <li><strong>노균병:</strong> 정확도 89%</li>
+                        <li><strong>흰가루병:</strong> 정확도 91%</li>
+                        <li><strong>분석:</strong> 딥러닝 이미지 분석</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Analysis Models -->
+    <section id="models" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Core Analysis Models</h2>
+            <div class="models-grid">
+                <div class="model-block">
+                    <h3>🌧️ 배수 위험도 분석</h3>
+                    <div class="model-flow">
+                        <span>강우량/토양수분</span> <i class="fas fa-arrow-right"></i> <span>AI 분석</span> <i
+                            class="fas fa-arrow-right"></i> <span>위험 점수/알림</span>
+                    </div>
+                </div>
+                <div class="model-block">
+                    <h3>🦠 병해 발생 위험 예측</h3>
+                    <div class="model-flow">
+                        <span>온습도/일사량/강우</span> <i class="fas fa-arrow-right"></i> <span>감염 환경 예측</span> <i
+                            class="fas fa-arrow-right"></i> <span>방제 알림</span>
+                    </div>
+                </div>
+                <div class="model-block">
+                    <h3>📈 생육 최적화 분석</h3>
+                    <div class="model-flow">
+                        <span><strong class="highlight-term">P-VAI</strong> 지수 산출</span> <i
+                            class="fas fa-arrow-right"></i> <span>생육 단계 비교</span> <i class="fas fa-arrow-right"></i>
+                        <span>환경 제어 가이드</span>
+                    </div>
+                </div>
+                <div class="model-block">
+                    <h3>💧 관수/관비 최적화</h3>
+                    <div class="model-flow">
+                        <span>현재 수분/EC</span> <i class="fas fa-plus"></i> <span>기상 예보</span> <i
+                            class="fas fa-arrow-right"></i> <span>관수량 추천</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: System Architecture -->
+    <section id="architecture" class="reveal">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <div class="arch-diagram">
+                <div class="arch-box">농장 현장</div>
+                <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="arch-box">IoT 센서 네트워크</div>
+                <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="arch-box">엣지 게이트웨이</div>
+                <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="arch-box main-box">
+                    <strong>FarmSense Cloud Server</strong><br>
+                    (API / DB / AI Engine)
+                </div>
+                <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="arch-box">React Native App</div>
+            </div>
+            <div class="tech-stack">
+                <h3>Core Technology Stack</h3>
+                <div class="stack-grid">
+                    <div class="stack-item"><strong>Backend:</strong> Django, FastAPI</div>
+                    <div class="stack-item"><strong>DB:</strong> <span class="highlight-term">TimescaleDB</span>,
+                        PostgreSQL</div>
+                    <div class="stack-item"><strong>AI/ML:</strong> PyTorch, <span class="highlight-term">RAG</span>
+                        (LangChain)</div>
+                    <div class="stack-item"><strong>Mobile:</strong> React Native</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Use Cases -->
+    <section id="use-cases" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Real-World Use Cases</h2>
+            <div class="use-case-grid">
+                <div class="use-case-card">
+                    <div class="uc-icon">🦠</div>
+                    <h3>Scenario 1: 병해 조기 발견</h3>
+                    <p>센서가 고습 환경을 감지하고, AI가 탄저병 위험을 경고. 농장주는 즉시 방제하여 확산을 막습니다.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="uc-icon">☔</div>
+                    <h3>Scenario 2: 기상 대응</h3>
+                    <p>갑작스러운 폭우 예보를 수신. 배수 펌프 가동 알림을 받고 침수 피해를 예방합니다.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="uc-icon">📱</div>
+                    <h3>Scenario 3: 생육 최적화</h3>
+                    <p><span class="highlight-term">P-VAI</span> 지수를 통해 생육 부진을 파악. 맞춤형 비료 처방으로 품질을 높입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Differentiation -->
+    <section id="differentiation" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Why FarmSense?</h2>
+            <div class="diff-list">
+                <div class="diff-item scroll-item">
+                    <h3>1. 포도 전문화 (General vs. FarmSense)</h3>
+                    <p>범용 스마트팜과 달리, 포도의 생육 특성과 병해에 특화된 알고리즘을 사용합니다.</p>
+                </div>
+                <div class="diff-item scroll-item">
+                    <h3>2. 데이터 연속성</h3>
+                    <p>단발성 측정이 아닌, 생육 주기 전체를 관통하는 연속적인 데이터 분석을 제공합니다.</p>
+                </div>
+                <div class="diff-item scroll-item">
+                    <h3>3. 하이브리드 분석</h3>
+                    <p>센서 데이터(정량)와 이미지/텍스트(정성) 데이터를 결합한 멀티모달 분석을 수행합니다.</p>
+                </div>
+                <div class="diff-item scroll-item">
+                    <h3>4. 실시간 RAG 검색</h3>
+                    <p>최신 농업 논문과 사례를 실시간으로 검색하여 근거 있는 조언을 제공합니다.</p>
+                </div>
+                <div class="diff-item scroll-item">
+                    <h3>5. 현장 중심 UI/UX</h3>
+                    <p>복잡한 데이터도 농민이 이해하기 쉬운 직관적인 대시보드로 시각화합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: CTA -->
+    <section id="cta" class="reveal">
+        <div class="container">
+            <h2>지금 바로 시작하세요</h2>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">신청하기 (Beta Tester)</button>
+                <button class="btn btn-secondary">제휴 문의</button>
+                <button class="btn btn-outline">기술 자료 다운로드</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FarmSense. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="system.js"></script>
+</body>
+
+</html>
