@@ -4,8 +4,6 @@ import { Problem } from '@/components/sections/problem';
 import { Solution } from '@/components/sections/solution';
 import { Technology } from '@/components/sections/technology';
 import { Product } from '@/components/sections/product';
-import { MembershipPromo } from '@/components/sections/membership-promo';
-import { Pricing } from '@/components/sections/pricing';
 import { CTA } from '@/components/sections/cta';
 import { Footer } from '@/components/footer';
 import { AppScreenshots } from '@/components/sections/app-screenshots';
@@ -15,13 +13,11 @@ export default function Home() {
     <main className="min-h-screen bg-neutral-black text-white selection:bg-secondary-gold">
       <Navbar />
       <Hero />
-      <MembershipPromo />
       <Problem />
       <Solution />
       <Technology />
       <Product />
       <AppScreenshots />
-      <Pricing />
       <CTA />
       <Footer />
     </main>
