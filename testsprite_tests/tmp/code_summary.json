@@ -1,0 +1,69 @@
+{
+    "tech_stack": [
+        "TypeScript",
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Lucide React"
+    ],
+    "features": [
+        {
+            "name": "Navigation Bar",
+            "description": "Global navigation bar with dropdown menus and mobile responsiveness.",
+            "files": [
+                "components/navbar.tsx"
+            ]
+        },
+        {
+            "name": "Root Layout",
+            "description": "Main application layout wrapping pages with providers and global styles.",
+            "files": [
+                "app/layout.tsx"
+            ]
+        },
+        {
+            "name": "Water Logic Page",
+            "description": "Technical blog page about soil water potential and irrigation logic.",
+            "files": [
+                "app/technology/logic/water/page.tsx"
+            ]
+        },
+        {
+            "name": "Yield Prediction Page",
+            "description": "Technical blog page about yield prediction using GDD and AI vision.",
+            "files": [
+                "app/technology/logic/yield/page.tsx"
+            ]
+        },
+        {
+            "name": "Sensor Education (Advanced)",
+            "description": "Guide for integrating LoRa and RS-485 sensors.",
+            "files": [
+                "app/education/advanced/page.tsx"
+            ]
+        },
+        {
+            "name": "Sensor Education (Beginner)",
+            "description": "Guide for building ESP32 sensors.",
+            "files": [
+                "app/education/beginner/page.tsx"
+            ]
+        },
+        {
+            "name": "Technology Blog Footer",
+            "description": "Standard footer for technology blog pages linking to support.",
+            "files": [
+                "components/technology-blog-footer.tsx"
+            ]
+        },
+        {
+            "name": "Modal System",
+            "description": "Provider and components for global modal management.",
+            "files": [
+                "components/providers/modal-provider.tsx",
+                "components/contact-modal.tsx"
+            ]
+        }
+    ]
+}

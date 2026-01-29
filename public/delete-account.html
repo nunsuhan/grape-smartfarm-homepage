@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계정 및 데이터 삭제 요청 - FarmSense</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #2C5530;
+            font-size: 24px;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #2C5530;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #3D7A42;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p, li {
+            margin-bottom: 12px;
+            color: #444;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .warning-box {
+            background: #FFF3E0;
+            border-left: 4px solid #FF9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .info-box {
+            background: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #2C5530;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .checkbox-group input {
+            width: auto;
+            margin-top: 3px;
+        }
+        .submit-btn {
+            background: #d32f2f;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background: #b71c1c;
+        }
+        .contact-info {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .contact-info h3 {
+            color: #2C5530;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗑️ 계정 및 데이터 삭제 요청</h1>
+        <p class="subtitle">FarmSense 계정 삭제 및 개인정보 삭제 요청</p>
+
+        <div class="info-box">
+            <strong>📱 앱에서 직접 삭제하기</strong><br>
+            FarmSense 앱 → 설정 → 계정 정보 → 계정 삭제에서 직접 삭제할 수 있습니다.
+        </div>
+
+        <h2>삭제되는 데이터</h2>
+        <p>계정 삭제 시 다음 데이터가 영구적으로 삭제됩니다:</p>
+        <ul>
+            <li>계정 정보 (이메일, 이름, 비밀번호)</li>
+            <li>농장 정보 (농장명, 주소, 재배 품종)</li>
+            <li>영농일지 기록</li>
+            <li>AI 진단 이력 및 이미지</li>
+            <li>AI 상담 대화 기록</li>
+            <li>센서 연동 데이터</li>
+            <li>앱 설정 및 환경설정</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>⚠️ 주의사항</strong><br>
+            삭제된 데이터는 복구할 수 없습니다. 신중하게 결정해주세요.
+        </div>
+
+        <h2>삭제 요청 양식</h2>
+        <form action="mailto:artmer3061@gmail.com" method="post" enctype="text/plain">
+            <div class="form-group">
+                <label for="email">가입 이메일 주소 *</label>
+                <input type="email" id="email" name="email" required placeholder="FarmSense 가입 시 사용한 이메일">
+            </div>
+
+            <div class="form-group">
+                <label for="name">이름 *</label>
+                <input type="text" id="name" name="name" required placeholder="가입 시 등록한 이름">
+            </div>
+
+            <div class="form-group">
+                <label for="reason">삭제 사유 (선택)</label>
+                <select id="reason" name="reason">
+                    <option value="">선택해주세요</option>
+                    <option value="no-longer-use">더 이상 사용하지 않음</option>
+                    <option value="privacy">개인정보 보호 우려</option>
+                    <option value="switch-service">다른 서비스로 전환</option>
+                    <option value="other">기타</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">추가 요청사항 (선택)</label>
+                <textarea id="message" name="message" placeholder="추가로 전달할 내용이 있으면 입력해주세요."></textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="confirm" name="confirm" required>
+                <label for="confirm" style="font-weight: normal;">
+                    위 내용을 확인했으며, 계정 및 모든 관련 데이터가 영구적으로 삭제되는 것에 동의합니다. 삭제된 데이터는 복구할 수 없음을 이해합니다.
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn">계정 삭제 요청</button>
+        </form>
+
+        <h2>처리 절차</h2>
+        <ul>
+            <li><strong>1단계:</strong> 삭제 요청 접수 (즉시)</li>
+            <li><strong>2단계:</strong> 본인 확인 (1-2일)</li>
+            <li><strong>3단계:</strong> 데이터 삭제 처리 (최대 7일)</li>
+            <li><strong>4단계:</strong> 삭제 완료 이메일 발송</li>
+        </ul>
+
+        <div class="contact-info">
+            <h3>📧 문의</h3>
+            <p>삭제 요청 관련 문의: <strong>artmer3061@gmail.com</strong></p>
+            <p>처리 기간: 요청일로부터 최대 7일 이내</p>
+        </div>
+
+        <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 14px;">
+            © 2026 FarmSense. All rights reserved.<br>
+            <a href="/privacy-policy" style="color: #2C5530;">개인정보처리방침</a>
+        </p>
+    </div>
+</body>
+</html>

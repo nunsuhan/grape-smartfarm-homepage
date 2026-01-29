@@ -1,0 +1,417 @@
+[
+  {
+    "id": "TC001",
+    "title": "Navigation Bar Dropdown Functionality on Desktop",
+    "description": "Verify that the global navigation bar displays dropdown menus correctly on desktop devices and all links are functional.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the FarmSense homepage on a desktop browser."
+      },
+      {
+        "type": "action",
+        "description": "Hover over each navigation menu item that has a dropdown."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm that the dropdown menu appears for each hovered menu item."
+      },
+      {
+        "type": "action",
+        "description": "Click each link in the dropdown menus."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that clicking each dropdown link navigates to the correct page as expected."
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Navigation Bar Responsiveness on Mobile",
+    "description": "Ensure the navigation bar is fully responsive and operable on mobile devices with touch interactions.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the FarmSense homepage on a mobile device or mobile emulator."
+      },
+      {
+        "type": "action",
+        "description": "Tap on the navigation bar menu icon to expand the menu."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the navigation menu expands and displays all items correctly."
+      },
+      {
+        "type": "action",
+        "description": "Tap on dropdown menu items to expand nested links."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm dropdowns open properly on tap without UI breakage."
+      },
+      {
+        "type": "action",
+        "description": "Tap links in the expanded menu."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure the app navigates to the correct pages on mobile."
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Root Layout Global Styles Application",
+    "description": "Validate that the root layout applies global styles and providers consistently across all pages of the application.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to various pages including homepage, technology blog, and education guides."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that global styles such as typography, colors, and spacing are consistent across all pages."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that UI components provided by global providers render and behave consistently."
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Water Logic Page Content and Layout Verification",
+    "description": "Ensure the Water Logic technical blog page renders with correct detailed content and consistent layout.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Water Logic blog page."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm the page displays the soil water potential and irrigation logic content accurately."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify images and code examples load correctly and align properly within the page layout."
+      },
+      {
+        "type": "assertion",
+        "description": "Check for the presence of global styles and consistent footer."
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Yield Prediction Page Content and Layout Verification",
+    "description": "Verify the Yield Prediction technical blog page displays content about GDD and AI vision yield prediction accurately with correct layout.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Yield Prediction blog page."
+      },
+      {
+        "type": "assertion",
+        "description": "Validate the presence and accuracy of content related to Growing Degree Days (GDD) and AI-based yield prediction."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure all images and diagrams render correctly without distortion."
+      },
+      {
+        "type": "assertion",
+        "description": "Check layout consistency with technology blog footer and global styles."
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Sensor Education Beginner Guide Content Validation",
+    "description": "Confirm the Beginner sensor guide page for building ESP32 sensors is complete, accurate, and properly formatted.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Access the Sensor Education Beginner guide page."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all steps for ESP32 sensor building are present and detailed."
+      },
+      {
+        "type": "assertion",
+        "description": "Check for correct rendering of code snippets, images, and explanatory text."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm consistency with global styles and navigational elements."
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Sensor Education Advanced Guide Content Validation",
+    "description": "Validate the Advanced sensor guide page for integrating LoRa and RS-485 sensors is accurate, well structured and content complete.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Sensor Education Advanced guide page."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm detailed instructions on LoRa and RS-485 sensor integration are present."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure code examples and images are loading and formatted correctly."
+      },
+      {
+        "type": "assertion",
+        "description": "Check the layout consistency and presence of navigation and footer elements."
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Technology Blog Footer Links and Layout",
+    "description": "Verify that the technology blog footer is displayed on relevant pages and contains functional links to support and additional info.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open multiple technology blog pages such as Water Logic and Yield Prediction."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm the footer is visible and styled consistently."
+      },
+      {
+        "type": "assertion",
+        "description": "Click footer links and verify they navigate to the correct support and info pages."
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Contact Modal Open, Input, and Close Behavior",
+    "description": "Test that the global contact modal opens on user action, accepts inputs correctly, and closes as expected.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Click on the UI element that triggers the contact modal."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the modal appears on screen."
+      },
+      {
+        "type": "action",
+        "description": "Enter valid inquiry details into the contact form fields."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm input accepts user data correctly."
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure form submission success response or message is displayed."
+      },
+      {
+        "type": "action",
+        "description": "Close the modal using the close button and by clicking outside the modal."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify modal closes correctly in all cases."
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Global Modal Management - Multiple Modal Handling",
+    "description": "Assess the global modal provider's ability to handle multiple modal interactions without UI conflicts.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Trigger the contact modal."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify contact modal is visible."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to open a second modal if implemented (e.g., accessibility modal)."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm multiple modals either stack properly or that only one modal can be open at a time as per design."
+      },
+      {
+        "type": "action",
+        "description": "Close all open modals."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure no modal overlays remain and focus is correctly restored."
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Page Navigation Using Global Navigation Bar",
+    "description": "Validate user can navigate to homepage, technology blog sections, and education guides using the global navigation bar without errors.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "From homepage, click navigation bar link to Technology Blog section."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Technology Blog page loads correctly."
+      },
+      {
+        "type": "action",
+        "description": "Use navigation bar to access Sensor Education Beginner guide."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm page loads with correct content."
+      },
+      {
+        "type": "action",
+        "description": "Navigate back to homepage via navigation bar."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify successful navigation with no errors."
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Deployment Verification on Vercel",
+    "description": "Check that deployment to Vercel completes successfully with proper domain configuration and environment variables.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Push code changes to GitHub repository triggering deployment."
+      },
+      {
+        "type": "assertion",
+        "description": "Monitor Vercel deployment logs for errors."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm deployment completes successfully."
+      },
+      {
+        "type": "action",
+        "description": "Access deployed site using domain name."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the site loads properly and environment variables are applied."
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "GitHub Repository Sync with Deployment Pipeline",
+    "description": "Ensure that commits pushed to the GitHub repository trigger the deployment pipeline without sync issues.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Make a commit and push it to the GitHub main branch."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that Vercel detects the push and starts deployment process automatically."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm no sync or webhook failures occur."
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Image and Asset Load Performance and Size Compliance",
+    "description": "Validate all images and assets load efficiently within size restrictions and do not degrade performance across devices.",
+    "category": "performance",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Load multiple pages containing images and assets on desktop and mobile devices."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm images load without errors or broken links."
+      },
+      {
+        "type": "assertion",
+        "description": "Check page load time for performance impact due to images."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that all assets conform to predefined size restrictions using developer tools."
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Error Handling for Broken Navigation Links",
+    "description": "Test that the application handles navigation to non-existent or invalid URLs gracefully with proper error or 404 pages.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Manually enter invalid URLs in the browser within the app domain."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the application displays a user-friendly 404 or error page."
+      },
+      {
+        "type": "action",
+        "description": "Navigate using navigation bar to a temporarily removed or broken link if available."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm appropriate error handling and feedback is provided to the user."
+      }
+    ]
+  }
+]

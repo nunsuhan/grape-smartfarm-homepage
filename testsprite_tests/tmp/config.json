@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "loginUser": "artmer3061@gmail.com",
+  "loginPassword": "msm3061@@",
+  "executionArgs": {
+    "projectName": "homepage",
+    "projectPath": "d:\\homepage",
+    "testIds": [],
+    "additionalInstruction": "Focus on validating the recently modified pages (water logic, yield logic, advanced education, beginner education) for runtime errors and content rendering. Ensure text contrast is sufficient (White Paper style).",
+    "envs": {
+      "API_KEY": "sk-user-_He4D2yXcwzoYijLX0VtsdR1dfvAUBpPp-0RUmQ_9qRoAVGtGtdD3PDJXMfEqortb6TAymseuI3mrPw3Bo3cI6Jg5XVmXdb_GtrgpSwpfEAdnJmla9A0WdKErTozy_tRB58"
+    }
+  },
+  "proxy": "http://e0fa54c4-f3a5-4958-9d5b-e1c58e0b769d:ZD7mIGQZ74tneAEG7yHblAgkdYXrVulr@tun.testsprite.com:8080"
+}
