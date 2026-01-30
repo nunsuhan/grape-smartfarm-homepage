@@ -10,19 +10,19 @@ const problems = [
     {
         icon: AlertTriangle,
         title: "경험 의존적 재배",
-        desc: "농장주의 직감에 의존하여, 전문가 은퇴 시 노하우가 단절됩니다. 데이터 없는 농업은 지속 불가능합니다.",
+        desc: "농가 고령화(60대 이상 비중 40% 이상)로 노하우 단절 위험. 데이터·논문 기반 지식 체계화 없이는 지속 가능한 농업이 어렵습니다.",
         image: "/images/generated/problem_experience.jpg?v=2"
     },
     {
         icon: Clock,
         title: "후행적 병해 대응",
-        desc: "눈으로 확인했을 때는 이미 늦었습니다. 포도 농가의 연간 피해액은 2,000억 원에 달합니다.",
+        desc: "노균병은 엽면습윤 12시간(20°C 기준)이면 감염. 눈으로 확인 시엔 이미 늦고, 포도 농가 연간 병해 피해액은 약 2,000억 원에 달합니다.",
         image: "/images/generated/leaf_symptoms.jpg"
     },
     {
         icon: Database,
         title: "분절된 정보",
-        desc: "기상청 데이터, 센서 데이터, 영농 일지가 모두 흩어져 있어 통합적인 의사결정이 불가능합니다.",
+        desc: "기상청·센서·영농일지가 각각 흩어져 있어 PMI(온·습도), GDD(적산온도), TRV(살포량)를 한 번에 계산·연동하는 통합 DSS가 부재합니다.",
         image: "/images/generated/problem_data.jpg?v=2"
     }
 ];
@@ -42,7 +42,7 @@ export function Problem() {
                         <span className="text-red-400"> 위기</span>
                     </h3>
                     <p className="text-neutral-cream/60">
-                        스마트팜 보급률 8%, 우리는 아직 1차 산업에 머물러 있습니다.
+                        스마트팜 보급률 약 8%(농림축산식품부 기준), 포도 연간 병해 피해액 2,000억 원 규모. 데이터 기반 의사결정이 시급합니다.
                     </p>
                 </motion.div>
 

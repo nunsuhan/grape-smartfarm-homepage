@@ -46,14 +46,9 @@ export function Hero() {
                         <h2 className="text-secondary-gold font-mono text-sm tracking-widest uppercase mb-4 drop-shadow-md">
                             AI 기반 포도 스마트팜 통합 관리 플랫폼
                         </h2>
-                        <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-2xl">
-                            병해충 조기 감지부터<br className="md:hidden" />
-                            <span className="text-secondary-green drop-shadow-[0_4px_8px_rgba(0,0,0,1)] stroke-black">예방 농업</span>까지
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-8 leading-tight drop-shadow-2xl">
+                            병해충 조기 감지부터 <span className="text-secondary-green drop-shadow-[0_4px_8px_rgba(0,0,0,1)] stroke-black">예방 농업</span>까지
                         </h1>
-                        <p className="text-xl md:text-2xl text-neutral-cream/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg mb-10">
-                            FarmSense는 3,000개 이상 학술 논문과 실증 데이터를 기반으로<br className="hidden md:block" />
-                            농가의 생산성 향상과 품질 관리를 지원합니다.
-                        </p>
 
                         {/* 핵심 가치 4가지 */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-4xl mx-auto">
@@ -67,7 +62,7 @@ export function Hero() {
                             </div>
                             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 text-center">
                                 <div className="text-2xl font-bold text-purple-400 mb-1">데이터 기반</div>
-                                <div className="text-xs text-neutral-cream/70">3,000+ 논문 기반 RAG 시스템</div>
+                                <div className="text-xs text-neutral-cream/70">4,595개 논문 기반 RAG</div>
                             </div>
                             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 text-center">
                                 <div className="text-2xl font-bold text-yellow-400 mb-1">데이터 축적</div>
@@ -76,9 +71,14 @@ export function Hero() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <button className="px-8 py-4 bg-secondary-green text-neutral-black font-bold text-lg rounded hover:bg-secondary-green/90 transition-all shadow-[0_0_20px_rgba(75,183,117,0.3)] hover:shadow-[0_0_30px_rgba(75,183,117,0.5)]">
+                            <a
+                                href="/documents/farmsense-system-report-v2.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-4 bg-secondary-green text-neutral-black font-bold text-lg rounded hover:bg-secondary-green/90 transition-all shadow-[0_0_20px_rgba(75,183,117,0.3)] hover:shadow-[0_0_30px_rgba(75,183,117,0.5)] inline-block text-center"
+                            >
                                 시스템 소개 보기
-                            </button>
+                            </a>
                         </div>
                     </motion.div>
 

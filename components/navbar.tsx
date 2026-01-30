@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
@@ -67,6 +68,78 @@ export function Navbar() {
 
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
+    // 모바일 메뉴: body에 포탈로 렌더링해 fixed가 뷰포트 기준으로 동작하도록
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
+
+    const mobileMenuContent = (
+        <AnimatePresence>
+            {isMobileMenuOpen && (
+            <motion.div
+                key="mobile-menu"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 bg-[#0a0a0a] z-[110] pt-24 px-6 md:hidden overflow-y-auto"
+                style={{ top: 0, left: 0, right: 0, bottom: 0 }}
+            >
+                <nav className="flex flex-col gap-6 text-lg font-medium text-neutral-cream/90">
+                    {navItems.map((item, idx) => (
+                        <div key={idx} className="border-b border-white/10 pb-4 last:border-0">
+                            <div className="flex items-center justify-between w-full">
+                                {item.dropdown ? (
+                                    <button
+                                        type="button"
+                                        onClick={() => setMobileExpandedIdx(mobileExpandedIdx === idx ? null : idx)}
+                                        className="flex items-center justify-between w-full py-2 hover:text-secondary-gold transition-colors text-left"
+                                    >
+                                        <span>{item.label}</span>
+                                        <ChevronDown className={clsx(
+                                            "w-5 h-5 transition-transform duration-200",
+                                            mobileExpandedIdx === idx ? "rotate-180" : ""
+                                        )} />
+                                    </button>
+                                ) : (
+                                    <Link
+                                        href={item.href}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block py-2 hover:text-secondary-gold transition-colors w-full"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                )}
+                            </div>
+
+                            <AnimatePresence>
+                                {item.dropdown && mobileExpandedIdx === idx && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        className="overflow-hidden bg-white/5 rounded-lg mt-2"
+                                    >
+                                        {item.dropdown.map((subItem, subIdx) => (
+                                            <Link
+                                                key={subIdx}
+                                                href={subItem.href}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className="block px-4 py-3 text-sm hover:text-secondary-gold transition-colors border-b border-white/5 last:border-0"
+                                            >
+                                                {subItem.label}
+                                            </Link>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                    ))}
+                </nav>
+            </motion.div>
+            )}
+        </AnimatePresence>
+    );
+
     return (
         <motion.header
             className={clsx(
@@ -130,13 +203,15 @@ export function Navbar() {
                     ))}
                 </nav>
 
-                {/* Mobile Menu Toggle */}
+                {/* Mobile Menu Toggle - 높은 z로 항상 클릭 가능 */}
                 <button
-                    className="md:hidden z-50 relative p-2 text-white"
+                    type="button"
+                    className="md:hidden relative z-[120] p-3 -m-1 text-white touch-manipulation"
                     onClick={toggleMobileMenu}
-                    aria-label="Toggle menu"
+                    aria-label={isMobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
+                    aria-expanded={isMobileMenuOpen}
                 >
-                    <div className="w-6 h-5 flex flex-col justify-between">
+                    <div className="w-6 h-5 flex flex-col justify-between pointer-events-none">
                         <motion.span
                             animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
                             className="w-full h-0.5 bg-white origin-left transition-all"
@@ -152,69 +227,8 @@ export function Navbar() {
                     </div>
                 </button>
 
-                {/* Mobile Menu Overlay */}
-                <AnimatePresence>
-                    {isMobileMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            className="fixed inset-0 bg-[#0a0a0a] z-40 pt-24 px-6 md:hidden overflow-y-auto"
-                        >
-                            <nav className="flex flex-col gap-6 text-lg font-medium text-neutral-cream/90">
-                                {navItems.map((item, idx) => (
-                                    <div key={idx} className="border-b border-white/10 pb-4 last:border-0">
-                                        <div className="flex items-center justify-between w-full">
-                                            {item.dropdown ? (
-                                                <button
-                                                    onClick={() => setMobileExpandedIdx(mobileExpandedIdx === idx ? null : idx)}
-                                                    className="flex items-center justify-between w-full py-2 hover:text-secondary-gold transition-colors text-left"
-                                                >
-                                                    <span>{item.label}</span>
-                                                    <ChevronDown className={clsx(
-                                                        "w-5 h-5 transition-transform duration-200",
-                                                        mobileExpandedIdx === idx ? "rotate-180" : ""
-                                                    )} />
-                                                </button>
-                                            ) : (
-                                                <Link
-                                                    href={item.href}
-                                                    onClick={() => setIsMobileMenuOpen(false)}
-                                                    className="block py-2 hover:text-secondary-gold transition-colors w-full"
-                                                >
-                                                    {item.label}
-                                                </Link>
-                                            )}
-                                        </div>
-
-                                        {/* Mobile Submenu */}
-                                        <AnimatePresence>
-                                            {item.dropdown && mobileExpandedIdx === idx && (
-                                                <motion.div
-                                                    initial={{ height: 0, opacity: 0 }}
-                                                    animate={{ height: "auto", opacity: 1 }}
-                                                    exit={{ height: 0, opacity: 0 }}
-                                                    className="overflow-hidden bg-white/5 rounded-lg mt-2"
-                                                >
-                                                    {item.dropdown.map((subItem, subIdx) => (
-                                                        <Link
-                                                            key={subIdx}
-                                                            href={subItem.href}
-                                                            className="block px-4 py-3 text-sm hover:text-secondary-gold transition-colors border-b border-white/5 last:border-0"
-                                                            onClick={() => setIsMobileMenuOpen(false)}
-                                                        >
-                                                            {subItem.label}
-                                                        </Link>
-                                                    ))}
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
-                                    </div>
-                                ))}
-                            </nav>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                {/* 모바일 메뉴: body 포탈로 전체 화면 표시 */}
+                {mounted && createPortal(mobileMenuContent, document.body)}
             </Container>
         </motion.header>
     );

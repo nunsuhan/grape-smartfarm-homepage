@@ -7,11 +7,11 @@ import { Check } from 'lucide-react';
 import { useModal } from '../providers/modal-provider';
 
 const features = [
-    "AI 이상 징후 조기 감지 (24-48시간 골든타임)",
-    "PMI 기반 48시간 사전 경보 시스템",
-    "RAG 기반 맞춤형 영농 상담 (129K 문서)",
-    "GDD + DOSAVIÑA 기반 정밀 의사결정",
-    "실시간 센서 모니터링 및 자동 알림"
+    "AI 이상 징후 조기 감지: 4-Class→10-Class, 24-48h 골든타임",
+    "PMI 사전 경보: PMI≥0.7 24h, ≥0.5 48h (21~30°C·40~70% RH)",
+    "RAG 맞춤 상담: 4,595 논문·129K 문서·287K 청크 검색",
+    "DSS: GDD T_base 10°C, TRV·LWA 살포량, LAI 3.5~4.0 수확량",
+    "실시간 센서: 4억+ 데이터(TimescaleDB) 모니터링·알림"
 ];
 
 export function Product() {
@@ -35,9 +35,9 @@ export function Product() {
                         <span className="text-secondary-green">완전한 농업 솔루션</span>
                     </h3>
                     <p className="text-lg text-neutral-cream/80 mb-12 leading-relaxed">
-                        FarmSense는 단순한 모니터링 도구가 아닙니다. <br />
-                        병해충 조기 감지, 환경 모니터링, 의사결정 지원 시스템(DSS)을 통합하여<br />
-                        농가의 생산성 향상과 품질 관리를 지원하는 AI 기반 통합 플랫폼입니다.
+                        FarmSense는 4,595개 논문·실증 데이터 기반 통합 플랫폼입니다. <br />
+                        PMI·노균병(Mills)·GDD·TRV·LAI 등 검증된 알고리즘으로<br />
+                        조기 감지·사전 경보·살포량·수확량 예측까지 데이터로 납득시킵니다.
                     </p>
 
                     <div className="flex justify-center mb-12">
