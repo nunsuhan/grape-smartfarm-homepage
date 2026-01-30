@@ -34,7 +34,7 @@ export function Solution() {
                         </div>
                         <div className="text-secondary-purple font-mono font-bold mb-2">Step 1</div>
                         <div className="text-2xl font-bold text-white mb-2">데이터 수집</div>
-                        <div className="text-sm text-neutral-cream/60">4억 건의 센서 데이터</div>
+                        <div className="text-sm text-neutral-cream/60">4억+ 센서 데이터(TimescaleDB)</div>
                     </motion.div>
 
                     <div className="hidden md:flex items-center justify-center">
@@ -61,7 +61,7 @@ export function Solution() {
                         </div>
                         <div className="text-secondary-gold font-mono font-bold mb-2">Step 2</div>
                         <div className="text-2xl font-bold text-white mb-2">AI 분석/예측</div>
-                        <div className="text-sm text-neutral-cream/60">PMI 48시간 사전 경보</div>
+                        <div className="text-sm text-neutral-cream/60">PMI≥0.5 48h, ≥0.7 24h 경보</div>
                     </motion.div>
 
                     <div className="hidden md:flex items-center justify-center">
@@ -88,7 +88,7 @@ export function Solution() {
                         </div>
                         <div className="text-secondary-green font-mono font-bold mb-2">Step 3</div>
                         <div className="text-2xl font-bold text-white mb-2">실행 가이드</div>
-                        <div className="text-sm text-neutral-cream/60">맞춤형 처방 제공</div>
+                        <div className="text-sm text-neutral-cream/60">RAG 기반 처방·TRV 살포량</div>
                     </motion.div>
                 </div>
 
@@ -100,28 +100,28 @@ export function Solution() {
                 >
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
                         <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-                            <div className="text-3xl font-bold text-secondary-green mb-1">3일</div>
-                            <div className="text-sm text-neutral-cream/70">사전 경보</div>
+                            <div className="text-3xl font-bold text-secondary-green mb-1">48h</div>
+                            <div className="text-sm text-neutral-cream/70">PMI 사전 경보</div>
                         </div>
                         <div className="bg-white/5 border border-white/10 rounded-lg p-4">
                             <div className="text-3xl font-bold text-blue-400 mb-1">20-30%</div>
-                            <div className="text-sm text-neutral-cream/70">농약 절감</div>
+                            <div className="text-sm text-neutral-cream/70">TRV 기반 농약 절감</div>
                         </div>
                         <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-                            <div className="text-3xl font-bold text-purple-400 mb-1">3초</div>
-                            <div className="text-sm text-neutral-cream/70">진단 시간</div>
+                            <div className="text-3xl font-bold text-purple-400 mb-1">~3초</div>
+                            <div className="text-sm text-neutral-cream/70">4→10-Class 진단</div>
                         </div>
                         <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-                            <div className="text-3xl font-bold text-yellow-400 mb-1">10-15%</div>
-                            <div className="text-sm text-neutral-cream/70">수확량 향상</div>
+                            <div className="text-3xl font-bold text-yellow-400 mb-1">LAI 3.5~4</div>
+                            <div className="text-sm text-neutral-cream/70">수확량 최적 구간</div>
                         </div>
                         <div className="bg-white/5 border border-white/10 rounded-lg p-4">
                             <div className="text-3xl font-bold text-red-400 mb-1">15-20%</div>
-                            <div className="text-sm text-neutral-cream/70">인건비 절감</div>
+                            <div className="text-sm text-neutral-cream/70">모니터링 자동화</div>
                         </div>
                     </div>
                     <p className="text-xl font-serif italic text-neutral-cream/80">
-                        "FarmSense는 농업인의 직감에 과학을 더하고, 경험에 데이터를 더합니다."
+                        "FarmSense는 PMI·GDD·TRV·LAI 등 논문 검증 알고리즘으로 농업인의 직감에 과학을 더합니다."
                     </p>
                 </motion.div>
 
