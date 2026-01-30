@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 type TabType = 'investment' | 'partnership' | 'demo';
-type ModalType = 'contact' | 'membership' | 'policy';
+type ModalType = 'contact' | 'membership';
 
 interface ModalContextType {
     isOpen: boolean;

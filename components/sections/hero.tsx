@@ -51,7 +51,7 @@ export function Hero() {
                             <span className="text-secondary-green drop-shadow-[0_4px_8px_rgba(0,0,0,1)] stroke-black">예방 농업</span>까지
                         </h1>
                         <p className="text-xl md:text-2xl text-neutral-cream/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg mb-10">
-                            FarmSense는 3,000개 이상의 논문과 실증 데이터를 기반으로<br className="hidden md:block" />
+                            FarmSense는 3,000개 이상 학술 논문과 실증 데이터를 기반으로<br className="hidden md:block" />
                             농가의 생산성 향상과 품질 관리를 지원합니다.
                         </p>
 

@@ -5,8 +5,6 @@ import { Navbar } from '@/components/navbar';
 import { ModalProvider } from '@/components/providers/modal-provider';
 import { ContactModal } from '@/components/contact-modal';
 import { MembershipModal } from '@/components/membership-modal';
-import { PolicyModal } from '@/components/policy-modal';
-
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const spaceMono = Space_Mono({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-space-mono' });
@@ -29,7 +27,6 @@ export default function RootLayout({
           {children}
           <ContactModal />
           <MembershipModal />
-          <PolicyModal />
         </ModalProvider>
       </body>
     </html>
