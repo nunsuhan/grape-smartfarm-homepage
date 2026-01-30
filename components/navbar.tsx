@@ -13,8 +13,10 @@ const navItems = [
     { label: '문제 정의', href: '/#problem' },
     {
         label: '기술력 (Technology)',
-        href: '/technology/rag-system',
+        href: '/technology/docs',
         dropdown: [
+            { label: '기술 문서 (검증·로직)', href: '/technology/docs' },
+            { label: '열화상·RGB-D 설치 필요성', href: '/technology/camera-necessity' },
             { label: 'AI 병해충 진단 (Vision)', href: '/technology/ai-diagnosis' },
             { label: 'PMI-DSS 의사결정', href: '/technology/pmi-dss' },
             { label: '대화형 농업 비서 (RAG)', href: '/technology/rag-system' },

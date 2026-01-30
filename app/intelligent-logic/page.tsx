@@ -13,11 +13,11 @@ const logicCategories = [
         description: '토양 수분 퍼텐셜 기반 정밀 관개 제어 로직'
     },
     {
-        title: '농약_살포량',
+        title: '병해충관리',
         href: '/intelligent-logic/pesticide-spray',
         icon: Bug,
         color: 'red',
-        description: '병원균 생존 임계값 기반 방제 타이밍 결정'
+        description: '병원균 생존 임계값·IPM 기반 방제 타이밍 결정'
     },
     {
         title: '비료_시비량',
@@ -117,20 +117,23 @@ export default function IntelligentLogicPage() {
                         })}
                     </div>
 
-                    {/* 참고 자료 */}
+                    {/* 참고 자료 (검증·로직 이해용) */}
                     <section className="bg-neutral-50 border border-neutral-200 rounded-xl p-6">
-                        <h3 className="font-bold text-neutral-900 mb-3">데이터 출처</h3>
-                        <p className="text-sm text-neutral-600 mb-2">
-                            모든 로직은 <strong>D:\homepage\노트북lm</strong> 폴더의 논문 데이터를 기반으로 합니다:
+                        <h3 className="font-bold text-neutral-900 mb-3">근거 문헌 및 검증</h3>
+                        <p className="text-sm text-neutral-600 mb-3">
+                            모든 로직은 <strong>참고 문헌(논문·보고서)</strong>을 기반으로 하며, 공무원·농가가 검증할 수 있도록 근거를 명시합니다.
                         </p>
-                        <ul className="text-xs text-neutral-500 space-y-1 list-disc list-inside">
-                            <li>스마트 정밀 관개 및 생육 환경 제어 로직 분석.pdf</li>
-                            <li>포도 재배를 위한 정밀 시비 알고리즘 및 처방 로직.pdf</li>
-                            <li>통합해충관리 기반의 최적 방제 시기 결정 모델과 알고리즘.pdf</li>
-                            <li>포도 수확량 예측을 위한 데이터 분석 및 모델링 가이드.pdf</li>
-                            <li>포도 수형 관리 및 고품질 생산을 위한 재배 로직.pdf</li>
-                            <li>포도 재배 적지 분석 및 생육 단계별 정밀 관리 가이드.pdf</li>
+                        <ul className="text-sm text-neutral-600 space-y-1 list-disc list-inside mb-4">
+                            <li>스마트 정밀 관개 및 생육 환경 제어 로직 분석</li>
+                            <li>포도 재배를 위한 정밀 시비 알고리즘 및 처방 로직</li>
+                            <li>통합해충관리 기반의 최적 방제 시기 결정 모델과 알고리즘</li>
+                            <li>포도 수확량 예측을 위한 데이터 분석 및 모델링 가이드</li>
+                            <li>포도 수형 관리 및 고품질 생산을 위한 재배 로직</li>
+                            <li>포도 재배 적지 분석 및 생육 단계별 정밀 관리 가이드</li>
                         </ul>
+                        <p className="text-sm text-neutral-500">
+                            전체 참고 문헌 목록·입력/출력 명세: <Link href="/technology/docs" className="text-green-600 font-medium hover:underline">기술 문서 (검증·로직)</Link>
+                        </p>
                     </section>
                 </div>
             </Container>
