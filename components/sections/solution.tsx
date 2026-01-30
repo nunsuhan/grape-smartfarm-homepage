@@ -61,7 +61,7 @@ export function Solution() {
                         </div>
                         <div className="text-secondary-gold font-mono font-bold mb-2">Step 2</div>
                         <div className="text-2xl font-bold text-white mb-2">AI 분석/예측</div>
-                        <div className="text-sm text-neutral-cream/60">287K 지식 RAG</div>
+                        <div className="text-sm text-neutral-cream/60">PMI 48시간 사전 경보</div>
                     </motion.div>
 
                     <div className="hidden md:flex items-center justify-center">
@@ -96,8 +96,30 @@ export function Solution() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
-                    className="text-center mt-12 p-6 rounded-lg bg-white/5 inline-block w-full"
+                    className="text-center mt-12"
                 >
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
+                        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                            <div className="text-3xl font-bold text-secondary-green mb-1">3일</div>
+                            <div className="text-sm text-neutral-cream/70">사전 경보</div>
+                        </div>
+                        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                            <div className="text-3xl font-bold text-blue-400 mb-1">20-30%</div>
+                            <div className="text-sm text-neutral-cream/70">농약 절감</div>
+                        </div>
+                        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                            <div className="text-3xl font-bold text-purple-400 mb-1">3초</div>
+                            <div className="text-sm text-neutral-cream/70">진단 시간</div>
+                        </div>
+                        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                            <div className="text-3xl font-bold text-yellow-400 mb-1">10-15%</div>
+                            <div className="text-sm text-neutral-cream/70">수확량 향상</div>
+                        </div>
+                        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                            <div className="text-3xl font-bold text-red-400 mb-1">15-20%</div>
+                            <div className="text-sm text-neutral-cream/70">인건비 절감</div>
+                        </div>
+                    </div>
                     <p className="text-xl font-serif italic text-neutral-cream/80">
                         "FarmSense는 농업인의 직감에 과학을 더하고, 경험에 데이터를 더합니다."
                     </p>

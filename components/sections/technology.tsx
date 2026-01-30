@@ -10,32 +10,32 @@ import Link from 'next/link';
 
 const technologies = [
     {
-        icon: Database,
-        title: 'RAG Knowledge System',
-        value: '287K Chunks',
-        desc: '4,600편의 농업 논문을 학습한 거대 지식 베이스. 질문에 대한 근거 기반 답변 제공.',
-        stack: ['ChromaDB', 'Upstage Embedding', 'Multilingual E5'],
-    },
-    {
         icon: Scan,
-        title: '데이터 기반 병해 진단',
-        value: 'Data Helper',
-        desc: '단순 사진 판독의 한계를 넘어, 환경 데이터와 연동된 통계적 확률을 제시하는 농가의 데이터 조력자.',
-        stack: ['Environment Analysis', 'Probability Model', 'NCPMS Data'],
+        title: 'AI 이상 징후 감지',
+        value: '조기 감지 우선',
+        desc: '병명을 정확히 맞추는 것보다, 병이 오고 있다는 것을 빨리 캐치하는 것이 더 중요합니다. 24-48시간 내 발견 시 방제 효과 3배 이상 증가.',
+        stack: ['5개 앙상블 모델', 'YOLOv8-cls', 'ResNet50', 'ViT'],
     },
     {
         icon: LineChart,
-        title: '의사결정 지원 (DSS)',
-        value: 'Real-time',
-        desc: '생육 단계와 기상 데이터를 분석해 최적의 방제 시기와 물 관리 가이드.',
-        stack: ['GDD Algorithm', 'PMI Prediction', 'DOSAVIÑA'],
+        title: 'PMI 예방 경보 시스템',
+        value: '48시간 사전 경보',
+        desc: '환경 데이터를 분석하여 병해 발생 위험도를 사전에 예측. PMI 등급 체계로 안전/주의/경고/위험/긴급 단계별 조치 안내.',
+        stack: ['PMI 엔진', '온도/습도 분석', '엽면습윤 시간', '포자 형성 조건'],
+    },
+    {
+        icon: Database,
+        title: 'RAG Knowledge System',
+        value: '129K 문서',
+        desc: '4,595개 학술 논문, 네이버 밴드 Q&A 15,000+, YouTube 자막 500+ 영상을 통합한 거대 지식 베이스. 농장별 컨텍스트 기반 맞춤형 답변.',
+        stack: ['ChromaDB', 'ko-sbert-nli', 'GPT-4 Turbo', 'Claude 3.5'],
     },
     {
         icon: Cpu,
-        title: 'IoT Data Platform',
-        value: '400M+ Points',
-        desc: '초단위로 수집되는 센서 데이터. 시계열 분석을 통한 초정밀 모니터링.',
-        stack: ['IoT Gateway', 'TimescaleDB', 'Edge Computing'],
+        title: 'DSS 의사결정 지원',
+        value: 'GDD + DOSAVIÑA',
+        desc: '적산온도(GDD) 기반 생육단계 예측과 수관 체적(TRV) 기반 최적 농약 살포량 계산. 과잉 살포 방지로 환경 부하 감소.',
+        stack: ['GDD Algorithm', 'DOSAVIÑA', 'TRV 계산', '재배방식 보정'],
     },
 ];
 
@@ -66,15 +66,15 @@ export function Technology() {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="text-4xl md:text-5xl font-serif font-bold text-white mb-6"
                     >
-                        데이터와 알고리즘의<br />
-                        <span className="text-secondary-purple">압도적 격차</span>
+                        조기 감지부터 예방까지<br />
+                        <span className="text-secondary-purple">완전한 농업 솔루션</span>
                     </motion.h3>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {technologies.map((tech, i) => {
                         const isDss = tech.title.includes('DSS');
-                        const isDiag = tech.title.includes('데이터 기반');
+                        const isDiag = tech.title.includes('AI 이상') || tech.title.includes('데이터 기반');
 
                         const CardContent = () => (
                             <div className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary-gold/50 transition-colors overflow-hidden h-full">
@@ -100,6 +100,9 @@ export function Technology() {
                             </div>
                         );
 
+                        const isPmi = tech.title.includes('PMI');
+                        const isRag = tech.title.includes('RAG');
+                        
                         return (
                             <motion.div
                                 key={i}
@@ -107,12 +110,16 @@ export function Technology() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: i * 0.1 }}
                             >
-                                {isDss ? (
+                                {isDss || isPmi ? (
                                     <Link href="/technology/pmi-dss" className="block h-full cursor-pointer">
                                         <CardContent />
                                     </Link>
                                 ) : isDiag ? (
                                     <Link href="/technology/ai-diagnosis" className="block h-full cursor-pointer">
+                                        <CardContent />
+                                    </Link>
+                                ) : isRag ? (
+                                    <Link href="/technology/rag-system" className="block h-full cursor-pointer">
                                         <CardContent />
                                     </Link>
                                 ) : (

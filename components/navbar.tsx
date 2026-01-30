@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
 import { Container } from './ui/container';
@@ -11,23 +12,37 @@ import { useModal } from './providers/modal-provider';
 const navItems = [
     { label: '문제 정의', href: '/#problem' },
     {
-        label: '기술력',
-        href: '/technology/rag-system',
+        label: '기술력 (Technology)',
+        href: '/technology/docs',
         dropdown: [
-            { label: 'RAG 시스템', href: '/technology/rag-system' },
-            { label: '영농 의사결정 (DSS)', href: '/technology/ai-diagnosis' },
-            { label: 'AI 진단 필요성', href: '/ai-diagnosis-why' },
-            { label: '병해 예측', href: '/technology/pmi-dss' },
-            { label: '센서 연동', href: '/technology/sensor-system' },
-            { label: '데이터 전략', href: '/technology/data-strategy' },
+            { label: '기술 문서 (검증·로직)', href: '/technology/docs' },
+            { label: '열화상·RGB-D 설치 필요성', href: '/technology/camera-necessity' },
+            { label: 'AI 병해충 진단 (Vision)', href: '/technology/ai-diagnosis' },
+            { label: 'PMI-DSS 의사결정', href: '/technology/pmi-dss' },
+            { label: '대화형 농업 비서 (RAG)', href: '/technology/rag-system' },
+            { label: '데이터 수집 전략', href: '/technology/data-strategy' },
+            { label: 'IoT 센서 네트워크', href: '/technology/sensor-system' },
         ]
     },
-    { label: '제품', href: '/#product' },
+    { label: '센서 설치 도우미', href: '/sensor-installation-guide' },
+    {
+        label: '지능형 로직',
+        href: '/intelligent-logic',
+        dropdown: [
+            { label: '관수_물관리', href: '/intelligent-logic/irrigation-water' },
+            { label: '병해충관리', href: '/intelligent-logic/pesticide-spray' },
+            { label: '비료_시비량', href: '/intelligent-logic/fertilizer-application' },
+            { label: '수확량_예측', href: '/intelligent-logic/yield-prediction' },
+            { label: '포도_재배기술', href: '/intelligent-logic/grape-cultivation' },
+            { label: '환경제어_센서', href: '/intelligent-logic/environmental-control' },
+        ]
+    },
     {
         label: '고객지원',
         href: '/faq',
         dropdown: [
             { label: 'FAQ', href: '/faq' },
+            { label: 'AI 스마트 도우미', href: '/support/ai-assistant' },
             { label: '문의하기', href: '/support' },
         ]
     },
@@ -40,6 +55,11 @@ export function Navbar() {
     const { openModal } = useModal();
     const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
     const [mobileExpandedIdx, setMobileExpandedIdx] = useState<number | null>(null);
+    const pathname = usePathname();
+
+    // 라이트 모드 페이지 경로 확인
+    const isLightModePage = pathname?.startsWith('/sensor-installation-guide') || 
+                            pathname?.startsWith('/intelligent-logic');
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         setIsScrolled(latest > 50);
@@ -51,7 +71,9 @@ export function Navbar() {
         <motion.header
             className={clsx(
                 'fixed top-0 left-0 right-0 z-[100] transition-colors duration-300',
-                isScrolled || isMobileMenuOpen ? 'bg-neutral-black/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+                isLightModePage || isScrolled || isMobileMenuOpen 
+                    ? 'bg-neutral-black/95 backdrop-blur-md border-b border-white/10 shadow-lg' 
+                    : 'bg-transparent'
             )}
         >
             <Container className="flex items-center justify-between h-20">

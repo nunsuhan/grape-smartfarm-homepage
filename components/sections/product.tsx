@@ -7,11 +7,11 @@ import { Check } from 'lucide-react';
 import { useModal } from '../providers/modal-provider';
 
 const features = [
-    "실시간 생육 환경 모니터링 대시보드",
-    "AI 이미지 분석을 통한 병해 위험도 측정",
-    "AI 챗봇을 통한 영농 지식 즉시 검색",
-    "데이터 기반 방제 및 영농 알림",
-    "데이터 기반 수확 시기 예측"
+    "AI 이상 징후 조기 감지 (24-48시간 골든타임)",
+    "PMI 기반 48시간 사전 경보 시스템",
+    "RAG 기반 맞춤형 영농 상담 (129K 문서)",
+    "GDD + DOSAVIÑA 기반 정밀 의사결정",
+    "실시간 센서 모니터링 및 자동 알림"
 ];
 
 export function Product() {
@@ -31,13 +31,13 @@ export function Product() {
                         Our Product
                     </h2>
                     <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8">
-                        데이터가 보여주는<br />
-                        <span className="text-secondary-green">투명한 농장</span>
+                        조기 감지부터 예방까지<br />
+                        <span className="text-secondary-green">완전한 농업 솔루션</span>
                     </h3>
                     <p className="text-lg text-neutral-cream/80 mb-12 leading-relaxed">
                         FarmSense는 단순한 모니터링 도구가 아닙니다. <br />
-                        데이터를 수집하고, 분석하여, 농부가 해야 할 일을 정확히 알려주는
-                        인공지능 파트너입니다.
+                        병해충 조기 감지, 환경 모니터링, 의사결정 지원 시스템(DSS)을 통합하여<br />
+                        농가의 생산성 향상과 품질 관리를 지원하는 AI 기반 통합 플랫폼입니다.
                     </p>
 
                     <div className="flex justify-center mb-12">

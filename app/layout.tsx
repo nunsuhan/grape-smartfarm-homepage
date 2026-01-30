@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter, Space_Mono } from 'next/font/google';
 import './globals.css';
+import { Navbar } from '@/components/navbar';
 import { ModalProvider } from '@/components/providers/modal-provider';
 import { ContactModal } from '@/components/contact-modal';
 import { MembershipModal } from '@/components/membership-modal';
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="ko" className={`${playfair.variable} ${inter.variable} ${spaceMono.variable}`}>
       <body className="bg-neutral-black text-neutral-cream font-sans antialiased overflow-x-hidden selection:bg-secondary-gold selection:text-neutral-black">
         <ModalProvider>
+          <Navbar />
           {children}
           <ContactModal />
           <MembershipModal />

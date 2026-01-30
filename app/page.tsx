@@ -6,16 +6,11 @@ import { Technology } from '@/components/sections/technology';
 import { Product } from '@/components/sections/product';
 import { Footer } from '@/components/footer';
 
-import { EthicsPolicy } from '@/components/sections/ethics-policy';
-import { AdvocacyCampaign } from '@/components/sections/policy-campaign';
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-neutral-black text-white selection:bg-secondary-gold">
       <Navbar />
       <Hero />
-      <EthicsPolicy />
-      <AdvocacyCampaign />
       <Problem />
       <Solution />
       <Technology />

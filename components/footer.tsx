@@ -51,8 +51,14 @@ export function Footer() {
                             <Link href="/faq" className="text-sm hover:text-secondary-gold transition-colors text-left">
                                 FAQ
                             </Link>
+                            <Link href="/support/ai-assistant" className="text-sm hover:text-secondary-gold transition-colors text-left">
+                                AI 스마트 도우미
+                            </Link>
                             <Link href="/support" className="text-sm hover:text-secondary-gold transition-colors text-left">
                                 1:1 문의
+                            </Link>
+                            <Link href="/privacy-policy" className="text-sm hover:text-secondary-gold transition-colors text-left">
+                                개인정보처리방침
                             </Link>
                             <button
                                 onClick={() => openModal('partnership', 'contact')}
@@ -72,7 +78,12 @@ export function Footer() {
 
                 {/* Copyright */}
                 <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-                    <p>© 2025 FarmSense. All rights reserved.</p>
+                    <p>© 2026 FarmSense. All rights reserved.</p>
+                    <div className="flex gap-4">
+                        <Link href="/privacy-policy" className="hover:text-secondary-gold transition-colors">
+                            개인정보처리방침
+                        </Link>
+                    </div>
                 </div>
             </Container>
         </footer>
