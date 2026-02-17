@@ -71,7 +71,7 @@ export default function CameraNecessityPage() {
                     </div>
 
                     <div className="mt-8 p-6 bg-amber-500/10 border border-amber-500/20 rounded-xl">
-                        <h4 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
+                        <h4 className="font-bold text-amber-400 mb-2 flex items-center gap-2">
                             <FileText className="w-4 h-4" /> DSS 신뢰성: CWSI 기반 의사결정
                         </h4>
                         <p className="text-neutral-cream/80 text-sm leading-relaxed">
@@ -118,7 +118,7 @@ export default function CameraNecessityPage() {
                     </div>
 
                     <div className="p-6 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-                        <h4 className="font-bold text-blue-900 mb-2">요약: RGB만으로 부족한 이유</h4>
+                        <h4 className="font-bold text-blue-400 mb-2">요약: RGB만으로 부족한 이유</h4>
                         <p className="text-neutral-cream/80 text-sm leading-relaxed">
                             RGB는 색·형상만 제공합니다. 복잡한 포도원에서는 잡초와 잎이 비슷한 색으로 구분이 어렵고, 겹친 잎·그림자를 병반으로 오인할 수 있습니다. RGB-D는 &quot;거리 필터&quot;와 &quot;경계선(깊이 불연속)&quot;으로 관심 영역만 정제해 AI가 더 정확하게 수확량·질병을 판단하도록 합니다.
                         </p>

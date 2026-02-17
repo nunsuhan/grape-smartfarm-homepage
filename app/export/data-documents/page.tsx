@@ -142,7 +142,7 @@ export default function DataDocumentsPage() {
                                         whileInView={{ opacity: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: i * 0.05 }}
-                                        className="border-b border-neutral-100 hover:bg-white/5"
+                                        className="border-b border-white/10 hover:bg-white/5"
                                     >
                                         <td className="py-3 px-4 font-medium text-white">{doc.name}</td>
                                         <td className="py-3 px-4 text-neutral-cream/60 hidden md:table-cell">{doc.desc}</td>
@@ -241,7 +241,7 @@ export default function DataDocumentsPage() {
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                             {qrVerifyInfo.map((info, i) => (
-                                <div key={i} className="p-3 rounded-lg bg-white/5 border border-neutral-100">
+                                <div key={i} className="p-3 rounded-lg bg-white/5 border border-white/10">
                                     <div className="text-[10px] font-mono text-neutral-cream/50 uppercase mb-1">{info.label}</div>
                                     <div className="text-sm text-white font-medium">{info.value}</div>
                                 </div>
@@ -274,7 +274,7 @@ export default function DataDocumentsPage() {
                                     <span className="font-bold text-white text-sm">{item.scenario}</span>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2">
-                                    <div className="p-4 border-b md:border-b-0 md:border-r border-neutral-100">
+                                    <div className="p-4 border-b md:border-b-0 md:border-r border-white/10">
                                         <div className="flex items-center gap-2 mb-2">
                                             <XCircle className="w-4 h-4 text-red-400" />
                                             <span className="text-xs font-bold text-red-400 uppercase">기존 방식</span>

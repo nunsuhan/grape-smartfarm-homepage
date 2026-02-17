@@ -35,9 +35,9 @@ export default function SensorInstallationGuidePage() {
                         </h2>
                         <div className="bg-blue-500/10 border-l-4 border-blue-600 p-6 rounded-lg">
                             <p className="text-lg text-neutral-cream/80 leading-relaxed">
-                                <strong className="text-blue-900">"이 센서를 어떻게 연결하나요?"</strong>라는 질문 대신,
+                                <strong className="text-blue-400">"이 센서를 어떻게 연결하나요?"</strong>라는 질문 대신,
                                 <br />
-                                <strong className="text-blue-900">"센서 단자대 사진을 찍고 AI에게 '이 배선도대로 연결된 게 맞니?'라고 물어보세요"</strong>
+                                <strong className="text-blue-400">"센서 단자대 사진을 찍고 AI에게 '이 배선도대로 연결된 게 맞니?'라고 물어보세요"</strong>
                             </p>
                         </div>
                     </section>
@@ -164,7 +164,7 @@ export default function SensorInstallationGuidePage() {
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-6">
-                                <h4 className="font-bold text-green-900 mb-3 flex items-center gap-2">
+                                <h4 className="font-bold text-green-400 mb-3 flex items-center gap-2">
                                     <CheckCircle className="w-5 h-5" />
                                     좋은 사진
                                 </h4>
@@ -176,7 +176,7 @@ export default function SensorInstallationGuidePage() {
                                 </ul>
                             </div>
                             <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-6">
-                                <h4 className="font-bold text-red-900 mb-3 flex items-center gap-2">
+                                <h4 className="font-bold text-red-400 mb-3 flex items-center gap-2">
                                     <AlertCircle className="w-5 h-5" />
                                     나쁜 사진
                                 </h4>

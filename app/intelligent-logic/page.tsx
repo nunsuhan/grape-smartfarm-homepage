@@ -93,7 +93,7 @@ export default function IntelligentLogicPage() {
                                 blue: 'bg-blue-500/10 border-blue-500/20 text-blue-400 hover:bg-blue-500/15',
                                 red: 'bg-red-500/10 border-red-500/20 text-red-400 hover:bg-red-500/15',
                                 green: 'bg-green-500/10 border-green-500/20 text-green-400 hover:bg-green-500/15',
-                                yellow: 'bg-yellow-500/10 border-yellow-200 text-yellow-600 hover:bg-yellow-500/15',
+                                yellow: 'bg-yellow-500/10 border-yellow-500/20 text-yellow-400 hover:bg-yellow-500/15',
                                 purple: 'bg-purple-500/10 border-purple-500/30 text-purple-400 hover:bg-purple-500/15',
                                 indigo: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400 hover:bg-indigo-500/15',
                             };

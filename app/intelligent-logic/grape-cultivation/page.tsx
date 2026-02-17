@@ -61,7 +61,7 @@ export default function GrapeCultivationPage() {
                             className="space-y-12"
                         >
                             {/* Simple Wrapper */}
-                            <div className="prose prose-lg prose-neutral max-w-none">
+                            <div className="prose prose-lg prose-invert max-w-none">
                                 <h3 className="flex items-center gap-3 text-2xl font-bold text-white mb-6">
                                     <Grape className="text-purple-400 w-8 h-8" />
                                     가장 '포도답게' 만드는 비법
@@ -121,7 +121,7 @@ export default function GrapeCultivationPage() {
                             className="space-y-16"
                         >
                             <div className="space-y-8">
-                                <div className="prose prose-neutral max-w-none">
+                                <div className="prose prose-invert max-w-none">
                                     <h2>Temperature Impact on Anthocyanin Synthesis</h2>
                                     <p>
                                         포도 착색에 가장 중요한 요소는 온도입니다.
@@ -137,7 +137,7 @@ export default function GrapeCultivationPage() {
                                         <span className="text-xs font-mono text-neutral-cream/50 bg-white/10 px-2 py-1 rounded">Fig 1. Temperature Dependency</span>
                                     </div>
 
-                                    <div className="relative h-64 w-full bg-white/5 rounded-lg border border-neutral-100 mb-4 overflow-hidden">
+                                    <div className="relative h-64 w-full bg-white/5 rounded-lg border border-white/10 mb-4 overflow-hidden">
                                         {/* Chart Placeholder Logic */}
                                         <div className="absolute inset-x-0 bottom-0 top-0 flex items-end px-12 pb-8">
                                             {/* Curve approx */}

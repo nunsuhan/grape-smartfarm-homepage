@@ -90,7 +90,7 @@ export default function FertilizerApplicationPage() {
                             </div>
 
                             {/* 영양 생장 & 수확량/품질 트레이드오프 */}
-                            <div className="border border-white/10 rounded-xl p-6 bg-white">
+                            <div className="border border-white/10 rounded-xl p-6 bg-white/5">
                                 <h4 className="font-bold text-white mb-4 flex items-center gap-2">
                                     <Sprout className="w-5 h-5 text-green-400" />
                                     영양 생장과 수확량·품질의 균형
@@ -110,7 +110,7 @@ export default function FertilizerApplicationPage() {
                             </div>
 
                             {/* 분자 메커니즘 요약 */}
-                            <div className="border border-white/10 rounded-xl p-6 bg-white">
+                            <div className="border border-white/10 rounded-xl p-6 bg-white/5">
                                 <h4 className="font-bold text-white mb-4 flex items-center gap-2">
                                     <Dna className="w-5 h-5 text-blue-400" />
                                     분자 수준의 반응
@@ -163,13 +163,13 @@ export default function FertilizerApplicationPage() {
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-white/10">
-                                            <tr className="hover:bg-white">
+                                            <tr className="hover:bg-white/10">
                                                 <td className="px-6 py-4 font-medium text-white">L-29 (Fruit Set Start)</td>
                                                 <td className="px-6 py-4">Vegetative Growth (Yield)</td>
                                                 <td className="px-6 py-4 font-mono font-bold text-green-400">30 - 10 - 10</td>
                                                 <td className="px-6 py-4">Peters 1 Type</td>
                                             </tr>
-                                            <tr className="hover:bg-white">
+                                            <tr className="hover:bg-white/10">
                                                 <td className="px-6 py-4 font-medium text-white">L-36 (Mid Veraison)</td>
                                                 <td className="px-6 py-4">Sugar & Color Accumulation</td>
                                                 <td className="px-6 py-4 font-mono font-bold text-purple-400">14 - 14 - 30</td>

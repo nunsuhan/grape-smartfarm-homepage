@@ -121,7 +121,7 @@ export function GAPCertification() {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-neutral-cream/70 max-w-2xl mx-auto text-lg"
+                        className="text-neutral-cream/90 max-w-2xl mx-auto text-lg"
                     >
                         GAP 인증에 필요한 6가지 기록 — 바코드 스캔과 간단한 입력만 하면
                         나머지는 FarmSense가 알아서 정리합니다
@@ -152,15 +152,15 @@ export function GAPCertification() {
                             {/* What / How / Auto */}
                             <div className="space-y-3">
                                 <div>
-                                    <div className="text-[10px] font-mono text-secondary-gold/60 uppercase mb-1">농가가 할 일</div>
+                                    <div className="text-[10px] font-mono text-secondary-gold/80 uppercase mb-1">농가가 할 일</div>
                                     <p className="text-sm text-white font-medium">{step.what}</p>
                                 </div>
                                 <div>
-                                    <div className="text-[10px] font-mono text-blue-400/60 uppercase mb-1">앱에서 하는 법</div>
-                                    <p className="text-sm text-neutral-cream/70">{step.how}</p>
+                                    <div className="text-[10px] font-mono text-blue-400/80 uppercase mb-1">앱에서 하는 법</div>
+                                    <p className="text-sm text-neutral-cream/90">{step.how}</p>
                                 </div>
                                 <div className="pt-2 border-t border-white/10">
-                                    <div className="text-[10px] font-mono text-secondary-green/60 uppercase mb-1">자동화 기능</div>
+                                    <div className="text-[10px] font-mono text-secondary-green/80 uppercase mb-1">자동화 기능</div>
                                     <p className="text-sm text-secondary-green/80">{step.auto}</p>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@ export function GAPCertification() {
                             >
                                 <item.icon className="w-8 h-8 text-secondary-gold mx-auto mb-3" />
                                 <h5 className="text-sm font-bold text-white mb-2">{item.title}</h5>
-                                <p className="text-xs text-neutral-cream/60 leading-relaxed">{item.desc}</p>
+                                <p className="text-xs text-neutral-cream/80 leading-relaxed">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -205,7 +205,7 @@ export function GAPCertification() {
                     <div className="flex flex-col md:flex-row items-center gap-6">
                         <div className="flex-1 text-center md:text-left">
                             <h5 className="text-lg font-bold text-white mb-2">수출 준비 완료도</h5>
-                            <p className="text-sm text-neutral-cream/60">
+                            <p className="text-sm text-neutral-cream/80">
                                 6가지 기록을 채울수록 점수가 올라갑니다.<br />
                                 80% 이상이면 수출 준비 완료!
                             </p>

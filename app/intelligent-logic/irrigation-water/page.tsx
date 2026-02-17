@@ -63,7 +63,7 @@ export default function IrrigationWaterPage() {
                             className="space-y-12"
                         >
                             {/* Simple Content */}
-                            <section className="prose prose-lg prose-neutral max-w-none">
+                            <section className="prose prose-lg prose-invert max-w-none">
                                 <h3 className="flex items-center gap-3 text-2xl font-bold text-white mb-6">
                                     <Droplets className="text-blue-400 w-8 h-8" />
                                     포도가 목마른 순간을 정확히 잡습니다
@@ -77,7 +77,7 @@ export default function IrrigationWaterPage() {
 
                             {/* 기후 변화와 물 관리의 중요성 */}
                             <div className="bg-blue-500/10 border-l-4 border-blue-600 p-6 rounded-lg mb-8">
-                                <h4 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
+                                <h4 className="font-bold text-blue-400 mb-3 flex items-center gap-2">
                                     <AlertTriangle className="w-5 h-5" />
                                     기후 변화와 물 관리의 중요성
                                 </h4>
@@ -94,21 +94,21 @@ export default function IrrigationWaterPage() {
                                         <span className="text-xs font-normal text-neutral-cream/60 bg-white/5 border border-white/10 px-2 py-1 rounded-full">Source: 스마트 정밀 관개 로직 분석.pdf</span>
                                     </h4>
                                     <div className="space-y-4">
-                                        <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-neutral-100 shadow-sm">
+                                        <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 shadow-sm">
                                             <div>
                                                 <div className="text-xs text-neutral-cream/60 font-bold uppercase tracking-wider mb-1">Step 1. 착립기</div>
                                                 <div className="text-neutral-cream/70">알이 맺힐 때는 토양을 촉촉하게</div>
                                             </div>
                                             <div className="text-2xl font-bold text-blue-400">-10 <span className="text-sm text-neutral-cream/50">kPa</span></div>
                                         </div>
-                                        <div className="flex items-center justify-between p-4 bg-blue-500/10 rounded-lg border border-blue-100 shadow-sm ring-1 ring-blue-500/20">
+                                        <div className="flex items-center justify-between p-4 bg-blue-500/10 rounded-lg border border-blue-500/20 shadow-sm ring-1 ring-blue-500/20">
                                             <div>
                                                 <div className="text-xs text-blue-400 font-bold uppercase tracking-wider mb-1">Step 2. 비대기 (핵심)</div>
                                                 <div className="text-neutral-cream/80 font-medium">물을 가장 많이 먹고 쑥쑥 크는 시기</div>
                                             </div>
                                             <div className="text-2xl font-bold text-blue-400">-15 <span className="text-sm text-blue-400">kPa</span></div>
                                         </div>
-                                        <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-neutral-100 shadow-sm">
+                                        <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 shadow-sm">
                                             <div>
                                                 <div className="text-xs text-neutral-cream/60 font-bold uppercase tracking-wider mb-1">Step 3. 성숙기</div>
                                                 <div className="text-neutral-cream/70">약간 마르게 관리하여 당도 축적 유도</div>
@@ -119,7 +119,7 @@ export default function IrrigationWaterPage() {
                                 </div>
 
                                 {/* 주요 관개 전략 */}
-                                <div className="border border-white/10 rounded-xl p-6 bg-white">
+                                <div className="border border-white/10 rounded-xl p-6 bg-white/5">
                                     <h4 className="font-bold text-white mb-4">주요 관개 전략</h4>
                                     <div className="space-y-4">
                                         <div className="border-l-4 border-green-500 pl-4">
@@ -147,7 +147,7 @@ export default function IrrigationWaterPage() {
                                 </div>
 
                                 {/* 관개 기술 */}
-                                <div className="border border-white/10 rounded-xl p-6 bg-white">
+                                <div className="border border-white/10 rounded-xl p-6 bg-white/5">
                                     <h4 className="font-bold text-white mb-4">관개 기술 및 시스템</h4>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div className="bg-white/5 p-4 rounded-lg">
@@ -162,7 +162,7 @@ export default function IrrigationWaterPage() {
                                         </div>
                                         <div className="bg-white/5 p-4 rounded-lg">
                                             <h5 className="font-semibold text-white mb-2 flex items-center gap-2">
-                                                <Sun className="w-4 h-4 text-yellow-600" />
+                                                <Sun className="w-4 h-4 text-yellow-400" />
                                                 미세 살수 및 냉각
                                             </h5>
                                             <p className="text-xs text-neutral-cream/70">
@@ -182,7 +182,7 @@ export default function IrrigationWaterPage() {
                             exit={{ opacity: 0, y: -10 }}
                             className="space-y-16"
                         >
-                            <div className="prose prose-neutral max-w-none">
+                            <div className="prose prose-invert max-w-none">
                                 <h2>1. 기후 변화와 물 관리의 중요성</h2>
                                 <p>
                                     전 세계적으로 포도 재배 지역은 기후 변화로 인한 극심한 가뭄, 폭염, 그리고 강우 패턴의 변화에 직면해 있습니다. 
@@ -323,11 +323,11 @@ export default function IrrigationWaterPage() {
                             </div>
 
                             {/* 특수 상황에서의 물 관리 */}
-                            <div className="bg-yellow-500/10 border border-yellow-200 rounded-xl p-6">
+                            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-6">
                                 <h3 className="text-xl font-bold text-white mb-4">특수 상황에서의 물 관리</h3>
                                 
                                 <div className="space-y-4">
-                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-200">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-500/20">
                                         <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
                                             <AlertTriangle className="w-4 h-4 text-red-400" />
                                             과습 및 침수
@@ -338,7 +338,7 @@ export default function IrrigationWaterPage() {
                                         </p>
                                     </div>
 
-                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-200">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-500/20">
                                         <h4 className="font-semibold text-white mb-2">질병과 관개</h4>
                                         <p className="text-sm text-neutral-cream/70">
                                             바이러스에 감염된 포도나무의 경우, 일반적인 부족 관개(RDI) 전략이 오히려 해로울 수 있습니다. 
@@ -346,7 +346,7 @@ export default function IrrigationWaterPage() {
                                         </p>
                                     </div>
 
-                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-200">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-500/20">
                                         <h4 className="font-semibold text-white mb-2">염류 피해</h4>
                                         <p className="text-sm text-neutral-cream/70">
                                             관개 용수의 염도가 높거나 토양 염류 집적이 있는 경우, 부족 관개는 토양 내 삼투 포텐셜을 낮추어 
@@ -543,11 +543,11 @@ export default function IrrigationWaterPage() {
                             </div>
 
                             {/* 특수 상황 상세 */}
-                            <div className="bg-yellow-500/10 border border-yellow-200 rounded-xl p-6">
+                            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-6">
                                 <h3 className="text-xl font-bold text-white mb-4">6. 특수 상황에서의 물 관리</h3>
                                 
                                 <div className="space-y-4">
-                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-200">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-500/20">
                                         <h4 className="font-semibold text-white mb-2">6.1. 과습 및 침수</h4>
                                         <p className="text-sm text-neutral-cream/70">
                                             한국과 같은 기후에서는 장마철 침수가 문제입니다. 7일간의 침수는 포도나무('캠벨얼리', '진옥')의 
@@ -556,7 +556,7 @@ export default function IrrigationWaterPage() {
                                         </p>
                                     </div>
 
-                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-200">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-500/20">
                                         <h4 className="font-semibold text-white mb-2">6.2. 질병과 관개</h4>
                                         <p className="text-sm text-neutral-cream/70">
                                             'Grapevine Red Blotch Virus (GRBV)'와 같은 바이러스에 감염된 포도나무의 경우, 
@@ -566,7 +566,7 @@ export default function IrrigationWaterPage() {
                                         </p>
                                     </div>
 
-                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-200">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-yellow-500/20">
                                         <h4 className="font-semibold text-white mb-2">6.3. 염류 피해</h4>
                                         <p className="text-sm text-neutral-cream/70">
                                             관개 용수의 염도가 높거나 토양 염류 집적이 있는 경우, 부족 관개는 토양 내 삼투 포텐셜을 낮추어 

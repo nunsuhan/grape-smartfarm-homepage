@@ -245,7 +245,7 @@ export default function GAPCertificationPage() {
                     >
                         GAP 인증이란?
                     </motion.h2>
-                    <div className="prose prose-lg prose-neutral max-w-none">
+                    <div className="prose prose-lg prose-invert max-w-none">
                         <p className="text-neutral-cream/70 leading-8">
                             <strong>GAP(Good Agricultural Practices, 우수농산물관리)</strong>는 농산물의 안전성을 확보하기 위해
                             생산 단계부터 수확 후 관리까지 전 과정에서 농약·중금속·유해생물 등의 위해요소를 관리하는 제도입니다.
@@ -430,7 +430,7 @@ export default function GAPCertificationPage() {
                     <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-6 space-y-4">
                         {plsInfo.map((item, i) => (
                             <div key={i}>
-                                <h4 className="font-bold text-amber-900 mb-1">{item.term}</h4>
+                                <h4 className="font-bold text-amber-400 mb-1">{item.term}</h4>
                                 <p className="text-sm text-amber-300 leading-relaxed">{item.desc}</p>
                             </div>
                         ))}

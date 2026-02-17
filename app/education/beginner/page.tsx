@@ -78,7 +78,7 @@ export default function BeginnerSensorPage() {
                                 펌웨어 전체 코드 (Copy & Paste)
                             </h2>
                         </div>
-                        <div className="prose prose-neutral">
+                        <div className="prose prose-invert">
                             <p>
                                 아래 코드는 DHT22 센서 값을 읽어 FarmSense 서버로 전송하는 전체 코드입니다.
                                 <code>SSID</code>와 <code>PASSWORD</code> 부분만 내 농장의 와이파이 정보로 수정하세요.

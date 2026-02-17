@@ -183,7 +183,7 @@ export default function PrivacyPolicyPage() {
                             제10조 (개인정보 보호책임자)
                         </h2>
                         <div className="bg-green-500/10 border-l-4 border-green-600 p-6 rounded-lg mb-8">
-                            <h3 className="text-xl font-bold text-green-900 mb-4">개인정보 보호책임자</h3>
+                            <h3 className="text-xl font-bold text-green-400 mb-4">개인정보 보호책임자</h3>
                             <p className="text-neutral-cream/80 mb-2"><strong>이름:</strong> FarmSense 개인정보보호 담당자</p>
                             <p className="text-neutral-cream/80 mb-4"><strong>이메일:</strong> artmer3061@gmail.com</p>
                             <p className="text-neutral-cream/80">

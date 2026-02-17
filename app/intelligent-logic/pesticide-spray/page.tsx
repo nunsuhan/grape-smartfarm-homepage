@@ -79,11 +79,11 @@ export default function PesticideSprayPage() {
                                 <div className="w-full md:w-80 bg-white/5 rounded-xl p-6 border border-white/10 shadow-inner">
                                     <div className="text-xs font-bold text-neutral-cream/50 uppercase tracking-widest mb-4 text-center">방제 알림 시뮬레이션</div>
                                     <div className="space-y-3">
-                                        <div className="bg-white/5 p-3 rounded-lg border border-neutral-100 flex items-center justify-between shadow-sm">
+                                        <div className="bg-white/5 p-3 rounded-lg border border-white/10 flex items-center justify-between shadow-sm">
                                             <span className="text-sm font-medium text-neutral-cream/70">현재 상태</span>
                                             <span className="px-2 py-1 bg-green-500/15 text-green-400 text-xs rounded-full font-bold">안전</span>
                                         </div>
-                                        <div className="bg-white/5 p-3 rounded-lg border border-red-100 ring-1 ring-red-100 flex items-center justify-between shadow-sm">
+                                        <div className="bg-white/5 p-3 rounded-lg border border-red-500/20 ring-1 ring-red-500/20 flex items-center justify-between shadow-sm">
                                             <span className="text-sm font-medium text-neutral-cream/70">내일 예측</span>
                                             <span className="px-2 py-1 bg-red-500/15 text-red-700 text-xs rounded-full font-bold animate-pulse">노균병 위험!</span>
                                         </div>
@@ -113,7 +113,7 @@ export default function PesticideSprayPage() {
 
                             {/* 기후 변화와 질병 관리 */}
                             <div className="bg-amber-500/10 border-l-4 border-amber-500 p-6 rounded-lg">
-                                <h4 className="font-bold text-amber-900 mb-3 flex items-center gap-2">
+                                <h4 className="font-bold text-amber-400 mb-3 flex items-center gap-2">
                                     <AlertCircle className="w-5 h-5" />
                                     기후 변화에 대응하는 포도 질병 관리
                                 </h4>
@@ -124,7 +124,7 @@ export default function PesticideSprayPage() {
                             </div>
 
                             {/* 생리 장해 완화 */}
-                            <div className="border border-white/10 rounded-xl p-6 bg-white">
+                            <div className="border border-white/10 rounded-xl p-6 bg-white/5">
                                 <h4 className="font-bold text-white mb-3 flex items-center gap-2">
                                     <Leaf className="w-5 h-5 text-green-400" />
                                     생리 장해 완화
@@ -153,7 +153,7 @@ export default function PesticideSprayPage() {
                             exit={{ opacity: 0, scale: 0.95 }}
                             className="space-y-16"
                         >
-                            <div className="prose prose-neutral max-w-none">
+                            <div className="prose prose-invert max-w-none">
                                 <h2>IPM & Pathogen Survival Thresholds</h2>
                                 <p>
                                     통합 병해충 관리(IPM)와 병원균(Fungi) 포자 형성·발아 조건을 정밀 모델링합니다.
@@ -177,12 +177,12 @@ export default function PesticideSprayPage() {
                                         <Droplets className="w-5 h-5" /> 1. 노균병 (Downy Mildew)
                                     </h3>
                                     <div className="space-y-4">
-                                        <div className="bg-white/5 p-4 rounded-lg border border-blue-100 shadow-sm">
+                                        <div className="bg-white/5 p-4 rounded-lg border border-blue-500/20 shadow-sm">
                                             <div className="text-xs font-bold text-neutral-cream/50 uppercase mb-1">Temperature Window</div>
                                             <div className="text-2xl font-bold text-white">14.9 ~ 20.3°C</div>
                                             <div className="text-xs text-blue-400 mt-1">Optimum range for sporulation</div>
                                         </div>
-                                        <div className="bg-white/5 p-4 rounded-lg border border-blue-100 shadow-sm">
+                                        <div className="bg-white/5 p-4 rounded-lg border border-blue-500/20 shadow-sm">
                                             <div className="text-xs font-bold text-neutral-cream/50 uppercase mb-1">Humidity</div>
                                             <div className="text-2xl font-bold text-white">RH ≥ 95%</div>
                                             <div className="text-xs text-blue-400 mt-1">Duration: ≥ 4 hours (Night)</div>
@@ -195,7 +195,7 @@ export default function PesticideSprayPage() {
                                     <h3 className="text-lg font-bold text-red-800 mb-4 flex items-center gap-2">
                                         <Thermometer className="w-5 h-5" /> 2. 흰가루병 (Powdery Mildew)
                                     </h3>
-                                    <div className="bg-white/5 p-4 rounded-lg border border-red-100 shadow-sm mb-4">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-red-500/20 shadow-sm mb-4">
                                         <div className="flex justify-between items-center">
                                             <div className="text-sm font-bold text-neutral-cream/80">Natural Suppression</div>
                                             <div className="text-2xl font-bold text-red-400">35°C</div>

@@ -83,7 +83,7 @@ export default function EnvironmentalControlPage() {
                                             낮에는 25-28°C, 밤에는 15-18°C를 유지하여 일교차를 최적화합니다.
                                         </p>
                                     </div>
-                                    <div className="bg-blue-500/10 p-6 rounded-lg border border-blue-100">
+                                    <div className="bg-blue-500/10 p-6 rounded-lg border border-blue-500/20">
                                         <div className="flex items-center gap-3 mb-3">
                                             <Droplets className="w-6 h-6 text-blue-400" />
                                             <h3 className="font-bold text-white">습도 제어</h3>
@@ -101,7 +101,7 @@ export default function EnvironmentalControlPage() {
                                             일일 누적 광량을 계산하여 보광이 필요한 시기를 판단합니다.
                                         </p>
                                     </div>
-                                    <div className="bg-green-500/10 p-6 rounded-lg border border-green-100">
+                                    <div className="bg-green-500/10 p-6 rounded-lg border border-green-500/20">
                                         <div className="flex items-center gap-3 mb-3">
                                             <Wind className="w-6 h-6 text-green-400" />
                                             <h3 className="font-bold text-white">환기 제어</h3>
@@ -121,7 +121,7 @@ export default function EnvironmentalControlPage() {
                             exit={{ opacity: 0, scale: 0.95 }}
                             className="space-y-16"
                         >
-                            <div className="prose prose-neutral max-w-none">
+                            <div className="prose prose-invert max-w-none">
                                 <h2>Environmental Control Algorithm</h2>
                                 <p>
                                     다중 센서 데이터를 통합하여 최적 생육 환경을 유지하는 제어 로직입니다.

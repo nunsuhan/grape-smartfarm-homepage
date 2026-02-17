@@ -139,7 +139,7 @@ export default function TechnologyDocsPage() {
                             </thead>
                             <tbody>
                                 {LOGIC_SPEC.map((row) => (
-                                    <tr key={row.href} className="border-b border-neutral-100 hover:bg-white/5">
+                                    <tr key={row.href} className="border-b border-white/10 hover:bg-white/5">
                                         <td className="p-4 font-medium text-white">{row.title}</td>
                                         <td className="p-4 text-neutral-cream/70">{row.input}</td>
                                         <td className="p-4 text-neutral-cream/70">{row.output}</td>

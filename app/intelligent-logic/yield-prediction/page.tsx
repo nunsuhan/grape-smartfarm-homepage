@@ -64,7 +64,7 @@ export default function YieldPredictionPage() {
                         >
                             {/* 개요 및 전통적 방식의 한계 */}
                             <div className="bg-yellow-500/10 border-l-4 border-yellow-600 p-6 rounded-lg mb-8">
-                                <h4 className="font-bold text-yellow-900 mb-3 flex items-center gap-2">
+                                <h4 className="font-bold text-yellow-400 mb-3 flex items-center gap-2">
                                     <AlertTriangle className="w-5 h-5" />
                                     전통적 방식의 한계
                                 </h4>
@@ -88,17 +88,17 @@ export default function YieldPredictionPage() {
                                 </p>
 
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div className="bg-white/5 p-4 rounded-lg border border-neutral-100 text-center">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-white/10 text-center">
                                         <Camera className="w-8 h-8 mx-auto text-blue-500 mb-2" />
                                         <div className="font-bold text-white">1. AI 비전 분석</div>
                                         <div className="text-xs text-neutral-cream/60 mt-1">RGB-D 카메라로 송이 수 자동 계수</div>
                                     </div>
-                                    <div className="bg-white/5 p-4 rounded-lg border border-neutral-100 text-center">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-white/10 text-center">
                                         <Sun className="w-8 h-8 mx-auto text-yellow-500 mb-2" />
                                         <div className="font-bold text-white">2. 기상 데이터 분석</div>
                                         <div className="text-xs text-neutral-cream/60 mt-1">GDD, 이상 기후 반영</div>
                                     </div>
-                                    <div className="bg-white/5 p-4 rounded-lg border border-neutral-100 text-center">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-white/10 text-center">
                                         <Brain className="w-8 h-8 mx-auto text-purple-500 mb-2" />
                                         <div className="font-bold text-white">3. AI 모델 예측</div>
                                         <div className="text-xs text-neutral-cream/60 mt-1">딥러닝 앙상블 학습</div>
@@ -159,10 +159,10 @@ export default function YieldPredictionPage() {
                             </div>
 
                             {/* 핵심 변수 */}
-                            <div className="border border-white/10 rounded-xl p-6 bg-white">
+                            <div className="border border-white/10 rounded-xl p-6 bg-white/5">
                                 <h4 className="font-bold text-white mb-4">수확량 예측의 핵심 변수</h4>
                                 <div className="space-y-3">
-                                    <div className="bg-yellow-500/10 p-3 rounded-lg border border-yellow-200">
+                                    <div className="bg-yellow-500/10 p-3 rounded-lg border border-yellow-500/20">
                                         <div className="text-sm font-semibold text-white mb-1">수확량 구성 요소</div>
                                         <div className="text-xs text-neutral-cream/70">
                                             포도송이 수(cluster number)와 포도알 수(berry number)가 가장 직접적인 예측 변수입니다. 
@@ -192,7 +192,7 @@ export default function YieldPredictionPage() {
                             exit={{ opacity: 0, scale: 0.95 }}
                             className="space-y-16"
                         >
-                            <div className="prose prose-neutral max-w-none">
+                            <div className="prose prose-invert max-w-none">
                                 <h2>1. 개요 및 전통적 방식의 한계</h2>
                                 <p>
                                     수확량 예측은 농가와 생산자가 재배 관리(관개, 비료, 솎아내기 등), 수확 일정, 노동력 배치, 저장 및 마케팅 전략을 최적화하는 데 필수적인 요소입니다. 
