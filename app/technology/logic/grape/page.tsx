@@ -123,7 +123,7 @@ export default function GrapeLogicPage() {
                             className="space-y-16"
                         >
                             <div className="space-y-8">
-                                <div className="prose prose-neutral max-w-none">
+                                <div className="prose prose-invert max-w-none">
                                     <h2>Temperature Impact on Anthocyanin Synthesis</h2>
                                     <p>
                                         단순 기상 예보가 아닌, 병원균(Fungi)의 포자 형성 및 발아 조건을 정밀하게 모델링합니다.
@@ -139,7 +139,7 @@ export default function GrapeLogicPage() {
                                         <span className="text-xs font-mono text-neutral-cream/50 bg-white/10 px-2 py-1 rounded">Fig 1. Temperature Dependency</span>
                                     </div>
 
-                                    <div className="relative h-64 w-full bg-white/5 rounded-lg border border-neutral-100 mb-4 overflow-hidden">
+                                    <div className="relative h-64 w-full bg-white/5 rounded-lg border border-white/10 mb-4 overflow-hidden">
                                         {/* Chart Placeholder Logic */}
                                         <div className="absolute inset-x-0 bottom-0 top-0 flex items-end px-12 pb-8">
                                             {/* Curve approx */}
@@ -152,7 +152,7 @@ export default function GrapeLogicPage() {
 
                                         {/* Labels */}
                                         <div className="absolute bottom-2 left-4 text-xs font-mono text-neutral-cream/50">10°C (Min)</div>
-                                        <div className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-purple-400 bg-white px-2 py-0.5 rounded shadow-sm border border-purple-500/20">26°C (Optimum)</div>
+                                        <div className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-purple-400 bg-neutral-black px-2 py-0.5 rounded shadow-sm border border-purple-500/20">26°C (Optimum)</div>
                                         <div className="absolute bottom-2 right-4 text-xs font-mono text-red-500">35°C (Max)</div>
                                     </div>
                                 </div>

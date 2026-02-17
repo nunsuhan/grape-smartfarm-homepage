@@ -150,7 +150,7 @@ export default function GrapeCultivationPage() {
 
                                         {/* Labels */}
                                         <div className="absolute bottom-2 left-4 text-xs font-mono text-neutral-cream/50">10°C (Min)</div>
-                                        <div className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-purple-400 bg-white px-2 py-0.5 rounded shadow-sm border border-purple-500/20">26°C (Optimum)</div>
+                                        <div className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-purple-400 bg-neutral-black px-2 py-0.5 rounded shadow-sm border border-purple-500/20">26°C (Optimum)</div>
                                         <div className="absolute bottom-2 right-4 text-xs font-mono text-red-500">35°C (Max)</div>
                                     </div>
                                 </div>

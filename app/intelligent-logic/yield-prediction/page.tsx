@@ -42,7 +42,7 @@ export default function YieldPredictionPage() {
                                 onClick={() => setMode('technical')}
                                 className={clsx(
                                     "px-4 py-2 rounded-md text-sm font-medium transition-all",
-                                    mode === 'technical' ? "bg-white text-yellow-600 shadow-sm border border-white/10" : "text-neutral-cream/60 hover:text-white"
+                                    mode === 'technical' ? "bg-yellow-500/20 text-yellow-300 shadow-sm border border-white/10" : "text-neutral-cream/60 hover:text-white"
                                 )}
                             >
                                 상세 (Engineers)
@@ -76,7 +76,7 @@ export default function YieldPredictionPage() {
                             </div>
 
                             {/* Simple Content */}
-                            <div className="border border-white/10 rounded-xl p-8 bg-white shadow-sm mb-8">
+                            <div className="border border-white/10 rounded-xl p-8 bg-white/5 shadow-sm mb-8">
                                 <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                                     <BarChart className="text-yellow-600 w-8 h-8" />
                                     "올해 몇 박스나 나올까?" 미리 알려드립니다
@@ -107,7 +107,7 @@ export default function YieldPredictionPage() {
                             </div>
 
                             {/* 데이터 수집 기술 */}
-                            <div className="border border-white/10 rounded-xl p-6 bg-white mb-8">
+                            <div className="border border-white/10 rounded-xl p-6 bg-white/5 mb-8">
                                 <h4 className="font-bold text-white mb-4">데이터 수집 기술</h4>
                                 <div className="space-y-4">
                                     <div className="border-l-4 border-blue-500 pl-4">
@@ -134,7 +134,7 @@ export default function YieldPredictionPage() {
                             </div>
 
                             {/* AI 기반 예측 */}
-                            <div className="border border-white/10 rounded-xl p-6 bg-white mb-8">
+                            <div className="border border-white/10 rounded-xl p-6 bg-white/5 mb-8">
                                 <h4 className="font-bold text-white mb-4">AI 기반 예측 모델링</h4>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="bg-white/5 p-4 rounded-lg">
@@ -216,21 +216,21 @@ export default function YieldPredictionPage() {
 
                             <div className="flex flex-col md:flex-row gap-6 items-center justify-center py-8 bg-white/5 rounded-xl border border-white/10">
                                 <div className="text-center">
-                                    <div className="w-32 h-32 rounded-full border-8 border-yellow-400 flex items-center justify-center bg-white shadow-sm">
+                                    <div className="w-32 h-32 rounded-full border-8 border-yellow-400 flex items-center justify-center bg-white/10 shadow-sm">
                                         <span className="text-2xl font-bold text-white">60%</span>
                                     </div>
                                     <div className="mt-3 font-bold text-white">Cluster Count</div>
                                 </div>
                                 <div className="text-2xl text-neutral-cream/40">&gt;</div>
                                 <div className="text-center">
-                                    <div className="w-24 h-24 rounded-full border-4 border-blue-400 flex items-center justify-center bg-white shadow-sm">
+                                    <div className="w-24 h-24 rounded-full border-4 border-blue-400 flex items-center justify-center bg-white/10 shadow-sm">
                                         <span className="text-xl font-bold text-white">30%</span>
                                     </div>
                                     <div className="mt-3 font-bold text-white">Berry Count</div>
                                 </div>
                                 <div className="text-2xl text-neutral-cream/40">&gt;</div>
                                 <div className="text-center">
-                                    <div className="w-20 h-20 rounded-full border-2 border-neutral-400 flex items-center justify-center bg-white shadow-sm">
+                                    <div className="w-20 h-20 rounded-full border-2 border-neutral-400 flex items-center justify-center bg-white/10 shadow-sm">
                                         <span className="text-lg font-bold text-white">10%</span>
                                     </div>
                                     <div className="mt-3 font-bold text-white">Weight</div>

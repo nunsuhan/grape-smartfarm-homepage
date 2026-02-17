@@ -188,7 +188,7 @@ export function BlockchainTraceability() {
                     <div className="p-6 rounded-2xl bg-white/5 border border-secondary-gold/20">
                         {/* Mock QR Header */}
                         <div className="flex items-center gap-4 mb-6 pb-4 border-b border-white/10">
-                            <div className="w-16 h-16 rounded-xl bg-white flex items-center justify-center flex-shrink-0">
+                            <div className="w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
                                 <QrCode className="w-10 h-10 text-neutral-800" />
                             </div>
                             <div>

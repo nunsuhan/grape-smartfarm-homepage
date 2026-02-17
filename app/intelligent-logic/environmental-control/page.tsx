@@ -63,7 +63,7 @@ export default function EnvironmentalControlPage() {
                             className="space-y-12"
                         >
                             {/* Simple Content */}
-                            <div className="border border-white/10 rounded-xl p-8 bg-white shadow-sm">
+                            <div className="border border-white/10 rounded-xl p-8 bg-white/5 shadow-sm">
                                 <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                                     <Gauge className="text-indigo-400 w-8 h-8" />
                                     포도가 가장 잘 자라는 환경을 자동으로 만들어줍니다

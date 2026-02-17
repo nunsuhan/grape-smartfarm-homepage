@@ -63,7 +63,7 @@ export default function PesticideSprayPage() {
                             className="space-y-12"
                         >
                             {/* Simple Content */}
-                            <div className="border border-white/10 rounded-xl p-8 bg-white shadow-sm flex flex-col md:flex-row gap-8 items-center">
+                            <div className="border border-white/10 rounded-xl p-8 bg-white/5 shadow-sm flex flex-col md:flex-row gap-8 items-center">
                                 <div className="flex-1 space-y-4">
                                     <h2 className="text-2xl font-bold text-white flex items-center gap-3">
                                         <Bug className="text-red-500 w-8 h-8" />

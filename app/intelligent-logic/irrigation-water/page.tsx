@@ -210,7 +210,7 @@ export default function IrrigationWaterPage() {
                                             <th className="px-6 py-3 text-left text-xs font-bold text-neutral-cream/60 uppercase tracking-wider">Target</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="bg-white divide-y divide-white/10 text-sm">
+                                    <tbody className="bg-white/5 divide-y divide-white/10 text-sm">
                                         <tr>
                                             <td className="px-6 py-4 font-medium text-white">Early Growth</td>
                                             <td className="px-6 py-4 text-neutral-cream/60">&lt; 10mm</td>
