@@ -86,31 +86,31 @@ export const metadata = {
 
 export default function TechnologyDocsPage() {
     return (
-        <main className="min-h-screen bg-white text-neutral-900 pt-20 font-sans">
-            <div className="border-b border-neutral-200 bg-neutral-50/50">
-                <Container className="max-w-4xl py-16">
-                    <div className="flex items-center gap-2 text-green-600 font-bold tracking-wide text-sm uppercase mb-4">
+        <main className="min-h-screen bg-neutral-black text-neutral-cream pt-20 font-sans">
+            <div className="border-b border-white/10 bg-white/5">
+                <Container className="max-w-5xl py-16">
+                    <div className="flex items-center gap-2 text-green-400 font-bold tracking-wide text-sm uppercase mb-4">
                         <FileText className="w-5 h-5" />
                         검증 및 로직 이해를 위한 기술 문서
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-900 leading-tight mb-4">
+                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight mb-4">
                         기술 문서
                     </h1>
-                    <p className="text-xl text-neutral-600 leading-relaxed max-w-3xl">
+                    <p className="text-xl text-neutral-cream/70 leading-relaxed max-w-3xl">
                         공무원·평가위원·농가가 <strong>어떤 로직으로 작동하는지</strong> 확인하고 검증할 수 있도록,
                         입력 데이터·처리 로직·출력 결과와 <strong>근거 문헌</strong>을 투명하게 공개합니다.
                     </p>
                 </Container>
             </div>
 
-            <Container className="max-w-4xl py-12 space-y-16">
+            <Container className="max-w-5xl py-12 space-y-16">
                 {/* 목적 */}
-                <section className="bg-green-50 border-l-4 border-green-600 p-6 rounded-r-lg">
-                    <h2 className="text-xl font-bold text-neutral-900 mb-2 flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600" />
+                <section className="bg-green-500/10 border-l-4 border-green-600 p-6 rounded-r-lg">
+                    <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-green-400" />
                         이 문서의 목적
                     </h2>
-                    <ul className="text-neutral-700 space-y-1 list-disc list-inside">
+                    <ul className="text-neutral-cream/80 space-y-1 list-disc list-inside">
                         <li><strong>검증:</strong> 시범사업·정책 검토 시 FarmSense 로직의 과학적 근거와 산출 과정을 확인</li>
                         <li><strong>로직 이해:</strong> 농가·현장이 &quot;왜 이 시점에 물/비료/방제를 권장하는지&quot;를 이해</li>
                         <li><strong>근거 추적:</strong> 각 로직에 대응하는 참고 문헌(논문·보고서)을 명시하여 재현·검증 가능하도록 구성</li>
@@ -119,35 +119,35 @@ export default function TechnologyDocsPage() {
 
                 {/* 지능형 로직 명세 요약표 */}
                 <section>
-                    <h2 className="text-2xl font-bold text-neutral-900 mb-2 flex items-center gap-2">
-                        <BookOpen className="w-6 h-6 text-green-600" />
+                    <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        <BookOpen className="w-6 h-6 text-green-400" />
                         지능형 로직 명세 요약
                     </h2>
-                    <p className="text-neutral-600 mb-6">
+                    <p className="text-neutral-cream/70 mb-6">
                         각 로직의 <strong>입력(Input)</strong>·<strong>출력(Output)</strong>과 <strong>근거 문헌</strong>입니다. 상세 수식·임계값은 각 페이지에서 확인할 수 있습니다.
                     </p>
-                    <div className="overflow-x-auto border border-neutral-200 rounded-xl">
+                    <div className="overflow-x-auto border border-white/10 rounded-xl">
                         <table className="w-full text-sm border-collapse">
                             <thead>
-                                <tr className="bg-neutral-100 border-b border-neutral-200">
-                                    <th className="text-left p-4 font-semibold text-neutral-900">로직</th>
-                                    <th className="text-left p-4 font-semibold text-neutral-900">입력</th>
-                                    <th className="text-left p-4 font-semibold text-neutral-900">출력</th>
-                                    <th className="text-left p-4 font-semibold text-neutral-900">근거 문헌</th>
-                                    <th className="text-left p-4 font-semibold text-neutral-900 w-20">상세</th>
+                                <tr className="bg-white/10 border-b border-white/10">
+                                    <th className="text-left p-4 font-semibold text-white">로직</th>
+                                    <th className="text-left p-4 font-semibold text-white">입력</th>
+                                    <th className="text-left p-4 font-semibold text-white">출력</th>
+                                    <th className="text-left p-4 font-semibold text-white">근거 문헌</th>
+                                    <th className="text-left p-4 font-semibold text-white w-20">상세</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {LOGIC_SPEC.map((row) => (
-                                    <tr key={row.href} className="border-b border-neutral-100 hover:bg-neutral-50">
-                                        <td className="p-4 font-medium text-neutral-900">{row.title}</td>
-                                        <td className="p-4 text-neutral-600">{row.input}</td>
-                                        <td className="p-4 text-neutral-600">{row.output}</td>
-                                        <td className="p-4 text-neutral-500 text-xs">{row.refs}</td>
+                                    <tr key={row.href} className="border-b border-neutral-100 hover:bg-white/5">
+                                        <td className="p-4 font-medium text-white">{row.title}</td>
+                                        <td className="p-4 text-neutral-cream/70">{row.input}</td>
+                                        <td className="p-4 text-neutral-cream/70">{row.output}</td>
+                                        <td className="p-4 text-neutral-cream/60 text-xs">{row.refs}</td>
                                         <td className="p-4">
                                             <Link
                                                 href={row.href}
-                                                className="inline-flex items-center gap-1 text-green-600 font-medium hover:underline"
+                                                className="inline-flex items-center gap-1 text-green-400 font-medium hover:underline"
                                             >
                                                 보기 <ArrowRight className="w-4 h-4" />
                                             </Link>
@@ -157,23 +157,23 @@ export default function TechnologyDocsPage() {
                             </tbody>
                         </table>
                     </div>
-                    <p className="mt-4 text-sm text-neutral-500">
-                        ※ 지능형 로직 전체 목차: <Link href="/intelligent-logic" className="text-green-600 hover:underline">지능형 로직</Link>
+                    <p className="mt-4 text-sm text-neutral-cream/60">
+                        ※ 지능형 로직 전체 목차: <Link href="/intelligent-logic" className="text-green-400 hover:underline">지능형 로직</Link>
                     </p>
                 </section>
 
                 {/* 열화상·RGB-D 카메라 설치 필요성 */}
-                <section className="bg-amber-50 border border-amber-200 rounded-xl p-6">
-                    <h2 className="text-xl font-bold text-neutral-900 mb-2 flex items-center gap-2">
-                        <Camera className="w-6 h-6 text-amber-600" />
+                <section className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-6">
+                    <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <Camera className="w-6 h-6 text-amber-400" />
                         열화상·RGB-D 카메라 설치 필요성
                     </h2>
-                    <p className="text-neutral-700 text-sm mb-4">
+                    <p className="text-neutral-cream/80 text-sm mb-4">
                         &quot;굳이 비용이 드는 열화상·RGB-D 카메라가 왜 필요한가?&quot; — RGB·토양 센서만으로는 해결할 수 없는 문제(골든타임 확보, CWSI 기반 관개, 수확량·질병 정밀 판독)와 FarmSense 선택 근거를 정리한 전용 문서입니다.
                     </p>
                     <Link
                         href="/technology/camera-necessity"
-                        className="inline-flex items-center gap-2 text-amber-700 font-semibold hover:underline"
+                        className="inline-flex items-center gap-2 text-amber-400 font-semibold hover:underline"
                     >
                         열화상·RGB-D 설치 필요성 상세 보기 <ArrowRight className="w-4 h-4" />
                     </Link>
@@ -181,86 +181,86 @@ export default function TechnologyDocsPage() {
 
                 {/* 기술력(Technology) 요약 */}
                 <section>
-                    <h2 className="text-2xl font-bold text-neutral-900 mb-2 flex items-center gap-2">
-                        <Cpu className="w-6 h-6 text-green-600" />
+                    <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        <Cpu className="w-6 h-6 text-green-400" />
                         기술력(Technology) 요약
                     </h2>
-                    <p className="text-neutral-600 mb-6">
+                    <p className="text-neutral-cream/70 mb-6">
                         AI 병해 진단, PMI-DSS, RAG, 센서 네트워크의 <strong>작동 원리</strong>와 <strong>검증 포인트</strong>입니다.
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <Link
                             href="/technology/ai-diagnosis"
-                            className="flex items-start gap-4 p-4 border border-neutral-200 rounded-xl hover:bg-neutral-50"
+                            className="flex items-start gap-4 p-4 border border-white/10 rounded-xl hover:bg-white/5"
                         >
-                            <Camera className="w-8 h-8 text-blue-600 shrink-0" />
+                            <Camera className="w-8 h-8 text-blue-400 shrink-0" />
                             <div>
-                                <h3 className="font-bold text-neutral-900">AI 병해충 진단 (Vision)</h3>
-                                <p className="text-sm text-neutral-600">이미지 기반 병해·해충 분류, 환경 데이터 융합</p>
+                                <h3 className="font-bold text-white">AI 병해충 진단 (Vision)</h3>
+                                <p className="text-sm text-neutral-cream/70">이미지 기반 병해·해충 분류, 환경 데이터 융합</p>
                             </div>
-                            <ArrowRight className="w-4 h-4 text-neutral-400 shrink-0 mt-1" />
+                            <ArrowRight className="w-4 h-4 text-neutral-cream/50 shrink-0 mt-1" />
                         </Link>
                         <Link
                             href="/technology/pmi-dss"
-                            className="flex items-start gap-4 p-4 border border-neutral-200 rounded-xl hover:bg-neutral-50"
+                            className="flex items-start gap-4 p-4 border border-white/10 rounded-xl hover:bg-white/5"
                         >
-                            <BarChart className="w-8 h-8 text-amber-600 shrink-0" />
+                            <BarChart className="w-8 h-8 text-amber-400 shrink-0" />
                             <div>
-                                <h3 className="font-bold text-neutral-900">PMI-DSS 의사결정</h3>
-                                <p className="text-sm text-neutral-600">온습도·엽면습윤 기반 위험도 산출, 48시간 전 사전 경보</p>
+                                <h3 className="font-bold text-white">PMI-DSS 의사결정</h3>
+                                <p className="text-sm text-neutral-cream/70">온습도·엽면습윤 기반 위험도 산출, 48시간 전 사전 경보</p>
                             </div>
-                            <ArrowRight className="w-4 h-4 text-neutral-400 shrink-0 mt-1" />
+                            <ArrowRight className="w-4 h-4 text-neutral-cream/50 shrink-0 mt-1" />
                         </Link>
                         <Link
                             href="/technology/rag-system"
-                            className="flex items-start gap-4 p-4 border border-neutral-200 rounded-xl hover:bg-neutral-50"
+                            className="flex items-start gap-4 p-4 border border-white/10 rounded-xl hover:bg-white/5"
                         >
-                            <Database className="w-8 h-8 text-purple-600 shrink-0" />
+                            <Database className="w-8 h-8 text-purple-400 shrink-0" />
                             <div>
-                                <h3 className="font-bold text-neutral-900">대화형 농업 비서 (RAG)</h3>
-                                <p className="text-sm text-neutral-600">논문·지식베이스 기반 실행 가능한 답변</p>
+                                <h3 className="font-bold text-white">대화형 농업 비서 (RAG)</h3>
+                                <p className="text-sm text-neutral-cream/70">논문·지식베이스 기반 실행 가능한 답변</p>
                             </div>
-                            <ArrowRight className="w-4 h-4 text-neutral-400 shrink-0 mt-1" />
+                            <ArrowRight className="w-4 h-4 text-neutral-cream/50 shrink-0 mt-1" />
                         </Link>
                         <Link
                             href="/technology/sensor-system"
-                            className="flex items-start gap-4 p-4 border border-neutral-200 rounded-xl hover:bg-neutral-50"
+                            className="flex items-start gap-4 p-4 border border-white/10 rounded-xl hover:bg-white/5"
                         >
-                            <Gauge className="w-8 h-8 text-teal-600 shrink-0" />
+                            <Gauge className="w-8 h-8 text-teal-400 shrink-0" />
                             <div>
-                                <h3 className="font-bold text-neutral-900">IoT 센서 네트워크</h3>
-                                <p className="text-sm text-neutral-600">환경·토양·기상 데이터 수집 및 연동</p>
+                                <h3 className="font-bold text-white">IoT 센서 네트워크</h3>
+                                <p className="text-sm text-neutral-cream/70">환경·토양·기상 데이터 수집 및 연동</p>
                             </div>
-                            <ArrowRight className="w-4 h-4 text-neutral-400 shrink-0 mt-1" />
+                            <ArrowRight className="w-4 h-4 text-neutral-cream/50 shrink-0 mt-1" />
                         </Link>
                     </div>
                 </section>
 
                 {/* 참고 문헌 목록 (text_data 기준) */}
-                <section className="border border-neutral-200 rounded-xl p-6 bg-neutral-50">
-                    <h2 className="text-2xl font-bold text-neutral-900 mb-2 flex items-center gap-2">
-                        <FileText className="w-6 h-6 text-green-600" />
+                <section className="border border-white/10 rounded-xl p-6 bg-white/5">
+                    <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        <FileText className="w-6 h-6 text-green-400" />
                         참고 문헌 목록
                     </h2>
-                    <p className="text-neutral-600 mb-4 text-sm">
+                    <p className="text-neutral-cream/70 mb-4 text-sm">
                         FarmSense 로직 및 기술 명세의 근거 자료입니다. (프로젝트 내 text_data 기준)
                     </p>
                     <ul className="space-y-2 text-sm">
                         {REFERENCE_DOCS.map((doc) => (
                             <li key={doc.name} className="flex items-center gap-2">
-                                <span className="shrink-0 px-2 py-0.5 rounded bg-neutral-200 text-neutral-600 text-xs">
+                                <span className="shrink-0 px-2 py-0.5 rounded bg-neutral-200 text-neutral-cream/70 text-xs">
                                     {doc.category}
                                 </span>
-                                <span className="text-neutral-800">{doc.name}</span>
+                                <span className="text-white/90">{doc.name}</span>
                             </li>
                         ))}
                     </ul>
                 </section>
 
                 {/* 제안서 맥락 */}
-                <section className="border border-neutral-200 rounded-xl p-6">
-                    <h2 className="text-xl font-bold text-neutral-900 mb-2">시범사업·제안서 검토 시</h2>
-                    <p className="text-neutral-700 leading-relaxed">
+                <section className="border border-white/10 rounded-xl p-6">
+                    <h2 className="text-xl font-bold text-white mb-2">시범사업·제안서 검토 시</h2>
+                    <p className="text-neutral-cream/80 leading-relaxed">
                         본 기술 문서는 <strong>기후 적응형 포도 스마트팜 FarmSense 시범사업</strong> 제안 시, 
                         평가위원 및 담당 공무원이 &quot;어떤 로직으로 작동하는지&quot;, &quot;근거는 무엇인지&quot;를 
                         홈페이지에서 직접 확인·검증할 수 있도록 구성되었습니다. 

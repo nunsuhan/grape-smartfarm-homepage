@@ -8,8 +8,8 @@ import { Wind, Thermometer, Wifi, AlertTriangle } from 'lucide-react';
 export default function SensorEnvironmentPage() {
     return (
         <main className="min-h-screen bg-neutral-900 pt-20">
-            <Section className="py-20 bg-neutral-900 border-b border-white/5">
-                <Container className="max-w-4xl">
+            <Section className="py-20 bg-neutral-900 border-b border-white/10">
+                <Container className="max-w-5xl">
                     <span className="text-green-400 font-medium tracking-wider text-sm uppercase flex items-center gap-2">
                         <Wind className="w-4 h-4" /> Field Guide
                     </span>
@@ -24,10 +24,10 @@ export default function SensorEnvironmentPage() {
             </Section>
 
             <Section className="py-12">
-                <Container className="max-w-4xl space-y-12">
+                <Container className="max-w-5xl space-y-12">
 
                     {/* 1. Temp/Humi Sensor Placement */}
-                    <div className="bg-[#1A1A2E] border border-white/10 p-8 rounded-2xl relative overflow-hidden">
+                    <div className="bg-neutral-black border border-white/10 p-8 rounded-2xl relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-2 h-full bg-red-500"></div>
                         <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                             <Thermometer className="text-red-400 w-6 h-6" />
@@ -73,7 +73,7 @@ export default function SensorEnvironmentPage() {
                     </div>
 
                     {/* 2. Soil Sensor Installation */}
-                    <div className="bg-[#1A1A2E] border border-white/10 p-8 rounded-2xl relative overflow-hidden">
+                    <div className="bg-neutral-black border border-white/10 p-8 rounded-2xl relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-2 h-full bg-amber-500"></div>
                         <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                             <Wifi className="text-amber-400 w-6 h-6" />
@@ -81,14 +81,14 @@ export default function SensorEnvironmentPage() {
                         </h2>
 
                         <div className="space-y-6">
-                            <div className="bg-black/20 p-4 rounded-lg border border-white/5">
+                            <div className="bg-black/20 p-4 rounded-lg border border-white/10">
                                 <h4 className="font-bold text-white mb-2">📡 Metal Obstruction (금속 장애물)</h4>
                                 <p className="text-sm text-neutral-400">
                                     비닐하우스 파이프는 전파를 반사하거나 차단합니다. 무선 노드(ESP32)의 안테나는 파이프 기둥 바로 옆이 아닌,
                                     <strong>개방된 공간(통로 중앙) 상단</strong>에 매다는 것이 가장 좋습니다.
                                 </p>
                             </div>
-                            <div className="bg-black/20 p-4 rounded-lg border border-white/5">
+                            <div className="bg-black/20 p-4 rounded-lg border border-white/10">
                                 <h4 className="font-bold text-white mb-2">💧 Drip Loop (물방울 고리)</h4>
                                 <p className="text-sm text-neutral-400">
                                     센서 선을 따라 빗물이나 결로가 흘러내려 보드(PCB)로 들어가는 것을 막기 위해,

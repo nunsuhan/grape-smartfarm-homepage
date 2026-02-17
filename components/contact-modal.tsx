@@ -80,7 +80,7 @@ export function ContactModal() {
                         initial={{ scale: 0.95, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                        className="relative w-full max-w-[500px] bg-[#1A1A2E] border border-secondary-gold rounded-xl shadow-[0_0_30px_rgba(212,175,55,0.15)] overflow-hidden"
+                        className="relative w-full max-w-[500px] bg-neutral-black border border-secondary-gold rounded-xl shadow-[0_0_30px_rgba(212,175,55,0.15)] overflow-hidden"
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between p-6 border-b border-white/10">

@@ -22,9 +22,9 @@ module.exports = {
                 },
             },
             fontFamily: {
-                serif: ["var(--font-playfair)", "serif"],
-                sans: ["var(--font-inter)", "sans-serif"],
-                mono: ["var(--font-space-mono)", "monospace"],
+                serif: ["Georgia", "Cambria", "'Times New Roman'", "serif"],
+                sans: ["'Segoe UI'", "system-ui", "-apple-system", "sans-serif"],
+                mono: ["'Cascadia Code'", "'Fira Code'", "Consolas", "monospace"],
             },
         },
     },

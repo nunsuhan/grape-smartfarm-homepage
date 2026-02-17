@@ -45,10 +45,12 @@ export function Technology() {
             {/* Background Decor */}
             <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
                 <Image
-                    src="/images/tech_viz.png"
+                    src="/images/tech_viz.webp"
                     alt="Tech Visualization"
                     fill
                     className="object-contain object-right"
+                    quality={50}
+                    loading="lazy"
                 />
             </div>
 
@@ -67,7 +69,7 @@ export function Technology() {
                         className="text-4xl md:text-5xl font-serif font-bold text-white mb-6"
                     >
                         조기 감지부터 예방까지<br />
-                        <span className="text-secondary-purple">완전한 농업 솔루션</span>
+                        <span className="text-violet-400">완전한 농업 솔루션</span>
                     </motion.h3>
                 </div>
 
@@ -78,7 +80,7 @@ export function Technology() {
 
                         const CardContent = () => (
                             <div className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary-gold/50 transition-colors overflow-hidden h-full">
-                                <div className="absolute inset-0 bg-gradient-to-br from-secondary-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-violet-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="relative z-10">
                                     <tech.icon className="w-10 h-10 text-secondary-gold mb-6" />
                                     <h4 className="text-xl font-bold text-white mb-2">{tech.title}</h4>

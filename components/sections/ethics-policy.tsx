@@ -42,7 +42,7 @@ const principles = [
 
 export function EthicsPolicy() {
     return (
-        <Section className="bg-neutral-900 border-y border-white/5 relative overflow-hidden">
+        <Section className="bg-neutral-900 border-y border-white/10 relative overflow-hidden">
             {/* Background Accent */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-green/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />

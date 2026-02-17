@@ -11,25 +11,25 @@ const problems = [
         icon: AlertTriangle,
         title: "경험 의존적 재배",
         desc: "농가 고령화(60대 이상 비중 40% 이상)로 노하우 단절 위험. 데이터·논문 기반 지식 체계화 없이는 지속 가능한 농업이 어렵습니다.",
-        image: "/images/generated/problem_experience.jpg?v=2"
+        image: "/images/generated/problem_experience.webp"
     },
     {
         icon: Clock,
         title: "후행적 병해 대응",
         desc: "노균병은 엽면습윤 12시간(20°C 기준)이면 감염. 눈으로 확인 시엔 이미 늦고, 포도 농가 연간 병해 피해액은 약 2,000억 원에 달합니다.",
-        image: "/images/generated/leaf_symptoms.jpg"
+        image: "/images/generated/leaf_symptoms.webp"
     },
     {
         icon: Database,
         title: "분절된 정보",
         desc: "기상청·센서·영농일지가 각각 흩어져 있어 PMI(온·습도), GDD(적산온도), TRV(살포량)를 한 번에 계산·연동하는 통합 DSS가 부재합니다.",
-        image: "/images/generated/problem_data.jpg?v=2"
+        image: "/images/generated/problem_data.webp"
     }
 ];
 
 export function Problem() {
     return (
-        <Section id="problem" className="bg-neutral-900 border-b border-white/5">
+        <Section id="problem" className="bg-neutral-900 border-b border-white/10">
             <Container>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -63,6 +63,8 @@ export function Problem() {
                                         alt={item.title}
                                         fill
                                         className="object-cover"
+                                        quality={65}
+                                        loading="lazy"
                                     />
                                 </div>
                             ) : (

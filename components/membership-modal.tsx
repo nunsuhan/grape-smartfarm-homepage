@@ -68,7 +68,7 @@ export function MembershipModal() {
                         initial={{ scale: 0.95, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                        className="relative w-full max-w-[500px] bg-[#0A0A0F] border border-secondary-gold rounded-xl shadow-[0_0_50px_rgba(212,175,55,0.2)] overflow-hidden"
+                        className="relative w-full max-w-[500px] bg-neutral-black border border-secondary-gold rounded-xl shadow-[0_0_50px_rgba(212,175,55,0.2)] overflow-hidden"
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between p-6 border-b border-secondary-gold/20 bg-secondary-gold/5">

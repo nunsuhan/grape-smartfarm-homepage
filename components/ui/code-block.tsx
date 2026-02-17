@@ -23,7 +23,7 @@ export function CodeBlock({ code, language = 'json', filename }: CodeBlockProps)
     return (
         <div className="relative rounded-lg overflow-hidden bg-[#1E1E1E] border border-white/10 shadow-lg my-4 group">
             {filename && (
-                <div className="flex items-center justify-between px-4 py-2 bg-[#2D2D2D] border-b border-white/5">
+                <div className="flex items-center justify-between px-4 py-2 bg-[#2D2D2D] border-b border-white/10">
                     <span className="text-xs text-neutral-400 font-mono">{filename}</span>
                     <span className="text-xs text-neutral-500 uppercase">{language}</span>
                 </div>

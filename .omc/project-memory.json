@@ -1,0 +1,493 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1771255683804,
+  "projectRoot": "D:\\farmsense-project\\homepage-original",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "next",
+        "version": "14.2.0",
+        "category": "fullstack"
+      },
+      {
+        "name": "react",
+        "version": "18.2.0",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "18.2.0",
+        "category": "frontend"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": "npm run lint",
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    }
+  },
+  "conventions": {
+    "namingStyle": "camelCase",
+    "importStyle": "ES modules",
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "app",
+      "components",
+      "lib",
+      "public",
+      "scripts"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "app": {
+      "path": "app",
+      "purpose": "Application code",
+      "fileCount": 6,
+      "lastAccessed": 1771255683745,
+      "keyFiles": [
+        "globals.css",
+        "layout.tsx",
+        "loading.tsx",
+        "page.tsx",
+        "robots.ts"
+      ]
+    },
+    "components": {
+      "path": "components",
+      "purpose": "UI components",
+      "fileCount": 7,
+      "lastAccessed": 1771255683746,
+      "keyFiles": [
+        "auth-modal.tsx",
+        "contact-modal.tsx",
+        "footer.tsx",
+        "lazy-section.tsx",
+        "membership-modal.tsx"
+      ]
+    },
+    "lib": {
+      "path": "lib",
+      "purpose": "Library code",
+      "fileCount": 5,
+      "lastAccessed": 1771255683756,
+      "keyFiles": [
+        "api-client.ts",
+        "auth-store.ts",
+        "demo-data.ts",
+        "query-provider.tsx",
+        "utils.ts"
+      ]
+    },
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 7,
+      "lastAccessed": 1771255683757,
+      "keyFiles": [
+        "delete-account.html",
+        "file.svg",
+        "globe.svg",
+        "next.svg",
+        "privacy-policy.html"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 1,
+      "lastAccessed": 1771255683758,
+      "keyFiles": [
+        "optimize-images.js"
+      ]
+    },
+    "sensor-guide": {
+      "path": "sensor-guide",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1771255683758,
+      "keyFiles": []
+    },
+    "testsprite_tests": {
+      "path": "testsprite_tests",
+      "purpose": null,
+      "fileCount": 19,
+      "lastAccessed": 1771255683758,
+      "keyFiles": [
+        "standard_prd.json",
+        "TC001_Navigation_Bar_Dropdown_Functionality_on_Desktop.py",
+        "TC002_Navigation_Bar_Responsiveness_on_Mobile.py",
+        "TC003_Root_Layout_Global_Styles_Application.py",
+        "TC004_Water_Logic_Page_Content_and_Layout_Verification.py"
+      ]
+    },
+    "사진": {
+      "path": "사진",
+      "purpose": null,
+      "fileCount": 18,
+      "lastAccessed": 1771255683759,
+      "keyFiles": [
+        "Gemini_Generated_Image_68czfn68czfn68cz.png",
+        "Gemini_Generated_Image_6agsry6agsry6ags.png",
+        "Gemini_Generated_Image_799pv799pv799pv7.png",
+        "Gemini_Generated_Image_e39jmme39jmme39j.png",
+        "Gemini_Generated_Image_ehe4idehe4idehe4.png"
+      ]
+    },
+    "app\\api": {
+      "path": "app\\api",
+      "purpose": "API routes",
+      "fileCount": 0,
+      "lastAccessed": 1771255683759,
+      "keyFiles": []
+    },
+    "sensor-guide\\api": {
+      "path": "sensor-guide\\api",
+      "purpose": "API routes",
+      "fileCount": 1,
+      "lastAccessed": 1771255683761,
+      "keyFiles": [
+        "page.tsx"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "components\\navbar.tsx",
+      "accessCount": 21,
+      "lastAccessed": 1771300774722,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 16,
+      "lastAccessed": 1771289892693,
+      "type": "directory"
+    },
+    {
+      "path": "app\\export\\country-requirements\\page.tsx",
+      "accessCount": 14,
+      "lastAccessed": 1771288141570,
+      "type": "file"
+    },
+    {
+      "path": "app\\technology\\pmi-dss\\page.tsx",
+      "accessCount": 13,
+      "lastAccessed": 1771289428860,
+      "type": "file"
+    },
+    {
+      "path": "app\\smartfarm\\layout.tsx",
+      "accessCount": 13,
+      "lastAccessed": 1771294108068,
+      "type": "file"
+    },
+    {
+      "path": "app\\layout.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1771270241053,
+      "type": "file"
+    },
+    {
+      "path": "app\\export\\roadmap\\page.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1771289516999,
+      "type": "file"
+    },
+    {
+      "path": "app",
+      "accessCount": 11,
+      "lastAccessed": 1771289894481,
+      "type": "directory"
+    },
+    {
+      "path": "app\\page.tsx",
+      "accessCount": 10,
+      "lastAccessed": 1771289842660,
+      "type": "file"
+    },
+    {
+      "path": "components\\sections\\hero.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1771270410328,
+      "type": "file"
+    },
+    {
+      "path": "app\\globals.css",
+      "accessCount": 8,
+      "lastAccessed": 1771270141067,
+      "type": "file"
+    },
+    {
+      "path": "tailwind.config.js",
+      "accessCount": 6,
+      "lastAccessed": 1771270136550,
+      "type": "file"
+    },
+    {
+      "path": "components\\sections\\solution.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1771265609446,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 5,
+      "lastAccessed": 1771266390280,
+      "type": "file"
+    },
+    {
+      "path": "app\\technology\\blockchain\\page.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1771288111666,
+      "type": "file"
+    },
+    {
+      "path": "app\\faq\\page.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1771289849935,
+      "type": "file"
+    },
+    {
+      "path": "components\\ui\\container.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1771290052972,
+      "type": "file"
+    },
+    {
+      "path": "components\\sections\\gap-certification.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1771257720979,
+      "type": "file"
+    },
+    {
+      "path": "app\\intelligent-logic\\irrigation-water\\page.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1771289853455,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\한문수\\.claude\\plans\\witty-cooking-ullman.md",
+      "accessCount": 3,
+      "lastAccessed": 1771257508217,
+      "type": "file"
+    },
+    {
+      "path": "components\\sections\\blockchain-traceability.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1771257676899,
+      "type": "file"
+    },
+    {
+      "path": "components\\sections\\export-readiness.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1771257677343,
+      "type": "file"
+    },
+    {
+      "path": "components\\sections\\problem.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1771262528494,
+      "type": "file"
+    },
+    {
+      "path": "components\\web-app\\dashboard-screen.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1771266790292,
+      "type": "file"
+    },
+    {
+      "path": "app\\technology\\logic\\page.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1771290085301,
+      "type": "file"
+    },
+    {
+      "path": "components\\footer.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1771290088919,
+      "type": "file"
+    },
+    {
+      "path": "components\\ui\\card.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1771294850760,
+      "type": "file"
+    },
+    {
+      "path": "components\\sections\\technology.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1771262521240,
+      "type": "file"
+    },
+    {
+      "path": "lib\\api-client.ts",
+      "accessCount": 2,
+      "lastAccessed": 1771262976088,
+      "type": "file"
+    },
+    {
+      "path": "lib\\auth-store.ts",
+      "accessCount": 2,
+      "lastAccessed": 1771262979308,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Temp\\claude\\D--farmsense-project-homepage-original\\tasks\\bea51fa.output",
+      "accessCount": 2,
+      "lastAccessed": 1771263765356,
+      "type": "file"
+    },
+    {
+      "path": "app\\technology\\docs\\page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1771264296886,
+      "type": "file"
+    },
+    {
+      "path": "components\\ui\\section.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1771265584512,
+      "type": "file"
+    },
+    {
+      "path": "next.config.js",
+      "accessCount": 2,
+      "lastAccessed": 1771265616873,
+      "type": "file"
+    },
+    {
+      "path": "components",
+      "accessCount": 2,
+      "lastAccessed": 1771288152388,
+      "type": "directory"
+    },
+    {
+      "path": "app\\export\\gap-certification\\page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1771288267680,
+      "type": "file"
+    },
+    {
+      "path": "app\\ai-diagnosis-why\\page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1771289843188,
+      "type": "file"
+    },
+    {
+      "path": "app\\intelligent-logic\\page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1771289852122,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Temp\\claude\\D--farmsense-project-homepage-original\\tasks\\b7e9fe5.output",
+      "accessCount": 2,
+      "lastAccessed": 1771294870973,
+      "type": "file"
+    },
+    {
+      "path": "app\\export\\data-documents\\page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1771257948489,
+      "type": "file"
+    },
+    {
+      "path": "components\\lazy-section.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1771262492330,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Temp\\claude\\D--farmsense-project-homepage-original\\tasks\\b1d5e46.output",
+      "accessCount": 1,
+      "lastAccessed": 1771262926415,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Temp\\claude\\D--farmsense-project-homepage-original\\tasks\\bcad0c1.output",
+      "accessCount": 1,
+      "lastAccessed": 1771264006463,
+      "type": "file"
+    },
+    {
+      "path": "app\\loading.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1771264143112,
+      "type": "file"
+    },
+    {
+      "path": "lib\\utils.ts",
+      "accessCount": 1,
+      "lastAccessed": 1771265608248,
+      "type": "file"
+    },
+    {
+      "path": "components\\ui\\accordion.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1771265608532,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\한문수\\.claude\\plans\\zany-purring-cocke.md",
+      "accessCount": 1,
+      "lastAccessed": 1771265806548,
+      "type": "file"
+    },
+    {
+      "path": "components\\theme-provider.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1771268078162,
+      "type": "file"
+    },
+    {
+      "path": "app\\smartfarm\\ai-chat\\page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1771270278666,
+      "type": "directory"
+    },
+    {
+      "path": "app\\export\\gap-certification",
+      "accessCount": 1,
+      "lastAccessed": 1771288267727,
+      "type": "directory"
+    }
+  ],
+  "userDirectives": []
+}

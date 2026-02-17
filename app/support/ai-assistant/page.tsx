@@ -17,8 +17,8 @@ export default function AiAssistantPage() {
     return (
         <main className="min-h-screen bg-neutral-900 pt-20">
             {/* Hero Section */}
-            <Section className="py-20 border-b border-white/5 bg-gradient-to-b from-neutral-900 to-[#111]">
-                <Container className="max-w-4xl text-center">
+            <Section className="py-20 border-b border-white/10 bg-gradient-to-b from-neutral-900 to-[#111]">
+                <Container className="max-w-5xl text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export default function AiAssistantPage() {
             </Section>
 
             {/* 3-Step Process (Infographic) */}
-            <Section className="py-16 bg-[#0a0a0a]">
+            <Section className="py-16 bg-neutral-black">
                 <Container>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative max-w-5xl mx-auto">
                         {/* Connecting Lines (Desktop) */}
@@ -57,7 +57,7 @@ export default function AiAssistantPage() {
                             viewport={{ once: true }}
                             className="relative z-10 flex flex-col items-center text-center"
                         >
-                            <div className="w-24 h-24 rounded-full bg-[#222] border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                            <div className="w-24 h-24 rounded-full bg-white/10 border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                                 <Camera className="w-10 h-10 text-blue-400" />
                             </div>
                             <div className="bg-blue-500/10 text-blue-400 px-3 py-1 rounded text-xs font-bold mb-3">STEP 01</div>
@@ -76,7 +76,7 @@ export default function AiAssistantPage() {
                             viewport={{ once: true }}
                             className="relative z-10 flex flex-col items-center text-center"
                         >
-                            <div className="w-24 h-24 rounded-full bg-[#222] border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                            <div className="w-24 h-24 rounded-full bg-white/10 border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                                 <MessageSquare className="w-10 h-10 text-secondary-gold" />
                             </div>
                             <div className="bg-secondary-gold/10 text-secondary-gold px-3 py-1 rounded text-xs font-bold mb-3">STEP 02</div>
@@ -95,7 +95,7 @@ export default function AiAssistantPage() {
                             viewport={{ once: true }}
                             className="relative z-10 flex flex-col items-center text-center"
                         >
-                            <div className="w-24 h-24 rounded-full bg-[#222] border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                            <div className="w-24 h-24 rounded-full bg-white/10 border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                                 <CheckCircle2 className="w-10 h-10 text-green-400" />
                             </div>
                             <div className="bg-green-500/10 text-green-400 px-3 py-1 rounded text-xs font-bold mb-3">STEP 03</div>
@@ -111,7 +111,7 @@ export default function AiAssistantPage() {
 
             {/* Prompt Generator Section */}
             <Section className="py-20 bg-neutral-900">
-                <Container className="max-w-4xl">
+                <Container className="max-w-5xl">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold text-white mb-4">상황별 마법의 질문 (Propmts)</h2>
                         <p className="text-neutral-400">
@@ -200,14 +200,14 @@ export default function AiAssistantPage() {
 
                     {/* Placeholders for actual screenshots (Mapping Guide) */}
                     <div className="mt-16 border-t border-white/10 pt-10">
-                        <div className="bg-[#222] rounded-xl p-8 text-center border border-white/5 border-dashed">
+                        <div className="bg-white/10 rounded-xl p-8 text-center border border-white/10 border-dashed">
                             <h3 className="text-lg font-bold text-white mb-2">📷 실제 화면 예시 (업데이트 예정)</h3>
                             <p className="text-neutral-400 text-sm mb-6">
                                 농민분들이 가장 많이 질문하신 실제 화면들을 준비 중입니다.
                             </p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto opacity-75">
                                 <div className="space-y-2">
-                                    <div className="aspect-video bg-white/5 rounded flex items-center justify-center text-xs text-neutral-500 border border-white/5">
+                                    <div className="aspect-video bg-white/5 rounded flex items-center justify-center text-xs text-neutral-500 border border-white/10">
                                         KT 연동 화면.jpg
                                     </div>
                                     <p className="text-xs text-secondary-gold">
@@ -215,7 +215,7 @@ export default function AiAssistantPage() {
                                     </p>
                                 </div>
                                 <div className="space-y-2">
-                                    <div className="aspect-video bg-white/5 rounded flex items-center justify-center text-xs text-neutral-500 border border-white/5">
+                                    <div className="aspect-video bg-white/5 rounded flex items-center justify-center text-xs text-neutral-500 border border-white/10">
                                         센서 등록 화면.jpg
                                     </div>
                                     <p className="text-xs text-neutral-400">
@@ -233,7 +233,7 @@ export default function AiAssistantPage() {
 
 function PromptCard({ title, situation, prompt, onCopy, warning }: { title: string, situation: string, prompt: string, onCopy: (text: string) => void, warning?: string }) {
     return (
-        <div className="bg-[#222] border border-white/10 rounded-xl p-6 hover:border-secondary-gold/50 transition-colors group">
+        <div className="bg-white/10 border border-white/10 rounded-xl p-6 hover:border-secondary-gold/50 transition-colors group">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                 <div>
                     <h3 className="text-lg font-bold text-white flex items-center gap-2">
@@ -250,7 +250,7 @@ function PromptCard({ title, situation, prompt, onCopy, warning }: { title: stri
                     질문 복사하기
                 </button>
             </div>
-            <div className="bg-black/40 rounded-lg p-4 font-mono text-sm text-neutral-300 border border-white/5 relative group-hover:bg-black/60 transition-colors">
+            <div className="bg-black/40 rounded-lg p-4 font-mono text-sm text-neutral-300 border border-white/10 relative group-hover:bg-black/60 transition-colors">
                 "{prompt}"
             </div>
         </div>

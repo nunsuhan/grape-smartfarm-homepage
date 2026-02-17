@@ -153,7 +153,7 @@ export function DiagnosisFlow({ onBack }: DiagnosisFlowProps) {
                                 <div className="flex items-start justify-between mb-6">
                                     <div>
                                         <div className="flex items-center gap-2 mb-1">
-                                            <span className="px-2 py-1 bg-red-100 text-red-600 text-xs font-bold rounded">위험</span>
+                                            <span className="px-2 py-1 bg-red-500/15 text-red-400 text-xs font-bold rounded">위험</span>
                                             <span className="text-sm text-gray-500">{new Date().toLocaleDateString()}</span>
                                         </div>
                                         <h2 className="text-2xl font-bold text-gray-900">

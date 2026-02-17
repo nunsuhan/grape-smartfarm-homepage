@@ -35,7 +35,7 @@ export function AppGallery() {
     const x = useTransform(scrollYProgress, [0, 1], ["1%", "-30%"]);
 
     return (
-        <Section className="bg-neutral-900 border-b border-white/5 py-32 overflow-hidden">
+        <Section className="bg-neutral-900 border-b border-white/10 py-32 overflow-hidden">
             <Container className="mb-16">
                 <div className="max-w-3xl">
                     <motion.div

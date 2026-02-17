@@ -51,22 +51,22 @@ const logicCategories = [
 
 export default function IntelligentLogicPage() {
     return (
-        <main className="min-h-screen bg-white text-neutral-900 pt-20 font-sans">
+        <main className="min-h-screen bg-neutral-black text-neutral-cream pt-20 font-sans">
             {/* Header */}
-            <div className="border-b border-neutral-200 bg-neutral-50/50">
-                <Container className="max-w-4xl py-20">
+            <div className="border-b border-white/10 bg-white/5">
+                <Container className="max-w-5xl py-20">
                     <div className="space-y-6">
-                        <div className="flex items-center gap-2 text-purple-600 font-bold tracking-wide text-sm uppercase">
+                        <div className="flex items-center gap-2 text-purple-400 font-bold tracking-wide text-sm uppercase">
                             <span className="w-2 h-2 rounded-full bg-purple-600"></span>
                             FarmSense 지능형 로직
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-900 leading-tight">
+                        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
                             지능형 로직
                         </h1>
-                        <p className="text-xl text-neutral-600 leading-relaxed font-serif">
+                        <p className="text-xl text-neutral-cream/70 leading-relaxed font-serif">
                             단순 요약이 아닌 논문 데이터를 기반으로 한 과학적 인과관계와 알고리즘을 공개합니다.
                             <br />
-                            <span className="text-sm text-neutral-500">
+                            <span className="text-sm text-neutral-cream/60">
                                 토양수분장력(Ψ-soil) 임계값 제어 로직 등 핵심 수식과 알고리즘을 생략 없이 배치합니다.
                             </span>
                         </p>
@@ -74,14 +74,14 @@ export default function IntelligentLogicPage() {
                 </Container>
             </div>
 
-            <Container className="max-w-4xl py-12">
+            <Container className="max-w-5xl py-12">
                 <div className="space-y-8">
                     {/* 소개 섹션 */}
-                    <section className="bg-neutral-50 border border-neutral-200 rounded-xl p-8">
-                        <h2 className="text-2xl font-bold text-neutral-900 mb-4">논리적 신뢰 기반 설계</h2>
-                        <p className="text-neutral-700 leading-relaxed">
+                    <section className="bg-white/5 border border-white/10 rounded-xl p-8">
+                        <h2 className="text-2xl font-bold text-white mb-4">논리적 신뢰 기반 설계</h2>
+                        <p className="text-neutral-cream/80 leading-relaxed">
                             앱 화면의 단순함이 '기술의 가벼움'으로 오해받지 않도록, 그 이면에 흐르는 방대한 데이터와 이론적 근거를 무손실로 공개합니다.
-                            <strong className="text-neutral-900"> '왜 지금 물을 주어야 하는가'</strong>에 대한 과학적 인과관계를 설명합니다.
+                            <strong className="text-white"> '왜 지금 물을 주어야 하는가'</strong>에 대한 과학적 인과관계를 설명합니다.
                         </p>
                     </section>
 
@@ -90,12 +90,12 @@ export default function IntelligentLogicPage() {
                         {logicCategories.map((category) => {
                             const Icon = category.icon;
                             const colorClasses = {
-                                blue: 'bg-blue-50 border-blue-200 text-blue-600 hover:bg-blue-100',
-                                red: 'bg-red-50 border-red-200 text-red-600 hover:bg-red-100',
-                                green: 'bg-green-50 border-green-200 text-green-600 hover:bg-green-100',
-                                yellow: 'bg-yellow-50 border-yellow-200 text-yellow-600 hover:bg-yellow-100',
-                                purple: 'bg-purple-50 border-purple-200 text-purple-600 hover:bg-purple-100',
-                                indigo: 'bg-indigo-50 border-indigo-200 text-indigo-600 hover:bg-indigo-100',
+                                blue: 'bg-blue-500/10 border-blue-500/20 text-blue-400 hover:bg-blue-500/15',
+                                red: 'bg-red-500/10 border-red-500/20 text-red-400 hover:bg-red-500/15',
+                                green: 'bg-green-500/10 border-green-500/20 text-green-400 hover:bg-green-500/15',
+                                yellow: 'bg-yellow-500/10 border-yellow-200 text-yellow-600 hover:bg-yellow-500/15',
+                                purple: 'bg-purple-500/10 border-purple-500/30 text-purple-400 hover:bg-purple-500/15',
+                                indigo: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400 hover:bg-indigo-500/15',
                             };
 
                             return (
@@ -105,25 +105,25 @@ export default function IntelligentLogicPage() {
                                     className={`group border-2 rounded-xl p-6 transition-all ${colorClasses[category.color as keyof typeof colorClasses]}`}
                                 >
                                     <div className="flex items-start justify-between mb-4">
-                                        <div className="bg-white p-3 rounded-lg shadow-sm">
+                                        <div className="bg-white/5 p-3 rounded-lg shadow-sm">
                                             <Icon className="w-6 h-6" />
                                         </div>
                                         <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-neutral-900 mb-2">{category.title}</h3>
-                                    <p className="text-sm text-neutral-600">{category.description}</p>
+                                    <h3 className="text-xl font-bold text-white mb-2">{category.title}</h3>
+                                    <p className="text-sm text-neutral-cream/70">{category.description}</p>
                                 </Link>
                             );
                         })}
                     </div>
 
                     {/* 참고 자료 (검증·로직 이해용) */}
-                    <section className="bg-neutral-50 border border-neutral-200 rounded-xl p-6">
-                        <h3 className="font-bold text-neutral-900 mb-3">근거 문헌 및 검증</h3>
-                        <p className="text-sm text-neutral-600 mb-3">
+                    <section className="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 className="font-bold text-white mb-3">근거 문헌 및 검증</h3>
+                        <p className="text-sm text-neutral-cream/70 mb-3">
                             모든 로직은 <strong>참고 문헌(논문·보고서)</strong>을 기반으로 하며, 공무원·농가가 검증할 수 있도록 근거를 명시합니다.
                         </p>
-                        <ul className="text-sm text-neutral-600 space-y-1 list-disc list-inside mb-4">
+                        <ul className="text-sm text-neutral-cream/70 space-y-1 list-disc list-inside mb-4">
                             <li>스마트 정밀 관개 및 생육 환경 제어 로직 분석</li>
                             <li>포도 재배를 위한 정밀 시비 알고리즘 및 처방 로직</li>
                             <li>통합해충관리 기반의 최적 방제 시기 결정 모델과 알고리즘</li>
@@ -131,8 +131,8 @@ export default function IntelligentLogicPage() {
                             <li>포도 수형 관리 및 고품질 생산을 위한 재배 로직</li>
                             <li>포도 재배 적지 분석 및 생육 단계별 정밀 관리 가이드</li>
                         </ul>
-                        <p className="text-sm text-neutral-500">
-                            전체 참고 문헌 목록·입력/출력 명세: <Link href="/technology/docs" className="text-green-600 font-medium hover:underline">기술 문서 (검증·로직)</Link>
+                        <p className="text-sm text-neutral-cream/60">
+                            전체 참고 문헌 목록·입력/출력 명세: <Link href="/technology/docs" className="text-green-400 font-medium hover:underline">기술 문서 (검증·로직)</Link>
                         </p>
                     </section>
                 </div>

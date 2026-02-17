@@ -4,11 +4,9 @@ import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
 import { motion } from 'framer-motion';
 import { FileText, Database, Target, Search, Brain, MessageSquare, ArrowRight, ExternalLink, Check, X } from 'lucide-react';
-import { useModal } from '@/components/providers/modal-provider';
 import { Accordion, AccordionItem } from '@/components/ui/accordion';
 
 export default function RagSystemPage() {
-    const { openModal } = useModal();
 
     return (
         <main className="bg-neutral-black min-h-screen pt-20">
@@ -33,7 +31,7 @@ export default function RagSystemPage() {
             </Section>
 
             {/* Metrics */}
-            <Section className="py-12 border-b border-white/5">
+            <Section className="py-12 border-b border-white/10">
                 <Container>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
@@ -60,7 +58,7 @@ export default function RagSystemPage() {
             </Section>
 
             {/* Why This Matters */}
-            <Section className="py-20 bg-neutral-900 border-b border-white/5">
+            <Section className="py-20 bg-neutral-900 border-b border-white/10">
                 <Container>
                     <h2 className="text-3xl font-serif font-bold text-white mb-16 text-center">Why RAG?</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -143,7 +141,7 @@ export default function RagSystemPage() {
             </Section>
 
             {/* Technical Details & Architecture */}
-            <Section className="py-20 bg-neutral-900 border-y border-white/5">
+            <Section className="py-20 bg-neutral-900 border-y border-white/10">
                 <Container>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
@@ -218,7 +216,7 @@ export default function RagSystemPage() {
             </Section>
 
             {/* Use Cases */}
-            <Section className="py-20 bg-neutral-900 border-y border-white/5">
+            <Section className="py-20 bg-neutral-900 border-y border-white/10">
                 <Container>
                     <h2 className="text-3xl font-serif font-bold text-white mb-12 text-center">Use Cases</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -300,7 +298,7 @@ export default function RagSystemPage() {
             </Section>
 
             {/* FAQ */}
-            <Section className="py-20 bg-neutral-900 border-t border-white/5">
+            <Section className="py-20 bg-neutral-900 border-t border-white/10">
                 <Container>
                     <h2 className="text-3xl font-serif font-bold text-white mb-12 text-center">자주 묻는 질문</h2>
                     <Accordion>
@@ -331,13 +329,14 @@ export default function RagSystemPage() {
                         <p className="text-neutral-cream/70 mb-8 max-w-2xl mx-auto">
                             실제 데이터 기반의 놀라운 정확도를 확인하실 수 있습니다.
                         </p>
-                        <button
-                            onClick={() => openModal('demo')}
+                        <a
+                            href="/downloads/farmsense.apk"
+                            download
                             className="inline-flex items-center gap-2 bg-secondary-purple text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-black transition-all shadow-lg shadow-secondary-purple/20"
                         >
-                            시연 신청하기
+                            APK 다운로드
                             <ArrowRight className="w-5 h-5" />
-                        </button>
+                        </a>
                     </div>
                 </Container>
             </Section>

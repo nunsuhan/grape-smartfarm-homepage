@@ -22,17 +22,19 @@ export function Solution() {
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        className="flex-1 p-6 bg-neutral-800/50 rounded-2xl border border-secondary-purple/30 text-center w-full min-w-0 flex flex-col items-center"
+                        className="flex-1 p-6 bg-white/5 rounded-2xl border border-violet-400/30 text-center w-full min-w-0 flex flex-col items-center"
                     >
                         <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden">
                             <Image
-                                src="/images/generated/sensor_device.jpg"
+                                src="/images/generated/sensor_device.webp"
                                 alt="Sensor Device"
                                 fill
                                 className="object-cover"
+                                quality={65}
+                                loading="lazy"
                             />
                         </div>
-                        <div className="text-secondary-purple font-mono font-bold mb-2">Step 1</div>
+                        <div className="text-violet-400 font-mono font-bold mb-2">Step 1</div>
                         <div className="text-2xl font-bold text-white mb-2">데이터 수집</div>
                         <div className="text-sm text-neutral-cream/60">4억+ 센서 데이터(TimescaleDB)</div>
                     </motion.div>
@@ -49,14 +51,16 @@ export function Solution() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="flex-1 p-6 bg-neutral-800/50 rounded-2xl border border-secondary-gold/30 text-center w-full min-w-0 ring-1 ring-secondary-gold/20 flex flex-col items-center"
+                        className="flex-1 p-6 bg-white/5 rounded-2xl border border-secondary-gold/30 text-center w-full min-w-0 ring-1 ring-secondary-gold/20 flex flex-col items-center"
                     >
                         <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden bg-white/5">
                             <Image
-                                src="/images/generated/rag_diagram.png"
+                                src="/images/generated/rag_diagram.webp"
                                 alt="RAG Analysis"
                                 fill
                                 className="object-contain p-2"
+                                quality={65}
+                                loading="lazy"
                             />
                         </div>
                         <div className="text-secondary-gold font-mono font-bold mb-2">Step 2</div>
@@ -76,14 +80,16 @@ export function Solution() {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="flex-1 p-6 bg-neutral-800/50 rounded-2xl border border-secondary-green/30 text-center w-full min-w-0 flex flex-col items-center"
+                        className="flex-1 p-6 bg-white/5 rounded-2xl border border-secondary-green/30 text-center w-full min-w-0 flex flex-col items-center"
                     >
                         <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden">
                             <Image
-                                src="/images/generated/app_dashboard_hand.png"
+                                src="/images/generated/app_dashboard_hand.webp"
                                 alt="Smart Farming App"
                                 fill
                                 className="object-cover"
+                                quality={65}
+                                loading="lazy"
                             />
                         </div>
                         <div className="text-secondary-green font-mono font-bold mb-2">Step 3</div>

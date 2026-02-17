@@ -4,84 +4,123 @@ import { Container } from './ui/container';
 import Link from 'next/link';
 import { useModal } from './providers/modal-provider';
 
+const footerLinks = {
+    tech: {
+        title: '기술력',
+        links: [
+            { label: '기술 문서', href: '/technology/docs' },
+            { label: 'AI 병해 진단', href: '/technology/ai-diagnosis' },
+            { label: '병해 예측 (PMI)', href: '/technology/pmi-dss' },
+            { label: 'RAG 시스템', href: '/technology/rag-system' },
+            { label: '센서 네트워크', href: '/technology/sensor-system' },
+            { label: '블록체인 추적성', href: '/technology/blockchain' },
+        ],
+    },
+    info: {
+        title: '재배 정보',
+        links: [
+            { label: '병해충 관리', href: '/grape-info' },
+            { label: '재배 기술', href: '/grape-info' },
+            { label: '월별 가이드', href: '/grape-info' },
+            { label: '기후·환경', href: '/grape-info' },
+        ],
+    },
+    smartfarm: {
+        title: '스마트팜',
+        links: [
+            { label: '대시보드', href: '/smartfarm/dashboard' },
+            { label: '센서 모니터링', href: '/smartfarm/sensors' },
+            { label: 'AI 상담', href: '/smartfarm/ai-chat' },
+            { label: '영농일지', href: '/smartfarm/field-book' },
+            { label: '커뮤니티', href: '/smartfarm/community' },
+        ],
+    },
+    support: {
+        title: '고객지원',
+        links: [
+            { label: 'FAQ', href: '/faq' },
+            { label: '센서 설치 도우미', href: '/sensor-installation-guide' },
+            { label: 'AI 스마트 도우미', href: '/support/ai-assistant' },
+            { label: '문의하기', href: '/support' },
+        ],
+    },
+};
+
 export function Footer() {
     const { openModal } = useModal();
 
     return (
-        <footer className="bg-neutral-black py-20 border-t border-white/10 text-neutral-cream/60">
+        <footer className="bg-neutral-black py-16 border-t border-white/10 text-neutral-cream/60">
             <Container>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
-                    {/* Brand */}
-                    <div className="space-y-4">
+                {/* Main Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-6 gap-10 md:gap-8 mb-14">
+                    {/* Brand Column - spans 2 on md */}
+                    <div className="col-span-2 space-y-4">
                         <Link href="/" className="text-2xl font-serif font-bold text-white block">
                             FarmSense
                         </Link>
-                        <p className="text-sm">AI가 포도를 이해합니다</p>
-                        <a href="mailto:contact@farmsense.io" className="text-sm hover:text-secondary-gold transition-colors block">
-                            contact@farmsense.io
+                        <p className="text-sm leading-relaxed">
+                            데이터와 AI로 포도 농가의<br />
+                            의사결정을 돕는 플랫폼
+                        </p>
+                        <a
+                            href="mailto:contact@farmsense.kr"
+                            className="text-sm hover:text-secondary-gold transition-colors block"
+                        >
+                            contact@farmsense.kr
                         </a>
-                        <div className="text-sm mt-4">대한민국</div>
-                    </div>
 
-                    {/* Technology Links */}
-                    <div>
-                        <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">기술</h4>
-                        <div className="flex flex-col gap-3 text-sm">
-                            <Link href="/technology/rag-system" className="hover:text-secondary-gold transition-colors">RAG 시스템</Link>
-                            <Link href="/technology/ai-diagnosis" className="hover:text-secondary-gold transition-colors">AI 진단</Link>
-                            <Link href="/technology/pmi-dss" className="hover:text-secondary-gold transition-colors">병해 예측</Link>
-                            <Link href="/technology/sensor-system" className="hover:text-secondary-gold transition-colors">센서 연동</Link>
-                            <Link href="/technology/data-strategy" className="hover:text-secondary-gold transition-colors">데이터 전략</Link>
-                        </div>
-                    </div>
-
-                    {/* Service Links */}
-                    <div>
-                        <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">서비스</h4>
-                        <div className="flex flex-col gap-3 text-sm">
-                            <Link href="/#product" className="hover:text-secondary-gold transition-colors">서비스 소개</Link>
-                            <Link href="/#product" className="hover:text-secondary-gold transition-colors">제품 소개</Link>
-                        </div>
-                    </div>
-
-                    {/* Contact Actions */}
-                    <div>
-                        <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">고객지원</h4>
-                        <div className="flex flex-col gap-3">
-                            <Link href="/faq" className="text-sm hover:text-secondary-gold transition-colors text-left">
-                                FAQ
-                            </Link>
-                            <Link href="/support/ai-assistant" className="text-sm hover:text-secondary-gold transition-colors text-left">
-                                AI 스마트 도우미
-                            </Link>
-                            <Link href="/support" className="text-sm hover:text-secondary-gold transition-colors text-left">
-                                1:1 문의
-                            </Link>
-                            <Link href="/privacy-policy" className="text-sm hover:text-secondary-gold transition-colors text-left">
-                                개인정보처리방침
+                        {/* FarmSense / About */}
+                        <div className="pt-4 border-t border-white/10 space-y-2">
+                            <Link href="/about" className="text-sm hover:text-secondary-gold transition-colors block">
+                                우리의 가치
                             </Link>
                             <button
                                 onClick={() => openModal('partnership', 'contact')}
-                                className="text-left text-sm hover:text-secondary-gold transition-colors"
+                                className="text-left text-sm hover:text-secondary-gold transition-colors block"
                             >
                                 제휴 문의
                             </button>
-                            <button
-                                onClick={() => openModal('demo')}
-                                className="text-left text-sm hover:text-secondary-gold transition-colors"
+                            <a
+                                href="/downloads/farmsense.apk"
+                                download
+                                className="text-left text-sm hover:text-secondary-gold transition-colors block"
                             >
-                                시연 신청
-                            </button>
+                                APK 다운로드
+                            </a>
                         </div>
                     </div>
+
+                    {/* Link Columns */}
+                    {Object.values(footerLinks).map((section) => (
+                        <div key={section.title}>
+                            <h4 className="text-white font-bold mb-5 text-xs uppercase tracking-wider">
+                                {section.title}
+                            </h4>
+                            <div className="flex flex-col gap-2.5 text-sm">
+                                {section.links.map((link) => (
+                                    <Link
+                                        key={link.label}
+                                        href={link.href}
+                                        className="hover:text-secondary-gold transition-colors"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
-                {/* Copyright */}
-                <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-                    <p>© 2026 FarmSense. All rights reserved.</p>
-                    <div className="flex gap-4">
+                {/* Bottom Bar */}
+                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+                    <p>&copy; 2026 FarmSense. All rights reserved.</p>
+                    <div className="flex gap-6">
                         <Link href="/privacy-policy" className="hover:text-secondary-gold transition-colors">
                             개인정보처리방침
+                        </Link>
+                        <Link href="/privacy-policy" className="hover:text-secondary-gold transition-colors">
+                            이용약관
                         </Link>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ export function FarmingLogScreen({ onBack }: FarmingLogScreenProps) {
                     <ArrowLeft className="w-6 h-6 text-gray-900" />
                 </button>
                 <h2 className="text-lg font-bold text-gray-900">영농일지 작성</h2>
-                <button className="p-2 -mr-2 bg-green-50 text-green-600 rounded-full w-10 h-10 flex items-center justify-center">
+                <button className="p-2 -mr-2 bg-green-500/10 text-green-400 rounded-full w-10 h-10 flex items-center justify-center">
                     <Mic className="w-5 h-5" />
                 </button>
             </div>
@@ -38,7 +38,7 @@ export function FarmingLogScreen({ onBack }: FarmingLogScreenProps) {
                         <button className="flex-1 bg-red-500 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-red-600 transition-colors shadow-lg shadow-red-500/20">
                             <span className="animate-pulse">((●))</span> 듣는 중...
                         </button>
-                        <button className="flex-1 bg-blue-500 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20">
+                        <button className="flex-1 bg-blue-500 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20">
                             <Camera className="w-5 h-5" />
                             사진 (0/5)
                         </button>
@@ -54,7 +54,7 @@ export function FarmingLogScreen({ onBack }: FarmingLogScreenProps) {
 
             {/* Bottom Save Button */}
             <div className="p-6 bg-white border-t border-gray-100">
-                <button className="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-green-500/30 flex items-center justify-center gap-2 transition-transform active:scale-95">
+                <button className="w-full bg-green-500 hover:bg-green-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-green-500/30 flex items-center justify-center gap-2 transition-transform active:scale-95">
                     <Save className="w-5 h-5" />
                     저장하기
                 </button>

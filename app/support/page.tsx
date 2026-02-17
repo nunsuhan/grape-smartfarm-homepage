@@ -10,7 +10,7 @@ export default function SupportPage() {
     return (
         <>
             <Navbar />
-            <main className="min-h-screen bg-[#0D0D1A] pt-24 pb-16">
+            <main className="min-h-screen bg-neutral-black pt-24 pb-16">
                 <div className="max-w-2xl mx-auto px-6">
                     <div className="text-center mb-12">
                         <h1 className="text-4xl font-bold text-white mb-4">문의하기</h1>

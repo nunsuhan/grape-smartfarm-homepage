@@ -35,7 +35,7 @@ export default function DiagnosisGuidePage() {
             </Section>
 
             {/* Introduction: Why Photo Only Is Not Enough */}
-            <Section className="py-20 border-b border-white/5">
+            <Section className="py-20 border-b border-white/10">
                 <Container>
                     <div className="max-w-4xl mx-auto">
                         <motion.div
@@ -108,7 +108,7 @@ export default function DiagnosisGuidePage() {
             </Section>
 
             {/* FarmSense Process */}
-            <Section className="py-20 border-y border-white/5">
+            <Section className="py-20 border-y border-white/10">
                 <Container>
                     <h2 className="text-3xl font-serif font-bold text-white mb-16 text-center">
                         확률로 분석하는 지능형 진단 시스템
@@ -172,22 +172,22 @@ export default function DiagnosisGuidePage() {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-neutral-black text-neutral-cream/80">
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                    <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
                                         <td className="p-6 font-medium text-white">주요 원인</td>
                                         <td className="p-6">곰팡이균 <span className="text-neutral-500 text-sm">(습한 환경)</span></td>
                                         <td className="p-6">농약 살포 오류 <span className="text-neutral-500 text-sm">(희석 배수, 고온기)</span></td>
                                     </tr>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                    <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
                                         <td className="p-6 font-medium text-white">잎 앞면</td>
                                         <td className="p-6">부정형의 노란 '기름 얼룩' 형태 증상</td>
                                         <td className="p-6">잎 가장자리나 약제가 고인 부분에 갈색 반점</td>
                                     </tr>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                    <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
                                         <td className="p-6 font-medium text-white">잎 뒷면</td>
                                         <td className="p-6 text-red-300 font-medium">흰색 곰팡이(포자)가 솜털처럼 형성</td>
                                         <td className="p-6">곰팡이가 없으며 깨끗함</td>
                                     </tr>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                    <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
                                         <td className="p-6 font-medium text-white">발생 시기</td>
                                         <td className="p-6">장마철, 야간 습도가 높고 선선할 때</td>
                                         <td className="p-6">농약 살포 직후 2~3일 이내 급격히 발생</td>
@@ -240,7 +240,7 @@ export default function DiagnosisGuidePage() {
             </Section>
 
             {/* Photo Guide */}
-            <Section className="py-20 border-b border-white/5">
+            <Section className="py-20 border-b border-white/10">
                 <Container>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>

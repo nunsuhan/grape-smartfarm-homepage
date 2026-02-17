@@ -48,12 +48,12 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
                             <p className="text-xs text-gray-500 mt-1">이상 징후 모니터링</p>
                         </div>
                         <div className="flex justify-between items-end">
-                            <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center">
-                                <ArrowRight className="w-4 h-4 text-green-600" />
+                            <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center">
+                                <ArrowRight className="w-4 h-4 text-green-400" />
                             </div>
-                            <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center relative -mr-2 -mb-2">
-                                <Scan className="w-8 h-8 text-green-600" />
-                                <div className="absolute inset-0 border-2 border-green-200 rounded-full animate-pulse" />
+                            <div className="w-16 h-16 rounded-full bg-green-500/15 flex items-center justify-center relative -mr-2 -mb-2">
+                                <Scan className="w-8 h-8 text-green-400" />
+                                <div className="absolute inset-0 border-2 border-green-500/30 rounded-full animate-pulse" />
                             </div>
                         </div>
                     </button>
@@ -68,11 +68,11 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
                             <p className="text-xs text-gray-500 mt-1">24시간 전문가 답변</p>
                         </div>
                         <div className="flex justify-between items-end">
-                            <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                                <ArrowRight className="w-4 h-4 text-blue-600" />
+                            <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center">
+                                <ArrowRight className="w-4 h-4 text-blue-400" />
                             </div>
-                            <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center relative -mr-2 -mb-2">
-                                <MessageSquare className="w-8 h-8 text-blue-600" />
+                            <div className="w-16 h-16 rounded-full bg-blue-500/15 flex items-center justify-center relative -mr-2 -mb-2">
+                                <MessageSquare className="w-8 h-8 text-blue-400" />
                                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-400 rounded-full border-2 border-white" />
                             </div>
                         </div>
@@ -88,11 +88,11 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
                             <p className="text-xs text-gray-500 mt-1">꼼꼼한 성장 기록</p>
                         </div>
                         <div className="flex justify-between items-end">
-                            <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center">
-                                <ArrowRight className="w-4 h-4 text-orange-600" />
+                            <div className="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center">
+                                <ArrowRight className="w-4 h-4 text-orange-400" />
                             </div>
                             <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center relative -mr-2 -mb-2">
-                                <Book className="w-8 h-8 text-orange-600" />
+                                <Book className="w-8 h-8 text-orange-400" />
                             </div>
                         </div>
                     </button>
@@ -106,11 +106,11 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
                             <p className="text-xs text-gray-500 mt-1">놓치기 쉬운 할 일</p>
                         </div>
                         <div className="flex justify-between items-end">
-                            <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center">
-                                <ArrowRight className="w-4 h-4 text-purple-600" />
+                            <div className="w-8 h-8 rounded-full bg-purple-500/10 flex items-center justify-center">
+                                <ArrowRight className="w-4 h-4 text-purple-400" />
                             </div>
-                            <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center relative -mr-2 -mb-2">
-                                <Calendar className="w-8 h-8 text-purple-600" />
+                            <div className="w-16 h-16 rounded-full bg-purple-500/15 flex items-center justify-center relative -mr-2 -mb-2">
+                                <Calendar className="w-8 h-8 text-purple-400" />
                             </div>
                         </div>
                     </button>
@@ -127,7 +127,7 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
                         </div>
                     </div>
                     <div className="absolute right-[-20px] bottom-[-20px] opacity-10">
-                        <Activity className="w-40 h-40 text-green-800" />
+                        <Activity className="w-40 h-40 text-green-300" />
                     </div>
                 </button>
             </div>
@@ -151,26 +151,26 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
                             className="absolute top-0 right-0 w-[80%] h-full bg-white z-50 rounded-l-[2rem] p-8 text-gray-900 shadow-2xl"
                         >
                             <div className="flex justify-between items-center mb-8 border-b border-gray-100 pb-4">
-                                <h2 className="text-xl font-bold text-green-800">Menu</h2>
+                                <h2 className="text-xl font-bold text-green-300">Menu</h2>
                                 <button onClick={() => setIsMenuOpen(false)} className="p-2 hover:bg-gray-100 rounded-full">
                                     <Menu className="w-6 h-6" />
                                 </button>
                             </div>
 
                             <div className="space-y-4">
-                                <button onClick={() => { setIsMenuOpen(false); onNavigate('diagnosis'); }} className="flex items-center gap-4 text-lg font-medium hover:text-green-600 transition-colors w-full text-left p-2 hover:bg-green-50 rounded-xl">
+                                <button onClick={() => { setIsMenuOpen(false); onNavigate('diagnosis'); }} className="flex items-center gap-4 text-lg font-medium hover:text-green-400 transition-colors w-full text-left p-2 hover:bg-green-500/10 rounded-xl">
                                     <Scan className="w-5 h-5" />
                                     병해 진단
                                 </button>
-                                <button onClick={() => { setIsMenuOpen(false); onNavigate('rag-chat'); }} className="flex items-center gap-4 text-lg font-medium hover:text-green-600 transition-colors w-full text-left p-2 hover:bg-green-50 rounded-xl">
+                                <button onClick={() => { setIsMenuOpen(false); onNavigate('rag-chat'); }} className="flex items-center gap-4 text-lg font-medium hover:text-green-400 transition-colors w-full text-left p-2 hover:bg-green-500/10 rounded-xl">
                                     <MessageSquare className="w-5 h-5" />
                                     AI 상담
                                 </button>
-                                <button onClick={() => { setIsMenuOpen(false); onNavigate('farming-log'); }} className="flex items-center gap-4 text-lg font-medium hover:text-green-600 transition-colors w-full text-left p-2 hover:bg-green-50 rounded-xl">
+                                <button onClick={() => { setIsMenuOpen(false); onNavigate('farming-log'); }} className="flex items-center gap-4 text-lg font-medium hover:text-green-400 transition-colors w-full text-left p-2 hover:bg-green-500/10 rounded-xl">
                                     <Book className="w-5 h-5" />
                                     영농일지
                                 </button>
-                                <button className="flex items-center gap-4 text-lg font-medium hover:text-green-600 transition-colors w-full text-left p-2 hover:bg-green-50 rounded-xl opacity-60">
+                                <button className="flex items-center gap-4 text-lg font-medium hover:text-green-400 transition-colors w-full text-left p-2 hover:bg-green-500/10 rounded-xl opacity-60">
                                     <Calendar className="w-5 h-5" />
                                     농작업 일정
                                 </button>

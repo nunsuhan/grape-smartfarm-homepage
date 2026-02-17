@@ -14,8 +14,8 @@ export default function FertilizerLogicPage() {
     return (
         <main className="min-h-screen bg-neutral-900 pt-20">
             {/* Header Section */}
-            <Section className="py-20 bg-neutral-900 border-b border-white/5">
-                <Container className="max-w-4xl">
+            <Section className="py-20 bg-neutral-900 border-b border-white/10">
+                <Container className="max-w-5xl">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                         <div>
                             <span className="text-secondary-gold font-medium tracking-wider text-sm uppercase">FarmSense Logic Vol.2</span>
@@ -52,7 +52,7 @@ export default function FertilizerLogicPage() {
             </Section>
 
             <Section className="py-12">
-                <Container className="max-w-4xl">
+                <Container className="max-w-5xl">
                     <AnimatePresence mode="wait">
                         {mode === 'simple' ? (
                             <motion.div
@@ -63,7 +63,7 @@ export default function FertilizerLogicPage() {
                                 className="space-y-12"
                             >
                                 {/* Simple Content Wrapper */}
-                                <div className="bg-[#1A1A2E] border border-white/10 p-8 rounded-2xl shadow-xl border-l-[6px] border-l-green-500">
+                                <div className="bg-neutral-black border border-white/10 p-8 rounded-2xl shadow-xl border-l-[6px] border-l-green-500">
                                     <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                                         <FlaskConical className="text-green-400 w-8 h-8" />
                                         포도가 밥을 먹어야 할 때를 정확히 압니다
@@ -77,12 +77,12 @@ export default function FertilizerLogicPage() {
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="bg-[#222] p-6 rounded-xl border border-white/5">
+                                    <div className="bg-white/10 p-6 rounded-xl border border-white/10">
                                         <div className="text-green-400 font-bold mb-2 text-lg">1. 덩치를 키울 때 (초기)</div>
                                         <div className="text-white text-3xl font-bold mb-1">30-10-10</div>
                                         <div className="text-sm text-neutral-400">질소(N) 비율을 높여 잎과 줄기를 만듭니다.</div>
                                     </div>
-                                    <div className="bg-[#222] p-6 rounded-xl border border-white/5">
+                                    <div className="bg-white/10 p-6 rounded-xl border border-white/10">
                                         <div className="text-purple-400 font-bold mb-2 text-lg">2. 맛을 들일 때 (후기)</div>
                                         <div className="text-white text-3xl font-bold mb-1">14-14-30</div>
                                         <div className="text-sm text-neutral-400">칼륨(K) 비율을 높여 당도를 올립니다.</div>
@@ -111,9 +111,9 @@ export default function FertilizerLogicPage() {
                                     </div>
 
                                     {/* Data Table with Horizontal Scroll for Mobile */}
-                                    <div className="bg-[#111] border border-white/10 rounded-lg overflow-x-auto">
+                                    <div className="bg-neutral-black border border-white/10 rounded-lg overflow-x-auto">
                                         <table className="w-full text-sm text-left text-neutral-300 min-w-[600px]">
-                                            <thead className="text-xs uppercase bg-[#0a0a0a] text-neutral-500">
+                                            <thead className="text-xs uppercase bg-neutral-black text-neutral-500">
                                                 <tr>
                                                     <th className="px-6 py-3">E-L Stage</th>
                                                     <th className="px-6 py-3">Target Nutrient</th>
@@ -139,7 +139,7 @@ export default function FertilizerLogicPage() {
                                     </div>
 
                                     {/* 2. EC Safety Logic */}
-                                    <div className="bg-[#1A1A2E] p-6 rounded-xl border border-red-500/30 relative overflow-hidden">
+                                    <div className="bg-neutral-black p-6 rounded-xl border border-red-500/30 relative overflow-hidden">
                                         <div className="absolute top-0 right-0 bg-red-500/20 px-3 py-1 text-xs text-red-400 font-bold rounded-bl-lg">FAILSAFE PROTOCOL</div>
                                         <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                                             <AlertOctagon className="text-red-400 w-5 h-5" /> Safety Cut-off Threshold

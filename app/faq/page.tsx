@@ -75,11 +75,11 @@ const faqData: Record<string, { title: string; icon: string; items: { q: string;
         items: [
             {
                 q: "AI 진단이 정확한가요?",
-                a: "87% 정확도입니다. 노균병 91%, 일소피해 92% 등 78,000장의 병해 이미지로 학습했습니다. 진단 결과는 참고용으로, 심각한 경우 기술센터 확인을 권장합니다."
+                a: "FarmSense AI 진단은 정확한 병명 판정이 아닌, 이상 징후의 조기 발견에 목적이 있습니다. 이상이 감지되면 전문가 상담이나 기술센터 확인을 권장합니다."
             },
             {
                 q: "어떤 병해를 진단할 수 있나요?",
-                a: "총 8종입니다. 탄저, 노균, 흑두, 흑부, 잎마름, 축과, 일소, 약해를 진단합니다."
+                a: "현재 10종입니다. 탄저, 노균, 흑두, 흑부, 잎마름, 축과, 일소, 약해, 갈색무늬병, 새눈무늬병을 감지합니다."
             },
             {
                 q: "사진을 어떻게 찍어야 하나요?",
@@ -394,7 +394,7 @@ export default function FAQPage() {
     return (
         <>
             <Navbar />
-            <main className="min-h-screen bg-[#0D0D1A] pt-24 pb-16">
+            <main className="min-h-screen bg-neutral-black pt-24 pb-16">
                 <div className="max-w-4xl mx-auto px-6">
                     {/* 헤더 */}
                     <div className="text-center mb-12">

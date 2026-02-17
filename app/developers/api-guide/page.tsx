@@ -9,8 +9,8 @@ import { Database, Server, Lock, CheckCircle, AlertCircle } from 'lucide-react';
 export default function ApiGuidePage() {
     return (
         <main className="min-h-screen bg-neutral-900 pt-20">
-            <Section className="py-20 bg-neutral-900 border-b border-white/5">
-                <Container className="max-w-4xl">
+            <Section className="py-20 bg-neutral-900 border-b border-white/10">
+                <Container className="max-w-5xl">
                     <span className="text-secondary-gold font-mono text-sm uppercase">Version 1.2.0 (Latest)</span>
                     <h1 className="text-3xl md:text-5xl font-serif font-bold text-white mt-4">
                         API Integration Guide
@@ -22,14 +22,14 @@ export default function ApiGuidePage() {
             </Section>
 
             <Section className="py-12">
-                <Container className="max-w-4xl space-y-16">
+                <Container className="max-w-5xl space-y-16">
 
                     {/* 1. Endpoint & Auth */}
                     <div>
                         <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
                             <Server className="w-6 h-6 text-blue-400" /> Endpoint Information
                         </h2>
-                        <div className="bg-[#111] p-6 rounded-xl border border-white/10 space-y-4">
+                        <div className="bg-neutral-black p-6 rounded-xl border border-white/10 space-y-4">
                             <div className="flex items-center gap-4">
                                 <span className="bg-green-500/20 text-green-400 font-bold px-3 py-1 rounded text-sm">POST</span>
                                 <code className="text-white font-mono bg-white/5 px-4 py-2 rounded flex-1">
@@ -80,21 +80,21 @@ export default function ApiGuidePage() {
                     <div>
                         <h2 className="text-2xl font-bold text-white mb-6">Response Status Codes</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="bg-[#1A1A2E] p-4 rounded-lg border border-green-500/30">
+                            <div className="bg-neutral-black p-4 rounded-lg border border-green-500/30">
                                 <div className="flex items-center gap-2 mb-2">
                                     <CheckCircle className="w-5 h-5 text-green-400" />
                                     <span className="text-green-400 font-bold">201 Created</span>
                                 </div>
                                 <p className="text-sm text-neutral-400">데이터가 성공적으로 수신 및 저장되었습니다.</p>
                             </div>
-                            <div className="bg-[#1A1A2E] p-4 rounded-lg border border-red-500/30">
+                            <div className="bg-neutral-black p-4 rounded-lg border border-red-500/30">
                                 <div className="flex items-center gap-2 mb-2">
                                     <AlertCircle className="w-5 h-5 text-red-400" />
                                     <span className="text-red-400 font-bold">401 Unauthorized</span>
                                 </div>
                                 <p className="text-sm text-neutral-400">유효하지 않은 토큰입니다. 토큰을 재발급 받으세요.</p>
                             </div>
-                            <div className="bg-[#1A1A2E] p-4 rounded-lg border border-red-500/30">
+                            <div className="bg-neutral-black p-4 rounded-lg border border-red-500/30">
                                 <div className="flex items-center gap-2 mb-2">
                                     <AlertCircle className="w-5 h-5 text-red-400" />
                                     <span className="text-red-400 font-bold">422 Unprocessable Entity</span>

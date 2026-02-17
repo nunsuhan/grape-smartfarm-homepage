@@ -239,7 +239,7 @@ export default function AiDiagnosisWhyPage() {
             </section>
 
             {/* Section 8: References */}
-            <section className="py-12 bg-[#0D0619] border-t border-white/5">
+            <section className="py-12 bg-neutral-black border-t border-white/10">
                 <Container>
                     <div className="text-sm text-neutral-cream/40 max-w-4xl mx-auto">
                         <h4 className="font-bold text-neutral-cream/60 mb-6 uppercase tracking-wider text-xs">참고 문헌</h4>

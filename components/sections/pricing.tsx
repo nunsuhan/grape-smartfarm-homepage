@@ -72,7 +72,7 @@ export function Pricing() {
                             whileHover={{ y: -10 }}
                             className={`relative p-8 rounded-2xl border transition-all duration-300 ${plan.goldBorder
                                 ? 'bg-neutral-900 border-secondary-gold shadow-[0_0_20px_rgba(212,175,55,0.15)]'
-                                : 'bg-[#1A1A2E] border-white/10 hover:border-white/30'
+                                : 'bg-neutral-black border-white/10 hover:border-white/30'
                                 }`}
                         >
                             {plan.badge && (

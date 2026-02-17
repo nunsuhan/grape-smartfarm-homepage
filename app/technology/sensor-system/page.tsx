@@ -4,11 +4,9 @@ import { Container } from '@/components/ui/container';
 import { Section } from '@/components/ui/section';
 import { motion } from 'framer-motion';
 import { Wifi, Server, Activity, Thermometer, Radio, Zap, ArrowRight, ExternalLink, Check, X } from 'lucide-react';
-import { useModal } from '@/components/providers/modal-provider';
 import { Accordion, AccordionItem } from '@/components/ui/accordion';
 
 export default function SensorSystemPage() {
-    const { openModal } = useModal();
 
     return (
         <main className="bg-neutral-black min-h-screen pt-20">
@@ -33,7 +31,7 @@ export default function SensorSystemPage() {
             </Section>
 
             {/* Metrics */}
-            <Section className="py-12 border-b border-white/5">
+            <Section className="py-12 border-b border-white/10">
                 <Container>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
@@ -60,7 +58,7 @@ export default function SensorSystemPage() {
             </Section>
 
             {/* Why This Matters */}
-            <Section className="py-20 bg-neutral-900 border-b border-white/5">
+            <Section className="py-20 bg-neutral-900 border-b border-white/10">
                 <Container>
                     <h2 className="text-3xl font-serif font-bold text-white mb-16 text-center">Why Smart Sensors?</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -143,7 +141,7 @@ export default function SensorSystemPage() {
             </Section>
 
             {/* Technical Details */}
-            <Section className="py-20 bg-neutral-900 border-y border-white/5">
+            <Section className="py-20 bg-neutral-900 border-y border-white/10">
                 <Container>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
@@ -235,7 +233,7 @@ export default function SensorSystemPage() {
             </Section>
 
             {/* Related Papers */}
-            <Section className="py-20 border-t border-white/5">
+            <Section className="py-20 border-t border-white/10">
                 <Container>
                     <div className="max-w-3xl mx-auto">
                         <h2 className="text-2xl font-serif font-bold text-white mb-8 text-center">Related Papers</h2>
@@ -288,7 +286,7 @@ export default function SensorSystemPage() {
             </Section>
 
             {/* FAQ */}
-            <Section className="py-20 bg-neutral-900 border-t border-white/5">
+            <Section className="py-20 bg-neutral-900 border-t border-white/10">
                 <Container>
                     <h2 className="text-3xl font-serif font-bold text-white mb-12 text-center">자주 묻는 질문</h2>
                     <Accordion>
@@ -318,13 +316,14 @@ export default function SensorSystemPage() {
                         <p className="text-neutral-cream/70 mb-8 max-w-2xl mx-auto">
                             FarmSense IoT 센서가 24시간 당신의 농장을 지켜드립니다.
                         </p>
-                        <button
-                            onClick={() => openModal('demo')}
+                        <a
+                            href="/downloads/farmsense.apk"
+                            download
                             className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-green-900 transition-all shadow-lg shadow-green-500/20"
                         >
-                            시연 신청하기
+                            APK 다운로드
                             <ArrowRight className="w-5 h-5" />
-                        </button>
+                        </a>
                     </div>
                 </Container>
             </Section>

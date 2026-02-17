@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { CloudRain, TrendingUp, AlertTriangle, CloudSun, BarChart, Bell, ArrowRight, ExternalLink, Check, X } from 'lucide-react';
 import { useModal } from '@/components/providers/modal-provider';
 import { Accordion, AccordionItem } from '@/components/ui/accordion';
-import Image from 'next/image';
 
 const refs = [
     {
@@ -61,7 +60,7 @@ export default function PmiDssPage() {
             </Section>
 
             {/* Core Logic Breakdown */}
-            <Section className="py-20 bg-neutral-900 border-y border-white/5">
+            <Section className="py-20 bg-neutral-900 border-y border-white/10">
                 <Container>
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-serif font-bold text-white mb-4">Core Algorithm Logic</h2>
@@ -70,16 +69,54 @@ export default function PmiDssPage() {
 
                     <div className="space-y-24">
                         {/* 1. PMI */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            <div className="order-2 lg:order-1 relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-white/10 bg-black/50">
-                                <Image
-                                    src="/images/generated/tech_pmi.png"
-                                    alt="PMI / PHI Diagram"
-                                    fill
-                                    className="object-contain p-4"
-                                />
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+                            <div className="order-2 lg:order-1 p-6 md:p-8 rounded-2xl border border-white/10 bg-white/5">
+                                {/* PMI Visual Diagram */}
+                                <div className="text-center mb-6">
+                                    <span className="text-xs font-mono text-neutral-cream/40 uppercase tracking-widest">PMI Risk Pipeline</span>
+                                </div>
+                                <div className="flex flex-col gap-3">
+                                    {/* Input sensors */}
+                                    <div className="grid grid-cols-3 gap-2">
+                                        {[
+                                            { label: 'Temperature', value: '24.5°C', icon: '🌡️' },
+                                            { label: 'Humidity', value: '87%', icon: '💧' },
+                                            { label: 'Leaf Wetness', value: '6.2h', icon: '🍃' },
+                                        ].map((s, i) => (
+                                            <div key={i} className="p-3 rounded-lg bg-white/5 border border-white/10 text-center">
+                                                <div className="text-lg mb-1">{s.icon}</div>
+                                                <div className="text-xs text-neutral-cream/50">{s.label}</div>
+                                                <div className="text-sm font-mono font-bold text-white mt-1">{s.value}</div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    {/* Arrow */}
+                                    <div className="flex justify-center text-neutral-cream/30 text-xl">▼</div>
+                                    {/* Logic */}
+                                    <div className="p-4 rounded-lg bg-secondary-gold/10 border border-secondary-gold/20 text-center">
+                                        <div className="text-xs text-secondary-gold/70 mb-1">Algorithm</div>
+                                        <div className="font-mono text-sm text-secondary-gold font-bold">Risk = f(T, RH, WetHours)</div>
+                                    </div>
+                                    {/* Arrow */}
+                                    <div className="flex justify-center text-neutral-cream/30 text-xl">▼</div>
+                                    {/* Output */}
+                                    <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-center">
+                                        <div className="text-xs text-red-400/70 mb-1">Output</div>
+                                        <div className="text-2xl font-mono font-bold text-red-400">PMI 0.78</div>
+                                        <div className="text-xs text-red-400/60 mt-1">High Risk — 방제 권장</div>
+                                    </div>
+                                    {/* Risk bar */}
+                                    <div className="mt-2">
+                                        <div className="h-2 w-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 rounded-full" />
+                                        <div className="flex justify-between text-[10px] text-neutral-cream/40 mt-1">
+                                            <span>Safe (0.0)</span>
+                                            <span>Caution (0.5)</span>
+                                            <span>Danger (1.0)</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="order-1 lg:order-2 space-y-6">
+                            <div className="order-1 lg:order-2 space-y-6 flex flex-col justify-center">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-xs font-bold uppercase tracking-wider">
                                     <AlertTriangle className="w-3 h-3" /> Prevention
                                 </div>
@@ -87,7 +124,7 @@ export default function PmiDssPage() {
                                 <p className="text-neutral-cream/70 leading-relaxed">
                                     병해충은 특정 환경 조건이 맞을 때만 발생합니다. PMI는 실시간 온습도 데이터와 잎 표면 습윤 지속 시간(Leaf Wetness Duration)을 결합하여 병원균 포자의 발아 가능성을 확률로 계산합니다.
                                 </p>
-                                <div className="space-y-3 font-mono text-sm bg-white/5 p-4 rounded-lg border border-white/5">
+                                <div className="space-y-3 font-mono text-sm bg-white/5 p-4 rounded-lg border border-white/10">
                                     <div className="flex justify-between border-b border-white/10 pb-2 mb-2">
                                         <span className="text-neutral-400">Input Data</span>
                                         <span className="text-white">Temp, Humidity, Leaf Wetness</span>
@@ -105,8 +142,8 @@ export default function PmiDssPage() {
                         </div>
 
                         {/* 2. VitiCanopy */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            <div className="space-y-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+                            <div className="space-y-6 flex flex-col justify-center">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-bold uppercase tracking-wider">
                                     <BarChart className="w-3 h-3" /> Yield Prediction
                                 </div>
@@ -125,18 +162,46 @@ export default function PmiDssPage() {
                                     </AccordionItem>
                                 </Accordion>
                             </div>
-                            <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-white/10 bg-black/50">
-                                <Image
-                                    src="/images/generated/tech_yield.png"
-                                    alt="VitiCanopy Yield Prediction"
-                                    fill
-                                    className="object-contain p-4"
-                                />
+                            <div className="p-6 md:p-8 rounded-2xl border border-white/10 bg-white/5">
+                                {/* VitiCanopy Visual Diagram */}
+                                <div className="text-center mb-6">
+                                    <span className="text-xs font-mono text-neutral-cream/40 uppercase tracking-widest">Yield Prediction Pipeline</span>
+                                </div>
+                                <div className="flex flex-col gap-3">
+                                    {/* Step 1: Camera Input */}
+                                    <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/20 text-center">
+                                        <div className="text-lg mb-1">📸</div>
+                                        <div className="text-xs text-blue-400/70 mb-1">Step 1. Image Capture</div>
+                                        <div className="font-mono text-sm text-blue-400 font-bold">Canopy Photo → Binary Thresholding</div>
+                                    </div>
+                                    <div className="flex justify-center text-neutral-cream/30 text-xl">▼</div>
+                                    {/* Step 2: Analysis */}
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-center">
+                                            <div className="text-xs text-neutral-cream/50">Gap Fraction</div>
+                                            <div className="text-lg font-mono font-bold text-green-400 mt-1">32.4%</div>
+                                            <div className="text-[10px] text-neutral-cream/30">공극률</div>
+                                        </div>
+                                        <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-center">
+                                            <div className="text-xs text-neutral-cream/50">LAI</div>
+                                            <div className="text-lg font-mono font-bold text-green-400 mt-1">3.8</div>
+                                            <div className="text-[10px] text-neutral-cream/30">엽면적지수</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-center text-neutral-cream/30 text-xl">▼</div>
+                                    {/* Step 3: Yield Output */}
+                                    <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 text-center">
+                                        <div className="text-xs text-green-400/70 mb-1">Yield Estimation</div>
+                                        <div className="font-mono text-sm text-neutral-cream/60 mb-2">LAI × ClusterCoeff × Area</div>
+                                        <div className="text-2xl font-mono font-bold text-green-400">2,340 kg</div>
+                                        <div className="text-xs text-green-400/60 mt-1">예상 수확량 (3,000평 기준)</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         {/* 3. PHI & Resource */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-12">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch mt-12">
                             <div className="p-8 bg-white/5 rounded-2xl border border-white/10 hover:border-secondary-gold/30 transition-colors">
                                 <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                                     <CloudSun className="w-5 h-5 text-yellow-500" />
@@ -176,7 +241,7 @@ export default function PmiDssPage() {
                         </h2>
                         <div className="grid gap-4">
                             {refs.map((ref, i) => (
-                                <div key={i} className="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                                <div key={i} className="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
                                     <div>
                                         <div className="font-bold text-white text-sm md:text-base group-hover:text-secondary-gold transition-colors">
                                             {ref.title}
@@ -197,7 +262,7 @@ export default function PmiDssPage() {
             </Section>
 
             {/* Disclaimer */}
-            <Section className="py-10 bg-neutral-black border-t border-white/5">
+            <Section className="py-10 bg-neutral-black border-t border-white/10">
                 <Container>
                     <div className="max-w-3xl mx-auto text-center p-6 rounded-xl bg-neutral-900 border border-neutral-800">
                         <AlertTriangle className="w-8 h-8 text-yellow-600 mx-auto mb-4" />

@@ -85,7 +85,7 @@ export default function DataStrategyPage() {
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.4, delay: idx * 0.1 }}
-                                        className="aspect-square flex flex-col items-center justify-center p-6 rounded-2xl bg-[#1A1A2E] border border-white/10 hover:border-secondary-gold/50 transition-colors"
+                                        className="aspect-square flex flex-col items-center justify-center p-6 rounded-2xl bg-neutral-black border border-white/10 hover:border-secondary-gold/50 transition-colors"
                                     >
                                         <item.icon className="w-8 h-8 text-secondary-gold mb-3" />
                                         <span className="font-bold text-white">{item.label}</span>
@@ -140,7 +140,7 @@ export default function DataStrategyPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: idx * 0.2 }}
-                                className="relative z-10 bg-[#1A1A2E] p-8 rounded-2xl border border-white/10 text-center group hover:-translate-y-2 transition-transform duration-300"
+                                className="relative z-10 bg-neutral-black p-8 rounded-2xl border border-white/10 text-center group hover:-translate-y-2 transition-transform duration-300"
                             >
                                 <div className="w-16 h-16 mx-auto mb-6 bg-secondary-gold/10 rounded-full flex items-center justify-center group-hover:bg-secondary-gold/20 transition-colors">
                                     <item.icon className="w-8 h-8 text-secondary-gold" />
@@ -157,7 +157,7 @@ export default function DataStrategyPage() {
             </section>
 
             {/* Revenue & Exit Strategy */}
-            <section className="py-20 bg-neutral-black/50 border-t border-white/5">
+            <section className="py-20 bg-neutral-black/50 border-t border-white/10">
                 <Container>
                     <div className="grid lg:grid-cols-2 gap-16">
                         {/* Revenue Models */}

@@ -40,8 +40,8 @@ const educationModules = [
 export default function EducationHubPage() {
     return (
         <main className="min-h-screen bg-neutral-900 pt-20">
-            <Section className="py-20 border-b border-white/5">
-                <Container className="text-center max-w-3xl">
+            <Section className="py-20 border-b border-white/10">
+                <Container className="text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export default function EducationHubPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className="h-full bg-[#1A1A2E] border border-white/10 p-8 rounded-2xl hover:border-secondary-gold/50 transition-colors relative overflow-hidden"
+                                    className="h-full bg-neutral-black border border-white/10 p-8 rounded-2xl hover:border-secondary-gold/50 transition-colors relative overflow-hidden"
                                 >
                                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                         {module.icon}

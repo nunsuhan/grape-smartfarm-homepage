@@ -59,7 +59,7 @@ export function AppScreenshotGallery() {
     }
 
     return (
-        <Section className="py-20 bg-neutral-900 border-b border-white/5">
+        <Section className="py-20 bg-neutral-900 border-b border-white/10">
             <Container>
                 <div className="text-center mb-12">
                     <span className="text-secondary-gold font-mono text-sm tracking-widest uppercase">App Preview</span>

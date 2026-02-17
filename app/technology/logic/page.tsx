@@ -52,8 +52,8 @@ const logicModules = [
 export default function LogicHubPage() {
     return (
         <main className="min-h-screen bg-neutral-900 pt-20">
-            <Section className="py-20 border-b border-white/5 bg-[#0a0a0a]">
-                <Container className="text-center max-w-3xl">
+            <Section className="py-20 border-b border-white/10 bg-neutral-black">
+                <Container className="text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function LogicHubPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className="h-full bg-[#151520] border border-white/10 p-8 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all relative overflow-hidden flex flex-col"
+                                    className="h-full bg-neutral-black border border-white/10 p-8 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all relative overflow-hidden flex flex-col"
                                 >
                                     <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
 

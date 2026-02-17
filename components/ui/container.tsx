@@ -12,7 +12,7 @@ export function Container({ children, className, fullWidth = false }: ContainerP
         <div
             className={clsx(
                 'mx-auto px-4 sm:px-6 lg:px-8',
-                fullWidth ? 'w-full' : 'max-w-7xl',
+                fullWidth ? 'w-full' : 'max-w-5xl',
                 className
             )}
         >

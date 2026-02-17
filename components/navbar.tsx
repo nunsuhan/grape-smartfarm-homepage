@@ -7,42 +7,59 @@ import { usePathname } from 'next/navigation';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
 import { Container } from './ui/container';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, LogIn, User, LogOut } from 'lucide-react';
 import { useModal } from './providers/modal-provider';
+import { useAuthStore } from '@/lib/auth-store';
+import { AuthModal } from './auth-modal';
 
 const navItems = [
-    { label: '문제 정의', href: '/#problem' },
     {
-        label: '기술력 (Technology)',
+        label: '핵심 기술',
         href: '/technology/docs',
         dropdown: [
             { label: '기술 문서 (검증·로직)', href: '/technology/docs' },
-            { label: '열화상·RGB-D 설치 필요성', href: '/technology/camera-necessity' },
             { label: 'AI 병해충 진단 (Vision)', href: '/technology/ai-diagnosis' },
             { label: 'PMI-DSS 의사결정', href: '/technology/pmi-dss' },
             { label: '대화형 농업 비서 (RAG)', href: '/technology/rag-system' },
-            { label: '데이터 수집 전략', href: '/technology/data-strategy' },
             { label: 'IoT 센서 네트워크', href: '/technology/sensor-system' },
+            { label: '열화상·RGB-D 필요성', href: '/technology/camera-necessity' },
+            { label: '데이터 수집 전략', href: '/technology/data-strategy' },
+            { label: '지능형 로직 (6개 상세)', href: '/intelligent-logic' },
         ]
     },
-    { label: '센서 설치 도우미', href: '/sensor-installation-guide' },
     {
-        label: '지능형 로직',
-        href: '/intelligent-logic',
+        label: '수출 · 인증',
+        href: '/export/gap-certification',
         dropdown: [
-            { label: '관수_물관리', href: '/intelligent-logic/irrigation-water' },
-            { label: '병해충관리', href: '/intelligent-logic/pesticide-spray' },
-            { label: '비료_시비량', href: '/intelligent-logic/fertilizer-application' },
-            { label: '수확량_예측', href: '/intelligent-logic/yield-prediction' },
-            { label: '포도_재배기술', href: '/intelligent-logic/grape-cultivation' },
-            { label: '환경제어_센서', href: '/intelligent-logic/environmental-control' },
+            { label: 'GAP 인증 완벽 가이드', href: '/export/gap-certification' },
+            { label: '블록체인 이력추적', href: '/technology/blockchain' },
+            { label: '수출 서류 데이터 전략', href: '/export/data-documents' },
+            { label: '주요국 수출 요건', href: '/export/country-requirements' },
+            { label: '수출 준비 로드맵', href: '/export/roadmap' },
         ]
     },
+    {
+        label: '스마트팜',
+        href: '/smartfarm/dashboard',
+        dropdown: [
+            { label: '대시보드', href: '/smartfarm/dashboard' },
+            { label: '센서 모니터링', href: '/smartfarm/sensors' },
+            { label: 'AI 상담', href: '/smartfarm/ai-chat' },
+            { label: '질병 진단', href: '/smartfarm/diagnosis' },
+            { label: '영농일지', href: '/smartfarm/field-book' },
+            { label: '알림 센터', href: '/smartfarm/notifications' },
+            { label: '커뮤니티', href: '/smartfarm/community' },
+            { label: '앱 다운로드', href: '/smartfarm/download' },
+        ]
+    },
+    { label: '포도 재배 정보', href: '/grape-info' },
+    { label: '우리의 가치', href: '/about' },
     {
         label: '고객지원',
         href: '/faq',
         dropdown: [
             { label: 'FAQ', href: '/faq' },
+            { label: '센서 설치 도우미', href: '/sensor-installation-guide' },
             { label: 'AI 스마트 도우미', href: '/support/ai-assistant' },
             { label: '문의하기', href: '/support' },
         ]
@@ -52,15 +69,17 @@ const navItems = [
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isAuthOpen, setIsAuthOpen] = useState(false);
     const { scrollY } = useScroll();
     const { openModal } = useModal();
     const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
     const [mobileExpandedIdx, setMobileExpandedIdx] = useState<number | null>(null);
     const pathname = usePathname();
+    const { user, isLoggedIn, logout, hydrate } = useAuthStore();
 
-    // 라이트 모드 페이지 경로 확인
-    const isLightModePage = pathname?.startsWith('/sensor-installation-guide') || 
-                            pathname?.startsWith('/intelligent-logic');
+    useEffect(() => { hydrate(); }, [hydrate]);
+
+    const isSmartfarmPage = pathname?.startsWith('/smartfarm');
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         setIsScrolled(latest > 50);
@@ -85,6 +104,34 @@ export function Navbar() {
                 style={{ top: 0, left: 0, right: 0, bottom: 0 }}
             >
                 <nav className="flex flex-col gap-6 text-lg font-medium text-neutral-cream/90">
+                    {/* Mobile Auth - 스마트팜 페이지에서만 표시 */}
+                    {isSmartfarmPage && (
+                    <div className="border-b border-white/10 pb-4">
+                        {isLoggedIn ? (
+                            <div className="flex items-center justify-between">
+                                <span className="text-sm text-neutral-cream/60">
+                                    <User className="w-4 h-4 inline mr-2" />
+                                    {user?.username || '사용자'}
+                                </span>
+                                <button
+                                    onClick={() => { logout(); setIsMobileMenuOpen(false); }}
+                                    className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm text-neutral-cream/50 hover:text-neutral-cream bg-white/5"
+                                >
+                                    <LogOut className="w-4 h-4" />
+                                    로그아웃
+                                </button>
+                            </div>
+                        ) : (
+                            <button
+                                onClick={() => { setIsMobileMenuOpen(false); setIsAuthOpen(true); }}
+                                className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-primary-purple text-white font-medium"
+                            >
+                                <LogIn className="w-4 h-4" />
+                                로그인
+                            </button>
+                        )}
+                    </div>
+                    )}
                     {navItems.map((item, idx) => (
                         <div key={idx} className="border-b border-white/10 pb-4 last:border-0">
                             <div className="flex items-center justify-between w-full">
@@ -144,8 +191,8 @@ export function Navbar() {
         <motion.header
             className={clsx(
                 'fixed top-0 left-0 right-0 z-[100] transition-colors duration-300',
-                isLightModePage || isScrolled || isMobileMenuOpen 
-                    ? 'bg-neutral-black/95 backdrop-blur-md border-b border-white/10 shadow-lg' 
+                isSmartfarmPage || isScrolled || isMobileMenuOpen
+                    ? 'bg-neutral-black/95 backdrop-blur-md border-b border-white/10 shadow-lg'
                     : 'bg-transparent'
             )}
         >
@@ -203,6 +250,35 @@ export function Navbar() {
                     ))}
                 </nav>
 
+                {/* Desktop Auth Button - 스마트팜 페이지에서만 표시 */}
+                {isSmartfarmPage && (
+                <div className="hidden md:flex items-center gap-3 z-[102]">
+                    {isLoggedIn ? (
+                        <div className="flex items-center gap-3">
+                            <span className="text-xs text-neutral-cream/60">
+                                <User className="w-3.5 h-3.5 inline mr-1" />
+                                {user?.username || '사용자'}
+                            </span>
+                            <button
+                                onClick={logout}
+                                className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs text-neutral-cream/50 hover:text-neutral-cream hover:bg-white/5 transition-colors"
+                            >
+                                <LogOut className="w-3.5 h-3.5" />
+                                로그아웃
+                            </button>
+                        </div>
+                    ) : (
+                        <button
+                            onClick={() => setIsAuthOpen(true)}
+                            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-purple/80 hover:bg-primary-purple text-white text-xs font-medium transition-colors"
+                        >
+                            <LogIn className="w-3.5 h-3.5" />
+                            로그인
+                        </button>
+                    )}
+                </div>
+                )}
+
                 {/* Mobile Menu Toggle - 높은 z로 항상 클릭 가능 */}
                 <button
                     type="button"
@@ -229,6 +305,9 @@ export function Navbar() {
 
                 {/* 모바일 메뉴: body 포탈로 전체 화면 표시 */}
                 {mounted && createPortal(mobileMenuContent, document.body)}
+
+                {/* Auth Modal */}
+                <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
             </Container>
         </motion.header>
     );

@@ -37,7 +37,7 @@ export function DiagnosisScreen({ onBack }: DiagnosisScreenProps) {
                             onClick={() => setView('flow')}
                             className="w-full bg-white p-5 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-all group text-left"
                         >
-                            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                            <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/15 transition-colors">
                                 <Camera className="w-6 h-6 text-blue-500" />
                             </div>
                             <div className="flex-1">
@@ -48,7 +48,7 @@ export function DiagnosisScreen({ onBack }: DiagnosisScreenProps) {
                         </button>
 
                         <button className="w-full bg-white p-5 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-all group text-left">
-                            <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
+                            <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/15 transition-colors">
                                 <ShieldCheck className="w-6 h-6 text-green-500" />
                             </div>
                             <div className="flex-1">
@@ -64,8 +64,8 @@ export function DiagnosisScreen({ onBack }: DiagnosisScreenProps) {
                     <h2 className="text-xl font-bold text-gray-900 mb-4">이력 및 가이드</h2>
                     <div className="space-y-4">
                         <button className="w-full bg-white p-5 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-all group text-left">
-                            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                                <Clock className="w-6 h-6 text-blue-600" />
+                            <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/15 transition-colors">
+                                <Clock className="w-6 h-6 text-blue-400" />
                             </div>
                             <div className="flex-1">
                                 <h4 className="font-bold text-gray-900">진단 이력</h4>
@@ -75,7 +75,7 @@ export function DiagnosisScreen({ onBack }: DiagnosisScreenProps) {
                         </button>
 
                         <button className="w-full bg-white p-5 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-all group text-left">
-                            <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center group-hover:bg-purple-100 transition-colors">
+                            <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/15 transition-colors">
                                 <BookOpen className="w-6 h-6 text-purple-500" />
                             </div>
                             <div className="flex-1">

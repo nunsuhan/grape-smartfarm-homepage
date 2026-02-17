@@ -11,7 +11,7 @@ export function TechnologyBlogFooter() {
                     </div>
                     <h2 className="text-2xl font-bold text-neutral-900 tracking-tight">
                         설정이 어려우신가요? <br className="hidden md:block" />
-                        <span className="text-blue-600">AI에게 사진을 찍어 물어보세요</span>
+                        <span className="text-blue-400">AI에게 사진을 찍어 물어보세요</span>
                     </h2>
                 </div>
 
@@ -19,7 +19,7 @@ export function TechnologyBlogFooter() {
                     {/* KT Guide */}
                     <div className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200 hover:border-blue-200 transition-all">
                         <div className="flex items-center justify-between mb-4">
-                            <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">CASE 1. KT 연동</span>
+                            <span className="bg-blue-500/15 text-blue-400 px-3 py-1 rounded-full text-xs font-bold">CASE 1. KT 연동</span>
                             <Phone className="w-4 h-4 text-neutral-400" />
                         </div>
                         <div className="aspect-[4/3] bg-white rounded-lg border border-neutral-200 mb-4 flex items-center justify-center relative overflow-hidden group">
@@ -33,15 +33,15 @@ export function TechnologyBlogFooter() {
                         <p className="text-sm text-neutral-600 mb-4">
                             "1588-0114에 전화해서 받은 API 키를 어디에 넣어야 할지 모르겠다면?"
                         </p>
-                        <Link href="/support/ai-assistant" className="block w-full bg-white border border-neutral-300 text-neutral-700 text-center py-3 rounded-xl font-medium hover:bg-neutral-50 hover:border-blue-300 hover:text-blue-600 transition-all flex items-center justify-center gap-2">
+                        <Link href="/support/ai-assistant" className="block w-full bg-white border border-white/20 text-neutral-cream/80 text-center py-3 rounded-xl font-medium hover:bg-white/5 hover:border-blue-300 hover:text-blue-400 transition-all flex items-center justify-center gap-2">
                             <MessageSquare className="w-4 h-4" /> AI 답변 보기
                         </Link>
                     </div>
 
                     {/* Sensor Guide */}
-                    <div className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200 hover:border-green-200 transition-all">
+                    <div className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200 hover:border-green-500/30 transition-all">
                         <div className="flex items-center justify-between mb-4">
-                            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">CASE 2. 센서 등록</span>
+                            <span className="bg-green-500/15 text-green-400 px-3 py-1 rounded-full text-xs font-bold">CASE 2. 센서 등록</span>
                             <AlertCircle className="w-4 h-4 text-neutral-400" />
                         </div>
                         <div className="aspect-[4/3] bg-white rounded-lg border border-neutral-200 mb-4 flex items-center justify-center relative overflow-hidden group">
@@ -55,7 +55,7 @@ export function TechnologyBlogFooter() {
                         <p className="text-sm text-neutral-600 mb-4">
                             "센서 뒷면의 시리얼 번호(S/N) 사진을 찍으면 AI가 숫자를 읽어줍니다."
                         </p>
-                        <Link href="/support/ai-assistant" className="block w-full bg-white border border-neutral-300 text-neutral-700 text-center py-3 rounded-xl font-medium hover:bg-neutral-50 hover:border-green-300 hover:text-green-600 transition-all flex items-center justify-center gap-2">
+                        <Link href="/support/ai-assistant" className="block w-full bg-white border border-white/20 text-neutral-cream/80 text-center py-3 rounded-xl font-medium hover:bg-white/5 hover:border-green-300 hover:text-green-400 transition-all flex items-center justify-center gap-2">
                             <MessageSquare className="w-4 h-4" /> AI 답변 보기
                         </Link>
                     </div>
