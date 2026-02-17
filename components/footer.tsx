@@ -57,11 +57,11 @@ export function Footer() {
                     {/* Brand Column - spans 2 on md */}
                     <div className="col-span-2 space-y-4">
                         <Link href="/" className="text-2xl font-serif font-bold text-white block">
-                            FarmSense
+                            팜센스(FarmSense)
                         </Link>
                         <p className="text-sm leading-relaxed">
-                            데이터와 AI로 포도 농가의<br />
-                            의사결정을 돕는 플랫폼
+                            팜센스(FarmSense)는 데이터와 AI로<br />
+                            포도 농가의 의사결정을 돕는 플랫폼
                         </p>
                         <a
                             href="mailto:contact@farmsense.kr"
