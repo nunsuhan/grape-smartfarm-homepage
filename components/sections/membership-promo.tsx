@@ -40,7 +40,7 @@ export function MembershipPromo() {
                                 🔥 현재 76명 신청 / 24자리 남음
                             </div>
                             <button
-                                onClick={() => openModal('investment')}
+                                onClick={() => openModal('investment', 'membership')}
                                 className="group relative px-8 py-4 bg-gradient-to-r from-secondary-gold to-yellow-600 text-neutral-black font-bold rounded-full hover:scale-105 transition-transform overflow-hidden"
                             >
                                 <span className="relative z-10 flex items-center gap-2">

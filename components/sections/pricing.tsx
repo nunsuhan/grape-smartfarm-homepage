@@ -103,7 +103,7 @@ export function Pricing() {
                             <button
                                 onClick={() => {
                                     if (plan.goldBorder) {
-                                        openModal(undefined, 'membership');
+                                        openModal('investment', 'membership');
                                     } else {
                                         openModal('investment', 'contact');
                                     }
