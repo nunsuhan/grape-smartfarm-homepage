@@ -44,6 +44,15 @@ const footerLinks = {
             { label: '문의하기', href: '/support' },
         ],
     },
+    payment: {
+        title: '서비스·결제',
+        links: [
+            { label: '요금제 안내', href: '/terms#요금제' },
+            { label: '이용약관', href: '/terms' },
+            { label: '환불·취소 정책', href: '/refund-policy' },
+            { label: '결제 문의', href: '/support' },
+        ],
+    },
 };
 
 export function Footer() {
@@ -53,7 +62,7 @@ export function Footer() {
         <footer className="bg-neutral-black py-16 border-t border-white/10 text-neutral-cream/60">
             <Container>
                 {/* Main Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-6 gap-10 md:gap-8 mb-14">
+                <div className="grid grid-cols-2 md:grid-cols-7 gap-10 md:gap-8 mb-14">
                     {/* Brand Column - spans 2 on md */}
                     <div className="col-span-2 space-y-4">
                         <Link href="/" className="text-2xl font-serif font-bold text-white block">
@@ -112,15 +121,32 @@ export function Footer() {
                     ))}
                 </div>
 
+                {/* Business Info */}
+                <div className="border-t border-white/10 pt-8 mb-6 text-xs text-neutral-cream/50 leading-relaxed">
+                    <p className="mb-1">
+                        <span className="font-semibold text-neutral-cream/70">팜센스(FarmSense)</span>
+                        &nbsp;&nbsp;대표자: 한문수
+                        &nbsp;&nbsp;사업자등록번호: 646-18-02527
+                        &nbsp;&nbsp;업태: 정보통신업 / 종목: 앱개발
+                    </p>
+                    <p>
+                        소재지: 대구광역시 북구 학남로 60, 704-905호
+                        &nbsp;&nbsp;이메일: contact@farmsense.kr
+                    </p>
+                </div>
+
                 {/* Bottom Bar */}
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+                <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
                     <p>&copy; 2026 FarmSense. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link href="/privacy-policy" className="hover:text-secondary-gold transition-colors">
                             개인정보처리방침
                         </Link>
-                        <Link href="/privacy-policy" className="hover:text-secondary-gold transition-colors">
+                        <Link href="/terms" className="hover:text-secondary-gold transition-colors">
                             이용약관
+                        </Link>
+                        <Link href="/refund-policy" className="hover:text-secondary-gold transition-colors">
+                            환불·취소 정책
                         </Link>
                     </div>
                 </div>
