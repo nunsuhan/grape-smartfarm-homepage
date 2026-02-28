@@ -1,9 +1,10 @@
 import { Redis } from '@upstash/redis';
 import { NextRequest, NextResponse } from 'next/server';
 
+// Vercel 마켓플레이스 연동 시 KV_REST_API_URL/TOKEN, 직접 연동 시 UPSTASH_REDIS_REST_URL/TOKEN
 const redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL!,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    url: (process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL)!,
+    token: (process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN)!,
 });
 
 export interface Post {
@@ -34,7 +35,8 @@ export async function GET() {
 
         return NextResponse.json(posts.filter(Boolean));
     } catch (e) {
-        return NextResponse.json({ error: '목록 조회 실패' }, { status: 500 });
+        console.error('[board GET error]', e);
+        return NextResponse.json({ error: '목록 조회 실패', detail: String(e) }, { status: 500 });
     }
 }
 
@@ -65,6 +67,7 @@ export async function POST(req: NextRequest) {
         const { password: _, ...safe } = post;
         return NextResponse.json(safe, { status: 201 });
     } catch (e) {
-        return NextResponse.json({ error: '글 작성 실패' }, { status: 500 });
+        console.error('[board POST error]', e);
+        return NextResponse.json({ error: '글 작성 실패', detail: String(e) }, { status: 500 });
     }
 }

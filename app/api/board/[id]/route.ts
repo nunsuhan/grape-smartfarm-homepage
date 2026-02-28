@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Post } from '../route';
 
 const redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL!,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    url: (process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL)!,
+    token: (process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN)!,
 });
 
 // GET /api/board/[id]
@@ -15,7 +15,8 @@ export async function GET(_: NextRequest, { params }: { params: { id: string } }
         const { password, ...safe } = post;
         return NextResponse.json(safe);
     } catch (e) {
-        return NextResponse.json({ error: '조회 실패' }, { status: 500 });
+        console.error('[board GET id error]', e);
+        return NextResponse.json({ error: '조회 실패', detail: String(e) }, { status: 500 });
     }
 }
 
@@ -35,7 +36,8 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         const { password: _, ...safe } = updated;
         return NextResponse.json(safe);
     } catch (e) {
-        return NextResponse.json({ error: '수정 실패' }, { status: 500 });
+        console.error('[board PUT error]', e);
+        return NextResponse.json({ error: '수정 실패', detail: String(e) }, { status: 500 });
     }
 }
 
@@ -54,6 +56,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
 
         return NextResponse.json({ success: true });
     } catch (e) {
-        return NextResponse.json({ error: '삭제 실패' }, { status: 500 });
+        console.error('[board DELETE error]', e);
+        return NextResponse.json({ error: '삭제 실패', detail: String(e) }, { status: 500 });
     }
 }
