@@ -50,20 +50,29 @@ export default function TermsPage() {
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td className="border border-white/15 px-4 py-3 font-semibold text-white">무료</td>
+                                        <td className="border border-white/15 px-4 py-3">0원</td>
+                                        <td className="border border-white/15 px-4 py-3">0원</td>
+                                        <td className="border border-white/15 px-4 py-3">기본 환경 모니터링, 영농일지(월 10건), 기상 정보</td>
+                                    </tr>
+                                    <tr className="bg-white/5">
                                         <td className="border border-white/15 px-4 py-3 font-semibold text-white">일반</td>
                                         <td className="border border-white/15 px-4 py-3">5,000원</td>
                                         <td className="border border-white/15 px-4 py-3">20,000원</td>
-                                        <td className="border border-white/15 px-4 py-3">기본 모니터링, 영농일지, AI 상담</td>
+                                        <td className="border border-white/15 px-4 py-3">AI 병해 진단, 병해 예측(PMI), 센서 연동, 데이터 분석</td>
                                     </tr>
-                                    <tr className="bg-white/5">
-                                        <td className="border border-white/15 px-4 py-3 font-semibold text-green-400">프리미엄</td>
+                                    <tr>
+                                        <td className="border border-white/15 px-4 py-3 font-semibold text-secondary-gold">수출농가</td>
                                         <td className="border border-white/15 px-4 py-3">10,000원</td>
                                         <td className="border border-white/15 px-4 py-3">50,000원</td>
-                                        <td className="border border-white/15 px-4 py-3">일반 기능 전체 + AI 병해 진단, 고급 분석, 우선 지원</td>
+                                        <td className="border border-white/15 px-4 py-3">일반 기능 전체 + PLS 농약안전사용기준, 수출 이력 추적, 잔류농약 관리</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                        <p className="text-neutral-cream/60 text-sm mb-8">
+                            전체 기능 비교는 <a href="/pricing" className="text-green-400 hover:text-green-300 underline">요금제 상세 비교 페이지</a>를 참고하세요.
+                        </p>
                         <ul className="list-disc pl-6 mb-8 space-y-2 text-neutral-cream/80">
                             <li>결제는 <strong>팜센스 앱(FarmSense App)</strong> 내에서 이루어집니다.</li>
                             <li>연 구독은 월 구독 대비 할인이 적용됩니다.</li>

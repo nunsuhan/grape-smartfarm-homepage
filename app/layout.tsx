@@ -4,7 +4,6 @@ import { Navbar } from '@/components/navbar';
 import { ModalProvider } from '@/components/providers/modal-provider';
 import { QueryProvider } from '@/lib/query-provider';
 import { ContactModal } from '@/components/contact-modal';
-import { MembershipModal } from '@/components/membership-modal';
 
 export const metadata: Metadata = {
   title: '팜센스(FarmSense) - 데이터 기반 AI 영농 의사결정 지원 시스템 (DSS)',
@@ -49,7 +48,6 @@ export default function RootLayout({
             <Navbar />
             {children}
             <ContactModal />
-            <MembershipModal />
           </ModalProvider>
         </QueryProvider>
       </body>
