@@ -39,6 +39,7 @@ const footerLinks = {
         title: '고객지원',
         links: [
             { label: 'FAQ', href: '/faq' },
+            { label: '문의 게시판', href: '/support/board' },
             { label: '센서 설치 도우미', href: '/sensor-installation-guide' },
             { label: 'AI 스마트 도우미', href: '/support/ai-assistant' },
             { label: '문의하기', href: '/support' },
