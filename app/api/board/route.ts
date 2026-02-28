@@ -1,5 +1,10 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 import { NextRequest, NextResponse } from 'next/server';
+
+const redis = new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL!,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+});
 
 export interface Post {
     id: string;
@@ -15,12 +20,12 @@ export interface Post {
 // GET /api/board - 목록 조회
 export async function GET() {
     try {
-        const ids: string[] = await kv.lrange('board:list', 0, -1);
+        const ids: string[] = await redis.lrange('board:list', 0, -1);
         if (!ids || ids.length === 0) return NextResponse.json([]);
 
         const posts = await Promise.all(
             ids.map(async (id) => {
-                const post = await kv.get<Post>(`board:post:${id}`);
+                const post = await redis.get<Post>(`board:post:${id}`);
                 if (!post) return null;
                 const { password, ...safe } = post;
                 return safe;
@@ -54,8 +59,8 @@ export async function POST(req: NextRequest) {
             date: new Date().toISOString().slice(0, 10),
         };
 
-        await kv.set(`board:post:${id}`, post);
-        await kv.lpush('board:list', id);
+        await redis.set(`board:post:${id}`, post);
+        await redis.lpush('board:list', id);
 
         const { password: _, ...safe } = post;
         return NextResponse.json(safe, { status: 201 });
