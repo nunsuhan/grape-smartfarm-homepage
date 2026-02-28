@@ -204,7 +204,7 @@ export default function DownloadPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="w-3 h-3 shrink-0 mt-1" />
-                  설치 문제 발생 시 contact@farmsense.kr 로 문의해 주세요.
+                  설치 문제 발생 시 artmer3061@gmail.com 로 문의해 주세요.
                 </li>
               </ul>
             </div>

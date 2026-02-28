@@ -73,10 +73,10 @@ export function Footer() {
                             포도 농가의 의사결정을 돕는 플랫폼
                         </p>
                         <a
-                            href="mailto:contact@farmsense.kr"
+                            href="mailto:artmer3061@gmail.com"
                             className="text-sm hover:text-secondary-gold transition-colors block"
                         >
-                            contact@farmsense.kr
+                            artmer3061@gmail.com
                         </a>
 
                         {/* FarmSense / About */}
@@ -131,7 +131,7 @@ export function Footer() {
                     </p>
                     <p>
                         소재지: 대구광역시 북구 학남로 60, 704-905호
-                        &nbsp;&nbsp;이메일: contact@farmsense.kr
+                        &nbsp;&nbsp;이메일: artmer3061@gmail.com
                     </p>
                 </div>
 

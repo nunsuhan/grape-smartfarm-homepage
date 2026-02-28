@@ -96,7 +96,7 @@ export default function TermsPage() {
                         </h2>
                         <ul className="list-disc pl-6 mb-8 space-y-2 text-neutral-cream/80">
                             <li>구독은 만료일에 자동 갱신되지 않으며, 이용자가 직접 앱에서 재결제해야 합니다.</li>
-                            <li>해지는 앱 내 설정 메뉴 또는 이메일(contact@farmsense.kr)을 통해 요청할 수 있습니다.</li>
+                            <li>해지는 앱 내 설정 메뉴 또는 이메일(artmer3061@gmail.com)을 통해 요청할 수 있습니다.</li>
                             <li>환불·취소 정책은 별도 <a href="/refund-policy" className="text-green-400 hover:text-green-300 underline">환불·취소 정책 페이지</a>를 참고하십시오.</li>
                         </ul>
 
@@ -133,7 +133,7 @@ export default function TermsPage() {
                             <p className="text-neutral-cream/80 mb-1"><strong>사업자등록번호:</strong> 646-18-02527</p>
                             <p className="text-neutral-cream/80 mb-1"><strong>업태 / 종목:</strong> 정보통신업 / 앱개발</p>
                             <p className="text-neutral-cream/80 mb-1"><strong>소재지:</strong> 대구광역시 북구 학남로 60, 704-905호</p>
-                            <p className="text-neutral-cream/80"><strong>이메일:</strong> contact@farmsense.kr</p>
+                            <p className="text-neutral-cream/80"><strong>이메일:</strong> artmer3061@gmail.com</p>
                         </div>
 
                         <div className="mt-12 pt-8 border-t border-white/15 text-neutral-cream/70 text-sm">

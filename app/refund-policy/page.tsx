@@ -70,7 +70,7 @@ export default function RefundPolicyPage() {
                             제3조 (환불 절차)
                         </h2>
                         <ol className="list-decimal pl-6 mb-8 space-y-3 text-neutral-cream/80">
-                            <li>앱 내 설정 메뉴 또는 이메일(contact@farmsense.kr)로 환불 신청</li>
+                            <li>앱 내 설정 메뉴 또는 이메일(artmer3061@gmail.com)로 환불 신청</li>
                             <li>회사 확인 후 영업일 기준 3일 이내 처리</li>
                             <li>카드 결제의 경우 카드사 정책에 따라 실제 환불까지 3~5영업일 소요될 수 있음</li>
                         </ol>
@@ -84,7 +84,7 @@ export default function RefundPolicyPage() {
 
                         <div className="bg-green-500/10 border-l-4 border-green-600 p-6 rounded-lg mb-8">
                             <h3 className="text-xl font-bold text-green-400 mb-3">환불 문의</h3>
-                            <p className="text-neutral-cream/80 mb-1"><strong>이메일:</strong> contact@farmsense.kr</p>
+                            <p className="text-neutral-cream/80 mb-1"><strong>이메일:</strong> artmer3061@gmail.com</p>
                             <p className="text-neutral-cream/80 mb-1"><strong>처리 시간:</strong> 영업일 기준 3일 이내</p>
                             <p className="text-neutral-cream/80 text-sm mt-3">
                                 문의 시 결제일, 이메일 주소, 환불 사유를 함께 기재해 주시면 더 빠른 처리가 가능합니다.
