@@ -1,0 +1,8 @@
+{
+  "active": true,
+  "started_at": "2026-02-17T12:41:36.810Z",
+  "original_prompt": "/oh-my-claudecode:autopilot 서버연결(ssh root@152.42.248.236)해서 플론트앤드 에서 사용 하는 기능이 서버와 완벽히 기능을 다하는지 로지기 끊어지는 곳이 없는지 앱 기능 마다 연결된 모든것 조사하고 수정하도록,특히 목 데이터 연결은 모두 정상적인 api로 돌려 놓도록 전수조사하고 수정 까지 끝내줘.래그 시스템 관련 로직과 진단 로직 철저히 조사해서 정상으로 만들것.",
+  "session_id": "a6bed26d-62a8-4d40-9fb7-cd1486c9cee3",
+  "reinforcement_count": 1,
+  "last_checked_at": "2026-02-17T12:44:56.385Z"
+}

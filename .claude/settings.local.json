@@ -17,7 +17,12 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(npx vercel --prod --yes)"
+      "Bash(npx vercel --prod --yes)",
+      "Bash(npx vercel:*)",
+      "Bash(nslookup:*)",
+      "Bash(ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@152.42.248.236 \"echo ''=== RUNNING SERVICES ==='' && systemctl list-units --type=service --state=running --no-pager | grep -E ''django|gunicorn|nginx|docker|uvicorn|celery|redis|postgres|rag'' && echo ''=== DOCKER CONTAINERS ==='' && docker ps --format ''table {{.Names}}\\\\t{{.Status}}\\\\t{{.Ports}}'' 2>/dev/null || echo ''Docker not running'' && echo ''=== LISTENING PORTS ==='' && ss -tlnp | grep -E '':\\(80|443|8000|8001|8002|8003|8080|5432|6379|3000\\)''\")",
+      "Bash(ssh -o ConnectTimeout=10 root@152.42.248.236 \"echo ''=== NGINX CONFIG ==='' && cat /etc/nginx/sites-enabled/default 2>/dev/null || cat /etc/nginx/nginx.conf 2>/dev/null | head -100 && echo ''=== API ENDPOINTS ==='' && cat /etc/nginx/sites-enabled/* 2>/dev/null | grep -E ''location|proxy_pass|upstream'' | head -50\")",
+      "Bash(sed:*)"
     ]
   }
 }

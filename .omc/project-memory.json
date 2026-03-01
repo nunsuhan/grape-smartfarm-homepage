@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1771255683804,
+  "lastScanned": 1772253502513,
   "projectRoot": "D:\\farmsense-project\\homepage-original",
   "techStack": {
     "languages": [
@@ -80,7 +80,7 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 6,
-      "lastAccessed": 1771255683745,
+      "lastAccessed": 1772253502452,
       "keyFiles": [
         "globals.css",
         "layout.tsx",
@@ -93,7 +93,7 @@
       "path": "components",
       "purpose": "UI components",
       "fileCount": 7,
-      "lastAccessed": 1771255683746,
+      "lastAccessed": 1772253502453,
       "keyFiles": [
         "auth-modal.tsx",
         "contact-modal.tsx",
@@ -106,7 +106,7 @@
       "path": "lib",
       "purpose": "Library code",
       "fileCount": 5,
-      "lastAccessed": 1771255683756,
+      "lastAccessed": 1772253502469,
       "keyFiles": [
         "api-client.ts",
         "auth-store.ts",
@@ -118,21 +118,21 @@
     "public": {
       "path": "public",
       "purpose": "Public files",
-      "fileCount": 7,
-      "lastAccessed": 1771255683757,
+      "fileCount": 8,
+      "lastAccessed": 1772253502469,
       "keyFiles": [
         "delete-account.html",
         "file.svg",
         "globe.svg",
-        "next.svg",
-        "privacy-policy.html"
+        "naver2b291a50af248dbc252db92038c159a2.html",
+        "next.svg"
       ]
     },
     "scripts": {
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1771255683758,
+      "lastAccessed": 1772253502485,
       "keyFiles": [
         "optimize-images.js"
       ]
@@ -141,14 +141,14 @@
       "path": "sensor-guide",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1771255683758,
+      "lastAccessed": 1772253502486,
       "keyFiles": []
     },
     "testsprite_tests": {
       "path": "testsprite_tests",
       "purpose": null,
       "fileCount": 19,
-      "lastAccessed": 1771255683758,
+      "lastAccessed": 1772253502487,
       "keyFiles": [
         "standard_prd.json",
         "TC001_Navigation_Bar_Dropdown_Functionality_on_Desktop.py",
@@ -161,7 +161,7 @@
       "path": "사진",
       "purpose": null,
       "fileCount": 18,
-      "lastAccessed": 1771255683759,
+      "lastAccessed": 1772253502488,
       "keyFiles": [
         "Gemini_Generated_Image_68czfn68czfn68cz.png",
         "Gemini_Generated_Image_6agsry6agsry6ags.png",
@@ -174,14 +174,14 @@
       "path": "app\\api",
       "purpose": "API routes",
       "fileCount": 0,
-      "lastAccessed": 1771255683759,
+      "lastAccessed": 1772253502489,
       "keyFiles": []
     },
     "sensor-guide\\api": {
       "path": "sensor-guide\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1771255683761,
+      "lastAccessed": 1772253502490,
       "keyFiles": [
         "page.tsx"
       ]
@@ -189,304 +189,124 @@
   },
   "hotPaths": [
     {
-      "path": "components\\navbar.tsx",
-      "accessCount": 21,
-      "lastAccessed": 1771300774722,
+      "path": "components\\footer.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1772260984921,
       "type": "file"
     },
     {
-      "path": "",
-      "accessCount": 16,
-      "lastAccessed": 1771289892693,
-      "type": "directory"
-    },
-    {
-      "path": "app\\export\\country-requirements\\page.tsx",
-      "accessCount": 14,
-      "lastAccessed": 1771288141570,
+      "path": "components\\sections\\pricing.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1772256369120,
       "type": "file"
     },
     {
-      "path": "app\\technology\\pmi-dss\\page.tsx",
-      "accessCount": 13,
-      "lastAccessed": 1771289428860,
-      "type": "file"
-    },
-    {
-      "path": "app\\smartfarm\\layout.tsx",
-      "accessCount": 13,
-      "lastAccessed": 1771294108068,
+      "path": "app\\support\\page.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1772322898499,
       "type": "file"
     },
     {
       "path": "app\\layout.tsx",
-      "accessCount": 12,
-      "lastAccessed": 1771270241053,
-      "type": "file"
-    },
-    {
-      "path": "app\\export\\roadmap\\page.tsx",
-      "accessCount": 12,
-      "lastAccessed": 1771289516999,
-      "type": "file"
-    },
-    {
-      "path": "app",
-      "accessCount": 11,
-      "lastAccessed": 1771289894481,
-      "type": "directory"
-    },
-    {
-      "path": "app\\page.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1771289842660,
-      "type": "file"
-    },
-    {
-      "path": "components\\sections\\gap-certification.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1771312658432,
-      "type": "file"
-    },
-    {
-      "path": "components\\sections\\hero.tsx",
-      "accessCount": 9,
-      "lastAccessed": 1771270410328,
-      "type": "file"
-    },
-    {
-      "path": "app\\globals.css",
-      "accessCount": 8,
-      "lastAccessed": 1771270141067,
-      "type": "file"
-    },
-    {
-      "path": "tailwind.config.js",
-      "accessCount": 6,
-      "lastAccessed": 1771270136550,
-      "type": "file"
-    },
-    {
-      "path": "components\\sections\\solution.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1771265609446,
-      "type": "file"
-    },
-    {
-      "path": "package.json",
-      "accessCount": 5,
-      "lastAccessed": 1771266390280,
-      "type": "file"
-    },
-    {
-      "path": "app\\technology\\blockchain\\page.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1771288111666,
-      "type": "file"
-    },
-    {
-      "path": "app\\faq\\page.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1771289849935,
-      "type": "file"
-    },
-    {
-      "path": "components\\ui\\container.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1771290052972,
-      "type": "file"
-    },
-    {
-      "path": "app\\intelligent-logic\\irrigation-water\\page.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1771307259574,
-      "type": "file"
-    },
-    {
-      "path": "app\\export\\gap-certification\\page.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1771312679063,
-      "type": "file"
-    },
-    {
-      "path": "C:\\Users\\한문수\\.claude\\plans\\witty-cooking-ullman.md",
       "accessCount": 3,
-      "lastAccessed": 1771257508217,
+      "lastAccessed": 1772256426652,
       "type": "file"
     },
     {
-      "path": "components\\sections\\blockchain-traceability.tsx",
+      "path": "app\\terms\\page.tsx",
       "accessCount": 3,
-      "lastAccessed": 1771257676899,
+      "lastAccessed": 1772256449986,
       "type": "file"
     },
     {
-      "path": "components\\sections\\export-readiness.tsx",
+      "path": "app\\api\\board\\route.ts",
       "accessCount": 3,
-      "lastAccessed": 1771257677343,
+      "lastAccessed": 1772322634653,
       "type": "file"
     },
     {
-      "path": "components\\sections\\problem.tsx",
+      "path": "app\\api\\board\\[id]\\route.ts",
       "accessCount": 3,
-      "lastAccessed": 1771262528494,
+      "lastAccessed": 1772322641971,
       "type": "file"
     },
     {
-      "path": "components\\web-app\\dashboard-screen.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1771266790292,
-      "type": "file"
-    },
-    {
-      "path": "app\\technology\\logic\\page.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1771290085301,
-      "type": "file"
-    },
-    {
-      "path": "components\\footer.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1771290088919,
-      "type": "file"
-    },
-    {
-      "path": "components\\ui\\card.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1771294850760,
-      "type": "file"
-    },
-    {
-      "path": "app\\intelligent-logic\\page.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1771307258787,
-      "type": "file"
-    },
-    {
-      "path": "components\\sections\\technology.tsx",
+      "path": "components\\sections\\membership-promo.tsx",
       "accessCount": 2,
-      "lastAccessed": 1771262521240,
+      "lastAccessed": 1772256007899,
       "type": "file"
     },
     {
-      "path": "lib\\api-client.ts",
+      "path": "components\\navbar.tsx",
       "accessCount": 2,
-      "lastAccessed": 1771262976088,
+      "lastAccessed": 1772261338194,
       "type": "file"
     },
     {
-      "path": "lib\\auth-store.ts",
+      "path": "app\\support\\board\\page.tsx",
       "accessCount": 2,
-      "lastAccessed": 1771262979308,
+      "lastAccessed": 1772261680050,
       "type": "file"
     },
     {
-      "path": "C:\\Temp\\claude\\D--farmsense-project-homepage-original\\tasks\\bea51fa.output",
+      "path": "app\\support\\board\\write\\page.tsx",
       "accessCount": 2,
-      "lastAccessed": 1771263765356,
+      "lastAccessed": 1772261701590,
       "type": "file"
     },
     {
-      "path": "app\\technology\\docs\\page.tsx",
+      "path": "app\\support\\board\\[id]\\page.tsx",
       "accessCount": 2,
-      "lastAccessed": 1771264296886,
+      "lastAccessed": 1772261729663,
       "type": "file"
     },
     {
-      "path": "components\\ui\\section.tsx",
+      "path": "app\\api\\board\\test\\route.ts",
       "accessCount": 2,
-      "lastAccessed": 1771265584512,
+      "lastAccessed": 1772323265105,
       "type": "file"
     },
     {
-      "path": "next.config.js",
-      "accessCount": 2,
-      "lastAccessed": 1771265616873,
-      "type": "file"
-    },
-    {
-      "path": "components",
-      "accessCount": 2,
-      "lastAccessed": 1771288152388,
-      "type": "directory"
-    },
-    {
-      "path": "app\\ai-diagnosis-why\\page.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1771289843188,
-      "type": "file"
-    },
-    {
-      "path": "C:\\Temp\\claude\\D--farmsense-project-homepage-original\\tasks\\b7e9fe5.output",
-      "accessCount": 2,
-      "lastAccessed": 1771294870973,
-      "type": "file"
-    },
-    {
-      "path": "app\\export\\data-documents\\page.tsx",
+      "path": "app\\privacy-policy\\page.tsx",
       "accessCount": 1,
-      "lastAccessed": 1771257948489,
+      "lastAccessed": 1772253936104,
       "type": "file"
     },
     {
-      "path": "components\\lazy-section.tsx",
+      "path": "app\\refund-policy\\page.tsx",
       "accessCount": 1,
-      "lastAccessed": 1771262492330,
+      "lastAccessed": 1772254019661,
       "type": "file"
     },
     {
-      "path": "C:\\Temp\\claude\\D--farmsense-project-homepage-original\\tasks\\b1d5e46.output",
+      "path": "components\\membership-modal.tsx",
       "accessCount": 1,
-      "lastAccessed": 1771262926415,
+      "lastAccessed": 1772255972785,
       "type": "file"
     },
     {
-      "path": "C:\\Temp\\claude\\D--farmsense-project-homepage-original\\tasks\\bcad0c1.output",
+      "path": "components\\providers\\modal-provider.tsx",
       "accessCount": 1,
-      "lastAccessed": 1771264006463,
+      "lastAccessed": 1772255973161,
       "type": "file"
     },
     {
-      "path": "app\\loading.tsx",
+      "path": "app\\pricing\\page.tsx",
       "accessCount": 1,
-      "lastAccessed": 1771264143112,
+      "lastAccessed": 1772256400866,
       "type": "file"
     },
     {
-      "path": "lib\\utils.ts",
+      "path": "app\\support\\board\\[id]\\edit\\page.tsx",
       "accessCount": 1,
-      "lastAccessed": 1771265608248,
+      "lastAccessed": 1772261747239,
       "type": "file"
     },
     {
-      "path": "components\\ui\\accordion.tsx",
+      "path": "C:\\Temp\\claude\\D--farmsense-project-homepage-original\\tasks\\brcjevp9y.output",
       "accessCount": 1,
-      "lastAccessed": 1771265608532,
+      "lastAccessed": 1772323682561,
       "type": "file"
-    },
-    {
-      "path": "C:\\Users\\한문수\\.claude\\plans\\zany-purring-cocke.md",
-      "accessCount": 1,
-      "lastAccessed": 1771265806548,
-      "type": "file"
-    },
-    {
-      "path": "components\\theme-provider.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1771268078162,
-      "type": "file"
-    },
-    {
-      "path": "app\\smartfarm\\ai-chat\\page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1771270278666,
-      "type": "directory"
-    },
-    {
-      "path": "app\\export\\gap-certification",
-      "accessCount": 1,
-      "lastAccessed": 1771288267727,
-      "type": "directory"
     }
   ],
   "userDirectives": []
