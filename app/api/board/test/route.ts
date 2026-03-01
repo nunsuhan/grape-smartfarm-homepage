@@ -22,7 +22,7 @@ export async function GET() {
             headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.text();
-        return NextResponse.json({ status: 'ok', ping: data, url: url.slice(0, 30) + '...' });
+        return NextResponse.json({ status: 'ok', ping: data, url_prefix: url.slice(0, 40) });
     } catch (e) {
         return NextResponse.json({ status: 'error', message: String(e) });
     }
