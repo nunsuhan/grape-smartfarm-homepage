@@ -237,13 +237,7 @@ export default function CameraNecessityPage() {
                         </div>
                     </div>
 
-                    <div className="mt-6 p-5 bg-white/5 border border-white/10 rounded-xl">
-                        <p className="text-neutral-cream/80 text-sm leading-relaxed">
-                            <strong className="text-orange-400">FarmSense 포지셔닝:</strong> "병해 감지용"으로만 팔면 병 많은 시즌에 한정됩니다.
-                            <strong className="text-white"> "수관 온도 관리 + 병해 조기 감지"</strong>로 팔면 5월 베이스라인 수집부터 9월 수확까지
-                            5개월 내내 가치를 제공하는 도구가 됩니다. 시범 농가 설득이 훨씬 쉬워지는 이유입니다.
-                        </p>
-                    </div>
+
                 </section>
 
                 {/* 생육 시기별 열화상 병해 감지 */}
