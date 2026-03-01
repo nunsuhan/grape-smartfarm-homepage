@@ -29,9 +29,19 @@ const CULTIVAR_DB: Record<string, number> = {
     other:        1.00,  // 기타 (기본값)
 };
 
+// C₀ 자동 환산용 입력 (c0 대신 사용 가능)
+interface SprayParams {
+    activeConc: number;      // 원액 유효성분 농도 (%, 예: 10)
+    dilutionRatio: number;   // 희석배수 (예: 1000)
+    sprayVolume: number;     // 살포량 (L/10a, 예: 200)
+    cropWeight?: number;     // 작물 중량 (kg/10a, 기본: 1500 포도 기준)
+    depositFactor?: number;  // 작물 부착율 (0~1, 기본: 0.15)
+}
+
 interface CalcRequest {
     pesticide: string;       // 농약 성분명 (영문 키)
-    c0: number;              // 살포 직후 초기 농도 (mg/kg)
+    c0?: number;             // 살포 직후 초기 농도 (mg/kg) — sprayParams와 둘 중 하나
+    sprayParams?: SprayParams; // 희석배수 기반 C₀ 자동 환산
     sprayDate: string;       // 살포일 (YYYY-MM-DD)
     targetDate?: string;     // 잔류량 확인일 (기본: 오늘)
     temperature: number;     // 평균 기온 (℃)
@@ -43,6 +53,22 @@ interface CalcRequest {
     customName?: string;
 }
 
+/**
+ * 희석배수 → C₀ (mg/kg) 자동 환산
+ *
+ * 살포액 농도(mg/L) = 원액농도(%) × 10,000 / 희석배수
+ * 단위면적 약량(mg) = 살포액 농도 × 살포량(L/10a)
+ * C₀(mg/kg)        = 단위면적 약량 × 부착율 / 작물 중량(kg/10a)
+ */
+function calcC0(p: SprayParams): number {
+    const cropWeight = p.cropWeight ?? 1500;    // 포도 기본 수확량 1,500 kg/10a
+    const depositFactor = p.depositFactor ?? 0.15; // 작물 부착율 15%
+
+    const sprayConcMgL = (p.activeConc * 10000) / p.dilutionRatio;
+    const totalDoseMg = sprayConcMgL * p.sprayVolume;
+    return (totalDoseMg * depositFactor) / cropWeight;
+}
+
 interface CalcResult {
     pesticide: string;
     nameKr: string;
@@ -50,6 +76,7 @@ interface CalcResult {
     targetDate: string;
     elapsedDays: number;
     c0: number;
+    c0Calculated: boolean;  // C₀ 자동 환산 여부
     residue: number;           // 예측 잔류량 (mg/kg)
     mrl: number;               // 잔류허용기준 (mg/kg)
     mrlRatio: number;          // MRL 대비 잔류 비율 (%)
@@ -68,7 +95,6 @@ interface CalcResult {
 function calcResidue(req: CalcRequest): CalcResult {
     const {
         pesticide,
-        c0,
         sprayDate,
         targetDate,
         temperature,
@@ -77,7 +103,16 @@ function calcResidue(req: CalcRequest): CalcResult {
         customDt50,
         customMrl,
         customName,
+        sprayParams,
     } = req;
+
+    // C₀ 결정: 직접 입력 우선, 없으면 sprayParams로 자동 환산
+    const c0Calculated = req.c0 == null && sprayParams != null;
+    const c0 = req.c0 ?? (sprayParams ? calcC0(sprayParams) : null);
+
+    if (c0 == null) {
+        throw new Error('c0 또는 sprayParams 중 하나는 필수입니다');
+    }
 
     // 농약 데이터 조회
     const db = PESTICIDE_DB[pesticide];
@@ -132,7 +167,8 @@ function calcResidue(req: CalcRequest): CalcResult {
         sprayDate,
         targetDate: target.toISOString().slice(0, 10),
         elapsedDays,
-        c0,
+        c0: Math.round(c0 * 10000) / 10000,
+        c0Calculated,
         residue: Math.round(residue * 10000) / 10000,
         mrl,
         mrlRatio: Math.round(mrlRatio * 10) / 10,
@@ -153,11 +189,20 @@ export async function POST(req: NextRequest) {
     try {
         const body: CalcRequest = await req.json();
 
-        const { pesticide, c0, sprayDate, temperature, humidity } = body;
+        const { pesticide, c0, sprayParams, sprayDate, temperature, humidity } = body;
 
-        if (!pesticide || c0 == null || !sprayDate || temperature == null || humidity == null) {
+        if (!pesticide || !sprayDate || temperature == null || humidity == null) {
             return NextResponse.json(
-                { error: '필수 파라미터 누락', required: ['pesticide', 'c0', 'sprayDate', 'temperature', 'humidity'] },
+                { error: '필수 파라미터 누락', required: ['pesticide', 'sprayDate', 'temperature', 'humidity', 'c0 또는 sprayParams'] },
+                { status: 400 }
+            );
+        }
+
+        if (c0 == null && !sprayParams) {
+            return NextResponse.json(
+                { error: 'c0(직접 입력) 또는 sprayParams(희석배수 환산) 중 하나 필요',
+                  sprayParams: { activeConc: '원액농도(%)', dilutionRatio: '희석배수', sprayVolume: '살포량(L/10a)', cropWeight: '작물중량(kg/10a, 선택)', depositFactor: '부착율(0~1, 선택)' }
+                },
                 { status: 400 }
             );
         }
