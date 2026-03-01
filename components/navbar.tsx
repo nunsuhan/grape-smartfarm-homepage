@@ -22,7 +22,6 @@ const navItems = [
             { label: 'AI 병해충 진단 (Vision)', href: '/technology/ai-diagnosis' },
             { label: 'PMI-DSS 의사결정', href: '/technology/pmi-dss' },
             { label: '대화형 농업 비서 (RAG)', href: '/technology/rag-system' },
-            { label: 'IoT 센서 네트워크', href: '/technology/sensor-system' },
             { label: '열화상·RGB-D 필요성', href: '/technology/camera-necessity' },
             { label: '데이터 수집 전략', href: '/technology/data-strategy' },
             { label: '지능형 로직 (6개 상세)', href: '/intelligent-logic' },
