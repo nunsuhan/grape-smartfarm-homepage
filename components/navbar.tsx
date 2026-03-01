@@ -17,6 +17,7 @@ const navItems = [
         label: '핵심 기술',
         href: '/technology/docs',
         dropdown: [
+            { label: '기술 개요', href: '/technology' },
             { label: '기술 문서 (검증·로직)', href: '/technology/docs' },
             { label: 'AI 병해충 진단 (Vision)', href: '/technology/ai-diagnosis' },
             { label: 'PMI-DSS 의사결정', href: '/technology/pmi-dss' },
