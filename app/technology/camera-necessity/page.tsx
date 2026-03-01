@@ -7,6 +7,12 @@ import {
     CheckCircle,
     ArrowRight,
     FileText,
+    Leaf,
+    Sun,
+    Droplets,
+    Bug,
+    FlameKindling,
+    Scan,
 } from 'lucide-react';
 
 export const metadata = {
@@ -121,6 +127,226 @@ export default function CameraNecessityPage() {
                         <h4 className="font-bold text-blue-400 mb-2">요약: RGB만으로 부족한 이유</h4>
                         <p className="text-neutral-cream/80 text-sm leading-relaxed">
                             RGB는 색·형상만 제공합니다. 복잡한 포도원에서는 잡초와 잎이 비슷한 색으로 구분이 어렵고, 겹친 잎·그림자를 병반으로 오인할 수 있습니다. RGB-D는 &quot;거리 필터&quot;와 &quot;경계선(깊이 불연속)&quot;으로 관심 영역만 정제해 AI가 더 정확하게 수확량·질병을 판단하도록 합니다.
+                        </p>
+                    </div>
+                </section>
+
+                {/* 생육 시기별 열화상 병해 감지 */}
+                <section className="border-t border-white/10 pt-10">
+                    <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                        <Scan className="w-7 h-7 text-orange-500" />
+                        열화상으로 잡을 수 있는 병·생리장해 — 생육 시기별 안내
+                    </h2>
+                    <p className="text-neutral-cream/70 leading-relaxed mb-8">
+                        열화상 카메라는 식물의 <strong className="text-white">체온(잎 표면 온도)</strong>을 읽습니다.
+                        병원균 활동·수분 스트레스·생리장해가 생기면 체온이 변하고, 열화상은 그 변화를 <strong className="text-orange-400">육안 증상보다 1~3일 먼저</strong> 포착합니다.
+                        아래는 포도 생육 단계별로 열화상이 감지할 수 있는 주요 병해·생리장해입니다.
+                    </p>
+
+                    {/* 시기별 카드 */}
+                    <div className="space-y-6">
+
+                        {/* 5월 */}
+                        <div className="rounded-2xl border border-white/10 overflow-hidden">
+                            <div className="flex items-center gap-3 px-6 py-4 bg-green-500/10 border-b border-white/10">
+                                <Leaf className="w-5 h-5 text-green-400 shrink-0" />
+                                <div>
+                                    <span className="text-green-400 font-bold text-sm uppercase tracking-wide">5월</span>
+                                    <span className="text-neutral-cream/60 text-sm ml-2">신초 신장기 · 잎 전개기</span>
+                                </div>
+                            </div>
+                            <div className="px-6 py-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">🌫 노균병 초기</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        균사 침투 직후 감염 잎의 기공이 부분 폐쇄 → 잎 온도 <strong className="text-orange-300">0.5~1.5℃ 상승</strong>. 육안으로는 아직 노란 반점 없음. 열화상으로 핫스팟 발견 즉시 예방약 살포 가능.
+                                    </p>
+                                </div>
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">🤍 흰가루병 초기</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        분생포자 발아 시 잎 표면 대사 변화로 온도 미세 상승. 어린 잎에서 시작되므로 <strong className="text-orange-300">신초 끝 부위</strong>를 집중 스캔.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="px-6 pb-5">
+                                <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg px-4 py-2 text-xs text-orange-300">
+                                    <strong>열화상 촬영 팁:</strong> 오전 10~11시, 맑은 날 촬영 권장. 비 직후 또는 흐린 날은 온도 차이가 줄어 감도 저하.
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 6월 */}
+                        <div className="rounded-2xl border border-white/10 overflow-hidden">
+                            <div className="flex items-center gap-3 px-6 py-4 bg-yellow-500/10 border-b border-white/10">
+                                <Droplets className="w-5 h-5 text-yellow-400 shrink-0" />
+                                <div>
+                                    <span className="text-yellow-400 font-bold text-sm uppercase tracking-wide">6월</span>
+                                    <span className="text-neutral-cream/60 text-sm ml-2">개화기 · 착과기</span>
+                                </div>
+                            </div>
+                            <div className="px-6 py-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">🌫 노균병 급속 확산</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        장마 전후 포자 폭발적 증가. 감염 잎 온도가 <strong className="text-orange-300">건전 잎보다 1~2℃ 높음</strong>. 열화상으로 포장 내 감염 분포도 작성 → 집중 방제 구역 특정.
+                                    </p>
+                                </div>
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">🤍 흰가루병 심화</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        어린 열매 표면 감염 시 과립 온도 차이 발생. 열화상으로 이삭 단위 감염 여부 스캔 가능. 육안 확인 전 <strong className="text-orange-300">2~3일 선행 감지</strong>.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="px-6 pb-5">
+                                <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg px-4 py-2 text-xs text-orange-300">
+                                    <strong>열화상 촬영 팁:</strong> 개화기 약제 살포 전 스캔 → 감염 구역 파악 후 살포. 약제 낭비 30% 이상 절감 가능.
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 7월 */}
+                        <div className="rounded-2xl border border-white/10 overflow-hidden">
+                            <div className="flex items-center gap-3 px-6 py-4 bg-orange-500/10 border-b border-white/10">
+                                <Bug className="w-5 h-5 text-orange-400 shrink-0" />
+                                <div>
+                                    <span className="text-orange-400 font-bold text-sm uppercase tracking-wide">7월</span>
+                                    <span className="text-neutral-cream/60 text-sm ml-2">과립 비대기</span>
+                                </div>
+                            </div>
+                            <div className="px-6 py-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">🟤 탄저병</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        감염 과립은 수분 이동 장애로 표면 온도 <strong className="text-orange-300">0.8~1.2℃ 상승</strong>. 과방 내 감염 과립 위치 파악 → 조기 제거로 확산 차단.
+                                    </p>
+                                </div>
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">🍂 갈색무늬병</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        병반 형성 잎은 광합성 저하로 온도 하강. 건전 잎과 <strong className="text-orange-300">온도 차 −0.5~−1℃</strong>의 저온 패치로 감지. 7월 중순 이후 집중 관찰.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="px-6 pb-5">
+                                <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg px-4 py-2 text-xs text-orange-300">
+                                    <strong>열화상 촬영 팁:</strong> 과립 비대기에는 과방 방향(아래쪽)으로 카메라 각도 조정. 잎이 아닌 열매 온도에 집중.
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 8월 */}
+                        <div className="rounded-2xl border border-white/10 overflow-hidden">
+                            <div className="flex items-center gap-3 px-6 py-4 bg-red-500/10 border-b border-white/10">
+                                <Sun className="w-5 h-5 text-red-400 shrink-0" />
+                                <div>
+                                    <span className="text-red-400 font-bold text-sm uppercase tracking-wide">8월</span>
+                                    <span className="text-neutral-cream/60 text-sm ml-2">착색기 · 고온기</span>
+                                </div>
+                            </div>
+                            <div className="px-6 py-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">☀️ 일소(Sunburn)</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        열화상의 <strong className="text-orange-300">가장 강력한 활용처</strong>. 과방 표면 온도 40℃ 이상이면 일소 위험. 열화상으로 고온 과방 실시간 모니터링 → 차광망·살수 등 즉각 대응. 예방 가능 손실 40~60%.
+                                    </p>
+                                </div>
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">🫐 축과병(Berry Shrivel)</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        과립 내 수분 이동 차단 → 축과 부위 온도 <strong className="text-orange-300">주변 대비 1~2℃ 상승</strong>. 착색 불균일 발생 전, 열화상으로 위험 과방 사전 식별.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="px-6 pb-5">
+                                <div className="bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-2 text-xs text-red-300">
+                                    <strong>⚠ 일소 경보:</strong> 열화상 연속 스캔(1시간 간격)으로 과방 온도 임계치(38℃) 도달 시 자동 알림 → FarmSense 앱 푸시 알림 연동.
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 9월 */}
+                        <div className="rounded-2xl border border-white/10 overflow-hidden">
+                            <div className="flex items-center gap-3 px-6 py-4 bg-purple-500/10 border-b border-white/10">
+                                <FlameKindling className="w-5 h-5 text-purple-400 shrink-0" />
+                                <div>
+                                    <span className="text-purple-400 font-bold text-sm uppercase tracking-wide">9월</span>
+                                    <span className="text-neutral-cream/60 text-sm ml-2">수확기</span>
+                                </div>
+                            </div>
+                            <div className="px-6 py-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">💥 열과(Cracking)</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        갑작스러운 수분 흡수로 과피 균열 직전 과립 내압 증가. 열화상으로 <strong className="text-orange-300">과방 온도 불균일 패턴</strong> 감지 → 균열 전 수확 시기 조정.
+                                    </p>
+                                </div>
+                                <div className="bg-white/5 rounded-xl p-4">
+                                    <h4 className="font-bold text-white mb-1 text-sm">🩶 잿빛곰팡이병</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        감염 과방은 세포 붕괴로 온도 하강 패치 형성. 육안으로 회색 곰팡이 보이기 <strong className="text-orange-300">1~2일 전</strong> 저온 이상 패치로 감지 가능.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="px-6 pb-5">
+                                <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg px-4 py-2 text-xs text-orange-300">
+                                    <strong>열화상 촬영 팁:</strong> 수확 2주 전부터 매일 아침 스캔. 저온 이상 패치 발견 즉시 수확 순서 조정 및 격리.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 요약 표 */}
+                    <div className="mt-10 overflow-x-auto">
+                        <table className="w-full text-sm border border-white/10 rounded-xl overflow-hidden">
+                            <thead>
+                                <tr className="bg-white/10 text-neutral-cream/90">
+                                    <th className="text-left px-4 py-3 font-bold">시기</th>
+                                    <th className="text-left px-4 py-3 font-bold">병해·장해</th>
+                                    <th className="text-left px-4 py-3 font-bold">열화상 신호</th>
+                                    <th className="text-left px-4 py-3 font-bold">선행 감지</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-white/5">
+                                <tr className="hover:bg-white/5">
+                                    <td className="px-4 py-3 text-green-400 font-medium">5월</td>
+                                    <td className="px-4 py-3 text-neutral-cream/80">노균병·흰가루병 초기</td>
+                                    <td className="px-4 py-3 text-orange-300">+0.5~1.5℃ 상승</td>
+                                    <td className="px-4 py-3 text-neutral-cream/60">1~3일 선행</td>
+                                </tr>
+                                <tr className="hover:bg-white/5">
+                                    <td className="px-4 py-3 text-yellow-400 font-medium">6월</td>
+                                    <td className="px-4 py-3 text-neutral-cream/80">노균병 확산·흰가루병</td>
+                                    <td className="px-4 py-3 text-orange-300">+1~2℃ 상승</td>
+                                    <td className="px-4 py-3 text-neutral-cream/60">2~3일 선행</td>
+                                </tr>
+                                <tr className="hover:bg-white/5">
+                                    <td className="px-4 py-3 text-orange-400 font-medium">7월</td>
+                                    <td className="px-4 py-3 text-neutral-cream/80">탄저병·갈색무늬병</td>
+                                    <td className="px-4 py-3 text-orange-300">±0.5~1.2℃ 변화</td>
+                                    <td className="px-4 py-3 text-neutral-cream/60">1~2일 선행</td>
+                                </tr>
+                                <tr className="hover:bg-white/5">
+                                    <td className="px-4 py-3 text-red-400 font-medium">8월</td>
+                                    <td className="px-4 py-3 text-neutral-cream/80">일소·축과병</td>
+                                    <td className="px-4 py-3 text-orange-300">40℃ 초과 / +1~2℃</td>
+                                    <td className="px-4 py-3 text-neutral-cream/60">실시간 예방</td>
+                                </tr>
+                                <tr className="hover:bg-white/5">
+                                    <td className="px-4 py-3 text-purple-400 font-medium">9월</td>
+                                    <td className="px-4 py-3 text-neutral-cream/80">열과·잿빛곰팡이</td>
+                                    <td className="px-4 py-3 text-orange-300">저온 패치 / 불균일</td>
+                                    <td className="px-4 py-3 text-neutral-cream/60">1~2일 선행</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="mt-6 p-5 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+                        <p className="text-amber-300 text-sm leading-relaxed">
+                            <strong>FLIR One Pro 기준:</strong> −20~400℃ 측정, ±0.15℃ 정밀도, 160×120 열화상 해상도.
+                            FarmSense는 저해상도 단점을 <strong>VisTA-SR 초해상도 처리</strong>로 보완해 농가가 고가 카메라 없이도 전문가 수준의 예찰이 가능하도록 지원합니다.
                         </p>
                     </div>
                 </section>
