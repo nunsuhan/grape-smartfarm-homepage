@@ -38,7 +38,17 @@ export default function AiDiagnosisPage() {
                             </p>
                             <ul className="space-y-2 text-sm text-neutral-cream/70">
                                 <li className="flex gap-2"><span className="text-orange-400 shrink-0">•</span><strong className="text-white">이상 감지 (정상/비정상 구분)</strong>는 신뢰도 있게 작동합니다.</li>
-                                <li className="flex gap-2"><span className="text-orange-400 shrink-0">•</span><strong className="text-white">병명 진단은 약 50% 수준</strong>입니다. 결과는 참고용으로만 활용하세요.</li>
+                                <li className="flex gap-2"><span className="text-orange-400 shrink-0">•</span>
+                                    <span><strong className="text-white">병명 진단은 약 50% 수준</strong>입니다. 결과는 참고용으로만 활용하세요.</span>
+                                </li>
+                                <li className="flex gap-2 pl-4 border-l border-orange-500/30">
+                                    <span className="text-neutral-cream/50 text-xs leading-relaxed">
+                                        노균병·탄저병 두 가지만 놓고 보면 98% 정확도를 달성했습니다. 그러나 흰가루병·갈색무늬병·생리장해 등을 입력하면
+                                        AI가 이를 노균 또는 탄저로 잘못 진단하는 <strong className="text-white">확증 편향</strong>이 발생했습니다.
+                                        학습 데이터가 노균·탄저에 편중되어 있기 때문입니다. 이 문제를 인지하고
+                                        <strong className="text-white"> 의도적으로 전체 정확도를 낮추는 대신 이상증상 발견에 집중</strong>하는 방향으로 전환했습니다.
+                                    </span>
+                                </li>
                                 <li className="flex gap-2"><span className="text-orange-400 shrink-0">•</span>생리장해·약해는 아직 학습 데이터 부족으로 구분이 어렵습니다.</li>
                                 <li className="flex gap-2"><span className="text-secondary-gold shrink-0">→</span>진단된 사진을 게시판에 올려주시면 AI 개선에 직접 기여하실 수 있습니다.</li>
                             </ul>
