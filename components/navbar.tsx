@@ -52,12 +52,12 @@ const navItems = [
             { label: '앱 다운로드', href: '/smartfarm/download' },
         ]
     },
-    { label: '포도 재배 정보', href: '/grape-info' },
-    { label: '우리의 가치', href: '/about' },
     {
         label: '고객지원',
         href: '/faq',
         dropdown: [
+            { label: '포도 재배 정보', href: '/grape-info' },
+            { label: '우리의 가치', href: '/about' },
             { label: 'FAQ', href: '/faq' },
             { label: '문의 게시판', href: '/support/board' },
             { label: '센서 설치 도우미', href: '/sensor-installation-guide' },
