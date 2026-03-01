@@ -13,6 +13,9 @@ import {
     Bug,
     FlameKindling,
     Scan,
+    MapPin,
+    Activity,
+    Waves,
 } from 'lucide-react';
 
 export const metadata = {
@@ -127,6 +130,118 @@ export default function CameraNecessityPage() {
                         <h4 className="font-bold text-blue-400 mb-2">요약: RGB만으로 부족한 이유</h4>
                         <p className="text-neutral-cream/80 text-sm leading-relaxed">
                             RGB는 색·형상만 제공합니다. 복잡한 포도원에서는 잡초와 잎이 비슷한 색으로 구분이 어렵고, 겹친 잎·그림자를 병반으로 오인할 수 있습니다. RGB-D는 &quot;거리 필터&quot;와 &quot;경계선(깊이 불연속)&quot;으로 관심 영역만 정제해 AI가 더 정확하게 수확량·질병을 판단하도록 합니다.
+                        </p>
+                    </div>
+                </section>
+
+                {/* CWSI 수관 온도 모니터링 — 메인 용도 */}
+                <section className="border-t border-white/10 pt-10">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-wide mb-4">
+                        <Activity className="w-3.5 h-3.5" />
+                        열화상의 핵심 용도 (70%)
+                    </div>
+                    <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                        <Waves className="w-7 h-7 text-orange-500" />
+                        수관(캐노피) 온도 모니터링 — CWSI 기반 구역 관리
+                    </h2>
+                    <p className="text-neutral-cream/70 leading-relaxed mb-2">
+                        전 세계 정밀농업에서 열화상을 쓰는 이유의 <strong className="text-white">70% 이상이 수분 스트레스 감지(CWSI)</strong>입니다.
+                        개별 잎의 병해 감지보다 먼저, 나무 전체의 건강 상태를 읽는 것이 열화상의 메인 역할입니다.
+                    </p>
+                    <p className="text-neutral-cream/70 leading-relaxed mb-8">
+                        건강한 잎은 기공을 열고 증산해 잎 온도가 기온보다 <strong className="text-white">2~5℃ 낮습니다.</strong>
+                        수분 스트레스·뿌리 문제가 생기면 기공을 닫아 증산이 줄고, 잎 온도가 기온과 같아지거나 높아집니다.
+                        이 온도 차이를 <strong className="text-orange-400">CWSI(Crop Water Stress Index, 0~1)</strong>로 수치화해 관개 시점을 결정합니다.
+                    </p>
+
+                    {/* 색상 구역 안내 */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div className="rounded-xl border border-blue-500/30 bg-blue-500/10 p-5">
+                            <div className="text-2xl mb-2">🔵</div>
+                            <h4 className="font-bold text-blue-300 mb-1 text-sm">정상 구역</h4>
+                            <p className="text-neutral-cream/60 text-xs leading-relaxed">잎 온도 &lt; 기온 2~5℃<br />기공 개방, 증산 활발<br />수분·영양 공급 정상</p>
+                        </div>
+                        <div className="rounded-xl border border-yellow-500/30 bg-yellow-500/10 p-5">
+                            <div className="text-2xl mb-2">🟡</div>
+                            <h4 className="font-bold text-yellow-300 mb-1 text-sm">주의 구역</h4>
+                            <p className="text-neutral-cream/60 text-xs leading-relaxed">잎 온도 ≈ 기온<br />기공 부분 폐쇄, 증산 감소<br />관수 검토 필요</p>
+                        </div>
+                        <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-5">
+                            <div className="text-2xl mb-2">🔴</div>
+                            <h4 className="font-bold text-red-300 mb-1 text-sm">위험 구역</h4>
+                            <p className="text-neutral-cream/60 text-xs leading-relaxed">잎 온도 &gt; 기온<br />기공 폐쇄, 증산 정지<br />즉시 관수 또는 원인 조사</p>
+                        </div>
+                    </div>
+
+                    {/* 시기별 수관 온도 활용 */}
+                    <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <MapPin className="w-5 h-5 text-orange-400" />
+                        시기별 수관 온도 활용
+                    </h3>
+                    <div className="space-y-4 mb-8">
+                        <div className="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                            <div className="shrink-0 w-16 text-center">
+                                <span className="text-green-400 font-bold text-sm">5월</span>
+                                <p className="text-neutral-cream/40 text-xs">전엽~신초</p>
+                            </div>
+                            <div>
+                                <h4 className="text-white font-medium text-sm mb-1">나무별 건강 격차 파악</h4>
+                                <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                    잎이 펴지기 시작하면 나무별 온도 차이가 드러납니다. 기온 25℃일 때 정상 나무 잎 온도 20~22℃, 문제 나무 24~26℃.
+                                    눈으로는 멀쩡해 보여도 뿌리 활착 불량·토양 배수 문제·영양 결핍을 선행 감지합니다.
+                                    <strong className="text-white"> 이 시점의 베이스라인 수집이 여름 관리의 기준점</strong>이 됩니다.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                            <div className="shrink-0 w-16 text-center">
+                                <span className="text-orange-400 font-bold text-sm">6~8월</span>
+                                <p className="text-neutral-cream/40 text-xs">본격 생육</p>
+                            </div>
+                            <div className="space-y-3">
+                                <div>
+                                    <h4 className="text-white font-medium text-sm mb-0.5">① 관수 구역 판단 (가장 실용적)</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        FLIR로 밭을 훑으면 수분 스트레스 구역이 색으로 바로 보입니다. 토양수분 센서는 꽂힌 한 지점만 대표하지만,
+                                        열화상은 <strong className="text-white">밭 전체 면적을 한 번에</strong> 보여줍니다. "어디에 물을 줄지"를 직관적으로 결정.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-medium text-sm mb-0.5">② 병해 확산 범위 파악</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        감염이 어디까지 퍼졌는지 수관 전체로 범위를 가늠합니다. 국소 살포 범위를 정하는 데 직접 활용.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-medium text-sm mb-0.5">③ 착색기 품질 구역 관리</h4>
+                                    <p className="text-neutral-cream/60 text-xs leading-relaxed">
+                                        수관 온도 불균일 → 착색 불균일. 온도 높은 구역 송이는 착색 빠르고, 낮은 구역은 느립니다.
+                                        수확 시기를 구역별로 다르게 잡아 <strong className="text-white">전체 품질 균일도 향상.</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* FarmSense 워크플로우 */}
+                    <div className="p-6 bg-neutral-900 border border-orange-500/20 rounded-xl font-mono text-xs leading-loose">
+                        <p className="text-orange-400 font-bold mb-3 font-sans text-sm not-italic">[수관 온도 기반 구역 관리 워크플로우]</p>
+                        <p className="text-neutral-cream/70">농민이 FLIR 들고 밭 끝에서 끝까지 걸으며 수관 스캔</p>
+                        <p className="text-neutral-cream/50 mt-2">정상 구역: 파란색~초록색 (잎 온도 &lt; 기온)</p>
+                        <p className="text-yellow-400/80">주의 구역: 노란색 (잎 온도 ≈ 기온) → 수분 스트레스</p>
+                        <p className="text-red-400/80">위험 구역: 빨간색 (잎 온도 &gt; 기온) → 심각한 문제</p>
+                        <div className="mt-3 border-t border-white/10 pt-3 space-y-1 text-neutral-cream/60">
+                            <p>→ 주의 구역 발견 시 사진 촬영 후 FarmSense 앱 업로드</p>
+                            <p className="text-green-400/80">→ 앱: &quot;3번 줄 수분 스트레스 감지. 관수 권장&quot;</p>
+                            <p>→ 토양수분 센서 데이터와 교차 검증 → 정확도 향상</p>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 p-5 bg-white/5 border border-white/10 rounded-xl">
+                        <p className="text-neutral-cream/80 text-sm leading-relaxed">
+                            <strong className="text-orange-400">FarmSense 포지셔닝:</strong> "병해 감지용"으로만 팔면 병 많은 시즌에 한정됩니다.
+                            <strong className="text-white"> "수관 온도 관리 + 병해 조기 감지"</strong>로 팔면 5월 베이스라인 수집부터 9월 수확까지
+                            5개월 내내 가치를 제공하는 도구가 됩니다. 시범 농가 설득이 훨씬 쉬워지는 이유입니다.
                         </p>
                     </div>
                 </section>
