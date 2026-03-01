@@ -192,98 +192,6 @@ export default function AiDiagnosisPage() {
                 </Container>
             </Section>
 
-            {/* Detailed Comparison: Mildew vs Burn */}
-            <Section className="py-20 bg-neutral-900">
-                <Container>
-                    <div className="max-w-5xl mx-auto">
-                        <div className="text-center mb-12">
-                            <span className="text-secondary-gold font-bold tracking-wider uppercase text-sm">Focus</span>
-                            <h2 className="text-3xl font-serif font-bold text-white mt-2 mb-6">
-                                헷갈리는 포도 잎 증상: 노균병인가, 약해인가?
-                            </h2>
-                            <p className="text-neutral-cream/70">
-                                포도 농사에서 가장 구분하기 어려운 것이 바로 노균병(질병)과 약해(생리장해)입니다.<br />
-                                FarmSense는 육안의 한계를 넘기 위해 발생 환경을 분석합니다.
-                            </p>
-                        </div>
-
-                        {/* Comparison Table */}
-                        <div className="overflow-x-auto mb-16 rounded-xl border border-white/10 shadow-2xl">
-                            <table className="w-full text-left border-collapse">
-                                <thead>
-                                    <tr className="bg-white/10">
-                                        <th className="p-6 text-white font-bold border-b border-white/10 w-1/4">구분</th>
-                                        <th className="p-6 text-red-300 font-bold border-b border-white/10 w-1/3">노균병 (Downy Mildew)</th>
-                                        <th className="p-6 text-blue-300 font-bold border-b border-white/10 w-1/3">약해 (Pesticide Burn)</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="bg-neutral-black text-neutral-cream/80">
-                                    <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
-                                        <td className="p-6 font-medium text-white">주요 원인</td>
-                                        <td className="p-6">곰팡이균 <span className="text-neutral-500 text-sm">(습한 환경)</span></td>
-                                        <td className="p-6">농약 살포 오류 <span className="text-neutral-500 text-sm">(희석 배수, 고온기)</span></td>
-                                    </tr>
-                                    <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
-                                        <td className="p-6 font-medium text-white">잎 앞면</td>
-                                        <td className="p-6">부정형의 노란 '기름 얼룩' 형태 증상</td>
-                                        <td className="p-6">잎 가장자리나 약제가 고인 부분에 갈색 반점</td>
-                                    </tr>
-                                    <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
-                                        <td className="p-6 font-medium text-white">잎 뒷면</td>
-                                        <td className="p-6 text-red-300 font-medium">흰색 곰팡이(포자)가 솜털처럼 형성</td>
-                                        <td className="p-6">곰팡이가 없으며 깨끗함</td>
-                                    </tr>
-                                    <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
-                                        <td className="p-6 font-medium text-white">발생 시기</td>
-                                        <td className="p-6">장마철, 야간 습도가 높고 선선할 때</td>
-                                        <td className="p-6">농약 살포 직후 2~3일 이내 급격히 발생</td>
-                                    </tr>
-                                    <tr className="hover:bg-white/5 transition-colors">
-                                        <td className="p-6 font-medium text-white">확산 여부</td>
-                                        <td className="p-6">시간이 지날수록 주변 잎과 나무로 확산</td>
-                                        <td className="p-6">더 이상 번지지 않고 정체됨</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        {/* Environment Checklist */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="bg-red-950/20 border border-red-500/20 p-8 rounded-2xl">
-                                <h3 className="text-xl font-bold text-red-400 mb-6 flex items-center gap-2">
-                                    <Thermometer className="w-5 h-5" /> 노균병일 확률이 높은 경우
-                                </h3>
-                                <ul className="space-y-4">
-                                    <li className="flex items-start gap-3 text-neutral-cream/80">
-                                        <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                                        <span>최근 비가 자주 왔거나 상대 습도가 80% 이상 지속된 경우</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-neutral-cream/80">
-                                        <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                                        <span>야간 온도가 15~25°C 사이로 선선한 상태가 유지된 경우</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div className="bg-blue-950/20 border border-blue-500/20 p-8 rounded-2xl">
-                                <h3 className="text-xl font-bold text-blue-400 mb-6 flex items-center gap-2">
-                                    <CloudSun className="w-5 h-5" /> 약해일 확률이 높은 경우
-                                </h3>
-                                <ul className="space-y-4">
-                                    <li className="flex items-start gap-3 text-neutral-cream/80">
-                                        <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
-                                        <span>농약 살포 당일 낮 최고 기온이 30°C 이상의 고온이었던 경우</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-neutral-cream/80">
-                                        <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
-                                        <span>최근 서로 다른 계통의 농약을 혼용하여 살포한 이력이 있는 경우</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </Container>
-            </Section>
 
             {/* Photo Guide */}
             <Section className="py-20 border-b border-white/10">
@@ -342,37 +250,6 @@ export default function AiDiagnosisPage() {
             <Section className="py-20">
                 <Container>
                     <div className="max-w-4xl mx-auto">
-                        <h2 className="text-3xl font-serif font-bold text-white mb-10 text-center">더 자세한 정보 검색</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-                            {[
-                                {
-                                    icon: Search,
-                                    title: "현장애로기술사례",
-                                    code: "elctrnCvpl",
-                                    desc: "실제 농가들이 겪은 노균병과 약해의 상담 사례 키워드 조회"
-                                },
-                                {
-                                    icon: BookOpen,
-                                    title: "농업용어사전",
-                                    code: "farmDic",
-                                    desc: "'노균병'이나 '약해'의 정확한 정의와 병징 설명 확인"
-                                },
-                                {
-                                    icon: UserCheck,
-                                    title: "현장기술지원",
-                                    code: "sptTchnlgySport",
-                                    desc: "전문가들이 현장에서 진단한 유사 사례 리포트 참고"
-                                }
-                            ].map((item, i) => (
-                                <a key={i} href="#" className="block p-6 bg-neutral-900 rounded-xl border border-white/10 hover:border-secondary-gold/50 transition-colors group">
-                                    <item.icon className="w-8 h-8 text-neutral-500 group-hover:text-secondary-gold mb-4 transition-colors" />
-                                    <h3 className="text-lg font-bold text-white mb-1">{item.title}</h3>
-                                    <code className="text-xs font-mono text-white/30 mb-3 block">{item.code}</code>
-                                    <p className="text-sm text-neutral-cream/60">{item.desc}</p>
-                                </a>
-                            ))}
-                        </div>
-
                         <div className="text-center bg-gradient-to-br from-secondary-gold/20 to-transparent p-12 rounded-3xl border border-secondary-gold/20">
                             <h3 className="text-2xl font-serif font-bold text-white mb-4">
                                 FarmSense는 농민의 경험을 존중합니다
