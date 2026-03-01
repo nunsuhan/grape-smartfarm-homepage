@@ -30,6 +30,19 @@ export default function AiDiagnosisPage() {
                             진단 모델의 한계와 농가의 역할을 재정의하며,<br />
                             현상을 정확히 이해하고 대처할 수 있도록 돕습니다.
                         </p>
+
+                        {/* 솔직한 현황 고지 */}
+                        <div className="mt-10 max-w-2xl mx-auto bg-orange-500/10 border border-orange-500/30 rounded-xl p-5 text-left">
+                            <p className="text-orange-300 font-bold text-sm mb-3 flex items-center gap-2">
+                                <AlertCircle className="w-4 h-4" /> 현재 AI 진단 수준 — 솔직하게 말씀드립니다
+                            </p>
+                            <ul className="space-y-2 text-sm text-neutral-cream/70">
+                                <li className="flex gap-2"><span className="text-orange-400 shrink-0">•</span><strong className="text-white">이상 감지 (정상/비정상 구분)</strong>는 신뢰도 있게 작동합니다.</li>
+                                <li className="flex gap-2"><span className="text-orange-400 shrink-0">•</span><strong className="text-white">병명 진단은 약 50% 수준</strong>입니다. 결과는 참고용으로만 활용하세요.</li>
+                                <li className="flex gap-2"><span className="text-orange-400 shrink-0">•</span>생리장해·약해는 아직 학습 데이터 부족으로 구분이 어렵습니다.</li>
+                                <li className="flex gap-2"><span className="text-secondary-gold shrink-0">→</span>진단된 사진을 게시판에 올려주시면 AI 개선에 직접 기여하실 수 있습니다.</li>
+                            </ul>
+                        </div>
                     </motion.div>
                 </Container>
             </Section>
@@ -369,6 +382,20 @@ export default function AiDiagnosisPage() {
                                 FarmSense는 과학적인 환경 분석 데이터와 AI의 통계적 확률을 결합하여,<br />
                                 여러분의 소중한 포도밭을 지키는 가장 객관적인 근거를 제시하겠습니다.
                             </p>
+                        </div>
+
+                        {/* 사진 수집 읍소 */}
+                        <div className="mt-12 bg-white/5 border border-secondary-gold/20 rounded-2xl p-8 text-center">
+                            <div className="text-4xl mb-4">🙏</div>
+                            <h3 className="text-xl font-bold text-white mb-3">병해 사진을 올려주세요 — AI를 함께 키워주십시오</h3>
+                            <p className="text-neutral-cream/60 text-sm leading-relaxed mb-6 max-w-xl mx-auto">
+                                현재 병명 진단 정확도가 낮은 가장 큰 이유는 <strong className="text-white">국내 현장 사진 데이터 부족</strong>입니다.<br />
+                                농가에서 확인된 병해·생리장해·약해 사진과 병명을 게시판에 올려주시면,<br />
+                                그 데이터로 AI를 재학습해 모든 농가의 정확도를 높일 수 있습니다.
+                            </p>
+                            <a href="/support/board/write" className="inline-flex items-center gap-2 px-6 py-3 bg-secondary-gold text-neutral-black font-bold rounded-full hover:brightness-110 transition text-sm">
+                                <Camera className="w-4 h-4" /> 병해 사진 올리러 가기
+                            </a>
                         </div>
                     </div>
                 </Container>

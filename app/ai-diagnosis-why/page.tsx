@@ -1,8 +1,7 @@
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { Container } from '@/components/ui/container';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
-import { Check, AlertTriangle, ArrowRight, Search, Target, Zap, BarChart } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Camera, MessageSquareHeart } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AiDiagnosisWhyPage() {
@@ -10,188 +9,206 @@ export default function AiDiagnosisWhyPage() {
         <main className="min-h-screen bg-neutral-black text-white selection:bg-secondary-gold">
             <Navbar />
 
-            {/* Section 1: Hero */}
+            {/* Hero */}
             <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-gradient-to-b from-neutral-black/70 via-neutral-black/50 to-neutral-black z-10" />
-                    {/* Placeholder for background image */}
-                    <div className="w-full h-full bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-50" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("https://images.unsplash.com/photo-1591080469184-188b0a99057b?q=80&w=2669&auto=format&fit=crop")' }}></div>
+                    <div className="w-full h-full bg-cover bg-center opacity-50" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("https://images.unsplash.com/photo-1591080469184-188b0a99057b?q=80&w=2669&auto=format&fit=crop")' }}></div>
                 </div>
-
                 <Container className="relative z-20 text-center">
                     <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-white leading-tight">
-                        AI 병해 진단, <br className="md:hidden" />왜 필요한가?
+                        AI 병해 진단,<br className="md:hidden" /> 솔직하게 말씀드립니다
                     </h1>
-                    <p className="text-xl md:text-2xl text-neutral-cream/90 max-w-3xl mx-auto font-light">
-                        사람 눈에 보이기 3일 전,<br className="md:hidden" /> AI는 이미 알고 있습니다.
+                    <p className="text-xl md:text-2xl text-neutral-cream/80 max-w-3xl mx-auto font-light">
+                        이상 감지는 유효합니다. 병명 진단은 참고용입니다.
                     </p>
                 </Container>
             </section>
 
-            {/* Section 2: Problem */}
+            {/* 솔직한 현황 고지 */}
+            <section className="py-16 bg-orange-500/5 border-y border-orange-500/20">
+                <Container>
+                    <div className="max-w-3xl mx-auto">
+                        <div className="flex items-start gap-4">
+                            <AlertTriangle className="w-8 h-8 text-orange-400 shrink-0 mt-1" />
+                            <div>
+                                <h2 className="text-xl font-bold text-orange-300 mb-3">팜센스 AI 진단 현황 — 솔직한 고지</h2>
+                                <ul className="space-y-3 text-neutral-cream/80 text-sm leading-relaxed">
+                                    <li className="flex gap-2">
+                                        <span className="text-orange-400 shrink-0">•</span>
+                                        현재 모델은 <strong className="text-white">10가지 주요 병해</strong>를 기준으로 학습됐습니다. 생리장해·작물보호제 반응(약해)은 아직 학습 데이터가 부족합니다.
+                                    </li>
+                                    <li className="flex gap-2">
+                                        <span className="text-orange-400 shrink-0">•</span>
+                                        <strong className="text-white">병명 진단 정확도는 약 50% 수준</strong>입니다. 비슷한 증상의 병해를 혼동할 수 있으니 결과는 참고용으로만 활용하세요.
+                                    </li>
+                                    <li className="flex gap-2">
+                                        <span className="text-orange-400 shrink-0">•</span>
+                                        <strong className="text-white">확증 편향 방지</strong>를 위해 AI가 제시하는 병명에 과도하게 의존하지 않도록 의도적으로 신뢰도를 낮게 표시합니다.
+                                    </li>
+                                    <li className="flex gap-2">
+                                        <span className="text-orange-400 shrink-0">•</span>
+                                        현재 AI가 신뢰할 수 있는 역할은 <strong className="text-white">"정상 vs 이상" 감지</strong>입니다. 뭔가 이상하다는 신호를 빨리 포착하는 것이 핵심 가치입니다.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </Container>
+            </section>
+
+            {/* 문제: 왜 병해 진단이 어려운가 */}
             <section className="py-20 bg-neutral-black">
                 <Container>
                     <div className="max-w-4xl mx-auto text-center space-y-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 font-medium animate-pulse">
-                            <AlertTriangle size={18} />
-                            <span>전세계 농업 손실의 35%가 병해충입니다</span>
-                        </div>
-
                         <h2 className="text-3xl md:text-4xl font-serif font-bold">
                             "병해를 발견했을 때는<br />이미 늦었습니다"
                         </h2>
+                        <p className="text-neutral-cream/60">이 문장은 여전히 사실입니다. 다만 AI가 해결하는 방식이 다릅니다.</p>
 
                         <div className="grid md:grid-cols-3 gap-8 text-left mt-12">
                             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
                                 <h3 className="text-xl font-bold mb-3 text-red-400">늦은 발견</h3>
                                 <p className="text-neutral-cream/70">육안으로 증상이 보일 때는 이미 병원균이 주변으로 확산된 상태입니다.</p>
+                                <p className="text-secondary-gold text-sm mt-3">→ AI가 "이상 감지"로 조기 알림</p>
                             </div>
                             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
                                 <h3 className="text-xl font-bold mb-3 text-red-400">오진 위험</h3>
-                                <p className="text-neutral-cream/70">비슷한 증상의 병해를 혼동하여 잘못된 약제를 사용하면 내성만 키웁니다.</p>
+                                <p className="text-neutral-cream/70">비슷한 증상의 병해를 혼동하면 잘못된 약제 사용으로 내성만 키웁니다.</p>
+                                <p className="text-orange-400 text-sm mt-3">→ AI도 동일한 위험 있음. 병명은 참고만</p>
                             </div>
                             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
                                 <h3 className="text-xl font-bold mb-3 text-red-400">인력 한계</h3>
                                 <p className="text-neutral-cream/70">수천 평의 농장을 매일 꼼꼼히 점검하는 것은 물리적으로 불가능합니다.</p>
+                                <p className="text-secondary-gold text-sm mt-3">→ AI가 24시간 이상 징후 모니터링</p>
                             </div>
                         </div>
-                        <p className="text-sm text-neutral-cream/40 text-right mt-4">출처: 국제농업연구센터 (ICAR)</p>
                     </div>
                 </Container>
             </section>
 
-            {/* Section 3: Comparison Table */}
-            <section className="py-20 bg-[#1A0A2E]">
+            {/* AI가 실제로 잘하는 것 vs 못하는 것 */}
+            <section className="py-20 bg-white/[0.02] border-y border-white/10">
                 <Container>
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">왜 AI 진단인가?</h2>
-                        <p className="text-neutral-cream/60">전통적인 육안 검사와 AI 정밀 진단의 차이</p>
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">AI가 실제로 잘하는 것과 못하는 것</h2>
+                        <p className="text-neutral-cream/50">과장 없이 현재 수준을 말씀드립니다</p>
                     </div>
 
-                    <div className="max-w-4xl mx-auto overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
-                        <div className="grid grid-cols-3 bg-white/5 border-b border-white/10 p-6 font-bold text-center">
-                            <div className="text-neutral-cream/60">구분</div>
-                            <div className="text-neutral-cream">육안 검사</div>
-                            <div className="text-secondary-gold">AI 진단</div>
+                    <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+                        <div className="bg-green-500/5 border border-green-500/20 rounded-2xl p-8">
+                            <p className="text-green-400 font-bold text-sm mb-4 tracking-widest uppercase">잘 합니다</p>
+                            <ul className="space-y-3 text-neutral-cream/80 text-sm">
+                                {[
+                                    '정상 잎과 이상 잎 구분 (이상 감지)',
+                                    '노균병·흰가루병 등 주요 10종 병해 후보 제시',
+                                    '환경 데이터(온도·습도)로 병해 발생 위험도 계산',
+                                    '연속 사진으로 증상 진행 추이 추적',
+                                    '24시간 자동 모니터링 알림',
+                                ].map((item) => (
+                                    <li key={item} className="flex gap-2">
+                                        <span className="text-green-400 shrink-0">✓</span>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
 
-                        <div className="divide-y divide-white/5 bg-neutral-black/40 backdrop-blur-sm">
-                            {[
-                                { label: '초기 탐지', human: '증상 발현 후', ai: '증상 발현 3일 전' },
-                                { label: '정확도', human: '경험에 의존', ai: '95-99%' },
-                                { label: '일관성', human: '피로시 저하', ai: '항상 일정' },
-                                { label: '속도', human: '수백 그루/일', ai: '수천 장/시간' },
-                                { label: '기록', human: '수기/기억', ai: '자동 저장 & 분석' },
-                            ].map((item, idx) => (
-                                <div key={idx} className="grid grid-cols-3 p-6 text-center hover:bg-white/5 transition-colors">
-                                    <div className="font-medium text-neutral-cream/80">{item.label}</div>
-                                    <div className="text-neutral-cream/60">{item.human}</div>
-                                    <div className="font-bold text-secondary-gold">{item.ai}</div>
-                                </div>
-                            ))}
+                        <div className="bg-red-500/5 border border-red-500/20 rounded-2xl p-8">
+                            <p className="text-red-400 font-bold text-sm mb-4 tracking-widest uppercase">아직 부족합니다</p>
+                            <ul className="space-y-3 text-neutral-cream/80 text-sm">
+                                {[
+                                    '병명을 확정적으로 진단 (약 50% 수준)',
+                                    '생리장해(칼슘 결핍·일소 등) 구분',
+                                    '작물보호제 반응(약해) 판별',
+                                    '학습하지 않은 희귀 병해 인식',
+                                    '복합 병해(두 가지 동시 발생) 구분',
+                                ].map((item) => (
+                                    <li key={item} className="flex gap-2">
+                                        <span className="text-red-400 shrink-0">✕</span>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </Container>
             </section>
 
-            {/* Section 4: 4 Strong Points */}
-            <section className="py-24 bg-neutral-black relative overflow-hidden">
-                {/* Background Glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-secondary-purple/20 blur-[120px] rounded-full pointer-events-none" />
-
+            {/* 논문 기준 수치 (오해 없이) */}
+            <section className="py-20 bg-neutral-black">
                 <Container>
-                    <div className="text-center mb-16 relative z-10">
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">AI가 더 강력한 4가지 순간</h2>
-                        <p className="text-neutral-cream/60">인간의 눈으로는 놓치기 쉬운 영역을 AI가 보완합니다</p>
+                    <div className="text-center mb-6">
+                        <h2 className="text-2xl font-bold text-white mb-2">학계 연구 기준 성능 (참고)</h2>
+                        <p className="text-neutral-cream/40 text-sm">아래 수치는 팜센스의 현재 성능이 아닌, 관련 학술 논문의 연구 결과입니다.<br />통제된 데이터셋 환경에서의 수치이며, 실제 현장 적용 시 달라질 수 있습니다.</p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-                        <Card className="border-white/10 bg-white/5 hover:bg-white/10 transition-colors duration-300">
-                            <CardHeader>
-                                <Search className="w-10 h-10 text-secondary-gold mb-4" />
-                                <CardTitle className="text-xl">초기 미세 반점</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-neutral-cream/70 mb-4">0.5mm 이하의 아주 작은 병반도 놓치지 않고 감지합니다.</p>
-                                <ul className="text-sm text-neutral-cream/50 space-y-2">
-                                    <li className="flex items-center gap-2"><Check size={14} className="text-secondary-gold" /> 0.5mm 이하 감지</li>
-                                    <li className="flex items-center gap-2"><Check size={14} className="text-secondary-gold" /> 잎 뒷면 초기 증상</li>
-                                </ul>
-                            </CardContent>
-                        </Card>
-
-                        <Card className="border-white/10 bg-white/5 hover:bg-white/10 transition-colors duration-300">
-                            <CardHeader>
-                                <Target className="w-10 h-10 text-secondary-gold mb-4" />
-                                <CardTitle className="text-xl">유사 병해 구분</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-neutral-cream/70 mb-4">탄저병, 흑부병, 노균병 등 육안으로 구별하기 힘든 7종의 병해를 명확히 구분합니다.</p>
-                                <ul className="text-sm text-neutral-cream/50 space-y-2">
-                                    <li className="flex items-center gap-2"><Check size={14} className="text-secondary-gold" /> 7종 분류 정확도 97.22%</li>
-                                    <li className="flex items-center gap-2"><Check size={14} className="text-secondary-gold" /> 흑부병/Esca 99.17% 정확도</li>
-                                </ul>
-                            </CardContent>
-                        </Card>
-
-                        <Card className="border-white/10 bg-white/5 hover:bg-white/10 transition-colors duration-300">
-                            <CardHeader>
-                                <Zap className="w-10 h-10 text-secondary-gold mb-4" />
-                                <CardTitle className="text-xl">대면적 스캔</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-neutral-cream/70 mb-4">1,000장의 사진을 분석해도 첫 장과 동일한 정확도로 판단합니다.</p>
-                                <ul className="text-sm text-neutral-cream/50 space-y-2">
-                                    <li className="flex items-center gap-2"><Check size={14} className="text-secondary-gold" /> 피로도 0%</li>
-                                    <li className="flex items-center gap-2"><Check size={14} className="text-secondary-gold" /> 24시간 분석 가능</li>
-                                </ul>
-                            </CardContent>
-                        </Card>
-
-                        <Card className="border-white/10 bg-white/5 hover:bg-white/10 transition-colors duration-300">
-                            <CardHeader>
-                                <BarChart className="w-10 h-10 text-secondary-gold mb-4" />
-                                <CardTitle className="text-xl">객관적 기록</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-neutral-cream/70 mb-4">"좀 심해졌네"가 아닌 "감염 면적 12%에서 18%로 증가"로 수치화합니다.</p>
-                                <ul className="text-sm text-neutral-cream/50 space-y-2">
-                                    <li className="flex items-center gap-2"><Check size={14} className="text-secondary-gold" /> 감염 추세 데이터화</li>
-                                    <li className="flex items-center gap-2"><Check size={14} className="text-secondary-gold" /> 방제 효과 정량 분석</li>
-                                </ul>
-                            </CardContent>
-                        </Card>
+                    <div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+                        <div className="p-6 border border-white/10 rounded-xl bg-white/5">
+                            <div className="text-4xl font-bold text-secondary-gold/60 mb-2">99.17%</div>
+                            <div className="text-sm text-white mb-1">흑부병/Esca 구분</div>
+                            <div className="text-xs text-neutral-cream/30">논문 기준 (Information Processing in Agriculture)</div>
+                        </div>
+                        <div className="p-6 border border-white/10 rounded-xl bg-white/5">
+                            <div className="text-4xl font-bold text-secondary-gold/60 mb-2">97.22%</div>
+                            <div className="text-sm text-white mb-1">포도 병해 7종 분류</div>
+                            <div className="text-xs text-neutral-cream/30">논문 기준 (Frontiers in Plant Science)</div>
+                        </div>
+                        <div className="p-6 border border-white/10 rounded-xl bg-white/5">
+                            <div className="text-4xl font-bold text-secondary-gold/60 mb-2">~50%</div>
+                            <div className="text-sm text-white mb-1">팜센스 현재 병명 진단</div>
+                            <div className="text-xs text-neutral-cream/30">현장 조건 기준 (솔직한 현재 수준)</div>
+                        </div>
                     </div>
                 </Container>
             </section>
 
-            {/* Section 5: Research Stats */}
-            <section className="py-20 bg-gradient-to-r from-[#1A0A2E] to-neutral-black">
+            {/* 농가 사진 수집 읍소 */}
+            <section className="py-24 bg-secondary-gold/5 border-y border-secondary-gold/20">
                 <Container>
-                    <div className="grid md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
-                        <div className="p-4">
-                            <div className="text-5xl md:text-6xl font-bold text-secondary-gold mb-4">99.17%</div>
-                            <div className="text-xl font-medium text-white mb-2">분류 정확도</div>
-                            <div className="text-sm text-neutral-cream/50">흑부병/Esca 구분 (Information Processing in Agriculture)</div>
+                    <div className="max-w-3xl mx-auto text-center">
+                        <div className="text-5xl mb-6">🙏</div>
+                        <h2 className="text-3xl font-serif font-bold text-white mb-6">
+                            농가 여러분의 사진이<br />
+                            <span className="text-secondary-gold">AI를 완성합니다</span>
+                        </h2>
+                        <p className="text-neutral-cream/70 text-lg leading-relaxed mb-8">
+                            지금 병명 진단이 50%인 이유는 단 하나입니다.<br />
+                            <strong className="text-white">현장 사진 데이터가 부족하기 때문입니다.</strong><br /><br />
+                            농가에서 실제로 겪으신 병해 사진과 진단 병명을 올려주시면,
+                            그 데이터가 쌓일수록 팜센스 AI는 점점 정확해집니다.<br />
+                            <span className="text-secondary-gold">여러분이 올린 사진 한 장이 전국 포도 농가의 방패가 됩니다.</span>
+                        </p>
+
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left mb-8">
+                            <p className="text-secondary-gold font-semibold mb-3 flex items-center gap-2">
+                                <Camera className="w-4 h-4" /> 이런 사진을 올려주세요
+                            </p>
+                            <ul className="space-y-2 text-sm text-neutral-cream/70">
+                                <li className="flex gap-2"><span className="text-secondary-gold">•</span>진단받은 (또는 확인된) 병해 사진 + 병명</li>
+                                <li className="flex gap-2"><span className="text-secondary-gold">•</span>약해·생리장해로 확인된 사진 + 원인</li>
+                                <li className="flex gap-2"><span className="text-secondary-gold">•</span>잎 앞면/뒷면 모두, 증상 부위 클로즈업</li>
+                                <li className="flex gap-2"><span className="text-secondary-gold">•</span>발생 시기·지역·품종 메모 포함 시 더욱 도움됩니다</li>
+                            </ul>
                         </div>
-                        <div className="p-4">
-                            <div className="text-5xl md:text-6xl font-bold text-secondary-gold mb-4">3일</div>
-                            <div className="text-xl font-medium text-white mb-2">조기 발견</div>
-                            <div className="text-sm text-neutral-cream/50">증상 발현 전 탐지 (Nature Scientific Reports)</div>
-                        </div>
-                        <div className="p-4">
-                            <div className="text-5xl md:text-6xl font-bold text-secondary-gold mb-4">97.22%</div>
-                            <div className="text-xl font-medium text-white mb-2">다중 병해 진단</div>
-                            <div className="text-sm text-neutral-cream/50">포도 병해 7종 분류 (Frontiers in Plant Science)</div>
+
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Link href="/support/board/write" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary-gold text-neutral-black font-bold rounded-full hover:brightness-110 transition">
+                                <MessageSquareHeart className="w-5 h-5" />
+                                병해 사진 올리러 가기
+                            </Link>
+                            <Link href="/technology/ai-diagnosis" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 transition">
+                                AI 진단 기술 상세 보기 <ArrowRight className="w-4 h-4" />
+                            </Link>
                         </div>
                     </div>
                 </Container>
             </section>
 
-            {/* Section 6: Recommendation */}
+            {/* AI + 농민 역할 분담 */}
             <section className="py-24 bg-neutral-black">
                 <Container>
-                    <div className="bg-gradient-to-br from-white/10 to-transparent p-8 md:p-12 rounded-3xl border border-white/10 text-center max-w-4xl mx-auto">
+                    <div className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-3xl text-center max-w-4xl mx-auto">
                         <div className="flex justify-center items-center gap-4 mb-8 text-4xl">
                             <span>🤖</span>
                             <span className="text-white/20">+</span>
@@ -199,91 +216,64 @@ export default function AiDiagnosisWhyPage() {
                             <span className="text-white/20">=</span>
                             <span>🎯</span>
                         </div>
-
                         <h2 className="text-3xl font-serif font-bold mb-6">AI와 농민이 함께할 때 가장 완벽합니다</h2>
-                        <div className="space-y-6 text-lg text-neutral-cream/80 leading-relaxed">
-                            <p>
-                                "AI가 모든 것을 대체할 수는 없습니다.<br />
-                                하지만 <strong>초기 미세 증상은 AI가 사람보다 훨씬 잘 찾아냅니다.</strong>"
-                            </p>
-                            <div className="grid md:grid-cols-2 gap-4 text-left bg-black/30 p-6 rounded-xl">
-                                <div>
-                                    <h4 className="font-bold text-secondary-gold mb-2">🤖 AI의 역할</h4>
-                                    <ul className="text-sm space-y-1">
-                                        <li>• 수만 장의 사진 초고속 스캔</li>
-                                        <li>• 육안으로 안 보이는 미세 병반 탐지</li>
-                                        <li>• 객관적인 데이터 기록</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-white mb-2">👁️ 농민의 역할</h4>
-                                    <ul className="text-sm space-y-1">
-                                        <li>• 밭의 전체적인 맥락 파악</li>
-                                        <li>• AI 결과를 바탕으로 한 최종 판단</li>
-                                        <li>• 현장 경험을 통한 조치</li>
-                                    </ul>
-                                </div>
+                        <div className="grid md:grid-cols-2 gap-4 text-left bg-black/30 p-6 rounded-xl mb-6">
+                            <div>
+                                <h4 className="font-bold text-secondary-gold mb-2">🤖 AI의 역할</h4>
+                                <ul className="text-sm space-y-1 text-neutral-cream/70">
+                                    <li>• 24시간 이상 징후 자동 감지</li>
+                                    <li>• 병해 후보 목록 제시 (참고용)</li>
+                                    <li>• 환경 조건 기반 발생 위험도 계산</li>
+                                </ul>
                             </div>
-                            <p className="font-medium text-white pt-4">
-                                함께 사용할 때 99% 이상의 방제 효과를 달성할 수 있습니다.
-                            </p>
+                            <div>
+                                <h4 className="font-bold text-white mb-2">👁️ 농민의 역할</h4>
+                                <ul className="text-sm space-y-1 text-neutral-cream/70">
+                                    <li>• AI 알림 확인 후 현장 직접 확인</li>
+                                    <li>• 병명 최종 판단 (전문가 상담 포함)</li>
+                                    <li>• 확인된 사진 데이터 제보로 AI 개선 기여</li>
+                                </ul>
+                            </div>
                         </div>
-
-                        <div className="mt-10">
-                            <Link href="/technology/ai-diagnosis" className="inline-flex items-center gap-2 px-8 py-3 bg-secondary-gold text-neutral-black font-bold rounded-full hover:bg-white transition-colors">
-                                FarmSense AI 체험해보기 <ArrowRight size={18} />
-                            </Link>
-                        </div>
+                        <p className="text-neutral-cream/50 text-sm">
+                            팜센스는 농민의 판단을 대체하지 않습니다. 더 빠르게, 더 많이 볼 수 있도록 돕습니다.
+                        </p>
                     </div>
                 </Container>
             </section>
 
-            {/* Section 8: References */}
+            {/* References */}
             <section className="py-12 bg-neutral-black border-t border-white/10">
                 <Container>
                     <div className="text-sm text-neutral-cream/40 max-w-4xl mx-auto">
-                        <h4 className="font-bold text-neutral-cream/60 mb-6 uppercase tracking-wider text-xs">참고 문헌</h4>
+                        <h4 className="font-bold text-neutral-cream/60 mb-6 uppercase tracking-wider text-xs">참고 문헌 (학술 연구 기준)</h4>
                         <ul className="space-y-4">
-                            <li className="flex gap-2">
-                                <span className="text-secondary-gold shrink-0">[1]</span>
-                                <div>
-                                    <p className="font-bold text-neutral-cream/80">Frontiers in Plant Science (2020)</p>
-                                    <p className="mb-1">"Grape Leaf Disease Identification Using Improved Deep CNNs" (정확도 97.22%)</p>
-                                    <a href="https://www.frontiersin.org/articles/10.3389/fpls.2020.01082/full" target="_blank" rel="noopener noreferrer" className="text-secondary-gold/70 hover:text-secondary-gold hover:underline break-all">
-                                        https://www.frontiersin.org/articles/10.3389/fpls.2020.01082/full
-                                    </a>
-                                </div>
-                            </li>
-                            <li className="flex gap-2">
-                                <span className="text-secondary-gold shrink-0">[2]</span>
-                                <div>
-                                    <p className="font-bold text-neutral-cream/80">Information Processing in Agriculture (2020)</p>
-                                    <p className="mb-1">"Automatic grape leaf diseases identification via UnitedModel" (정확도 99.17%)</p>
-                                    <a href="https://doi.org/10.1016/j.inpa.2019.10.003" target="_blank" rel="noopener noreferrer" className="text-secondary-gold/70 hover:text-secondary-gold hover:underline break-all">
-                                        https://doi.org/10.1016/j.inpa.2019.10.003
-                                    </a>
-                                </div>
-                            </li>
-                            <li className="flex gap-2">
-                                <span className="text-secondary-gold shrink-0">[3]</span>
-                                <div>
-                                    <p className="font-bold text-neutral-cream/80">PMC/NCBI (2021)</p>
-                                    <p className="mb-1">"Grape Leaf Black Rot Detection Based on Deep Learning" (정확도 98.23%)</p>
-                                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8277438/" target="_blank" rel="noopener noreferrer" className="text-secondary-gold/70 hover:text-secondary-gold hover:underline break-all">
-                                        https://pmc.ncbi.nlm.nih.gov/articles/PMC8277438/
-                                    </a>
-                                </div>
-                            </li>
-                            <li className="flex gap-2">
-                                <span className="text-secondary-gold shrink-0">[4]</span>
-                                <div>
-                                    <p className="font-bold text-neutral-cream/80">Nature Scientific Reports (2024)</p>
-                                    <p className="mb-1">"Hyperspectral imaging for early detection" (초기 탐지 3일 전)</p>
-                                    <a href="https://www.nature.com/articles/s41598-024-78650-6" target="_blank" rel="noopener noreferrer" className="text-secondary-gold/70 hover:text-secondary-gold hover:underline break-all">
-                                        https://www.nature.com/articles/s41598-024-78650-6
-                                    </a>
-                                </div>
-                            </li>
+                            {[
+                                {
+                                    num: '[1]', title: 'Frontiers in Plant Science (2020)',
+                                    desc: '"Grape Leaf Disease Identification Using Improved Deep CNNs" (연구 기준 97.22%)',
+                                    href: 'https://www.frontiersin.org/articles/10.3389/fpls.2020.01082/full',
+                                },
+                                {
+                                    num: '[2]', title: 'Information Processing in Agriculture (2020)',
+                                    desc: '"Automatic grape leaf diseases identification via UnitedModel" (연구 기준 99.17%)',
+                                    href: 'https://doi.org/10.1016/j.inpa.2019.10.003',
+                                },
+                                {
+                                    num: '[3]', title: 'PMC/NCBI (2021)',
+                                    desc: '"Grape Leaf Black Rot Detection Based on Deep Learning" (연구 기준 98.23%)',
+                                    href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8277438/',
+                                },
+                            ].map((ref) => (
+                                <li key={ref.num} className="flex gap-2">
+                                    <span className="text-secondary-gold shrink-0">{ref.num}</span>
+                                    <div>
+                                        <p className="font-bold text-neutral-cream/80">{ref.title}</p>
+                                        <p className="mb-1">{ref.desc}</p>
+                                        <a href={ref.href} target="_blank" rel="noopener noreferrer" className="text-secondary-gold/70 hover:text-secondary-gold hover:underline break-all">{ref.href}</a>
+                                    </div>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </Container>
