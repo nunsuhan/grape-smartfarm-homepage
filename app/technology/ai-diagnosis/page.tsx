@@ -49,7 +49,6 @@ export default function AiDiagnosisPage() {
                                         <strong className="text-white"> 의도적으로 전체 정확도를 낮추는 대신 이상증상 발견에 집중</strong>하는 방향으로 전환했습니다.
                                     </span>
                                 </li>
-                                <li className="flex gap-2"><span className="text-orange-400 shrink-0">•</span>생리장해·약해는 아직 학습 데이터 부족으로 구분이 어렵습니다.</li>
                                 <li className="flex gap-2"><span className="text-secondary-gold shrink-0">→</span>진단된 사진을 게시판에 올려주시면 AI 개선에 직접 기여하실 수 있습니다.</li>
                             </ul>
                         </div>
