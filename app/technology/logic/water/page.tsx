@@ -192,6 +192,103 @@ export default function WaterLogicPage() {
                                 />
                             </div>
 
+                            {/* ── Ψ-stem 이론 배경 ── */}
+                            <div className="border border-white/10 rounded-xl overflow-hidden">
+                                <div className="bg-white/5 px-6 py-4 border-b border-white/10">
+                                    <h4 className="font-bold text-white flex items-center gap-2">
+                                        <Gauge className="w-4 h-4 text-purple-400" />
+                                        이론 배경: 왜 Ψ-stem이 가장 정확한가
+                                    </h4>
+                                    <p className="text-xs text-neutral-cream/40 mt-1">그리고 왜 FarmSense는 Ψ-soil을 사용하는가</p>
+                                </div>
+                                <div className="p-6 space-y-6">
+
+                                    {/* 3가지 지표 비교 */}
+                                    <div className="overflow-x-auto">
+                                        <table className="min-w-full text-sm">
+                                            <thead>
+                                                <tr className="border-b border-white/10">
+                                                    <th className="text-left py-3 px-4 text-neutral-cream/40 font-normal">지표</th>
+                                                    <th className="text-left py-3 px-4 text-neutral-cream/40 font-normal">측정 위치</th>
+                                                    <th className="text-left py-3 px-4 text-neutral-cream/40 font-normal">특징</th>
+                                                    <th className="text-left py-3 px-4 text-neutral-cream/40 font-normal">한계</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-white/5">
+                                                <tr>
+                                                    <td className="py-3 px-4 text-white font-mono">Ψ-soil</td>
+                                                    <td className="py-3 px-4 text-neutral-cream/60">뿌리 주변 토양</td>
+                                                    <td className="py-3 px-4 text-neutral-cream/60">저비용 센서로 연속 측정 가능</td>
+                                                    <td className="py-3 px-4 text-neutral-cream/50 text-xs">토양 타입·센서 위치에 따라 오차</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="py-3 px-4 text-white font-mono">Ψ-leaf</td>
+                                                    <td className="py-3 px-4 text-neutral-cream/60">잎</td>
+                                                    <td className="py-3 px-4 text-neutral-cream/60">식물 내부 수분 반영</td>
+                                                    <td className="py-3 px-4 text-neutral-cream/50 text-xs">햇빛·바람에 따라 낮 시간 변동 심함</td>
+                                                </tr>
+                                                <tr className="bg-purple-500/5">
+                                                    <td className="py-3 px-4 text-purple-300 font-mono font-bold">Ψ-stem ★</td>
+                                                    <td className="py-3 px-4 text-neutral-cream/80">차광 처리된 줄기</td>
+                                                    <td className="py-3 px-4 text-white">식물 전체 수분 상태 반영, 오차 최소</td>
+                                                    <td className="py-3 px-4 text-red-400/70 text-xs">측정 장비 350~700만원/동, 농가 비현실적</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    {/* Ψ-stem 측정 원리 */}
+                                    <div className="bg-black/30 rounded-lg p-5 text-sm">
+                                        <p className="text-neutral-cream/40 text-xs mb-3 font-semibold uppercase tracking-widest">Ψ-stem 측정 원리 (Pressure Bomb)</p>
+                                        <div className="flex flex-wrap gap-2 items-center text-neutral-cream/70">
+                                            {[
+                                                '잎 1장을 호일로 차광',
+                                                '1~2시간 후 증산 차단',
+                                                '잎 수분 = 줄기 수분 평형',
+                                                '잎 절단 → 압력 챔버 삽입',
+                                                '가압 → 수액 출현 압력 기록',
+                                                '그 값 = -Ψ-stem',
+                                            ].map((step, i, arr) => (
+                                                <div key={step} className="flex items-center gap-2">
+                                                    <span className="bg-white/5 border border-white/10 rounded px-2 py-1 text-xs">{step}</span>
+                                                    {i < arr.length - 1 && <span className="text-white/20 text-xs">→</span>}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Ψ-stem 기준값 */}
+                                    <div>
+                                        <p className="text-neutral-cream/40 text-xs mb-3 font-semibold uppercase tracking-widest">포도 Ψ-stem 기준값 (참조)</p>
+                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                            {[
+                                                { range: '0 ~ -0.2 MPa', label: '수분 충분', color: 'text-blue-400', bg: 'bg-blue-500/5 border-blue-500/20' },
+                                                { range: '-0.4 ~ -0.6 MPa', label: '경미한 스트레스', color: 'text-yellow-400', bg: 'bg-yellow-500/5 border-yellow-500/20' },
+                                                { range: '-0.6 ~ -0.8 MPa', label: '관수 트리거', color: 'text-orange-400', bg: 'bg-orange-500/5 border-orange-500/20' },
+                                                { range: '-1.0 MPa 이하', label: '긴급 관수', color: 'text-red-400', bg: 'bg-red-500/5 border-red-500/20' },
+                                            ].map((item) => (
+                                                <div key={item.range} className={`border rounded-lg p-3 ${item.bg}`}>
+                                                    <p className={`font-mono text-xs font-bold ${item.color}`}>{item.range}</p>
+                                                    <p className="text-neutral-cream/60 text-xs mt-1">{item.label}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* FarmSense 선택 이유 */}
+                                    <div className="bg-secondary-gold/5 border border-secondary-gold/20 rounded-lg p-5">
+                                        <p className="text-secondary-gold text-sm font-semibold mb-2">FarmSense가 Ψ-soil을 선택한 이유</p>
+                                        <p className="text-neutral-cream/60 text-sm leading-relaxed">
+                                            Ψ-stem은 이론적으로 가장 정확하지만, 측정에 필요한 Stem Psychrometer는
+                                            하우스 1동 기준 <strong className="text-white">350~700만원</strong>의 추가 비용이 발생합니다.
+                                            FarmSense는 농가가 이미 보유한 토양수분 센서(Tensiometer, 5~15만원/개)의
+                                            Ψ-soil 데이터로 동등한 관수 판단을 내립니다.
+                                            Ψ-stem은 이 로직의 과학적 근거이자, 향후 고정밀 센서 연동 시의 업그레이드 경로입니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="bg-white/5 p-6 rounded-lg border border-white/10">
                                 <h4 className="flex items-center gap-2 font-bold text-white mb-2">
                                     <BookOpen className="w-4 h-4" /> Reference Validation
@@ -200,6 +297,7 @@ export default function WaterLogicPage() {
                                     <li>Logic Source: <em>스마트 정밀 관개 및 생육 환경 제어 로직 분석.pdf</em> (Page 14, Table 3)</li>
                                     <li>$ET_c$ Formula: Penman-Monteith (FAO-56 Standard)</li>
                                     <li>Video Evidence: <em>완벽한_포도의_비밀을_풀다.mp4</em> (04:12)</li>
+                                    <li>Stem Water Potential: Williams &amp; Trout (2005), <em>Vine and Raisin Responses to Partial Rootzone Drying</em></li>
                                 </ul>
                             </div>
                         </motion.div>
