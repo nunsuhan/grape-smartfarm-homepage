@@ -34,11 +34,11 @@ export function Hero() {
                     }}
                 >
                     <span style={{ color: 'rgba(255,255,255,0.95)' }}>
-                        팜센스(FarmSense)
+                        팜센스
                     </span>
                     <br />
                     <span className="text-[1.2rem] sm:text-[1.6rem] md:text-[2rem] font-sans font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>
-                        데이터 기반 AI 영농 의사결정 지원 시스템
+                        내 하우스를 지켜주는 스마트팜 서비스
                     </span>
                 </h1>
             </motion.div>

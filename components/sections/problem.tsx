@@ -9,20 +9,20 @@ import { AlertTriangle, Clock, Database } from 'lucide-react';
 const problems = [
     {
         icon: AlertTriangle,
-        title: "경험 의존적 재배",
-        desc: "농가 고령화(60대 이상 비중 40% 이상)로 노하우 단절 위험. 데이터·논문 기반 지식 체계화 없이는 지속 가능한 농업이 어렵습니다.",
+        title: "경험으로만 짓는 농사",
+        desc: "잘하는 분들이 은퇴하면, 그 노하우도 같이 사라집니다.",
         image: "/images/generated/problem_experience.webp"
     },
     {
         icon: Clock,
-        title: "후행적 병해 대응",
-        desc: "노균병은 엽면습윤 12시간(20°C 기준)이면 감염. 눈으로 확인 시엔 이미 늦고, 포도 농가 연간 병해 피해액은 약 2,000억 원에 달합니다.",
+        title: "눈으로 보면 이미 늦습니다",
+        desc: "병이 눈에 보일 때는 이미 퍼진 뒤입니다. 매년 포도 병해 피해가 2,000억 원입니다.",
         image: "/images/generated/leaf_symptoms.webp"
     },
     {
         icon: Database,
-        title: "분절된 정보",
-        desc: "기상청·센서·영농일지가 각각 흩어져 있어 PMI(온·습도), GDD(적산온도), TRV(살포량)를 한 번에 계산·연동하는 통합 DSS가 부재합니다.",
+        title: "여기저기 흩어진 정보",
+        desc: "날씨는 기상청에서, 온습도는 센서에서, 일지는 따로 쓰고... 팜센스가 한번에 보여드립니다.",
         image: "/images/generated/problem_data.webp"
     }
 ];
@@ -42,7 +42,7 @@ export function Problem() {
                         <span className="text-red-400"> 위기</span>
                     </h3>
                     <p className="text-neutral-cream/60">
-                        스마트팜 보급률 약 8%(농림축산식품부 기준), 포도 연간 병해 피해액 2,000억 원 규모. 데이터 기반 의사결정이 시급합니다.
+                        포도 농가가 매일 마주하는 세 가지 문제입니다.
                     </p>
                 </motion.div>
 

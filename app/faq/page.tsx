@@ -70,7 +70,7 @@ const faqData: Record<string, { title: string; icon: string; items: { q: string;
         ]
     },
     diagnosis: {
-        title: "AI 병해 진단",
+        title: "사진으로 병 확인",
         icon: "Camera",
         items: [
             {
@@ -100,7 +100,7 @@ const faqData: Record<string, { title: string; icon: string; items: { q: string;
         ]
     },
     rag: {
-        title: "RAG 상담",
+        title: "농사 질문/상담",
         icon: "MessageCircle",
         items: [
             {
@@ -126,7 +126,7 @@ const faqData: Record<string, { title: string; icon: string; items: { q: string;
         ]
     },
     pmi: {
-        title: "PMI 병해 예측",
+        title: "병해 예보/경보",
         icon: "CloudRain",
         items: [
             {
@@ -152,7 +152,7 @@ const faqData: Record<string, { title: string; icon: string; items: { q: string;
         ]
     },
     sensor: {
-        title: "센서/스마트팜",
+        title: "센서 설치/연결",
         icon: "Cpu",
         items: [
             {
@@ -216,7 +216,7 @@ const faqData: Record<string, { title: string; icon: string; items: { q: string;
         ]
     },
     data: {
-        title: "데이터 신뢰성",
+        title: "데이터가 정확한가요?",
         icon: "Shield",
         items: [
             {

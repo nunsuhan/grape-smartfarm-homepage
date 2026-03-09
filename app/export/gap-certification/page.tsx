@@ -104,8 +104,8 @@ const gapChecklist = [
     },
     {
         id: 7, category: '농약관리',
-        item: '등록약제 사용, 사용기준(횟수·간격·PHI) 준수',
-        farmsense: '농약 DB 연동, 살포 시 기준 자동 체크, 사용횟수·간격·PHI 경고',
+        item: '등록약제 사용, 사용기준(횟수·간격·수확 전 며칠까지 가능한지) 준수',
+        farmsense: '농약 DB 연동, 살포 시 기준 자동 체크, 사용횟수·간격·약 친 후 며칠 지나야 따는지 경고',
         icon: AlertTriangle,
     },
     {
@@ -190,7 +190,7 @@ const gapChecklist = [
 
 /* ────────── 비용 정보 ────────── */
 const costInfo = [
-    { label: '인증 신청수수료', value: '약 5만원 (소규모 농가 기준)', note: '정부 지원 시 50~70% 감면' },
+    { label: '인증 신청수수료', value: '약 5만원', note: '정부 지원 받으면 1~2만원이면 됩니다' },
     { label: '잔류농약 검사비', value: '약 3~10만원 (검사 항목 수에 따라)', note: '농관원 무료 검사 활용 가능' },
     { label: 'GAP 기본교육', value: '무료 (정부 지원)', note: '농업기술센터, 농관원 등에서 실시' },
     { label: '컨설팅 비용', value: '무료~30만원', note: '농관원 무료 컨설팅 또는 민간 컨설팅' },
@@ -199,9 +199,9 @@ const costInfo = [
 
 /* ────────── PLS 정보 ────────── */
 const plsInfo = [
-    { term: 'PLS란?', desc: '허용물질목록 관리제도(Positive List System). 등록되지 않은 농약은 잔류허용기준 0.01ppm이 일률 적용됩니다.' },
+    { term: 'PLS란?', desc: '허가된 약만 쓸 수 있는 규정입니다. 허가 안 된 약이 검출되면 불합격입니다.' },
     { term: '왜 중요한가?', desc: 'GAP 인증과 수출 모두 PLS 기준 준수가 필수입니다. 미등록 농약 사용 시 인증 취소 사유가 됩니다.' },
-    { term: 'FarmSense 대응', desc: '농약 DB에 PLS 기준이 내장되어 있어, 살포 시 자동으로 적합 여부를 판정합니다.' },
+    { term: 'FarmSense 대응', desc: '허가된 약만 쓸 수 있고, 허가 안 된 약이 검출되면 불합격입니다. 팜센스가 자동으로 체크해줍니다.' },
 ];
 
 export default function GAPCertificationPage() {
@@ -247,12 +247,10 @@ export default function GAPCertificationPage() {
                     </motion.h2>
                     <div className="prose prose-lg prose-invert max-w-none">
                         <p className="text-neutral-cream/70 leading-8">
-                            <strong>GAP(Good Agricultural Practices, 우수농산물관리)</strong>는 농산물의 안전성을 확보하기 위해
-                            생산 단계부터 수확 후 관리까지 전 과정에서 농약·중금속·유해생물 등의 위해요소를 관리하는 제도입니다.
+                            <strong>GAP 인증</strong>은 &quot;우리 포도가 안전하게 관리됩니다&quot;를 공식적으로 증명하는 인증입니다. 수출할 때 필수입니다.
                         </p>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose mt-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose mt-6">
                             {[
-                                { title: '법적 근거', desc: '농수산물 품질관리법 제6조', icon: BookOpen },
                                 { title: '인증 기관', desc: '국립농산물품질관리원 (농관원)', icon: Shield },
                                 { title: '핵심 목적', desc: '농산물 안전성 + 환경 보전', icon: Leaf },
                             ].map((item, i) => (
@@ -482,7 +480,7 @@ export default function GAPCertificationPage() {
                     <h3 className="text-xl font-bold text-white mb-6">수출 · 인증 더 알아보기</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {[
-                            { label: '블록체인 이력추적', href: '/technology/blockchain', desc: 'SHA-256 봉인 시스템' },
+                            { label: '블록체인 이력추적', href: '/technology/blockchain', desc: '기록이 위조되지 않습니다' },
                             { label: '수출 서류 데이터 전략', href: '/export/data-documents', desc: '디지털 증빙 원리' },
                             { label: '주요국 수출 요건', href: '/export/country-requirements', desc: '일본·미국·EU 기준' },
                         ].map((link, i) => (

@@ -28,7 +28,7 @@ const farmerSteps = [
     {
         step: '2',
         title: '매일 자동 봉인',
-        desc: '매일 자정, 하루치 기록이 자동으로 SHA-256 해시 봉인됩니다',
+        desc: '매일 자정, 하루치 기록이 자동으로 위조 불가능하게 봉인됩니다',
         icon: Lock,
         note: '수동 조작 불필요',
         color: 'text-violet-400',
@@ -79,7 +79,7 @@ const qrInfo = [
     { label: '총 기록 수', value: '센서·살포·비료·수확' },
     { label: '해시체인 검증', value: '정상 / 이상 여부' },
     { label: '검역 판정', value: 'pass · warning · fail' },
-    { label: '농약 안전기간', value: 'PHI 준수 자동 확인' },
+    { label: '농약 안전기간', value: '약 친 후 며칠 지나야 따는지 자동 확인' },
     { label: '봉인 상태', value: '최근 봉인 해시 + 일자' },
 ];
 

@@ -21,38 +21,31 @@ const timeline = [
     {
         phase: '1단계',
         period: '1~3개월',
-        title: '기초 구축',
+        title: '설치 및 시작',
         icon: Sprout,
         color: 'bg-blue-400',
         tasks: [
-            'FarmSense 앱 설치 및 농장 등록',
-            '센서 장치 연동 (자동 데이터 수집 시작)',
-            'GAP 기본교육 이수',
-            '토양·수질 검사 신청',
+            '센서 설치하고 앱에서 내 하우스 데이터 확인하기',
         ],
     },
     {
         phase: '2단계',
         period: '4~6개월',
-        title: 'GAP 인증 취득',
+        title: '기록 쌓기',
         icon: ClipboardCheck,
         color: 'bg-violet-400',
         tasks: [
-            '일일 작업 기록 습관화 (앱 입력)',
-            'GAP 6대 기록 자동 축적',
-            'GAP 인증 심사 신청',
-            '블록체인 봉인 데이터 누적',
+            '매일 영농일지 기록하고 인증 준비하기',
         ],
     },
     {
         phase: '3단계',
         period: '7~12개월',
-        title: '수출 준비 완료',
+        title: '수출 준비',
         icon: Package,
         color: 'bg-secondary-gold',
         tasks: [
-            '수출 준비도 80% 이상 달성',
-            'QR 코드 생성 및 제품 부착',
+            '인증받고, 품질 기록으로 바이어에게 신뢰 주기',
             '수출 검역 서류 자동 생성',
             '바이어 미팅 및 계약 추진',
         ],
@@ -61,12 +54,11 @@ const timeline = [
 
 const roiData = {
     costs: [
-        { label: 'FarmSense 시스템', amount: '50만원' },
-        { label: 'GAP 인증 비용', amount: '30만원' },
-        { label: '교육 비용', amount: '20만원' },
+        { label: '센서+앱 월 이용료', amount: '월 1만원' },
+        { label: '장비 구매비 (정부 지원 시 더 저렴)', amount: '약 20만원' },
     ],
     benefits: [
-        { label: 'GAP 프리미엄 가격 (10~30%↑)', amount: '300만원' },
+        { label: 'GAP 인증 후 프리미엄 가격 상승', amount: '300만원' },
         { label: '수출·대형마트 신규 판로', amount: '200만원' },
         { label: '비용 절감 + 정부 지원금', amount: '100만원' },
     ],
@@ -75,20 +67,20 @@ const roiData = {
 const successStories = [
     {
         region: '경기도 포도 농가',
-        before: '전통 재배, 내수 한정',
-        after: '일본 수출 계약, 가격 40% 인상',
+        before: '감으로 짓던 농사',
+        after: '팜센스 도입 후 일본 수출, 단가 40% 올림',
         icon: Truck,
     },
     {
         region: '전라도 딸기 단체',
-        before: '개별 농가 영세 경영',
+        before: '따로따로 운영하던 농가들',
         after: '대형마트 정기 공급, 매출 200%↑',
         icon: Building2,
     },
     {
         region: '강원도 사과 농가',
-        before: '품질 불균일, 신뢰도 낮음',
-        after: '프리미엄 브랜드, 재구매율 80%',
+        before: '품질 들쭉날쭉',
+        after: '데이터로 관리하니 한결같은 품질, 단골이 10명 중 8명 재주문',
         icon: Users,
     },
 ];
@@ -179,7 +171,7 @@ export function ExportReadiness() {
                     className="max-w-4xl mx-auto mb-20"
                 >
                     <h4 className="text-center text-2xl font-serif font-bold text-white mb-10">
-                        연간 100만원 투자, 600만원 수익
+                        연간 100만원 비용으로 500만원 이상 벌 수 있습니다
                     </h4>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -231,8 +223,8 @@ export function ExportReadiness() {
                         transition={{ delay: 0.3 }}
                         className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-secondary-gold/10 to-secondary-green/10 border border-secondary-gold/20 text-center"
                     >
-                        <div className="text-sm text-neutral-cream/60 mb-1">순수익 500만원</div>
-                        <div className="text-5xl font-mono font-bold text-secondary-gold">ROI 500%</div>
+                        <div className="text-sm text-neutral-cream/60 mb-1">연간 순수익</div>
+                        <div className="text-5xl font-mono font-bold text-secondary-gold">500만원+</div>
                         <div className="text-sm text-neutral-cream/50 mt-2">
                             정부 지원금 활용 시 실질 부담은 더욱 낮아집니다
                         </div>

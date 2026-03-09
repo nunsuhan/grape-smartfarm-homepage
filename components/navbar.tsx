@@ -14,7 +14,7 @@ import { AuthModal } from './auth-modal';
 
 const navItems = [
     {
-        label: '핵심 기술',
+        label: '기능 소개',
         href: '/technology/docs',
         dropdown: [
             { label: '기술 개요', href: '/technology' },
@@ -39,7 +39,7 @@ const navItems = [
         ]
     },
     {
-        label: '스마트팜',
+        label: '내 농장',
         href: '/smartfarm/dashboard',
         dropdown: [
             { label: '대시보드', href: '/smartfarm/dashboard' },
