@@ -14,6 +14,17 @@ import { AuthModal } from './auth-modal';
 
 const navItems = [
     {
+        label: '센서·서비스',
+        href: '/sensors',
+        dropdown: [
+            { label: '센서 제품 카탈로그', href: '/sensors' },
+            { label: '시기별 서비스 안내', href: '/services' },
+            { label: '센서 견적 내기', href: '/sensor-configurator' },
+            { label: '시범 농가 신청 (50% 할인)', href: '/trial' },
+            { label: '센서 설치 가이드', href: '/install-guide' },
+        ]
+    },
+    {
         label: '기능 소개',
         href: '/technology/docs',
         dropdown: [
@@ -61,6 +72,8 @@ const navItems = [
             { label: 'FAQ', href: '/faq' },
             { label: '문의 게시판', href: '/support/board' },
             { label: '센서 설치 도우미', href: '/sensor-installation-guide' },
+            { label: '포도밭 센서 설치 가이드', href: '/vineyard-sensor-guide' },
+            { label: '센서 견적 내기', href: '/sensor-configurator' },
             { label: 'AI 스마트 도우미', href: '/support/ai-assistant' },
             { label: '문의하기', href: '/support' },
         ]
