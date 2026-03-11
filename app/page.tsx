@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { Hero } from '@/components/sections/hero';
 import { LazySection } from '@/components/lazy-section';
 import { Footer } from '@/components/footer';
+import { TrialPopup } from '@/components/trial-popup';
 
 const Problem = dynamic(() => import('@/components/sections/problem').then(m => ({ default: m.Problem })), { ssr: false });
 const Solution = dynamic(() => import('@/components/sections/solution').then(m => ({ default: m.Solution })), { ssr: false });
@@ -15,14 +15,7 @@ const Product = dynamic(() => import('@/components/sections/product').then(m => 
 export default function Home() {
   return (
     <main className="min-h-screen bg-neutral-black text-white selection:bg-secondary-gold">
-      {/* 시범 농가 이벤트 배너 */}
-      <div className="fixed top-0 left-0 right-0 z-[200] bg-gradient-to-r from-green-600 to-green-500 text-white text-center py-2.5 px-4 text-sm">
-        <span className="font-bold">🎉 시범 농가 50% 할인 모집</span>
-        <span className="mx-2 opacity-60">|</span>
-        <span className="opacity-90">5농가 선착순 · 마감 3/20</span>
-        <Link href="/trial" className="ml-3 underline font-bold hover:opacity-80">신청하기 →</Link>
-      </div>
-      <div className="h-10" />
+      <TrialPopup />
       <Hero />
       <LazySection minHeight="600px">
         <Problem />

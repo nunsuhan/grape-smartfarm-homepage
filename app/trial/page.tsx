@@ -64,7 +64,7 @@ export default function TrialPage() {
             <span className="text-green-400">시범 농가 신청</span>
           </h1>
           <p className="text-neutral-cream/70 text-lg leading-relaxed">
-            5농가를 선정해 FarmSense 센서 시스템을 <strong className="text-white">50% 할인</strong>에 설치해드립니다.<br />
+            10농가를 선정해 FarmSense 센서 시스템을 <strong className="text-white">50% 할인</strong>에 설치해드립니다.<br />
             설치 가이드 + 첫 1년 통신비 무료 포함.
           </p>
         </Container>
@@ -81,7 +81,7 @@ export default function TrialPage() {
             <h2 className="text-2xl font-bold text-white">신청이 완료됐습니다!</h2>
             <p className="text-neutral-cream/70 leading-relaxed">
               <strong className="text-white">{form.name}</strong>님, 접수됐습니다.<br />
-              선정 결과는 <strong className="text-green-400">3월 21일</strong>에 {form.phone}으로 개별 연락드립니다.
+              선정 결과는 {form.phone}으로 개별 연락드립니다.
             </p>
             <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-left text-sm space-y-2">
               <div className="flex justify-between"><span className="text-neutral-cream/60">이름</span><span className="text-white">{form.name}</span></div>
@@ -218,7 +218,7 @@ export default function TrialPage() {
               </button>
 
               <p className="text-center text-xs text-neutral-cream/40 leading-relaxed">
-                5농가 모집 (지역별 선정) · 마감 3/20 · 선정 결과 3/21 개별 연락<br />
+                10농가 모집 (지역별 선정) · 선정 결과 개별 연락<br />
                 문의: <a href="tel:01054771190" className="underline hover:text-green-400">한문수 010-5477-1190</a>
               </p>
             </form>
