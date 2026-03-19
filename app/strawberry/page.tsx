@@ -140,46 +140,11 @@ const comparisonRows = [
   { feature: '초기 비용',              farmmorning: '높음',    nthing: '매우 높음',   nonghyup: '240만원', dalcomi: '22만원~' },
 ];
 
-const pricingPackages = [
-  {
-    name: '기본 패키지',
-    price: '220,000원',
-    color: 'emerald',
-    items: ['LoRa 게이트웨이 1대', 'LTE 라우터 1대'],
-  },
-  {
-    name: '동당 추가',
-    price: '100,000원/동',
-    color: 'blue',
-    items: ['S2100 허브', '온습도 센서', '토양수분 프로브 2개'],
-  },
-  {
-    name: '월 통신비',
-    price: '10,000원/월',
-    color: 'slate',
-    items: ['LTE 데이터 포함', '앱 기본 기능 포함'],
-  },
-  {
-    name: 'FLIR One Pro (선택)',
-    price: '330,000원 내외',
-    color: 'red',
-    badge: '선택 사항 (중고)',
-    items: ['스마트폰 부착형 열화상 카메라', '달콤이 앱 연동 지원'],
-  },
-];
-
 const colorMap = {
   blue:    { card: 'border-blue-500/30 hover:border-blue-500/50',       icon: 'bg-blue-500/10 text-blue-400',       hl: 'text-blue-400',    src: 'text-blue-400/60',   mod: 'text-blue-400' },
   emerald: { card: 'border-emerald-500/30 hover:border-emerald-500/50', icon: 'bg-emerald-500/10 text-emerald-400', hl: 'text-emerald-400', src: 'text-emerald-400/60', mod: 'text-emerald-400' },
   red:     { card: 'border-red-500/30 hover:border-red-500/50',         icon: 'bg-red-500/10 text-red-400',         hl: 'text-red-400',     src: 'text-red-400/60',    mod: 'text-red-400' },
   slate:   { card: 'border-white/20 hover:border-white/30',             icon: 'bg-white/10 text-white/70',          hl: 'text-white/80',    src: 'text-white/40',      mod: 'text-white/60' },
-};
-
-const pricingColor: Record<string, string> = {
-  emerald: 'border-emerald-500/30 bg-emerald-500/5',
-  blue:    'border-blue-500/30 bg-blue-500/5',
-  slate:   'border-white/10 bg-white/5',
-  red:     'border-red-500/30 bg-red-500/5',
 };
 
 // ── 페이지 ──────────────────────────────────────────────────────
@@ -437,58 +402,7 @@ export default function StrawberryLandingPage() {
       </section>
 
       {/* ════════════════════════════════════════════
-          섹션 6: 가격
-      ════════════════════════════════════════════ */}
-      <section id="pricing" className="py-24 bg-white/[0.02] border-y border-white/5">
-        <Container className="px-6">
-          <div className="text-center mb-14">
-            <p className="text-emerald-400 text-sm font-medium uppercase tracking-widest mb-3">Pricing</p>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
-              투명한 가격, 숨은 비용 없습니다
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
-            {pricingPackages.map((pkg) => (
-              <div key={pkg.name} className={`p-6 rounded-2xl border ${pricingColor[pkg.color]}`}>
-                {pkg.badge && (
-                  <span className="inline-block mb-3 px-2.5 py-0.5 bg-white/10 rounded-full text-[11px] text-white/50">
-                    {pkg.badge}
-                  </span>
-                )}
-                <p className="text-sm text-white/50 mb-1">{pkg.name}</p>
-                <p className="text-2xl font-bold text-white mb-4">{pkg.price}</p>
-                <ul className="space-y-2">
-                  {pkg.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-white/55">
-                      <span className="text-white/30 flex-shrink-0 mt-0.5">—</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* 정부 지원 안내 */}
-          <div className="p-6 bg-emerald-500/5 border border-emerald-500/20 rounded-2xl">
-            <h3 className="text-base font-semibold text-emerald-400 mb-3">🏛 정부 지원 활용 안내</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-white/60">
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-400 flex-shrink-0">✓</span>
-                스마트팜 ICT융복합 확산사업으로 최대 60% 지원 가능
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-400 flex-shrink-0">✓</span>
-                스마트팜 청년농 창업자금 50~70% 보조/융자
-              </li>
-            </ul>
-          </div>
-        </Container>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          섹션 7: CTA
+          섹션 6: CTA (구 섹션 7)
       ════════════════════════════════════════════ */}
       <section id="apply" className="py-28">
         <Container className="px-6">

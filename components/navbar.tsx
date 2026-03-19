@@ -1,20 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import { useLocale } from '@/lib/i18n';
 import { isBuyerPage } from '@/lib/locale';
-
-// Korean farmer navigation (한국 농가용)
-const farmerNav = [
-  { href: '#solutions', key: 'nav.solutions' },      // 솔루션
-  { href: '#crops', key: 'nav.crops' },             // 작물
-  { href: '#export', key: 'nav.export' },           // 수출·인증
-  { href: '#technology', key: 'nav.technology' },   // 기술
-  { href: '#partners', key: 'nav.partners' },       // 파트너
-  { href: '#about', key: 'nav.about' },             // 소개
-];
+import { navItems, NavItem } from '@/lib/nav';
 
 // English buyer navigation (해외 바이어용)
 const buyerNav = [
@@ -25,21 +17,57 @@ const buyerNav = [
   { href: '/about', label: 'About' },
 ];
 
+// ── 드롭다운 (데스크톱) ─────────────────────────────────────────
+function NavDropdown({ item }: { item: NavItem }) {
+  return (
+    <div className="group relative">
+      <button className="flex items-center gap-1 text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-white/5 transition-all">
+        <span>{item.label}</span>
+        <ChevronDown size={12} className="transition-transform group-hover:rotate-180" />
+      </button>
+      {/* 드롭다운 패널 */}
+      <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 z-50">
+        <ul className="min-w-[220px] rounded-xl border border-white/10 bg-bg-2/95 backdrop-blur py-1.5 shadow-2xl">
+          {item.children?.map((child) => (
+            <li key={child.label}>
+              {child.disabled ? (
+                <div className="cursor-default px-4 py-2.5">
+                  <p className="text-[13px] text-txt-3">{child.label}</p>
+                  {child.description && (
+                    <p className="text-[10px] font-mono tracking-wider text-txt-3/50 mt-0.5">{child.description}</p>
+                  )}
+                </div>
+              ) : (
+                <Link href={child.href} className="block px-4 py-2.5 hover:bg-white/5 transition-colors">
+                  <p className="text-[13px] font-medium text-txt">{child.label}</p>
+                  {child.description && (
+                    <p className="text-[10px] font-mono tracking-wider text-accent/70 mt-0.5">{child.description}</p>
+                  )}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExpandedItem, setMobileExpandedItem] = useState<string | null>(null);
   const { locale, setLocale, t } = useLocale();
   const [isBuyerContext, setIsBuyerContext] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
-    
-    // Check if current page is a buyer page
+
     if (typeof window !== 'undefined') {
       setIsBuyerContext(isBuyerPage(window.location.pathname));
     }
-    
+
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -47,9 +75,7 @@ export function Navbar() {
     setLocale(locale === 'ko' ? 'en' : 'ko');
   };
 
-  // Determine which navigation to show
   const shouldShowBuyerNav = isBuyerContext || locale === 'en';
-  const currentNav = shouldShowBuyerNav ? buyerNav : farmerNav;
 
   return (
     <nav
@@ -58,24 +84,42 @@ export function Navbar() {
       }`}
     >
       {/* Logo */}
-      <a href="#platform" className="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+      <Link href="/" className="flex items-center gap-2 text-xl font-extrabold tracking-tight">
         <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-mod-grow flex items-center justify-center text-bg text-sm font-black">
           F
         </span>
         Farm<span className="text-accent">Sense</span>
-      </a>
+      </Link>
 
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center gap-1.5">
-        {currentNav.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-white/5 transition-all"
-          >
-            {'key' in item ? t(item.key) : item.label}
-          </a>
-        ))}
+        {shouldShowBuyerNav ? (
+          // 바이어 네비게이션 (영문, 드롭다운 없음)
+          buyerNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-white/5 transition-all"
+            >
+              {item.label}
+            </Link>
+          ))
+        ) : (
+          // 농가 네비게이션 (한국어, 드롭다운 지원)
+          navItems.map((item) =>
+            item.children ? (
+              <NavDropdown key={item.label} item={item} />
+            ) : (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-white/5 transition-all"
+              >
+                {item.label}
+              </Link>
+            )
+          )
+        )}
 
         {/* Language Toggle */}
         <button
@@ -89,12 +133,12 @@ export function Navbar() {
           </span>
         </button>
 
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           className="ml-2 px-5 py-2 bg-accent text-bg text-[13px] font-bold rounded-lg hover:opacity-90 transition-opacity"
         >
           {t('nav.contact')}
-        </a>
+        </Link>
       </div>
 
       {/* Mobile Toggle */}
@@ -121,23 +165,71 @@ export function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           className="absolute top-16 left-0 right-0 bg-bg-2 border-b border-default px-5 py-4 md:hidden"
         >
-          {currentNav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="block py-2.5 text-txt-2 text-sm font-medium hover:text-accent transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              {'key' in item ? t(item.key) : item.label}
-            </a>
-          ))}
-          <a
-            href="#contact"
+          {shouldShowBuyerNav ? (
+            buyerNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block py-2.5 text-txt-2 text-sm font-medium hover:text-accent transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))
+          ) : (
+            navItems.map((item) =>
+              item.children ? (
+                <div key={item.label}>
+                  <button
+                    className="flex items-center justify-between w-full py-2.5 text-txt-2 text-sm font-medium hover:text-accent transition-colors"
+                    onClick={() => setMobileExpandedItem(mobileExpandedItem === item.label ? null : item.label)}
+                  >
+                    <span>{item.label}</span>
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform ${mobileExpandedItem === item.label ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  {mobileExpandedItem === item.label && (
+                    <div className="pl-4 pb-1 border-l border-white/10 ml-1">
+                      {item.children.map((child) =>
+                        child.disabled ? (
+                          <div key={child.label} className="py-2 text-txt-3 text-sm">
+                            {child.label}
+                          </div>
+                        ) : (
+                          <Link
+                            key={child.label}
+                            href={child.href}
+                            className="block py-2 text-txt-2 text-sm hover:text-accent transition-colors"
+                            onClick={() => { setMobileOpen(false); setMobileExpandedItem(null); }}
+                          >
+                            {child.label}
+                          </Link>
+                        )
+                      )}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="block py-2.5 text-txt-2 text-sm font-medium hover:text-accent transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )
+            )
+          )}
+          <Link
+            href="/#contact"
             className="block mt-3 text-center px-5 py-2.5 bg-accent text-bg text-sm font-bold rounded-lg"
             onClick={() => setMobileOpen(false)}
           >
             {t('nav.contact')}
-          </a>
+          </Link>
         </motion.div>
       )}
     </nav>

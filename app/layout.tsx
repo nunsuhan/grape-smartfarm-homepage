@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Providers } from '@/components/providers/providers';
+import { Navbar } from '@/components/navbar';
 
 export const metadata: Metadata = {
   title: 'FarmSense — Data Infrastructure for Premium Agriculture',
@@ -28,7 +29,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans overflow-x-hidden">
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );

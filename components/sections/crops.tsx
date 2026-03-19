@@ -19,7 +19,7 @@ interface CropDef {
 
 const CROPS: CropDef[] = [
   { emoji: '🍇', ko: '포도', intel: 'Grape Intelligence',        status: 'live',  href: '/crops/grape' },
-  { emoji: '🍓', ko: '딸기', intel: 'Strawberry Intelligence',   status: 'live',  href: '/strawberry' },
+  { emoji: '🍓', ko: '딸기', intel: 'Strawberry Intelligence',   status: 'live',  href: '/crops/strawberry' },
   { emoji: '🍅', ko: '토마토', intel: 'Tomato Intelligence',     status: 'ready' },
   { emoji: '🫑', ko: '파프리카', intel: 'Paprika Intelligence',  status: 'ready' },
   { emoji: '🥒', ko: '오이',    intel: 'Cucumber Intelligence',  status: 'ready' },
