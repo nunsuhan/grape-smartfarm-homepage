@@ -1,11 +1,14 @@
+/* Pretendard Variable (한글 본문 폰트) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --border-color: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.12);
+    --border-color: rgba(44, 24, 16, 0.10);   /* bark/10 — 라이트 테마 보더 */
+    --border-hover: rgba(44, 24, 16, 0.20);   /* bark/20 */
   }
 
   html {
@@ -13,11 +16,13 @@
   }
 
   body {
-    @apply text-txt bg-bg antialiased;
+    @apply bg-bg text-txt antialiased;
+    font-family: var(--font-pretendard), var(--font-outfit), system-ui, sans-serif;
   }
 
   ::selection {
-    @apply bg-accent text-bg;
+    background: #3D7C47;
+    color: #FEFCF6;
   }
 }
 
@@ -28,8 +33,13 @@
   .border-hover {
     border-color: var(--border-hover);
   }
+  /* 라이트 배경용 네비게이션 블러 */
   .glass-nav {
-    @apply bg-bg/[0.88] backdrop-blur-xl;
+    background: rgba(254, 252, 246, 0.90);
     backdrop-filter: blur(24px) saturate(1.4);
+  }
+  /* 익스포트/다크 섹션 전용 — 보더 재정의 */
+  .border-dark {
+    border-color: rgba(255, 255, 255, 0.10);
   }
 }

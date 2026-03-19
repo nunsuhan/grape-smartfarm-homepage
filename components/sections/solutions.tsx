@@ -29,13 +29,13 @@ export function Solutions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className={`group relative bg-surface border border-default rounded-card p-8 transition-all duration-300 hover:-translate-y-1 ${sol.hoverBorder}`}
+              className={`group relative bg-surface border border-default rounded-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${sol.hoverBorder}`}
             >
-              <div className={`absolute -top-px left-6 right-6 h-0.5 rounded-b opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${sol.topBar}`} />
+              <div className={`mb-5 h-1 w-10 rounded-full ${sol.topBar}`} />
               <p className="font-mono text-[11px] tracking-[1.5px] uppercase text-txt-3 mb-1.5">{t('sol.problem_label')}</p>
-              <h3 className="text-xl font-bold mb-2.5 tracking-tight">{t(sol.titleKey)}</h3>
+              <h3 className="font-outfit text-xl font-semibold mb-2.5 tracking-tight text-txt">{t(sol.titleKey)}</h3>
               <p className="text-sm text-txt-2 leading-relaxed mb-4">{t(sol.descKey)}</p>
-              <p className="font-mono text-xs text-accent font-semibold opacity-0 -translate-x-1.5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+              <p className="font-mono text-xs text-vine-500 font-semibold opacity-0 -translate-x-1.5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                 {t(sol.modulesKey)} →
               </p>
             </motion.div>

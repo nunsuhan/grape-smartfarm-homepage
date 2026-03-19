@@ -21,13 +21,13 @@ const buyerNav = [
 function NavDropdown({ item }: { item: NavItem }) {
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-white/5 transition-all">
+      <button className="flex items-center gap-1 text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-bark/5 transition-all">
         <span>{item.label}</span>
         <ChevronDown size={12} className="transition-transform group-hover:rotate-180" />
       </button>
       {/* 드롭다운 패널 */}
       <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 z-50">
-        <ul className="min-w-[220px] rounded-xl border border-white/10 bg-bg-2/95 backdrop-blur py-1.5 shadow-2xl">
+        <ul className="min-w-[220px] rounded-xl border border-default bg-white/95 backdrop-blur py-1.5 shadow-xl shadow-bark/10">
           {item.children?.map((child) => (
             <li key={child.label}>
               {child.disabled ? (
@@ -38,7 +38,7 @@ function NavDropdown({ item }: { item: NavItem }) {
                   )}
                 </div>
               ) : (
-                <Link href={child.href} className="block px-4 py-2.5 hover:bg-white/5 transition-colors">
+                <Link href={child.href} className="block px-4 py-2.5 hover:bg-bark/5 transition-colors">
                   <p className="text-[13px] font-medium text-txt">{child.label}</p>
                   {child.description && (
                     <p className="text-[10px] font-mono tracking-wider text-accent/70 mt-0.5">{child.description}</p>
@@ -84,11 +84,11 @@ export function Navbar() {
       }`}
     >
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-2 text-xl font-extrabold tracking-tight">
-        <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-mod-grow flex items-center justify-center text-bg text-sm font-black">
+      <Link href="/" className="flex items-center gap-2 font-outfit text-xl font-bold tracking-tight text-bark">
+        <span className="w-7 h-7 rounded-lg bg-vine-500 flex items-center justify-center text-white text-sm font-black">
           F
         </span>
-        Farm<span className="text-accent">Sense</span>
+        Farm<span className="text-vine-500">Sense</span>
       </Link>
 
       {/* Desktop Nav */}
@@ -99,7 +99,7 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-white/5 transition-all"
+              className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-bark/5 transition-all"
             >
               {item.label}
             </Link>
@@ -113,7 +113,7 @@ export function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-white/5 transition-all"
+                className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-bark/5 transition-all"
               >
                 {item.label}
               </Link>
@@ -124,7 +124,7 @@ export function Navbar() {
         {/* Language Toggle */}
         <button
           onClick={toggleLocale}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-txt-2 hover:text-txt hover:bg-white/5 transition-all text-[13px] font-medium ml-1"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-txt-2 hover:text-txt hover:bg-bark/5 transition-all text-[13px] font-medium ml-1"
           title={locale === 'ko' ? 'Switch to English' : '한국어로 변경'}
         >
           <Globe size={14} />
@@ -135,7 +135,7 @@ export function Navbar() {
 
         <Link
           href="/#contact"
-          className="ml-2 px-5 py-2 bg-accent text-bg text-[13px] font-bold rounded-lg hover:opacity-90 transition-opacity"
+          className="ml-2 px-5 py-2 bg-vine-500 text-white text-[13px] font-semibold rounded-lg hover:bg-vine-600 transition-colors"
         >
           {t('nav.contact')}
         </Link>
@@ -225,7 +225,7 @@ export function Navbar() {
           )}
           <Link
             href="/#contact"
-            className="block mt-3 text-center px-5 py-2.5 bg-accent text-bg text-sm font-bold rounded-lg"
+            className="block mt-3 text-center px-5 py-2.5 bg-vine-500 text-white text-sm font-semibold rounded-lg hover:bg-vine-600 transition-colors"
             onClick={() => setMobileOpen(false)}
           >
             {t('nav.contact')}
