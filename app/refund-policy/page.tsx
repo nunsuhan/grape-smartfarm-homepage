@@ -4,7 +4,7 @@ import { Footer } from '@/components/footer';
 
 export const metadata = {
     title: '환불·취소 정책 - FarmSense',
-    description: 'FarmSense 구독 서비스 환불 및 취소 정책',
+    description: 'FarmSense 서비스 환불 및 취소 정책',
 };
 
 export default function RefundPolicyPage() {
@@ -20,6 +20,13 @@ export default function RefundPolicyPage() {
                         <p className="text-neutral-cream/70 mb-8">
                             시행일자: 2026년 2월 28일
                         </p>
+
+                        <div className="bg-green-500/10 border-l-4 border-green-600 p-6 rounded-lg mb-8">
+                            <p className="text-neutral-cream/90 font-medium">
+                                현재 팜센스(FarmSense)는 베타 운영 기간 중이며 유료 서비스가 제공되지 않습니다.
+                                정식 출시 후 유료 서비스가 시작되는 시점부터 아래 환불·취소 정책이 적용됩니다.
+                            </p>
+                        </div>
 
                         <p className="text-neutral-cream/80 leading-relaxed mb-8">
                             팜센스(FarmSense)는 이용자의 권익 보호를 위해 「전자상거래 등에서의 소비자보호에 관한 법률」에 따라 다음과 같이 환불·취소 정책을 운영합니다.
@@ -49,10 +56,6 @@ export default function RefundPolicyPage() {
                                         <td className="border border-white/15 px-4 py-3 font-semibold">결제 후 7일 초과</td>
                                         <td className="border border-white/15 px-4 py-3">잔여 기간에 대해 일할 계산 후 환불<br/><span className="text-neutral-cream/60 text-sm">(단, 사용 기간 1개월 초과 시 환불 불가)</span></td>
                                     </tr>
-                                    <tr className="bg-white/5">
-                                        <td className="border border-white/15 px-4 py-3 font-semibold">연 구독</td>
-                                        <td className="border border-white/15 px-4 py-3">잔여 개월 수 기준 일할 계산 환불<br/><span className="text-neutral-cream/60 text-sm">(단, 이미 제공된 할인 혜택은 차감)</span></td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -63,7 +66,6 @@ export default function RefundPolicyPage() {
                         <ul className="list-disc pl-6 mb-8 space-y-2 text-neutral-cream/80">
                             <li>이용자의 단순 변심으로 결제일로부터 7일이 경과한 경우</li>
                             <li>이용자의 귀책 사유로 서비스 이용이 제한된 경우 (약관 위반 등)</li>
-                            <li>프로모션·이벤트를 통해 무료 또는 할인 제공된 기간에 대한 환불 요청</li>
                         </ul>
 
                         <h2 className="text-2xl font-bold text-white mt-10 mb-4 pl-3 border-l-4 border-green-600">

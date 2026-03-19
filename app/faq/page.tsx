@@ -34,7 +34,7 @@ const faqData: Record<string, { title: string; icon: string; items: { q: string;
         ]
     },
     pricing: {
-        title: "가격/요금제",
+        title: "서비스 안내",
         icon: "CreditCard",
         items: [
             {

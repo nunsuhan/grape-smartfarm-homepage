@@ -85,7 +85,7 @@ const qrInfo = [
 
 export function BlockchainTraceability() {
     return (
-        <Section id="blockchain-traceability" dark className="overflow-hidden">
+        <Section id="blockchain-traceability" alt className="overflow-hidden">
             <Container>
                 {/* Header */}
                 <div className="text-center mb-16">

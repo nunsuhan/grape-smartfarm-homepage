@@ -4,7 +4,7 @@ import { Footer } from '@/components/footer';
 
 export const metadata = {
     title: '이용약관 - FarmSense',
-    description: 'FarmSense 서비스 이용약관 및 결제 안내',
+    description: 'FarmSense 서비스 이용약관',
 };
 
 export default function TermsPage() {
@@ -33,75 +33,14 @@ export default function TermsPage() {
                         </p>
 
                         <h2 className="text-2xl font-bold text-white mt-10 mb-4 pl-3 border-l-4 border-green-600">
-                            제2조 (서비스 요금제)
+                            제2조 (서비스 이용)
                         </h2>
-                        <p className="text-neutral-cream/80 mb-4">
-                            회사는 다음과 같은 유료 구독 서비스를 제공합니다.
+                        <p className="text-neutral-cream/80 mb-8">
+                            본 서비스는 현재 베타 운영 중이며, 서비스 요금 정책은 정식 출시 시 별도 안내됩니다. 베타 기간 중에는 모든 기능을 무료로 이용하실 수 있습니다.
                         </p>
-                        <div className="overflow-x-auto mb-8">
-                            <table className="min-w-full border-collapse border border-white/15">
-                                <thead>
-                                    <tr className="bg-white/10">
-                                        <th className="border border-white/15 px-4 py-3 text-left font-semibold">플랜</th>
-                                        <th className="border border-white/15 px-4 py-3 text-left font-semibold">월 구독</th>
-                                        <th className="border border-white/15 px-4 py-3 text-left font-semibold">연 구독</th>
-                                        <th className="border border-white/15 px-4 py-3 text-left font-semibold">주요 기능</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className="border border-white/15 px-4 py-3 font-semibold text-white">무료</td>
-                                        <td className="border border-white/15 px-4 py-3">0원</td>
-                                        <td className="border border-white/15 px-4 py-3">0원</td>
-                                        <td className="border border-white/15 px-4 py-3">기본 환경 모니터링, 영농일지(월 10건), 기상 정보</td>
-                                    </tr>
-                                    <tr className="bg-white/5">
-                                        <td className="border border-white/15 px-4 py-3 font-semibold text-white">일반</td>
-                                        <td className="border border-white/15 px-4 py-3">5,000원</td>
-                                        <td className="border border-white/15 px-4 py-3">20,000원</td>
-                                        <td className="border border-white/15 px-4 py-3">AI 병해 진단, 병해 예측(PMI), 센서 연동, 데이터 분석</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="border border-white/15 px-4 py-3 font-semibold text-secondary-gold">수출농가</td>
-                                        <td className="border border-white/15 px-4 py-3">10,000원</td>
-                                        <td className="border border-white/15 px-4 py-3">50,000원</td>
-                                        <td className="border border-white/15 px-4 py-3">일반 기능 전체 + PLS 농약안전사용기준, 수출 이력 추적, 잔류농약 관리</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p className="text-neutral-cream/60 text-sm mb-8">
-                            전체 기능 비교는 <a href="/pricing" className="text-green-400 hover:text-green-300 underline">요금제 상세 비교 페이지</a>를 참고하세요.
-                        </p>
-                        <ul className="list-disc pl-6 mb-8 space-y-2 text-neutral-cream/80">
-                            <li>결제는 <strong>팜센스 앱(FarmSense App)</strong> 내에서 이루어집니다.</li>
-                            <li>연 구독은 월 구독 대비 할인이 적용됩니다.</li>
-                            <li>구독 기간 만료 전까지 서비스를 이용할 수 있습니다.</li>
-                        </ul>
 
                         <h2 className="text-2xl font-bold text-white mt-10 mb-4 pl-3 border-l-4 border-green-600">
-                            제3조 (결제 수단)
-                        </h2>
-                        <p className="text-neutral-cream/80 mb-4">
-                            회사는 토스페이먼츠(주)를 결제대행사로 이용하며, 다음과 같은 결제 수단을 지원합니다.
-                        </p>
-                        <ul className="list-disc pl-6 mb-8 space-y-2 text-neutral-cream/80">
-                            <li>신용카드 / 체크카드</li>
-                            <li>계좌이체</li>
-                            <li>토스페이</li>
-                        </ul>
-
-                        <h2 className="text-2xl font-bold text-white mt-10 mb-4 pl-3 border-l-4 border-green-600">
-                            제4조 (구독 갱신 및 해지)
-                        </h2>
-                        <ul className="list-disc pl-6 mb-8 space-y-2 text-neutral-cream/80">
-                            <li>구독은 만료일에 자동 갱신되지 않으며, 이용자가 직접 앱에서 재결제해야 합니다.</li>
-                            <li>해지는 앱 내 설정 메뉴 또는 이메일(artmer3061@gmail.com)을 통해 요청할 수 있습니다.</li>
-                            <li>환불·취소 정책은 별도 <a href="/refund-policy" className="text-green-400 hover:text-green-300 underline">환불·취소 정책 페이지</a>를 참고하십시오.</li>
-                        </ul>
-
-                        <h2 className="text-2xl font-bold text-white mt-10 mb-4 pl-3 border-l-4 border-green-600">
-                            제5조 (서비스 이용 제한)
+                            제3조 (서비스 이용 제한)
                         </h2>
                         <p className="text-neutral-cream/80 mb-4">
                             이용자는 다음 행위를 해서는 안 됩니다.
@@ -113,14 +52,14 @@ export default function TermsPage() {
                         </ul>
 
                         <h2 className="text-2xl font-bold text-white mt-10 mb-4 pl-3 border-l-4 border-green-600">
-                            제6조 (책임의 한계)
+                            제4조 (책임의 한계)
                         </h2>
                         <p className="text-neutral-cream/80 mb-8">
                             회사는 천재지변, 통신 장애, 시스템 오류 등 불가항력으로 인한 서비스 중단에 대해 책임을 지지 않습니다. AI 진단 결과는 참고 정보로만 활용하시기 바라며, 최종 판단은 이용자 본인이 하여야 합니다.
                         </p>
 
                         <h2 className="text-2xl font-bold text-white mt-10 mb-4 pl-3 border-l-4 border-green-600">
-                            제7조 (약관 변경)
+                            제5조 (약관 변경)
                         </h2>
                         <p className="text-neutral-cream/80 mb-8">
                             회사는 약관을 변경할 경우 시행 7일 전에 앱 공지 또는 홈페이지를 통해 고지합니다.

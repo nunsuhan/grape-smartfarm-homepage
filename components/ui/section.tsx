@@ -1,24 +1,21 @@
-import clsx from 'clsx';
+'use client';
+
 import { ReactNode } from 'react';
 
 interface SectionProps {
-    children: ReactNode;
-    id?: string;
-    className?: string;
-    dark?: boolean;
+  children: ReactNode;
+  id?: string;
+  className?: string;
+  alt?: boolean;
 }
 
-export function Section({ children, id, className, dark = false }: SectionProps) {
-    return (
-        <section
-            id={id}
-            className={clsx(
-                'relative py-20 lg:py-32',
-                dark ? 'bg-neutral-black' : 'bg-transparent',
-                className
-            )}
-        >
-            {children}
-        </section>
-    );
+export function Section({ children, id, className = '', alt = false }: SectionProps) {
+  return (
+    <section
+      id={id}
+      className={`py-24 md:py-32 px-5 md:px-12 ${alt ? 'bg-bg-2' : ''} ${className}`}
+    >
+      {children}
+    </section>
+  );
 }

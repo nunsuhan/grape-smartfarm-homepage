@@ -38,7 +38,7 @@ export default function SmartfarmLayout({
 
   return (
     <div className="min-h-screen pt-20 bg-neutral-black">
-      <Container fullWidth className="max-w-7xl flex flex-col lg:flex-row gap-0 px-0 sm:px-0 lg:px-0">
+      <Container className="max-w-7xl flex flex-col lg:flex-row gap-0 px-0 sm:px-0 lg:px-0">
         {/* Sidebar - Desktop */}
         <aside className="hidden lg:flex flex-col w-60 shrink-0 border-r border-white/10 min-h-[calc(100vh-5rem)] sticky top-20 bg-neutral-black/80 backdrop-blur-md">
           <nav className="flex flex-col gap-1 p-4 pt-6">

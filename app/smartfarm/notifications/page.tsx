@@ -62,7 +62,11 @@ export default function NotificationsPage() {
   ).length;
 
   const markAsRead = (id: number) => {
-    setReadIds((prev) => new Set([...prev, id]));
+    setReadIds((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(id);
+      return newSet;
+    });
   };
 
   const markAllRead = () => {

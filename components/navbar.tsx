@@ -1,328 +1,145 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import clsx from 'clsx';
-import { Container } from './ui/container';
-import { ChevronDown, LogIn, User, LogOut } from 'lucide-react';
-import { useModal } from './providers/modal-provider';
-import { useAuthStore } from '@/lib/auth-store';
-import { AuthModal } from './auth-modal';
+import { motion } from 'framer-motion';
+import { Menu, X, Globe } from 'lucide-react';
+import { useLocale } from '@/lib/i18n';
+import { isBuyerPage } from '@/lib/locale';
 
-const navItems = [
-    {
-        label: '센서·서비스',
-        href: '/sensors',
-        dropdown: [
-            { label: '센서 제품 카탈로그', href: '/sensors' },
-            { label: '시기별 서비스 안내', href: '/services' },
-            { label: '센서 견적 내기', href: '/sensor-configurator' },
-            { label: '시범 농가 신청 (50% 할인)', href: '/trial' },
-            { label: '센서 설치 가이드', href: '/install-guide' },
-        ]
-    },
-    {
-        label: '기능 소개',
-        href: '/technology/docs',
-        dropdown: [
-            { label: '기술 개요', href: '/technology' },
-            { label: '기술 문서 (검증·로직)', href: '/technology/docs' },
-            { label: 'AI 병해충 진단 (Vision)', href: '/technology/ai-diagnosis' },
-            { label: 'PMI-DSS 의사결정', href: '/technology/pmi-dss' },
-            { label: '대화형 농업 비서 (RAG)', href: '/technology/rag-system' },
-            { label: '열화상·RGB-D 필요성', href: '/technology/camera-necessity' },
-            { label: '데이터 수집 전략', href: '/technology/data-strategy' },
-            { label: '지능형 로직 (6개 상세)', href: '/intelligent-logic' },
-        ]
-    },
-    {
-        label: '수출 · 인증',
-        href: '/export/gap-certification',
-        dropdown: [
-            { label: 'GAP 인증 완벽 가이드', href: '/export/gap-certification' },
-            { label: '블록체인 이력추적', href: '/technology/blockchain' },
-            { label: '수출 서류 데이터 전략', href: '/export/data-documents' },
-            { label: '주요국 수출 요건', href: '/export/country-requirements' },
-            { label: '수출 준비 로드맵', href: '/export/roadmap' },
-        ]
-    },
-    {
-        label: '내 농장',
-        href: '/smartfarm/dashboard',
-        dropdown: [
-            { label: '대시보드', href: '/smartfarm/dashboard' },
-            { label: '센서 모니터링', href: '/smartfarm/sensors' },
-            { label: 'AI 상담', href: '/smartfarm/ai-chat' },
-            { label: '질병 진단', href: '/smartfarm/diagnosis' },
-            { label: '영농일지', href: '/smartfarm/field-book' },
-            { label: '알림 센터', href: '/smartfarm/notifications' },
-            { label: '커뮤니티', href: '/smartfarm/community' },
-            { label: '앱 다운로드', href: '/smartfarm/download' },
-        ]
-    },
-    {
-        label: '고객지원',
-        href: '/faq',
-        dropdown: [
-            { label: '포도 재배 정보', href: '/grape-info' },
-            { label: '우리의 가치', href: '/about' },
-            { label: 'FAQ', href: '/faq' },
-            { label: '문의 게시판', href: '/support/board' },
-            { label: '센서 설치 도우미', href: '/sensor-installation-guide' },
-            { label: '포도밭 센서 설치 가이드', href: '/vineyard-sensor-guide' },
-            { label: '센서 견적 내기', href: '/sensor-configurator' },
-            { label: 'AI 스마트 도우미', href: '/support/ai-assistant' },
-            { label: '문의하기', href: '/support' },
-        ]
-    },
+// Korean farmer navigation (한국 농가용)
+const farmerNav = [
+  { href: '#solutions', key: 'nav.solutions' },      // 솔루션
+  { href: '#crops', key: 'nav.crops' },             // 작물
+  { href: '#export', key: 'nav.export' },           // 수출·인증
+  { href: '#technology', key: 'nav.technology' },   // 기술
+  { href: '#partners', key: 'nav.partners' },       // 파트너
+  { href: '#about', key: 'nav.about' },             // 소개
+];
+
+// English buyer navigation (해외 바이어용)
+const buyerNav = [
+  { href: '/export-intelligence', label: 'Export Program' },
+  { href: '/verified-farms', label: 'Verified Farms' },
+  { href: '#technology', label: 'Technology' },
+  { href: '/partners', label: 'Partners' },
+  { href: '/about', label: 'About' },
 ];
 
 export function Navbar() {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isAuthOpen, setIsAuthOpen] = useState(false);
-    const { scrollY } = useScroll();
-    const { openModal } = useModal();
-    const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-    const [mobileExpandedIdx, setMobileExpandedIdx] = useState<number | null>(null);
-    const pathname = usePathname();
-    const { user, isLoggedIn, logout, hydrate } = useAuthStore();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const { locale, setLocale, t } = useLocale();
+  const [isBuyerContext, setIsBuyerContext] = useState(false);
 
-    useEffect(() => { hydrate(); }, [hydrate]);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    
+    // Check if current page is a buyer page
+    if (typeof window !== 'undefined') {
+      setIsBuyerContext(isBuyerPage(window.location.pathname));
+    }
+    
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-    const isSmartfarmPage = pathname?.startsWith('/smartfarm');
+  const toggleLocale = () => {
+    setLocale(locale === 'ko' ? 'en' : 'ko');
+  };
 
-    useMotionValueEvent(scrollY, "change", (latest) => {
-        setIsScrolled(latest > 50);
-    });
+  // Determine which navigation to show
+  const shouldShowBuyerNav = isBuyerContext || locale === 'en';
+  const currentNav = shouldShowBuyerNav ? buyerNav : farmerNav;
 
-    const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  return (
+    <nav
+      className={`fixed top-0 w-full z-50 h-16 flex items-center justify-between px-5 md:px-12 transition-all duration-300 ${
+        scrolled ? 'glass-nav border-b border-default' : 'bg-transparent'
+      }`}
+    >
+      {/* Logo */}
+      <a href="#platform" className="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+        <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-mod-grow flex items-center justify-center text-bg text-sm font-black">
+          F
+        </span>
+        Farm<span className="text-accent">Sense</span>
+      </a>
 
-    // 모바일 메뉴: body에 포탈로 렌더링해 fixed가 뷰포트 기준으로 동작하도록
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => setMounted(true), []);
+      {/* Desktop Nav */}
+      <div className="hidden md:flex items-center gap-1.5">
+        {currentNav.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-white/5 transition-all"
+          >
+            {'key' in item ? t(item.key) : item.label}
+          </a>
+        ))}
 
-    const mobileMenuContent = (
-        <AnimatePresence>
-            {isMobileMenuOpen && (
-            <motion.div
-                key="mobile-menu"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 bg-[#0a0a0a] z-[110] pt-24 px-6 md:hidden overflow-y-auto"
-                style={{ top: 0, left: 0, right: 0, bottom: 0 }}
-            >
-                <nav className="flex flex-col gap-6 text-lg font-medium text-neutral-cream/90">
-                    {/* Mobile Auth - 스마트팜 페이지에서만 표시 */}
-                    {isSmartfarmPage && (
-                    <div className="border-b border-white/10 pb-4">
-                        {isLoggedIn ? (
-                            <div className="flex items-center justify-between">
-                                <span className="text-sm text-neutral-cream/60">
-                                    <User className="w-4 h-4 inline mr-2" />
-                                    {user?.username || '사용자'}
-                                </span>
-                                <button
-                                    onClick={() => { logout(); setIsMobileMenuOpen(false); }}
-                                    className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm text-neutral-cream/50 hover:text-neutral-cream bg-white/5"
-                                >
-                                    <LogOut className="w-4 h-4" />
-                                    로그아웃
-                                </button>
-                            </div>
-                        ) : (
-                            <button
-                                onClick={() => { setIsMobileMenuOpen(false); setIsAuthOpen(true); }}
-                                className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-primary-purple text-white font-medium"
-                            >
-                                <LogIn className="w-4 h-4" />
-                                로그인
-                            </button>
-                        )}
-                    </div>
-                    )}
-                    {navItems.map((item, idx) => (
-                        <div key={idx} className="border-b border-white/10 pb-4 last:border-0">
-                            <div className="flex items-center justify-between w-full">
-                                {item.dropdown ? (
-                                    <button
-                                        type="button"
-                                        onClick={() => setMobileExpandedIdx(mobileExpandedIdx === idx ? null : idx)}
-                                        className="flex items-center justify-between w-full py-2 hover:text-secondary-gold transition-colors text-left"
-                                    >
-                                        <span>{item.label}</span>
-                                        <ChevronDown className={clsx(
-                                            "w-5 h-5 transition-transform duration-200",
-                                            mobileExpandedIdx === idx ? "rotate-180" : ""
-                                        )} />
-                                    </button>
-                                ) : (
-                                    <Link
-                                        href={item.href}
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="block py-2 hover:text-secondary-gold transition-colors w-full"
-                                    >
-                                        {item.label}
-                                    </Link>
-                                )}
-                            </div>
-
-                            <AnimatePresence>
-                                {item.dropdown && mobileExpandedIdx === idx && (
-                                    <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: "auto", opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        className="overflow-hidden bg-white/5 rounded-lg mt-2"
-                                    >
-                                        {item.dropdown.map((subItem, subIdx) => (
-                                            <Link
-                                                key={subIdx}
-                                                href={subItem.href}
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                                className="block px-4 py-3 text-sm hover:text-secondary-gold transition-colors border-b border-white/5 last:border-0"
-                                            >
-                                                {subItem.label}
-                                            </Link>
-                                        ))}
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
-                    ))}
-                </nav>
-            </motion.div>
-            )}
-        </AnimatePresence>
-    );
-
-    return (
-        <motion.header
-            className={clsx(
-                'fixed top-0 left-0 right-0 z-[100] transition-colors duration-300',
-                isSmartfarmPage || isScrolled || isMobileMenuOpen
-                    ? 'bg-neutral-black/95 backdrop-blur-md border-b border-white/10 shadow-lg'
-                    : 'bg-transparent'
-            )}
+        {/* Language Toggle */}
+        <button
+          onClick={toggleLocale}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-txt-2 hover:text-txt hover:bg-white/5 transition-all text-[13px] font-medium ml-1"
+          title={locale === 'ko' ? 'Switch to English' : '한국어로 변경'}
         >
-            <Container className="flex items-center justify-between h-20">
-                <Link href="/" className="text-2xl font-serif font-bold text-white z-[101] relative cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>
-                    FarmSense
-                </Link>
+          <Globe size={14} />
+          <span className="font-mono text-[11px] tracking-wider">
+            {locale === 'ko' ? 'EN' : '한'}
+          </span>
+        </button>
 
-                {/* Desktop Navigation */}
-                <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-cream/80 pointer-events-auto z-[102]">
-                    {navItems.map((item, idx) => (
-                        <div
-                            key={idx}
-                            className="relative h-20 flex items-center"
-                            onMouseEnter={() => setHoveredIdx(idx)}
-                            onMouseLeave={() => setHoveredIdx(null)}
-                        >
-                            <Link
-                                href={item.href}
-                                className="flex items-center gap-1 hover:text-secondary-gold transition-colors"
-                            >
-                                {item.label}
-                                {item.dropdown && (
-                                    <ChevronDown className={clsx(
-                                        "w-4 h-4 transition-transform duration-200",
-                                        hoveredIdx === idx ? "rotate-180" : ""
-                                    )} />
-                                )}
-                            </Link>
+        <a
+          href="#contact"
+          className="ml-2 px-5 py-2 bg-accent text-bg text-[13px] font-bold rounded-lg hover:opacity-90 transition-opacity"
+        >
+          {t('nav.contact')}
+        </a>
+      </div>
 
-                            <AnimatePresence>
-                                {item.dropdown && hoveredIdx === idx && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 10, display: 'none' }}
-                                        animate={{ opacity: 1, y: 0, display: 'block' }}
-                                        exit={{ opacity: 0, y: 10, transition: { duration: 0.2 } }}
-                                        transition={{ duration: 0.2 }}
-                                        className="absolute top-full -left-4 w-48 pt-2"
-                                    >
-                                        <div className="bg-[#1A1A2E] border border-white/10 rounded-xl p-2 shadow-xl backdrop-blur-md overflow-hidden">
-                                            {item.dropdown.map((subItem, subIdx) => (
-                                                <Link
-                                                    key={subIdx}
-                                                    href={subItem.href}
-                                                    className="block px-4 py-3 rounded-lg hover:bg-white/5 text-sm hover:text-secondary-gold transition-colors"
-                                                >
-                                                    {subItem.label}
-                                                </Link>
-                                            ))}
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
-                    ))}
-                </nav>
+      {/* Mobile Toggle */}
+      <div className="flex items-center gap-2 md:hidden">
+        <button
+          onClick={toggleLocale}
+          className="text-txt-2 hover:text-txt transition-colors p-1.5"
+          title={locale === 'ko' ? 'Switch to English' : '한국어로 변경'}
+        >
+          <Globe size={18} />
+        </button>
+        <button
+          className="text-txt-2 hover:text-txt transition-colors"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
 
-                {/* Desktop Auth Button - 스마트팜 페이지에서만 표시 */}
-                {isSmartfarmPage && (
-                <div className="hidden md:flex items-center gap-3 z-[102]">
-                    {isLoggedIn ? (
-                        <div className="flex items-center gap-3">
-                            <span className="text-xs text-neutral-cream/60">
-                                <User className="w-3.5 h-3.5 inline mr-1" />
-                                {user?.username || '사용자'}
-                            </span>
-                            <button
-                                onClick={logout}
-                                className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs text-neutral-cream/50 hover:text-neutral-cream hover:bg-white/5 transition-colors"
-                            >
-                                <LogOut className="w-3.5 h-3.5" />
-                                로그아웃
-                            </button>
-                        </div>
-                    ) : (
-                        <button
-                            onClick={() => setIsAuthOpen(true)}
-                            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-purple/80 hover:bg-primary-purple text-white text-xs font-medium transition-colors"
-                        >
-                            <LogIn className="w-3.5 h-3.5" />
-                            로그인
-                        </button>
-                    )}
-                </div>
-                )}
-
-                {/* Mobile Menu Toggle - 높은 z로 항상 클릭 가능 */}
-                <button
-                    type="button"
-                    className="md:hidden relative z-[120] p-3 -m-1 text-white touch-manipulation"
-                    onClick={toggleMobileMenu}
-                    aria-label={isMobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
-                    aria-expanded={isMobileMenuOpen}
-                >
-                    <div className="w-6 h-5 flex flex-col justify-between pointer-events-none">
-                        <motion.span
-                            animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                            className="w-full h-0.5 bg-white origin-left transition-all"
-                        />
-                        <motion.span
-                            animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                            className="w-full h-0.5 bg-white transition-all"
-                        />
-                        <motion.span
-                            animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-                            className="w-full h-0.5 bg-white origin-left transition-all"
-                        />
-                    </div>
-                </button>
-
-                {/* 모바일 메뉴: body 포탈로 전체 화면 표시 */}
-                {mounted && createPortal(mobileMenuContent, document.body)}
-
-                {/* Auth Modal */}
-                <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
-            </Container>
-        </motion.header>
-    );
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="absolute top-16 left-0 right-0 bg-bg-2 border-b border-default px-5 py-4 md:hidden"
+        >
+          {currentNav.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="block py-2.5 text-txt-2 text-sm font-medium hover:text-accent transition-colors"
+              onClick={() => setMobileOpen(false)}
+            >
+              {'key' in item ? t(item.key) : item.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="block mt-3 text-center px-5 py-2.5 bg-accent text-bg text-sm font-bold rounded-lg"
+            onClick={() => setMobileOpen(false)}
+          >
+            {t('nav.contact')}
+          </a>
+        </motion.div>
+      )}
+    </nav>
+  );
 }

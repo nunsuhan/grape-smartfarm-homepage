@@ -1,22 +1,14 @@
-import clsx from 'clsx';
 import { ReactNode } from 'react';
 
 interface ContainerProps {
-    children: ReactNode;
-    className?: string;
-    fullWidth?: boolean;
+  children: ReactNode;
+  className?: string;
 }
 
-export function Container({ children, className, fullWidth = false }: ContainerProps) {
-    return (
-        <div
-            className={clsx(
-                'mx-auto px-4 sm:px-6 lg:px-8',
-                fullWidth ? 'w-full' : 'max-w-5xl',
-                className
-            )}
-        >
-            {children}
-        </div>
-    );
+export function Container({ children, className = '' }: ContainerProps) {
+  return (
+    <div className={`max-w-[1200px] mx-auto ${className}`}>
+      {children}
+    </div>
+  );
 }

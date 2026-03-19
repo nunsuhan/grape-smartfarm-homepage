@@ -35,7 +35,7 @@ function ServiceTable({ rows }: { rows: [string, string][] }) {
 }
 
 function SensorCard({ sensor }: { sensor: {
-  icon: string; name: string; price: number; trialPrice: number; unit: string;
+  icon: string; name: string; unit: string;
   role: string; specs: string[]; services: [string, string][]; tags?: string[];
   note?: string; recommended?: string;
 }}) {
@@ -55,11 +55,7 @@ function SensorCard({ sensor }: { sensor: {
                 <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30">{t}</span>
               ))}
             </div>
-            <p className="text-sm text-neutral-cream/60 mb-2">{sensor.role}</p>
-            <div className="flex gap-4">
-              <span className="text-neutral-cream/40 line-through text-sm">{sensor.price.toLocaleString()}원/{sensor.unit}</span>
-              <span className="text-green-400 font-bold">시범 {sensor.trialPrice.toLocaleString()}원</span>
-            </div>
+            <p className="text-sm text-neutral-cream/60">{sensor.role}</p>
           </div>
         </div>
         <span className="text-neutral-cream/40 text-xl mt-1">{open ? '▲' : '▼'}</span>
@@ -102,7 +98,7 @@ function SensorCard({ sensor }: { sensor: {
 }
 
 const GATEWAY = {
-  icon: '📡', name: 'LoRa 게이트웨이 (SenseCAP M2)', price: 280000, trialPrice: 140000, unit: '대',
+  icon: '📡', name: 'LoRa 게이트웨이 (SenseCAP M2)', unit: '대',
   role: '밭 센서들의 LoRa 무선 신호를 받아서 FarmSense 서버에 전송하는 중계 장비',
   specs: [
     '수신 반경: 2~10km (센서 수십 개까지 커버)',
@@ -116,20 +112,20 @@ const GATEWAY = {
 };
 
 const LTE_ROUTER = {
-  icon: '🌐', name: 'LTE 라우터 + IoT 유심', price: 50000, trialPrice: 25000, unit: '대',
+  icon: '🌐', name: 'LTE 라우터 + IoT 유심', unit: '대',
   role: '밭에 인터넷이 없어도 LTE 통신망으로 게이트웨이를 서버에 연결',
   specs: [
     'LTE Cat.4 (다운 150Mbps)',
     'IoT 전용 유심 (KT/SKT)',
     '월 데이터 사용량: 0.5MB 이하 (센서 데이터는 매우 작음)',
     '집에 유선 인터넷이 있으면 LTE 라우터 불필요',
-    '월 유지비: 10,000원 (시범 첫 1년 무료)',
+    '월 유지비: IoT 전용 유심 요금 (별도 안내)',
   ],
   services: [['연중', '인터넷 없는 밭에서도 데이터 전송\n월 0.5MB 이하 — 유심 요금 최소']],
 };
 
 const HUB = {
-  icon: '🔋', name: '센서 허브 — 데이터로거 (SenseCAP S2100)', price: 110000, trialPrice: 55000, unit: '개',
+  icon: '🔋', name: '센서 허브 — 데이터로거 (SenseCAP S2100)', unit: '개',
   role: '센서 여러 개를 연결하는 본체. 측정 데이터를 LoRa 무선으로 게이트웨이에 전송',
   specs: [
     'RS485 / 아날로그(4~20mA, 0~10V) / GPIO 입력',
@@ -145,7 +141,7 @@ const HUB = {
 };
 
 const TEMP_HUM = {
-  icon: '🌡️', name: '대기 온·습도 센서', price: 25000, trialPrice: 12500, unit: '개',
+  icon: '🌡️', name: '대기 온·습도 센서', unit: '개',
   role: '하우스/밭 안의 온도와 습도를 실시간으로 측정',
   specs: ['온도: -40°C ~ 85°C (정확도 ±0.2°C)', '습도: 0 ~ 100% RH (정확도 ±1.8%)'],
   services: [
@@ -159,7 +155,7 @@ const TEMP_HUM = {
 };
 
 const SOIL_MOISTURE = {
-  icon: '💧', name: '흙 속 물기 센서 × 2개', price: 50000, trialPrice: 25000, unit: '세트',
+  icon: '💧', name: '흙 속 물기 센서 × 2개', unit: '세트',
   role: '흙이 마른지 축축한지 2개 깊이에서 측정 — 물 줄 타이밍과 과관수 감지',
   specs: [
     '흙 속 물기(체적 수분): 0 ~ 100%',
@@ -179,7 +175,7 @@ const SOIL_MOISTURE = {
 
 const OPTIONAL_SENSORS = [
   {
-    icon: '☀️', name: '일사량 센서 (SenseCAP S2102)', price: 100000, trialPrice: 50000, unit: '개',
+    icon: '☀️', name: '일사량 센서 (SenseCAP S2102)', unit: '개',
     role: '햇빛의 세기를 측정 — 관수 정확도 30% 향상, 광합성 효율 진단',
     tags: ['모든 농가 추천'],
     specs: ['빛의 세기(조도): 0 ~ 188,000 Lux (정확도 ±5%)'],
@@ -192,7 +188,7 @@ const OPTIONAL_SENSORS = [
     recommended: '모든 농가. 기본 다음으로 효과 큰 센서',
   },
   {
-    icon: '💨', name: 'CO₂ + 온·습도 센서 (SenseCAP S2103)', price: 220000, trialPrice: 110000, unit: '개',
+    icon: '💨', name: 'CO₂ + 온·습도 센서 (SenseCAP S2103)', unit: '개',
     role: '하우스 안 이산화탄소 농도 측정 — 환기 타이밍 고도화',
     tags: ['하우스 전용'],
     specs: [
@@ -206,7 +202,7 @@ const OPTIONAL_SENSORS = [
     recommended: '하우스(시설) 재배 농가',
   },
   {
-    icon: '🧂', name: '흙 물기 + 온도 + 소금기(EC) 센서 (SenseCAP S2105)', price: 230000, trialPrice: 115000, unit: '개',
+    icon: '🧂', name: '흙 물기 + 온도 + 소금기(EC) 센서 (SenseCAP S2105)', unit: '개',
     role: '흙 속 물기·온도·소금기를 동시 측정 — 비료 과다 실시간 감지',
     tags: ['하우스 필수급'],
     specs: [
@@ -222,7 +218,7 @@ const OPTIONAL_SENSORS = [
     recommended: '하우스 농가(필수급), 비가림도 비료 많이 쓰면 권장',
   },
   {
-    icon: '🧪', name: '흙 산도(pH) 센서 (SenseCAP S2106)', price: 460000, trialPrice: 230000, unit: '개',
+    icon: '🧪', name: '흙 산도(pH) 센서 (SenseCAP S2106)', unit: '개',
     role: '흙의 산도(pH)를 측정 — 비료 흡수 효율 진단, 석회 시비 타이밍 결정',
     specs: ['흙 pH: 0 ~ 14 (정확도 ±0.3)', '포도 적정 pH: 5.5 ~ 6.5'],
     services: [
@@ -234,7 +230,7 @@ const OPTIONAL_SENSORS = [
     recommended: '흙 산도 문제 농가, 석회 시비 타이밍을 데이터로 잡고 싶은 농가',
   },
   {
-    icon: '🌡️', name: '정밀 온도 3채널 센서 (SenseCAP S2107)', price: 130000, trialPrice: 65000, unit: '개',
+    icon: '🌡️', name: '정밀 온도 3채널 센서 (SenseCAP S2107)', unit: '개',
     role: '3곳 온도를 동시 측정 — 일소 경보, 뿌리 활성도, 과실-대기 온도차 분석',
     specs: [
       'PT1000 백금저항 온도계 × 3채널 동시',
@@ -251,7 +247,7 @@ const OPTIONAL_SENSORS = [
     recommended: '일소 피해 반복 농가, 수출·연구용 정밀 품질 관리',
   },
   {
-    icon: '🌤️', name: '기상스테이션 8종 (SenseCAP S2120)', price: 500000, trialPrice: 250000, unit: '대',
+    icon: '🌤️', name: '기상스테이션 8종 (SenseCAP S2120)', unit: '대',
     role: '온도·습도·풍속·풍향·강우량·일사량·UV·기압 8가지 동시 측정',
     tags: ['수출 농가'],
     specs: [
@@ -274,14 +270,6 @@ export default function SensorsPage() {
 
   return (
     <main className="min-h-screen bg-neutral-black text-neutral-cream pt-20 font-sans">
-      {/* 시범 농가 배너 */}
-      <div className="bg-gradient-to-r from-green-600 to-green-500 text-white text-center py-3 px-4">
-        <span className="font-bold">🎉 시범 농가 모집 중 — 전 제품 50% 할인</span>
-        <span className="mx-3 opacity-60">|</span>
-        <span className="text-sm opacity-90">5농가 선착순 · 마감 3/20</span>
-        <Link href="/trial" className="ml-3 underline text-sm font-bold hover:opacity-80">신청하기 →</Link>
-      </div>
-
       {/* 헤더 */}
       <div className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,197,94,0.08),transparent_60%)]" />
@@ -342,77 +330,13 @@ export default function SensorsPage() {
               <SensorCard sensor={SOIL_MOISTURE as any} />
             </section>
 
-            {/* 가격 요약 */}
-            <section className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-2xl p-8">
-              <h2 className="text-xl font-bold text-white mb-6">💰 가격 요약표</h2>
-              <div className="space-y-4">
-                <div>
-                  <p className="text-sm text-neutral-cream/60 mb-3 uppercase tracking-wide">기본 장비 (농가당 1회)</p>
-                  <div className="space-y-2">
-                    {[
-                      ['📡 게이트웨이', '280,000원', '140,000원'],
-                      ['🌐 LTE 라우터+유심', '50,000원', '25,000원 + 첫1년 통신비 무료'],
-                    ].map(([item, price, trial]) => (
-                      <div key={item} className="flex flex-wrap justify-between items-center py-2 border-b border-white/5 text-sm">
-                        <span className="text-neutral-cream/80">{item}</span>
-                        <div className="flex gap-4">
-                          <span className="text-neutral-cream/40 line-through">{price}</span>
-                          <span className="text-green-400 font-bold">{trial}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="text-sm text-neutral-cream/60 mb-3 uppercase tracking-wide">하우스 1동 기본</p>
-                  <div className="space-y-2">
-                    {[
-                      ['🔋 센서 허브', '110,000원', '55,000원'],
-                      ['🌡️ 온습도 센서', '25,000원', '12,500원'],
-                      ['💧 흙 물기 × 2', '50,000원', '25,000원'],
-                    ].map(([item, price, trial]) => (
-                      <div key={item} className="flex flex-wrap justify-between items-center py-2 border-b border-white/5 text-sm">
-                        <span className="text-neutral-cream/80">{item}</span>
-                        <div className="flex gap-4">
-                          <span className="text-neutral-cream/40 line-through">{price}</span>
-                          <span className="text-green-400 font-bold">{trial}</span>
-                        </div>
-                      </div>
-                    ))}
-                    <div className="flex justify-between items-center pt-3 font-bold">
-                      <span className="text-white">동당 합계</span>
-                      <div className="flex gap-4">
-                        <span className="text-neutral-cream/40 line-through">185,000원</span>
-                        <span className="text-green-400 text-lg">92,500원</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 예시 */}
-                <div className="mt-6 pt-6 border-t border-white/10 space-y-3">
-                  <p className="text-sm font-bold text-neutral-cream/60">예시 계산</p>
-                  {[
-                    { label: '비가림 3동 기본', regular: '885,000원 + 월 10,000원', trial: '442,500원 + 첫1년 무료' },
-                    { label: '하우스 5동 + 일사량', regular: '1,755,000원', trial: '877,500원' },
-                  ].map(ex => (
-                    <div key={ex.label} className="bg-white/5 rounded-xl p-4">
-                      <p className="text-sm font-bold text-white mb-1">{ex.label}</p>
-                      <div className="flex flex-wrap gap-4 text-sm">
-                        <span className="text-neutral-cream/40 line-through">{ex.regular}</span>
-                        <span className="text-green-400 font-bold">{ex.trial}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-4 text-center">
-                  <p className="text-neutral-cream/60 text-sm mb-4">기본 세트만으로 받는 알림: 환기·관수·병해·서리·당도 등 연중 35가지 이상</p>
-                  <Link href="/trial" className="inline-block px-8 py-3 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold transition-colors">
-                    시범 농가 신청 (50% 할인) →
-                  </Link>
-                </div>
-              </div>
+            {/* 상담 신청 CTA */}
+            <section className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-2xl p-8 text-center">
+              <h2 className="text-xl font-bold text-white mb-3">센서 구성 상담</h2>
+              <p className="text-neutral-cream/60 text-sm mb-6">농장 규모와 재배 형태에 맞는 최적 구성을 안내해드립니다.<br />기본 세트만으로 환기·관수·병해·서리·당도 등 연중 35가지 이상 알림을 받을 수 있습니다.</p>
+              <Link href="/support" className="inline-block px-8 py-3 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold transition-colors">
+                견적 및 상담 문의 →
+              </Link>
             </section>
           </div>
         )}
@@ -424,27 +348,12 @@ export default function SensorsPage() {
               <SensorCard key={s.name} sensor={s as any} />
             ))}
 
-            {/* 추가 센서 가격표 */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mt-8">
-              <h3 className="font-bold text-white mb-4">추가 센서 가격표</h3>
-              <div className="space-y-2">
-                {[
-                  ['☀️ 일사량', '100,000원', '50,000원'],
-                  ['💨 CO₂+온습도', '220,000원', '110,000원'],
-                  ['🧂 흙 물기+온도+소금기', '230,000원', '115,000원'],
-                  ['🧪 흙 산도(pH)', '460,000원', '230,000원'],
-                  ['🌡️ 정밀온도 3채널', '130,000원', '65,000원'],
-                  ['🌤️ 기상스테이션 8종', '500,000원', '250,000원'],
-                ].map(([item, price, trial]) => (
-                  <div key={item} className="flex flex-wrap justify-between items-center py-2 border-b border-white/5 text-sm">
-                    <span className="text-neutral-cream/80">{item}</span>
-                    <div className="flex gap-4">
-                      <span className="text-neutral-cream/40 line-through">{price}</span>
-                      <span className="text-green-400 font-bold">{trial}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            {/* 상담 CTA */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mt-8 text-center">
+              <p className="text-neutral-cream/60 text-sm mb-4">필요한 센서만 골라 추가할 수 있습니다. 구성 상담은 아래에서 문의해주세요.</p>
+              <Link href="/support" className="inline-block px-6 py-2.5 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-sm transition-colors">
+                센서 구성 상담 →
+              </Link>
             </div>
           </div>
         )}
