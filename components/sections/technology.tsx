@@ -24,12 +24,12 @@ const LAYERS: ArchLayer[] = [
 ];
 
 const LAYER_STYLES: Record<LayerStyle, string> = {
-  edge: 'bg-mod-yield/[0.06] text-mod-yield border-mod-yield/[0.12]',
-  collect: 'bg-mod-climate/[0.06] text-mod-climate border-mod-climate/[0.12]',
-  store: 'bg-mod-grow/[0.06] text-mod-grow border-mod-grow/[0.12]',
-  analyze: 'bg-mod-water/[0.06] text-mod-water border-mod-water/[0.12]',
-  decide: 'bg-mod-trace/[0.06] text-mod-trace border-mod-trace/[0.12]',
-  serve: 'bg-mod-export/[0.06] text-mod-export border-mod-export/[0.12]',
+  edge: 'bg-amber-100 text-amber-800 border-amber-200',
+  collect: 'bg-cyan-50 text-cyan-800 border-cyan-200',
+  store: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+  analyze: 'bg-blue-50 text-blue-800 border-blue-200',
+  decide: 'bg-violet-50 text-violet-800 border-violet-200',
+  serve: 'bg-pink-50 text-pink-800 border-pink-200',
 };
 
 function Connector() {

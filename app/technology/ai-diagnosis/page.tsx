@@ -49,7 +49,7 @@ export default function AiDiagnosisPage() {
                                         <strong className="text-white"> 의도적으로 전체 정확도를 낮추는 대신 이상증상 발견에 집중</strong>하는 방향으로 전환했습니다.
                                     </span>
                                 </li>
-                                <li className="flex gap-2"><span className="text-secondary-gold shrink-0">→</span>진단된 사진을 게시판에 올려주시면 AI 개선에 직접 기여하실 수 있습니다.</li>
+                                <li className="flex gap-2"><span className="text-secondary-gold shrink-0">→</span>매일 보내드리는 카톡에 사진을 첨부하여 보내 주시면 AI 개선에 직접 기여하실 수 있습니다.</li>
                             </ul>
                         </div>
                     </motion.div>
@@ -270,17 +270,20 @@ export default function AiDiagnosisPage() {
                             </p>
                         </div>
 
-                        {/* 사진 수집 읍소 */}
+                        {/* 카톡 보고서 안내 */}
                         <div className="mt-12 bg-white/5 border border-secondary-gold/20 rounded-2xl p-8 text-center">
-                            <div className="text-4xl mb-4">🙏</div>
-                            <h3 className="text-xl font-bold text-white mb-3">병해 사진을 올려주세요 — AI를 함께 키워주십시오</h3>
+                            <div className="text-4xl mb-4">📊</div>
+                            <h3 className="text-xl font-bold text-white mb-3">매일 카톡 보고서를 받아보세요</h3>
                             <p className="text-neutral-cream/60 text-sm leading-relaxed mb-6 max-w-xl mx-auto">
-                                현재 병명 진단 정확도가 낮은 가장 큰 이유는 <strong className="text-white">국내 현장 사진 데이터 부족</strong>입니다.<br />
-                                농가에서 확인된 병해·생리장해·약해 사진과 병명을 게시판에 올려주시면,<br />
-                                그 데이터로 AI를 재학습해 모든 농가의 정확도를 높일 수 있습니다.
+                                FarmSense는 매일 저녁 카톡으로 농장 환경 보고서를 보내드립니다.<br />
+                                사진을 습관처럼 올려주시면, AI가 환경 데이터와 결합하여 더 정확한 보고서를 만들어 드립니다.
                             </p>
-                            <a href="/support/board/write" className="inline-flex items-center gap-2 px-6 py-3 bg-secondary-gold text-neutral-black font-bold rounded-full hover:brightness-110 transition text-sm">
-                                <Camera className="w-4 h-4" /> 병해 사진 올리러 가기
+                            <p className="text-neutral-cream/50 text-xs mb-6 max-w-xl mx-auto">
+                                사진이 쌓일수록 보고서의 정확도가 올라갑니다.<br />
+                                오늘의 사진 한 장이 내일의 정밀 진단이 됩니다.
+                            </p>
+                            <a href="/support/ai-assistant" className="inline-flex items-center gap-2 px-6 py-3 bg-secondary-gold text-neutral-black font-bold rounded-full hover:brightness-110 transition text-sm">
+                                <ArrowRight className="w-4 h-4" /> 카톡 보고서 알아보기
                             </a>
                         </div>
                     </div>

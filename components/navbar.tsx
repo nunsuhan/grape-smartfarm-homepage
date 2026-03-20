@@ -18,14 +18,17 @@ const buyerNav = [
 ];
 
 // ── 드롭다운 (데스크톱) ─────────────────────────────────────────
-function NavDropdown({ item }: { item: NavItem }) {
+function NavDropdown({ item, scrolled }: { item: NavItem; scrolled: boolean }) {
+  const linkCls = scrolled
+    ? 'text-txt-2 hover:text-txt hover:bg-bark/5'
+    : 'text-white/80 hover:text-white hover:bg-white/10';
   return (
     <div className="group relative">
-      <button className="flex items-center gap-1 text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-bark/5 transition-all">
+      <button className={`flex items-center gap-1 text-[13px] font-medium px-3.5 py-1.5 rounded-lg transition-all ${linkCls}`}>
         <span>{item.label}</span>
         <ChevronDown size={12} className="transition-transform group-hover:rotate-180" />
       </button>
-      {/* 드롭다운 패널 */}
+      {/* 드롭다운 패널 — 항상 라이트 */}
       <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 z-50">
         <ul className="min-w-[220px] rounded-xl border border-default bg-white/95 backdrop-blur py-1.5 shadow-xl shadow-bark/10">
           {item.children?.map((child) => (
@@ -77,6 +80,10 @@ export function Navbar() {
 
   const shouldShowBuyerNav = isBuyerContext || locale === 'en';
 
+  const linkCls = scrolled
+    ? 'text-txt-2 hover:text-txt hover:bg-bark/5'
+    : 'text-white/80 hover:text-white hover:bg-white/10';
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 h-16 flex items-center justify-between px-5 md:px-12 transition-all duration-300 ${
@@ -84,11 +91,12 @@ export function Navbar() {
       }`}
     >
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-2 font-outfit text-xl font-bold tracking-tight text-bark">
-        <span className="w-7 h-7 rounded-lg bg-vine-500 flex items-center justify-center text-white text-sm font-black">
-          F
+      <Link href="/" className="flex items-center">
+        <span className={`text-xl font-bold tracking-tight transition ${
+          scrolled ? 'text-gray-900' : 'text-white'
+        }`}>
+          Farm<span className={scrolled ? 'text-green-700' : 'text-green-300'}>Sense</span>
         </span>
-        Farm<span className="text-vine-500">Sense</span>
       </Link>
 
       {/* Desktop Nav */}
@@ -99,7 +107,7 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-bark/5 transition-all"
+              className={`text-[13px] font-medium px-3.5 py-1.5 rounded-lg transition-all ${linkCls}`}
             >
               {item.label}
             </Link>
@@ -108,12 +116,12 @@ export function Navbar() {
           // 농가 네비게이션 (한국어, 드롭다운 지원)
           navItems.map((item) =>
             item.children ? (
-              <NavDropdown key={item.label} item={item} />
+              <NavDropdown key={item.label} item={item} scrolled={scrolled} />
             ) : (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-txt-2 text-[13px] font-medium px-3.5 py-1.5 rounded-lg hover:text-txt hover:bg-bark/5 transition-all"
+                className={`text-[13px] font-medium px-3.5 py-1.5 rounded-lg transition-all ${linkCls}`}
               >
                 {item.label}
               </Link>
@@ -124,7 +132,7 @@ export function Navbar() {
         {/* Language Toggle */}
         <button
           onClick={toggleLocale}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-txt-2 hover:text-txt hover:bg-bark/5 transition-all text-[13px] font-medium ml-1"
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all text-[13px] font-medium ml-1 ${linkCls}`}
           title={locale === 'ko' ? 'Switch to English' : '한국어로 변경'}
         >
           <Globe size={14} />
@@ -145,13 +153,13 @@ export function Navbar() {
       <div className="flex items-center gap-2 md:hidden">
         <button
           onClick={toggleLocale}
-          className="text-txt-2 hover:text-txt transition-colors p-1.5"
+          className={`transition-colors p-1.5 ${scrolled ? 'text-txt-2 hover:text-txt' : 'text-white/80 hover:text-white'}`}
           title={locale === 'ko' ? 'Switch to English' : '한국어로 변경'}
         >
           <Globe size={18} />
         </button>
         <button
-          className="text-txt-2 hover:text-txt transition-colors"
+          className={`transition-colors ${scrolled ? 'text-txt-2 hover:text-txt' : 'text-white/80 hover:text-white'}`}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
