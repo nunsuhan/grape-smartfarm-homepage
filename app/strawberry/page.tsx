@@ -11,13 +11,13 @@ const TRIAL_FORM_URL = 'https://forms.gle/placeholder';
 const FLIR_UNIQUE_CLAIM = '2026.03 기준, 한국 딸기 스마트팜 서비스 중 열화상 통합 서비스 유일';
 
 export const metadata: Metadata = {
-  title: '달콤이 — 딸기 수경재배 AI 스마트팜 | FarmSense',
+  title: '달콤이 — 딸기 수경재배 AI 스마트팜',
   description:
-    '양액 자동 분석, 스마트 환기, FLIR 열화상까지. 기존 비닐하우스에 바로 적용하는 딸기 전용 AI 플랫폼 달콤이.',
+    '팜센스(FarmSense) 달콤이 — 양액 자동 분석, 스마트 환기, FLIR 열화상까지. 기존 비닐하우스에 바로 적용하는 딸기 전용 AI 스마트팜 플랫폼.',
   keywords:
-    '딸기 스마트팜, 수경재배, 양액관리, 환기자동화, 열화상, AI농업, 달콤이, FarmSense',
+    '팜센스, 딸기 스마트팜, 수경재배, 양액관리, 환기자동화, 열화상, AI농업, 달콤이, FarmSense',
   openGraph: {
-    title: '달콤이 — 딸기 수경재배 AI 스마트팜',
+    title: '팜센스 달콤이 — 딸기 수경재배 AI 스마트팜',
     description: '양액·환기·열화상을 한 앱으로. 딸기 전용 AI 플랫폼.',
     images: [{ url: '/images/hero-strawberry-greenhouse.jpg' }],
   },

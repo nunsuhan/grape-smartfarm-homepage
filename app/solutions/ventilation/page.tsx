@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Ventilation · 환기 관리 | FarmSense',
-  description: '하우스 환기 자동화 및 최적 환기 전략으로 병해를 예방하세요.',
+  title: 'Ventilation · 환기 관리',
+  description: '팜센스(FarmSense) Ventilation — 하우스 환기 자동화 및 최적 환기 전략으로 병해를 예방하세요.',
 };
 
 const features = [

@@ -8,9 +8,9 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Verified Farm Network — FarmSense',
-  description: 'FarmSense verified farm network with sensor-monitored production data, AI quality analysis, and blockchain certification for premium crop export.',
-  keywords: 'verified farm network, smart agriculture platform, farm data verification, premium grape farm Korea',
+  title: '인증 농가 네트워크',
+  description: '팜센스(FarmSense) 인증 농가 네트워크 — 센서 모니터링 생산 데이터, AI 품질 분석, 블록체인 인증으로 프리미엄 농산물 수출을 지원합니다.',
+  keywords: '팜센스, 인증 농가, verified farm network, smart agriculture platform, farm data verification',
 };
 
 export default function VerifiedFarmsPage() {

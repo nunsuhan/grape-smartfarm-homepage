@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Grape Intelligence — FarmSense',
-  description: 'Data-driven grape cultivation intelligence system with growth models, quality prediction, and environmental monitoring for precision viticulture.',
-  keywords: 'grape intelligence, precision viticulture, grape growth model, smart grape farming',
+  title: '포도 인텔리전스',
+  description: '팜센스(FarmSense) 데이터 기반 포도 재배 인텔리전스 시스템 — 생장 모델, 품질 예측, 환경 모니터링으로 정밀 포도 재배를 지원합니다.',
+  keywords: '팜센스, 포도 인텔리전스, grape intelligence, precision viticulture, grape growth model',
 };
 
 import { Container } from '@/components/ui/container';

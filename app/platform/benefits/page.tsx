@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: '팜센스 도입 효과 | FarmSense',
-  description: '팜센스 도입으로 병해 피해 감소, 노동력 절감, 품질 향상, 수출 대응이 가능합니다.',
+  title: '팜센스 도입 효과',
+  description: '팜센스(FarmSense) 도입으로 병해 피해 감소, 노동력 절감, 품질 향상, 수출 대응이 가능합니다.',
 };
 
 const benefits = [

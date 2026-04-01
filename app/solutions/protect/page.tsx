@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Protect · 병해충 예측 | FarmSense',
-  description: 'AI 기반 병해충 사전 예방 시스템으로 작물을 지키세요.',
+  title: 'Protect · 병해충 예측',
+  description: '팜센스(FarmSense) Protect — AI 기반 병해충 사전 예방 시스템으로 작물을 지키세요.',
 };
 
 const features = [

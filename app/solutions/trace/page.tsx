@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Trace · 블록체인 추적 | FarmSense',
-  description: '생산 이력 블록체인 기록으로 신뢰할 수 있는 농산물을 만드세요.',
+  title: 'Trace · 블록체인 추적',
+  description: '팜센스(FarmSense) Trace — 생산 이력 블록체인 기록으로 신뢰할 수 있는 농산물을 만드세요.',
 };
 
 const features = [

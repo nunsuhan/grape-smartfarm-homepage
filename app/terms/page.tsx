@@ -3,8 +3,8 @@ import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 
 export const metadata = {
-    title: '이용약관 - FarmSense',
-    description: 'FarmSense 서비스 이용약관',
+    title: '이용약관',
+    description: '팜센스(FarmSense) 서비스 이용약관 안내입니다.',
 };
 
 export default function TermsPage() {

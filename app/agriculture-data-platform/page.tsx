@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Agricultural Data Platform — FarmSense',
-  description: 'Comprehensive agricultural data platform for government agencies, research institutions, and technology centers. Regional agriculture intelligence and policy support.',
-  keywords: 'agricultural data platform, agriculture intelligence, farm data analytics, regional agriculture monitoring',
+  title: '농업 데이터 플랫폼',
+  description: '팜센스(FarmSense) 농업 데이터 플랫폼 — 정부기관, 연구기관, 기술센터를 위한 지역 농업 인텔리전스 및 정책 지원 서비스입니다.',
+  keywords: '팜센스, 농업 데이터 플랫폼, agricultural data platform, agriculture intelligence, farm data analytics',
 };
 
 import { Container } from '@/components/ui/container';

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '참외 재배 | FarmSense',
-  description: '팜센스 참외 서비스 준비 중입니다.',
+  title: '참외 재배',
+  description: '팜센스(FarmSense) 참외 스마트팜 서비스 — 현재 준비 중입니다.',
 };
 
 export default function MelonPage() {

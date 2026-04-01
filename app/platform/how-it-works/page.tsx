@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: '팜센스 작동 원리 | FarmSense',
-  description: '팜센스가 어떻게 작동하는지 5단계로 알아보세요.',
+  title: '팜센스 작동 원리',
+  description: '팜센스(FarmSense)가 어떻게 작동하는지 5단계로 알아보세요 — 센서 설치부터 AI 분석, 영농 추천까지.',
 };
 
 const steps = [

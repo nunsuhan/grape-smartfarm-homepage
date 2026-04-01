@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Residue · 잔류농약 관리 | FarmSense',
-  description: 'PLS 대응 잔류농약 안전 관리로 안전한 농산물을 출하하세요.',
+  title: 'Residue · 잔류농약 관리',
+  description: '팜센스(FarmSense) Residue — PLS 대응 잔류농약 안전 관리로 안전한 농산물을 출하하세요.',
 };
 
 const features = [

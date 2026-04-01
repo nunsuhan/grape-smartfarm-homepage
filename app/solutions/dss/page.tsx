@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'DSS · 의사결정 지원 | FarmSense',
-  description: '데이터 기반 영농 의사결정 시스템으로 더 스마트하게 농사 짓세요.',
+  title: 'DSS · 의사결정 지원',
+  description: '팜센스(FarmSense) DSS — 데이터 기반 영농 의사결정 시스템으로 더 스마트하게 농사 짓세요.',
 };
 
 const features = [

@@ -80,8 +80,8 @@ const LOGIC_SPEC = [
 ];
 
 export const metadata = {
-    title: '기술 문서 (검증·로직) - FarmSense',
-    description: '공무원·농가가 FarmSense 로직의 작동 원리와 근거 문헌을 확인하고 검증할 수 있는 기술 문서. 지능형 로직 입력/출력 명세, 참고 문헌 목록.',
+    title: '기술 문서 (검증·로직)',
+    description: '팜센스(FarmSense) 기술 문서 — 공무원·농가가 팜센스 로직의 작동 원리와 근거 문헌을 확인하고 검증할 수 있는 문서입니다. 지능형 로직 입력/출력 명세, 참고 문헌 목록.',
 };
 
 export default function TechnologyDocsPage() {

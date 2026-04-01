@@ -4,8 +4,8 @@ import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 
 export const metadata = {
-    title: '계정 및 데이터 삭제 요청 - FarmSense',
-    description: 'FarmSense 계정 삭제 및 개인정보 삭제 요청',
+    title: '계정 및 데이터 삭제 요청',
+    description: '팜센스(FarmSense) 계정 삭제 및 개인정보 삭제 요청 안내',
 };
 
 export default function DeleteAccountPage() {

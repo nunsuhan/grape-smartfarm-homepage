@@ -4,8 +4,8 @@ import { GrapeSolutionSummary } from '@/components/crops/grape-solution-summary'
 import { LegacyGrapeDetail } from '@/components/sections/legacy-grape-detail';
 
 export const metadata: Metadata = {
-  title: '포도 재배 | FarmSense',
-  description: '팜센스 포도 재배 종합 가이드. 샤인머스캣부터 캠벨얼리까지 데이터 기반 포도 재배를 시작하세요.',
+  title: '포도 재배 종합 가이드',
+  description: '팜센스(FarmSense) 포도 재배 종합 가이드 — 샤인머스캣부터 캠벨얼리까지 데이터 기반 포도 스마트팜 재배를 시작하세요.',
 };
 
 const varieties = [

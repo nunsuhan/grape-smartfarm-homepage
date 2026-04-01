@@ -9,9 +9,9 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Export Intelligence — FarmSense Agricultural Data Platform',
-  description: 'FarmSense export partnership program. Verified premium produce with smart farming data, AI quality analysis, and blockchain traceability for import partners in Singapore and Taiwan.',
-  keywords: 'agricultural data platform, premium grape supply chain, blockchain traceability agriculture, smart farming data platform, grape traceability, Korea premium grape export',
+  title: '수출 인텔리전스',
+  description: '팜센스(FarmSense) 수출 파트너십 프로그램 — 스마트팜 데이터, AI 품질 분석, 블록체인 추적성으로 검증된 프리미엄 농산물을 수출합니다.',
+  keywords: '팜센스, 수출 농산물, agricultural data platform, premium grape supply chain, blockchain traceability agriculture, Korea premium grape export',
 };
 
 export default function ExportIntelligencePage() {

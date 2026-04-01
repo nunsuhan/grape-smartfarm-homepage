@@ -19,8 +19,8 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-    title: '열화상·RGB-D 카메라 설치 필요성 - FarmSense',
-    description: '왜 열화상 카메라와 RGB-D 카메라가 필요한가? RGB 한계, 골든타임 확보, CWSI·수확량 예측·질병 감지 근거.',
+    title: '열화상·RGB-D 카메라 설치 필요성',
+    description: '팜센스(FarmSense) 기술 문서 — 왜 열화상 카메라와 RGB-D 카메라가 필요한가? RGB 한계, 골든타임 확보, CWSI·수확량 예측·질병 감지 근거.',
 };
 
 export default function CameraNecessityPage() {
