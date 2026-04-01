@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: '활용 사례 | FarmSense',
-  description: '팜센스 시범 농가 활용 사례를 확인하세요.',
+  title: '활용 사례',
+  description: '팜센스(FarmSense) 시범 농가 활용 사례를 확인하세요. 데이터 기반 스마트팜 도입 현장의 실제 경험을 소개합니다.',
 };
 
 export default function CaseStudiesPage() {

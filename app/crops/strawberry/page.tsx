@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { CropLayout } from '@/components/crops/crop-layout';
 
 export const metadata: Metadata = {
-  title: '딸기 재배 | FarmSense',
-  description: '팜센스 딸기 재배 종합 가이드. 187농가 데이터에서 찾은 최적 재배 전략, 품종별 특성부터 환경 관리까지.',
+  title: '딸기 재배 종합 가이드',
+  description: '팜센스(FarmSense) 딸기 재배 종합 가이드 — 187농가 데이터에서 찾은 최적 재배 전략, 품종별 특성부터 환경 관리까지.',
 };
 
 const varieties = [

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: '솔루션 | FarmSense',
-  description: 'FarmSense의 8가지 스마트팜 솔루션으로 데이터 기반 영농을 시작하세요.',
+  title: '스마트팜 솔루션',
+  description: '팜센스(FarmSense)의 8가지 스마트팜 솔루션으로 데이터 기반 영농을 시작하세요.',
 };
 
 const solutions = [

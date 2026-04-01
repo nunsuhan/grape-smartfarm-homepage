@@ -1,6 +1,6 @@
 export const metadata = {
-    title: '기술 개요 | FarmSense',
-    description: '팜센스가 기존 스마트팜을 넘어 수출 신뢰 인프라로 진화하는 방법 — 농약 안전일수 계산, 블록체인 QR, PLS 자동 판정',
+    title: '기술 개요',
+    description: '팜센스(FarmSense)가 기존 스마트팜을 넘어 수출 신뢰 인프라로 진화하는 방법 — 농약 안전일수 계산, 블록체인 QR, PLS 자동 판정',
 };
 
 export default function TechnologyOverviewPage() {

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Climate · 환경 분석 | FarmSense',
-  description: '기상 데이터와 하우스 환경 통합 분석으로 최적의 재배 환경을 유지하세요.',
+  title: 'Climate · 환경 분석',
+  description: '팜센스(FarmSense) Climate — 기상 데이터와 하우스 환경 통합 분석으로 최적의 재배 환경을 유지하세요.',
 };
 
 const features = [

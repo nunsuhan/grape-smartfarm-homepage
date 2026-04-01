@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Yield · 수확·품질 | FarmSense',
-  description: '수확 시기 예측과 품질 분석으로 고품질 농산물을 생산하세요.',
+  title: 'Yield · 수확·품질',
+  description: '팜센스(FarmSense) Yield — 수확 시기 예측과 품질 분석으로 고품질 농산물을 생산하세요.',
 };
 
 const features = [

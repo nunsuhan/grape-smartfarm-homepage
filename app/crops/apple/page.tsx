@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '사과 재배 | FarmSense',
-  description: '팜센스 사과 서비스 준비 중입니다.',
+  title: '사과 재배',
+  description: '팜센스(FarmSense) 사과 스마트팜 서비스 — 현재 준비 중입니다.',
 };
 
 export default function ApplePage() {

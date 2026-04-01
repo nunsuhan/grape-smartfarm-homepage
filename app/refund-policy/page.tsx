@@ -3,8 +3,8 @@ import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 
 export const metadata = {
-    title: '환불·취소 정책 - FarmSense',
-    description: 'FarmSense 서비스 환불 및 취소 정책',
+    title: '환불·취소 정책',
+    description: '팜센스(FarmSense) 서비스 환불 및 취소 정책 안내입니다.',
 };
 
 export default function RefundPolicyPage() {

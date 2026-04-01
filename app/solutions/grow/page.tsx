@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Grow · 생육 관리 | FarmSense',
-  description: '데이터 기반 작물 생육 모니터링으로 최적의 재배 환경을 만드세요.',
+  title: 'Grow · 생육 관리',
+  description: '팜센스(FarmSense) Grow — 데이터 기반 작물 생육 모니터링으로 최적의 재배 환경을 만드세요.',
 };
 
 const features = [
