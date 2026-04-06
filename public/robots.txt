@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /smartfarm/
+
+Sitemap: https://www.farmsense.kr/sitemap.xml

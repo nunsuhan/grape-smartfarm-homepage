@@ -12,6 +12,13 @@ const nextConfig = {
         destination: 'https://api.farmsense.kr/register/',
         permanent: false, // 307 — 추후 URL 변경 가능성 있으므로 임시 리다이렉트
       },
+      // non-www → www 정규화 (SEO: 색인/링크 파워 통일)
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'farmsense.kr' }],
+        destination: 'https://www.farmsense.kr/:path*',
+        permanent: true,
+      },
     ];
   },
 };

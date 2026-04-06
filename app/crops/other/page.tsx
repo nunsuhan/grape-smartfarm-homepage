@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '기타 작물',
   description: '팜센스(FarmSense) 기타 작물 스마트팜 서비스 — 현재 준비 중입니다.',
+  robots: { index: false, follow: false },
 };
 
 export default function OtherCropsPage() {
