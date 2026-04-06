@@ -6,6 +6,7 @@ import {
     Droplets,
     Bug,
     FlaskConical,
+    ShieldCheck,
     BarChart,
     Grape,
     Gauge,
@@ -233,6 +234,59 @@ export default function TechnologyDocsPage() {
                             </div>
                             <ArrowRight className="w-4 h-4 text-neutral-cream/50 shrink-0 mt-1" />
                         </Link>
+                    </div>
+                </section>
+
+                {/* 잔류농약 예측 시스템 */}
+                <section className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/30 rounded-xl p-6 md:p-8">
+                    <div className="flex items-center gap-2 text-emerald-400 font-bold tracking-wide text-xs uppercase mb-3">
+                        <ShieldCheck className="w-5 h-5" />
+                        신규 핵심 기능 · 통합 잔류량 엔진 v2.0
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                        잔류농약 예측 시스템
+                    </h2>
+                    <p className="text-emerald-300/90 font-medium mb-4">
+                        EPA / EU FOCUS 국제 표준 기반 다중모델 엔진
+                    </p>
+                    <p className="text-neutral-cream/80 leading-relaxed mb-6">
+                        SFO · DFOP · FOMC <strong>3개 분해 모델</strong>을 자동 비교하고, 농약별 최적 모델을 선택합니다.
+                        Fantke et al.(2014) Q10 온도 보정, EPA NAFTA Guidance의 모델 선택 기준,
+                        Hwang et al.(2025) PHRL 역산 수식을 구현했습니다.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                        {[
+                            { label: '다중 분해 모델', detail: 'SFO(1차) · DFOP(이중1차병렬) · FOMC(다구획1차) — AIC/BIC 기준 자동 선택' },
+                            { label: '6단계 k값 보정', detail: '참조k → 온도(Q10/Arrhenius) → 습도 → 일사량 → 강수 → 품종' },
+                            { label: 'PHRL 역산', detail: '수확 전 허용잔류량 역산 — 수출국별 MRL 기준 자동 판정' },
+                            { label: '수출국 MRL 판정', detail: '한국 · 일본 · 미국 · EU · 대만 5개국 동시 판정 + 출하가능일 자동 계산' },
+                        ].map((f) => (
+                            <div key={f.label} className="border border-white/10 bg-white/5 rounded-lg p-4">
+                                <div className="text-emerald-300 font-bold text-sm mb-1">{f.label}</div>
+                                <div className="text-neutral-cream/70 text-sm leading-relaxed">{f.detail}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="mb-6">
+                        <h3 className="text-white font-semibold text-sm mb-2">핵심 수식</h3>
+                        <div className="space-y-1 font-mono text-xs md:text-sm bg-black/40 border border-white/10 rounded-lg p-4 text-emerald-200/90">
+                            <div>SFO&nbsp;&nbsp;: C(t) = C₀ × exp(-k_eff × t)</div>
+                            <div>DFOP : C(t) = C₀g·exp(-k₁t) + C₀(1-g)·exp(-k₂t)</div>
+                            <div>PHRL = MRL × exp(k_eff × t_pre)</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 className="text-white font-semibold text-sm mb-2">근거 문헌</h3>
+                        <ul className="text-neutral-cream/70 text-xs md:text-sm space-y-1 list-disc list-inside">
+                            <li>Fantke et al. (2014) ACS Environ. Sci. Technol. 48:8588</li>
+                            <li>EPA Degradation Kinetics SOP v2 (2012)</li>
+                            <li>EU FOCUS Kinetics Guidance (Sanco/10058/2005)</li>
+                            <li>Hwang et al. (2025) Sci. Rep. — DE 모델 PHRL</li>
+                            <li>Hwang et al. (2018) Environ. Monit. Assess. 190:438</li>
+                        </ul>
                     </div>
                 </section>
 
