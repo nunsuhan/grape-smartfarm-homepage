@@ -14,10 +14,10 @@ declare global {
 }
 
 const PLANS = [
-  { id: 'starter_monthly', name: '스타터 (월간)', amount: 9900 },
+  { id: 'starter_monthly', name: '스타터 (월간)', amount: 10000 },
   { id: 'pro_monthly', name: '프로 (월간)', amount: 29900 },
   { id: 'export_monthly', name: '수출팜 (월간)', amount: 59900 },
-  { id: 'starter_yearly', name: '스타터 (연간)', amount: 99000 },
+  { id: 'starter_yearly', name: '스타터 (연간)', amount: 100000 },
   { id: 'pro_yearly', name: '프로 (연간)', amount: 299000 },
   { id: 'export_yearly', name: '수출팜 (연간)', amount: 599000 },
   { id: 'lifetime', name: '평생회원권', amount: 490000 },

@@ -11,8 +11,8 @@ const PLANS = [
     id: 'starter',
     name: '스타터',
     subtitle: '소규모 농가 입문용',
-    monthlyPrice: 9900,
-    yearlyPrice: 99000,
+    monthlyPrice: 10000,
+    yearlyPrice: 100000,
     color: 'green',
     badge: null,
     features: [

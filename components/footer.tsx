@@ -133,7 +133,7 @@ export function Footer() {
           <p className="mb-1">
             소재지: 대구광역시 북구 학남로 60, 704-905호
             &nbsp;&nbsp;대표전화:{' '}
-            <a href="tel:05318764500" className="hover:text-white transition-colors">053-876-4500</a>
+            <a href="tel:07080647956" className="hover:text-white transition-colors">070-8064-7956</a>
           </p>
           <p>
             이메일: contact@farmsense.kr
