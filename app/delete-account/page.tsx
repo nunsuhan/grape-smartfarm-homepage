@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 
 export const metadata = {
     title: '계정 및 데이터 삭제 요청',
@@ -135,7 +134,6 @@ export default function DeleteAccountPage() {
                     </div>
                 </Container>
             </main>
-            <Footer />
         </>
     );
 }

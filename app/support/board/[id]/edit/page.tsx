@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
 
@@ -61,7 +60,6 @@ export default function BoardEditPage() {
             <main className="min-h-screen bg-neutral-black pt-20 flex items-center justify-center">
                 <p className="text-neutral-cream/40">불러오는 중...</p>
             </main>
-            <Footer />
         </>
     );
 
@@ -166,7 +164,6 @@ export default function BoardEditPage() {
                     </form>
                 </Container>
             </main>
-            <Footer />
         </>
     );
 }

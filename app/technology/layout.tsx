@@ -1,5 +1,4 @@
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 
 export default function TechnologyLayout({
     children,
@@ -10,7 +9,6 @@ export default function TechnologyLayout({
         <>
             <Navbar />
             {children}
-            <Footer />
         </>
     );
 }

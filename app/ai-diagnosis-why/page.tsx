@@ -1,5 +1,4 @@
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 import { Container } from '@/components/ui/container';
 import { AlertTriangle, ArrowRight, Camera, MessageSquareHeart } from 'lucide-react';
 import Link from 'next/link';
@@ -279,7 +278,6 @@ export default function AiDiagnosisWhyPage() {
                 </Container>
             </section>
 
-            <Footer />
         </main>
     );
 }

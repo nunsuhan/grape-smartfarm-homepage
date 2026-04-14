@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: '팜센스 도입 효과',
@@ -50,7 +49,6 @@ export default function BenefitsPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

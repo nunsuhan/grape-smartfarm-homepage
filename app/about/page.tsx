@@ -8,7 +8,6 @@ import {
     ArrowRight, ChevronRight, Grape, Leaf, BookOpen,
 } from 'lucide-react';
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 
 const VALUES = [
     {
@@ -237,7 +236,6 @@ export default function AboutPage() {
                     </Container>
                 </section>
             </main>
-            <Footer />
         </>
     );
 }

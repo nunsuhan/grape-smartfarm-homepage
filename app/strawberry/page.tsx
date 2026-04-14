@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
-import { Footer } from '@/components/footer';
 
 // ── Google Form URL (시범농가 신청) ─────────────────────────────
 // TODO: 실제 구글 폼 URL로 교체
@@ -446,40 +445,6 @@ export default function StrawberryLandingPage() {
           </div>
         </Container>
       </section>
-
-      {/* ════════════════════════════════════════════
-          Footer
-      ════════════════════════════════════════════ */}
-      <footer className="border-t border-white/10 py-12">
-        <Container className="px-6">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            {/* 브랜드 */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-2xl">🍓</span>
-                <span className="text-lg font-bold">
-                  달콤이 <span className="text-white/40 font-normal text-sm">by FarmSense</span>
-                </span>
-              </div>
-              <p className="text-xs text-white/30">
-                대구광역시 북구 학남로 60, 704-905호 · 사업자 646-18-02527
-              </p>
-              <p className="text-xs text-white/30 mt-1">특허 출원 중 14건{/* TODO: 등록 완료 시 업데이트 */}</p>
-            </div>
-
-            {/* 링크 */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/40">
-              <Link href="/privacy-policy" className="hover:text-white/70 transition-colors">개인정보처리방침</Link>
-              <Link href="/terms" className="hover:text-white/70 transition-colors">이용약관</Link>
-              <Link href="/refund-policy" className="hover:text-white/70 transition-colors">환불정책</Link>
-              <a href="mailto:contact@farmsense.kr" className="hover:text-white/70 transition-colors">문의</a>
-            </div>
-          </div>
-          <p className="mt-8 text-xs text-white/20">
-            © 2026 FarmSense. All rights reserved.
-          </p>
-        </Container>
-      </footer>
 
     </main>
   );

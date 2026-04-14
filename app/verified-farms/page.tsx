@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/container';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Footer } from '@/components/footer';
 import { 
   MapPin, Cpu, Target, Shield, Users, Calendar,
   ArrowRight, CheckCircle, TrendingUp, Globe
@@ -295,7 +294,6 @@ export default function VerifiedFarmsPage() {
         </Container>
       </section>
 
-      <Footer />
     </main>
   );
 }

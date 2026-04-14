@@ -1,6 +1,5 @@
 import { Container } from '@/components/ui/container';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Footer } from '@/components/footer';
 import { InvestorPlatformArchitecture } from '@/components/sections/investor-platform-architecture';
 
 export default function PlatformPage() {
@@ -171,7 +170,6 @@ export default function PlatformPage() {
       </section>
 
       <InvestorPlatformArchitecture />
-      <Footer />
     </main>
   );
 }

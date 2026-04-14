@@ -1,6 +1,5 @@
 import { Container } from '@/components/ui/container';
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 
 export const metadata = {
     title: '이용약관',
@@ -81,7 +80,6 @@ export default function TermsPage() {
                     </div>
                 </Container>
             </main>
-            <Footer />
         </>
     );
 }

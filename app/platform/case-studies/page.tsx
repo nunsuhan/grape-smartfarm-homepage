@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: '활용 사례',
@@ -32,7 +31,6 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

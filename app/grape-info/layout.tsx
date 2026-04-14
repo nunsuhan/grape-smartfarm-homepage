@@ -1,5 +1,4 @@
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 
 export default function GrapeInfoLayout({
     children,
@@ -10,7 +9,6 @@ export default function GrapeInfoLayout({
         <>
             <Navbar />
             {children}
-            <Footer />
         </>
     );
 }

@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
 
@@ -62,7 +61,6 @@ export default function BoardDetailPage() {
             <main className="min-h-screen bg-neutral-black pt-20 flex items-center justify-center">
                 <p className="text-neutral-cream/40">불러오는 중...</p>
             </main>
-            <Footer />
         </>
     );
 
@@ -73,7 +71,6 @@ export default function BoardDetailPage() {
                 <p className="text-neutral-cream/40">글을 찾을 수 없습니다.</p>
                 <Link href="/support/board" className="text-secondary-gold hover:underline text-sm">목록으로</Link>
             </main>
-            <Footer />
         </>
     );
 
@@ -185,7 +182,6 @@ export default function BoardDetailPage() {
 
                 </Container>
             </main>
-            <Footer />
         </>
     );
 }

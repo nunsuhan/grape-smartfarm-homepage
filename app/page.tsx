@@ -5,7 +5,6 @@ import { Crops } from '@/components/sections/crops';
 import { ExportIntelligence } from '@/components/sections/export-intelligence';
 import { Technology } from '@/components/sections/technology';
 import { DataSection } from '@/components/sections/data-section';
-import { Footer } from '@/components/footer';
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
       <ExportIntelligence />
       <Technology />
       <DataSection />
-      <Footer />
     </main>
   );
 }

@@ -1,6 +1,5 @@
 import { Container } from '@/components/ui/container';
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 
 export const metadata = {
     title: '개인정보처리방침',
@@ -204,7 +203,6 @@ export default function PrivacyPolicyPage() {
                     </div>
                 </Container>
             </main>
-            <Footer />
         </>
     );
 }

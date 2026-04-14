@@ -1,6 +1,5 @@
 import { Container } from '@/components/ui/container';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Footer } from '@/components/footer';
 
 const partnerTypes = [
   {
@@ -246,7 +245,6 @@ export default function PartnersPage() {
         </Container>
       </section>
 
-      <Footer />
     </main>
   );
 }

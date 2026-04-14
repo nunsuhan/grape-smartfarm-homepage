@@ -47,6 +47,7 @@ const footerLinks = {
     title: '서비스·결제',
     links: [
       { label: '요금제 안내', href: '/pricing' },
+      { label: '결제하기', href: '/payment' },
       { label: '이용약관', href: '/terms' },
       { label: '환불·취소 정책', href: '/refund-policy' },
       { label: '결제 문의', href: '/support' },

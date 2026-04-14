@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: '스마트팜 솔루션',
@@ -80,7 +79,6 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

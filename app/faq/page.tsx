@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 import { Search, ChevronDown, ChevronUp } from 'lucide-react';
 import Link from 'next/link';
 
@@ -507,7 +506,6 @@ export default function FAQPage() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }

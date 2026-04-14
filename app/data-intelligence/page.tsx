@@ -1,6 +1,5 @@
 import { Container } from '@/components/ui/container';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Footer } from '@/components/footer';
 
 const dataTypes = [
   {
@@ -326,7 +325,6 @@ export default function DataIntelligencePage() {
         </Container>
       </section>
 
-      <Footer />
     </main>
   );
 }

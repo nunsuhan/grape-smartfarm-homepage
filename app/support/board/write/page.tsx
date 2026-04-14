@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
 
@@ -202,7 +201,6 @@ export default function BoardWritePage() {
                     </form>
                 </Container>
             </main>
-            <Footer />
         </>
     );
 }

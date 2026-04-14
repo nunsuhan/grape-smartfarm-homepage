@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/container';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Footer } from '@/components/footer';
 import { 
   Cpu, Database, Shield, Globe, Users, Target, 
   Calendar, TrendingUp, ArrowRight, CheckCircle,
@@ -391,7 +390,6 @@ export default function ExportIntelligencePage() {
         </Container>
       </section>
 
-      <Footer />
     </main>
   );
 }

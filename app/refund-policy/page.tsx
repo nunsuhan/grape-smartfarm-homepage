@@ -1,6 +1,5 @@
 import { Container } from '@/components/ui/container';
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 
 export const metadata = {
     title: '환불·취소 정책',
@@ -99,7 +98,6 @@ export default function RefundPolicyPage() {
                     </div>
                 </Container>
             </main>
-            <Footer />
         </>
     );
 }
