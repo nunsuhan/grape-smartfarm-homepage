@@ -1,10 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Redis } from '@upstash/redis';
-
-const redis = new Redis({
-  url: (process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL)!,
-  token: (process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN)!,
-});
+import { codeStore } from '../store';
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,9 +13,10 @@ export async function POST(req: NextRequest) {
 
     // 6자리 인증번호 생성
     const code = String(Math.floor(100000 + Math.random() * 900000));
+    const expiresAt = Date.now() + 3 * 60 * 1000; // 3분
 
-    // Redis에 3분간 저장
-    await redis.set(`sms:verify:${cleaned}`, code, { ex: 180 });
+    // 메모리에 저장
+    codeStore.set(cleaned, { code, expiresAt });
 
     // 알리고 SMS 발송
     const params = new URLSearchParams({
