@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
 import { useAuthStore } from '@/lib/auth-store';
 import { getAccessToken } from '@/lib/api-client';
-import { AuthModal } from '@/components/auth-modal';
 
 declare global {
   interface Window {
@@ -25,12 +25,15 @@ type Cycle = 'monthly' | 'yearly';
 type Step  = 'plan' | 'phone' | 'pay';
 
 export default function PaymentPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const isWelcome = searchParams.get('welcome') === '1';
+
   const [step,  setStep]  = useState<Step>('plan');
   const [cycle, setCycle] = useState<Cycle>('monthly');
 
   // 로그인 상태
   const { user, isLoggedIn, hydrate } = useAuthStore();
-  const [showAuthModal, setShowAuthModal] = useState(false);
 
   // 휴대폰 인증
   const [phone,         setPhone]         = useState('');
@@ -53,12 +56,12 @@ export default function PaymentPage() {
     hydrate();
   }, [hydrate]);
 
-  // 비로그인 상태이면 auth-modal 표시
+  // 비로그인 상태이면 /login으로 리다이렉트
   useEffect(() => {
     if (!isLoggedIn) {
-      setShowAuthModal(true);
+      router.push('/login?next=/payment');
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, router]);
 
   useEffect(() => {
     if (document.querySelector('script[src*="tosspayments"]')) { setSdkReady(true); return; }
@@ -181,38 +184,25 @@ export default function PaymentPage() {
 
   // 비로그인 상태 렌더링
   if (!isLoggedIn) {
-    return (
-      <main className="min-h-screen bg-[#111] text-white pt-20 font-sans">
-        <Container className="max-w-md py-14">
-          <div className="text-center space-y-6">
-            <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto">
-              <span className="text-3xl">🔒</span>
-            </div>
-            <h1 className="text-2xl font-bold">로그인이 필요합니다</h1>
-            <p className="text-gray-400 text-sm">
-              결제를 진행하려면 먼저 로그인해주세요.
-            </p>
-            <button
-              onClick={() => setShowAuthModal(true)}
-              className="px-8 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-colors text-sm"
-            >
-              로그인 / 회원가입
-            </button>
-          </div>
-          <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
-        </Container>
-      </main>
-    );
+    return null;
   }
 
   return (
     <main className="min-h-screen bg-[#111] text-white pt-20 font-sans">
       <Container className="max-w-md py-14">
 
+        {/* Welcome 배너 */}
+        {isWelcome && (
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 text-center">
+            <p className="text-green-800 font-semibold">환영합니다! 🌱</p>
+            <p className="text-green-700 text-sm mt-1">첫 2개월 무료체험을 시작하세요</p>
+          </div>
+        )}
+
         {/* 로그인 사용자 정보 */}
         <div className="flex items-center justify-between mb-6 px-1">
           <span className="text-sm text-gray-400">
-            <span className="text-green-400 font-semibold">{user?.username || user?.email}</span> 님
+            <span className="text-green-400 font-semibold">{user?.username || user?.phone || user?.email}</span> 님
           </span>
         </div>
 
@@ -413,7 +403,6 @@ export default function PaymentPage() {
         )}
 
       </Container>
-      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </main>
   );
 }

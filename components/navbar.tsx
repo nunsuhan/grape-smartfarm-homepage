@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown, LogIn, User, LogOut } from 'lucide-react';
 import { useLocale } from '@/lib/i18n';
 import { isBuyerPage } from '@/lib/locale';
 import { navItems, NavItem } from '@/lib/nav';
+import { useAuthStore } from '@/lib/auth-store';
 
 // English buyer navigation (해외 바이어용)
 const buyerNav = [
@@ -57,11 +59,17 @@ function NavDropdown({ item, scrolled }: { item: NavItem; scrolled: boolean }) {
 }
 
 export function Navbar() {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpandedItem, setMobileExpandedItem] = useState<string | null>(null);
   const { locale, setLocale, t } = useLocale();
   const [isBuyerContext, setIsBuyerContext] = useState(false);
+  const { isLoggedIn, user, logout, hydrate } = useAuthStore();
+
+  useEffect(() => {
+    hydrate();
+  }, [hydrate]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -76,6 +84,11 @@ export function Navbar() {
 
   const toggleLocale = () => {
     setLocale(locale === 'ko' ? 'en' : 'ko');
+  };
+
+  const handleLogout = () => {
+    logout();
+    router.push('/');
   };
 
   const shouldShowBuyerNav = isBuyerContext || locale === 'en';
@@ -141,12 +154,33 @@ export function Navbar() {
           </span>
         </button>
 
-        <Link
-          href="/#contact"
-          className="ml-2 px-5 py-2 bg-vine-500 text-white text-[13px] font-semibold rounded-lg hover:bg-vine-600 transition-colors"
-        >
-          {t('nav.contact')}
-        </Link>
+        {/* Auth Buttons */}
+        {isLoggedIn ? (
+          <div className="flex items-center gap-1.5 ml-2">
+            <Link
+              href="/account"
+              className={`flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-1.5 rounded-lg transition-all ${linkCls}`}
+            >
+              <User size={14} />
+              마이페이지
+            </Link>
+            <button
+              onClick={handleLogout}
+              className={`flex items-center gap-1.5 text-[13px] font-medium px-3.5 py-1.5 rounded-lg transition-all ${linkCls}`}
+            >
+              <LogOut size={14} />
+              로그아웃
+            </button>
+          </div>
+        ) : (
+          <Link
+            href="/login"
+            className="ml-2 flex items-center gap-1.5 px-5 py-2 bg-vine-500 text-white text-[13px] font-semibold rounded-lg hover:bg-vine-600 transition-colors"
+          >
+            <LogIn size={14} />
+            로그인
+          </Link>
+        )}
       </div>
 
       {/* Mobile Toggle */}
@@ -231,13 +265,35 @@ export function Navbar() {
               )
             )
           )}
-          <Link
-            href="/#contact"
-            className="block mt-3 text-center px-5 py-2.5 bg-vine-500 text-white text-sm font-semibold rounded-lg hover:bg-vine-600 transition-colors"
-            onClick={() => setMobileOpen(false)}
-          >
-            {t('nav.contact')}
-          </Link>
+
+          {/* Mobile Auth */}
+          <div className="border-t border-white/10 mt-3 pt-3">
+            {isLoggedIn ? (
+              <>
+                <Link
+                  href="/account"
+                  className="block py-2.5 text-txt-2 text-sm font-medium hover:text-accent transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  마이페이지
+                </Link>
+                <button
+                  onClick={() => { handleLogout(); setMobileOpen(false); }}
+                  className="block w-full text-left py-2.5 text-txt-2 text-sm font-medium hover:text-accent transition-colors"
+                >
+                  로그아웃
+                </button>
+              </>
+            ) : (
+              <Link
+                href="/login"
+                className="block text-center px-5 py-2.5 bg-vine-500 text-white text-sm font-semibold rounded-lg hover:bg-vine-600 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                로그인
+              </Link>
+            )}
+          </div>
         </motion.div>
       )}
     </nav>
