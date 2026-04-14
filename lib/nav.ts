@@ -94,4 +94,8 @@ export const navItems: NavItem[] = [
     label: '고객지원',
     href: '/faq',
   },
+  {
+    label: '요금제',
+    href: '/pricing',
+  },
 ];

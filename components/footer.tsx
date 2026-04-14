@@ -46,7 +46,7 @@ const footerLinks = {
   payment: {
     title: '서비스·결제',
     links: [
-      { label: '요금제 안내', href: '/terms#요금제' },
+      { label: '요금제 안내', href: '/pricing' },
       { label: '이용약관', href: '/terms' },
       { label: '환불·취소 정책', href: '/refund-policy' },
       { label: '결제 문의', href: '/support' },
@@ -130,9 +130,13 @@ export function Footer() {
             &nbsp;&nbsp;사업자등록번호: 646-18-02527
             &nbsp;&nbsp;업태: 정보통신업 / 종목: 앱개발
           </p>
-          <p>
+          <p className="mb-1">
             소재지: 대구광역시 북구 학남로 60, 704-905호
-            &nbsp;&nbsp;이메일: contact@farmsense.kr
+            &nbsp;&nbsp;대표전화:{' '}
+            <a href="tel:05318764500" className="hover:text-white transition-colors">053-876-4500</a>
+          </p>
+          <p>
+            이메일: contact@farmsense.kr
           </p>
         </div>
 
