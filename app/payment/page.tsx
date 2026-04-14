@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
+import { useAuthStore } from '@/lib/auth-store';
+import { AuthModal } from '@/components/auth-modal';
 
 declare global {
   interface Window {
@@ -25,6 +27,10 @@ export default function PaymentPage() {
   const [step,  setStep]  = useState<Step>('plan');
   const [cycle, setCycle] = useState<Cycle>('monthly');
 
+  // 로그인 상태
+  const { user, isLoggedIn, hydrate } = useAuthStore();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
   // 휴대폰 인증
   const [phone,         setPhone]         = useState('');
   const [codeSent,      setCodeSent]      = useState(false);
@@ -34,11 +40,24 @@ export default function PaymentPage() {
   const [verifyLoading, setVerifyLoading] = useState(false);
   const [smsMsg,        setSmsMsg]        = useState('');
   const [countdown,     setCountdown]     = useState(0);
+  const [verifiedToken, setVerifiedToken] = useState('');
 
   // 결제
   const [sdkReady,  setSdkReady]  = useState(false);
   const [payLoading, setPayLoading] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // 초기 hydrate
+  useEffect(() => {
+    hydrate();
+  }, [hydrate]);
+
+  // 비로그인 상태이면 auth-modal 표시
+  useEffect(() => {
+    if (!isLoggedIn) {
+      setShowAuthModal(true);
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (document.querySelector('script[src*="tosspayments"]')) { setSdkReady(true); return; }
@@ -89,10 +108,22 @@ export default function PaymentPage() {
     try {
       const res  = await fetch('/api/sms/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: phone.replace(/[^0-9]/g, ''), code: inputCode }) });
       const data = await res.json();
-      if (data.success) { setVerified(true); setSmsMsg(''); }
+      if (data.success) {
+        setVerified(true);
+        setSmsMsg('');
+        if (data.verifiedToken) {
+          setVerifiedToken(data.verifiedToken);
+        }
+      }
       else setSmsMsg(data.message || '인증 실패');
     } catch { setSmsMsg('네트워크 오류가 발생했습니다.'); }
     finally { setVerifyLoading(false); }
+  };
+
+  // 사용자 ID 기반 customerKey
+  const getCustomerKey = () => {
+    if (user?.id) return `farmsense_user_${user.id}`;
+    return `farmsense_user_${Date.now()}`;
   };
 
   // 월간 — 빌링키(자동결제)
@@ -101,10 +132,10 @@ export default function PaymentPage() {
     setPayLoading(true);
     try {
       const toss = window.TossPayments(TOSS_CLIENT_KEY);
-      const customerKey = `fs_${phone.replace(/[^0-9]/g,'')}`;
+      const customerKey = getCustomerKey();
       await toss.requestBillingAuth('카드', {
         customerKey,
-        successUrl: `${location.origin}/payment/billing/success?cycle=monthly&phone=${encodeURIComponent(phone)}`,
+        successUrl: `${location.origin}/payment/billing/success?customerKey=${encodeURIComponent(customerKey)}&verifiedToken=${encodeURIComponent(verifiedToken)}`,
         failUrl:    `${location.origin}/payment/fail`,
       });
     } catch (e: unknown) {
@@ -124,7 +155,7 @@ export default function PaymentPage() {
         orderId,
         orderName:           'FarmSense 연간 구독',
         customerMobilePhone: phone.replace(/[^0-9]/g, ''),
-        successUrl: `${location.origin}/payment/success`,
+        successUrl: `${location.origin}/payment/success?verifiedToken=${encodeURIComponent(verifiedToken)}`,
         failUrl:    `${location.origin}/payment/fail`,
       });
     } catch (e: unknown) {
@@ -134,9 +165,42 @@ export default function PaymentPage() {
 
   const amount = cycle === 'monthly' ? MONTHLY_AMOUNT : YEARLY_AMOUNT;
 
+  // 비로그인 상태 렌더링
+  if (!isLoggedIn) {
+    return (
+      <main className="min-h-screen bg-[#111] text-white pt-20 font-sans">
+        <Container className="max-w-md py-14">
+          <div className="text-center space-y-6">
+            <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto">
+              <span className="text-3xl">🔒</span>
+            </div>
+            <h1 className="text-2xl font-bold">로그인이 필요합니다</h1>
+            <p className="text-gray-400 text-sm">
+              결제를 진행하려면 먼저 로그인해주세요.
+            </p>
+            <button
+              onClick={() => setShowAuthModal(true)}
+              className="px-8 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-colors text-sm"
+            >
+              로그인 / 회원가입
+            </button>
+          </div>
+          <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+        </Container>
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-[#111] text-white pt-20 font-sans">
       <Container className="max-w-md py-14">
+
+        {/* 로그인 사용자 정보 */}
+        <div className="flex items-center justify-between mb-6 px-1">
+          <span className="text-sm text-gray-400">
+            <span className="text-green-400 font-semibold">{user?.username || user?.email}</span> 님
+          </span>
+        </div>
 
         {/* 단계 표시 */}
         <div className="flex items-center justify-center gap-2 mb-10 text-xs">
@@ -228,7 +292,7 @@ export default function PaymentPage() {
                 <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">휴대폰 번호</label>
                 <div className="flex gap-2">
                   <input type="tel" value={phone}
-                    onChange={(e) => { setPhone(formatPhone(e.target.value)); setCodeSent(false); setVerified(false); setInputCode(''); setSmsMsg(''); }}
+                    onChange={(e) => { setPhone(formatPhone(e.target.value)); setCodeSent(false); setVerified(false); setInputCode(''); setSmsMsg(''); setVerifiedToken(''); }}
                     placeholder="010-0000-0000"
                     disabled={verified}
                     className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-green-500 disabled:opacity-50"
@@ -311,7 +375,7 @@ export default function PaymentPage() {
 
             {cycle === 'monthly' && (
               <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl px-4 py-3 text-xs text-blue-200 leading-relaxed">
-                💳 카드를 한 번 등록하면 매월 자동으로 결제됩니다. 앱 내 설정에서 언제든지 해지 가능합니다.
+                카드를 한 번 등록하면 매월 자동으로 결제됩니다. 앱 내 설정에서 언제든지 해지 가능합니다.
               </div>
             )}
 
@@ -335,6 +399,7 @@ export default function PaymentPage() {
         )}
 
       </Container>
+      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </main>
   );
 }

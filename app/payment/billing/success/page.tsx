@@ -5,54 +5,63 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 
-const PLAN_NAMES: Record<string, string> = {
-  starter: '스타터',
-  pro: '프로',
-  export: '수출팜',
-};
-
-const AMOUNTS: Record<string, Record<string, number>> = {
-  starter:  { monthly: 10000,  yearly: 100000 },
-  pro:      { monthly: 29900,  yearly: 299000 },
-  export:   { monthly: 59900,  yearly: 599000 },
-};
-
 function BillingSuccessContent() {
   const searchParams = useSearchParams();
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [billingInfo, setBillingInfo] = useState<{
+    amount: number;
+    orderName: string;
+    approvedAt?: string;
+  } | null>(null);
 
-  const authKey    = searchParams.get('authKey') || '';
-  const customerKey = searchParams.get('customerKey') || '';
-  const plan       = searchParams.get('plan') || 'pro';
-  const cycle      = searchParams.get('cycle') || 'monthly';
-  const name       = searchParams.get('name') || '';
-  const email      = searchParams.get('email') || '';
-
-  const planName   = PLAN_NAMES[plan] ?? plan;
-  const amount     = AMOUNTS[plan]?.[cycle] ?? 0;
+  const authKey       = searchParams.get('authKey') || '';
+  const customerKey   = searchParams.get('customerKey') || '';
+  const verifiedToken = searchParams.get('verifiedToken') || '';
 
   useEffect(() => {
-    if (!authKey || !customerKey) return;
+    if (!authKey || !customerKey) {
+      setError('빌링 인증 정보가 누락됐습니다.');
+      setLoading(false);
+      return;
+    }
 
-    // 서버에 빌링키 등록 요청
-    // 실서비스: /api/billing/register 에서 토스페이먼츠 빌링키 발급 API 호출
-    // POST https://api.tosspayments.com/v1/billing/authorizations/issue
     fetch('/api/billing/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ authKey, customerKey, plan, cycle, name, email }),
+      body: JSON.stringify({ authKey, customerKey, verifiedToken }),
     })
       .then((r) => r.json())
       .then((data) => {
-        if (data.success) setDone(true);
-        else setError(data.message || '빌링키 등록 실패');
+        if (data.success) {
+          setDone(true);
+          setBillingInfo({
+            amount: data.billing.amount,
+            orderName: data.billing.orderName || 'FarmSense 월간 구독',
+            approvedAt: data.billing.approvedAt,
+          });
+        } else {
+          setError(data.message || '빌링키 등록에 실패했습니다.');
+        }
       })
-      .catch(() => {
-        // API 미구현 단계에서는 성공으로 처리 (카드사 심사용)
-        setDone(true);
+      .catch((err) => {
+        console.error('Billing register error:', err);
+        setError('구독 등록 요청 중 오류가 발생했습니다.');
+      })
+      .finally(() => {
+        setLoading(false);
       });
-  }, [authKey, customerKey, plan, cycle, name, email]);
+  }, [authKey, customerKey, verifiedToken]);
+
+  if (loading) {
+    return (
+      <div className="text-center space-y-4">
+        <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto" />
+        <p className="text-gray-400 text-sm">카드 등록 및 첫 결제 처리 중...</p>
+      </div>
+    );
+  }
 
   if (error) {
     return (
@@ -60,7 +69,7 @@ function BillingSuccessContent() {
         <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto text-3xl">✕</div>
         <h1 className="text-2xl font-bold">카드 등록 실패</h1>
         <p className="text-gray-400 text-sm">{error}</p>
-        <Link href="/payment" className="inline-block px-6 py-3 bg-green-600 rounded-xl text-sm font-bold">다시 시도</Link>
+        <Link href="/payment" className="inline-block px-6 py-3 bg-green-600 hover:bg-green-500 rounded-xl text-sm font-bold text-white transition-colors">다시 시도</Link>
       </div>
     );
   }
@@ -72,22 +81,22 @@ function BillingSuccessContent() {
       <div className="bg-white/5 border border-white/10 rounded-xl p-6 text-left space-y-3 text-sm max-w-sm mx-auto">
         <div className="flex justify-between">
           <span className="text-gray-400">플랜</span>
-          <span className="text-white font-semibold">FarmSense {planName}</span>
+          <span className="text-white font-semibold">FarmSense 월간 구독</span>
         </div>
         <div className="flex justify-between">
           <span className="text-gray-400">결제 주기</span>
-          <span className="text-white font-semibold">{cycle === 'monthly' ? '매월 자동결제' : '연간 자동결제'}</span>
+          <span className="text-white font-semibold">매월 자동결제</span>
         </div>
         <div className="flex justify-between">
           <span className="text-gray-400">결제 금액</span>
           <span className="text-green-400 font-bold">
-            {amount.toLocaleString()}원{cycle === 'monthly' ? '/월' : '/년'}
+            {billingInfo ? `${billingInfo.amount.toLocaleString()}원/월` : '10,000원/월'}
           </span>
         </div>
-        {email && (
+        {billingInfo?.approvedAt && (
           <div className="flex justify-between">
-            <span className="text-gray-400">이메일</span>
-            <span className="text-white text-xs">{decodeURIComponent(email)}</span>
+            <span className="text-gray-400">결제 일시</span>
+            <span className="text-white text-xs">{new Date(billingInfo.approvedAt).toLocaleString('ko-KR')}</span>
           </div>
         )}
       </div>

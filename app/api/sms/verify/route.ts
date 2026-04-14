@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { codeStore } from '../store';
+import crypto from 'crypto';
+import { codeStore, verifiedTokenStore } from '../store';
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,7 +25,12 @@ export async function POST(req: NextRequest) {
     // 인증 성공 — 코드 삭제
     codeStore.delete(cleaned);
 
-    const verifiedToken = `verified_${cleaned}_${Date.now()}`;
+    // 암호학적으로 안전한 인증 토큰 생성 (10분 유효)
+    const verifiedToken = crypto.randomBytes(32).toString('hex');
+    verifiedTokenStore.set(verifiedToken, {
+      phone: cleaned,
+      expiresAt: Date.now() + 10 * 60 * 1000,
+    });
 
     return NextResponse.json({ success: true, verifiedToken });
   } catch (err) {

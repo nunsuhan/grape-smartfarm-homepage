@@ -5,22 +5,88 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 
+interface PaymentInfo {
+  orderName: string;
+  amount: number;
+  method?: string;
+  approvedAt?: string;
+}
+
 function SuccessContent() {
   const searchParams = useSearchParams();
-  const [info, setInfo] = useState<{ orderName?: string; amount?: string } | null>(null);
+  const [info, setInfo] = useState<PaymentInfo | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const paymentKey = searchParams.get('paymentKey');
     const orderId = searchParams.get('orderId');
     const amount = searchParams.get('amount');
-    const orderName = searchParams.get('orderName');
+    const verifiedToken = searchParams.get('verifiedToken');
 
-    if (paymentKey && orderId && amount) {
-      // 실서비스: 서버사이드에서 결제 승인 API 호출
-      // POST https://api.tosspayments.com/v1/payments/confirm
-      setInfo({ orderName: orderName ?? '구독 서비스', amount });
+    if (!paymentKey || !orderId || !amount) {
+      setError('결제 정보가 올바르지 않습니다.');
+      setLoading(false);
+      return;
     }
+
+    fetch('/api/payment/confirm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        paymentKey,
+        orderId,
+        amount: Number(amount),
+        verifiedToken: verifiedToken || '',
+      }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success) {
+          setInfo({
+            orderName: data.payment.orderName || 'FarmSense 연간 구독',
+            amount: data.payment.amount,
+            method: data.payment.method,
+            approvedAt: data.payment.approvedAt,
+          });
+        } else {
+          setError(data.message || '결제 승인에 실패했습니다.');
+        }
+      })
+      .catch(() => {
+        setError('결제 승인 요청 중 오류가 발생했습니다.');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [searchParams]);
+
+  if (loading) {
+    return (
+      <div className="text-center space-y-4">
+        <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto" />
+        <p className="text-gray-400 text-sm">결제 승인 처리 중...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center space-y-6">
+        <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto">
+          <span className="text-3xl">✕</span>
+        </div>
+        <h1 className="text-2xl font-bold text-white">결제 승인 실패</h1>
+        <p className="text-gray-400 text-sm">{error}</p>
+        <Link
+          href="/payment"
+          className="inline-block px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-colors text-sm"
+        >
+          다시 시도
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="text-center space-y-6">
@@ -37,9 +103,21 @@ function SuccessContent() {
           <div className="flex justify-between">
             <span className="text-gray-400">결제 금액</span>
             <span className="text-green-400 font-bold">
-              {Number(info.amount).toLocaleString()}원
+              {info.amount.toLocaleString()}원
             </span>
           </div>
+          {info.method && (
+            <div className="flex justify-between">
+              <span className="text-gray-400">결제 수단</span>
+              <span className="text-white">{info.method}</span>
+            </div>
+          )}
+          {info.approvedAt && (
+            <div className="flex justify-between">
+              <span className="text-gray-400">승인 일시</span>
+              <span className="text-white text-xs">{new Date(info.approvedAt).toLocaleString('ko-KR')}</span>
+            </div>
+          )}
         </div>
       )}
       <p className="text-gray-400 text-sm">팜센스 서비스가 즉시 활성화됩니다.</p>
