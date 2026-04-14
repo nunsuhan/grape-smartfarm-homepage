@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
+import { getAccessToken } from '@/lib/api-client';
 
 interface PaymentInfo {
   orderName: string;
@@ -22,7 +23,6 @@ function SuccessContent() {
     const paymentKey = searchParams.get('paymentKey');
     const orderId = searchParams.get('orderId');
     const amount = searchParams.get('amount');
-    const verifiedToken = searchParams.get('verifiedToken');
 
     if (!paymentKey || !orderId || !amount) {
       setError('결제 정보가 올바르지 않습니다.');
@@ -30,14 +30,17 @@ function SuccessContent() {
       return;
     }
 
-    fetch('/api/payment/confirm', {
+    const token = getAccessToken();
+    fetch('/api/billing/confirm', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
       body: JSON.stringify({
         paymentKey,
         orderId,
         amount: Number(amount),
-        verifiedToken: verifiedToken || '',
       }),
     })
       .then((r) => r.json())

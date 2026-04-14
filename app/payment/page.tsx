@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
 import { useAuthStore } from '@/lib/auth-store';
+import { getAccessToken } from '@/lib/api-client';
 import { AuthModal } from '@/components/auth-modal';
 
 declare global {
@@ -93,7 +94,7 @@ export default function PaymentPage() {
     if (!/^01[0-9]{8,9}$/.test(cleaned)) { setSmsMsg('올바른 휴대폰 번호를 입력해주세요.'); return; }
     setSmsLoading(true); setSmsMsg('');
     try {
-      const res  = await fetch('/api/sms/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: cleaned }) });
+      const res  = await fetch('/api/auth/phone/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: cleaned }) });
       const data = await res.json();
       if (data.success) { setCodeSent(true); setCountdown(180); setSmsMsg('인증번호가 발송됐습니다. (3분 이내 입력)'); }
       else setSmsMsg(data.message || '발송 실패');
@@ -106,13 +107,13 @@ export default function PaymentPage() {
     if (inputCode.length !== 6) { setSmsMsg('6자리 인증번호를 입력해주세요.'); return; }
     setVerifyLoading(true); setSmsMsg('');
     try {
-      const res  = await fetch('/api/sms/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: phone.replace(/[^0-9]/g, ''), code: inputCode }) });
+      const res  = await fetch('/api/auth/phone/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: phone.replace(/[^0-9]/g, ''), code: inputCode }) });
       const data = await res.json();
       if (data.success) {
         setVerified(true);
         setSmsMsg('');
-        if (data.verifiedToken) {
-          setVerifiedToken(data.verifiedToken);
+        if (data.verified_token) {
+          setVerifiedToken(data.verified_token);
         }
       }
       else setSmsMsg(data.message || '인증 실패');
@@ -120,10 +121,22 @@ export default function PaymentPage() {
     finally { setVerifyLoading(false); }
   };
 
-  // 사용자 ID 기반 customerKey
-  const getCustomerKey = () => {
-    if (user?.id) return `farmsense_user_${user.id}`;
-    return `farmsense_user_${Date.now()}`;
+  // checkout API를 통해 customer_key를 받아오는 공통 함수
+  const createCheckout = async (plan: 'monthly' | 'yearly') => {
+    const token = getAccessToken();
+    const res = await fetch('/api/billing/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify({ plan, verified_token: verifiedToken }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.customer_key) {
+      throw new Error(data.error || data.detail || '결제 세션 생성에 실패했습니다.');
+    }
+    return data;
   };
 
   // 월간 — 빌링키(자동결제)
@@ -131,15 +144,15 @@ export default function PaymentPage() {
     if (!sdkReady) return;
     setPayLoading(true);
     try {
+      const checkout = await createCheckout('monthly');
       const toss = window.TossPayments(TOSS_CLIENT_KEY);
-      const customerKey = getCustomerKey();
       await toss.requestBillingAuth('카드', {
-        customerKey,
-        successUrl: `${location.origin}/payment/billing/success?customerKey=${encodeURIComponent(customerKey)}&verifiedToken=${encodeURIComponent(verifiedToken)}`,
+        customerKey: checkout.customer_key,
+        successUrl: `${location.origin}/payment/billing/success?customerKey=${encodeURIComponent(checkout.customer_key)}`,
         failUrl:    `${location.origin}/payment/fail`,
       });
     } catch (e: unknown) {
-      if (e instanceof Error && !e.message.includes('CANCEL')) alert('카드 등록 중 오류가 발생했습니다.');
+      if (e instanceof Error && !e.message.includes('CANCEL')) alert(e.message || '카드 등록 중 오류가 발생했습니다.');
     } finally { setPayLoading(false); }
   };
 
@@ -148,6 +161,7 @@ export default function PaymentPage() {
     if (!sdkReady) return;
     setPayLoading(true);
     try {
+      const checkout = await createCheckout('yearly');
       const toss    = window.TossPayments(TOSS_CLIENT_KEY);
       const orderId = `fs_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
       await toss.requestPayment('카드', {
@@ -155,11 +169,11 @@ export default function PaymentPage() {
         orderId,
         orderName:           'FarmSense 연간 구독',
         customerMobilePhone: phone.replace(/[^0-9]/g, ''),
-        successUrl: `${location.origin}/payment/success?verifiedToken=${encodeURIComponent(verifiedToken)}`,
+        successUrl: `${location.origin}/payment/success`,
         failUrl:    `${location.origin}/payment/fail`,
       });
     } catch (e: unknown) {
-      if (e instanceof Error && !e.message.includes('CANCEL')) alert('결제 중 오류가 발생했습니다.');
+      if (e instanceof Error && !e.message.includes('CANCEL')) alert(e.message || '결제 중 오류가 발생했습니다.');
     } finally { setPayLoading(false); }
   };
 

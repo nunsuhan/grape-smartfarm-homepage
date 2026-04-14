@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
+import { getAccessToken } from '@/lib/api-client';
 
 function BillingSuccessContent() {
   const searchParams = useSearchParams();
@@ -18,7 +19,6 @@ function BillingSuccessContent() {
 
   const authKey       = searchParams.get('authKey') || '';
   const customerKey   = searchParams.get('customerKey') || '';
-  const verifiedToken = searchParams.get('verifiedToken') || '';
 
   useEffect(() => {
     if (!authKey || !customerKey) {
@@ -27,10 +27,14 @@ function BillingSuccessContent() {
       return;
     }
 
-    fetch('/api/billing/register', {
+    const token = getAccessToken();
+    fetch('/api/billing/confirm', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ authKey, customerKey, verifiedToken }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify({ authKey, customerKey }),
     })
       .then((r) => r.json())
       .then((data) => {
@@ -52,7 +56,7 @@ function BillingSuccessContent() {
       .finally(() => {
         setLoading(false);
       });
-  }, [authKey, customerKey, verifiedToken]);
+  }, [authKey, customerKey]);
 
   if (loading) {
     return (
