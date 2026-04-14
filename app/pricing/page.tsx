@@ -1,10 +1,11 @@
-'use client';
-
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 import { Check } from 'lucide-react';
 
-export const metadata = undefined; // client component
+export const metadata = {
+  title: '요금제 안내 | 팜센스(FarmSense)',
+  description: '팜센스 스타터/프로/수출팜 구독 요금제. 월 10,000원부터 시작하는 스마트팜 서비스.',
+};
 
 const PLANS = [
   {
