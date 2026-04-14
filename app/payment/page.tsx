@@ -24,7 +24,7 @@ const PLANS = [
 ];
 
 // 테스트 클라이언트 키 (카드사 심사용 — 실서비스 전환 시 실제 키로 교체)
-const TOSS_CLIENT_KEY = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY || 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq';
+const TOSS_CLIENT_KEY = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY || 'test_ck_Poxy1XQL8R96EXw9Zxg9r7nO5Wml';
 
 export default function PaymentPage() {
   const [selectedPlan, setSelectedPlan] = useState(PLANS[1]);
