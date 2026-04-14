@@ -49,7 +49,7 @@ const footerLinks = {
       { label: '요금제 안내', href: '/pricing' },
       { label: '결제하기', href: '/payment' },
       { label: '이용약관', href: '/terms' },
-      { label: '환불·취소 정책', href: '/refund-policy' },
+      { label: '환불정책', href: '/refund' },
       { label: '결제 문의', href: '/support' },
     ],
   },
@@ -145,14 +145,14 @@ export function Footer() {
         <div className="border-t border-white/10 pt-6 px-5 md:px-0 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
           <p>&copy; 2026 FarmSense. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">
-              개인정보처리방침
-            </Link>
             <Link href="/terms" className="hover:text-white transition-colors">
               이용약관
             </Link>
-            <Link href="/refund-policy" className="hover:text-white transition-colors">
-              환불·취소 정책
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              개인정보처리방침
+            </Link>
+            <Link href="/refund" className="hover:text-white transition-colors">
+              환불정책
             </Link>
           </div>
         </div>
