@@ -10,8 +10,8 @@ import { getAccessToken } from '@/lib/api-client';
 declare global {
   interface Window {
     TossPayments: (clientKey: string) => {
-      requestPayment: (method: string, options: Record<string, unknown>) => Promise<void>;
-      requestBillingAuth: (method: string, options: Record<string, unknown>) => Promise<void>;
+      requestPayment: (options: Record<string, unknown>) => Promise<void>;
+      requestBillingAuth: (options: Record<string, unknown>) => Promise<void>;
     };
   }
 }
@@ -72,10 +72,11 @@ export default function PaymentPage() {
       body: JSON.stringify({ plan }),
     });
     const data = await res.json();
-    if (!res.ok || !data.customer_key) {
+    const customerKey = data.customer_key || data.customerKey;
+    if (!res.ok || !customerKey) {
       throw new Error(data.error || data.detail || '결제 세션 생성에 실패했습니다.');
     }
-    return data;
+    return { ...data, customer_key: customerKey };
   };
 
   // 월간 — 빌링키(자동결제)
@@ -85,11 +86,15 @@ export default function PaymentPage() {
     try {
       const checkout = await createCheckout('monthly');
       const toss = window.TossPayments(TOSS_CLIENT_KEY);
-      await toss.requestBillingAuth('카드', {
+      const billingParams: Record<string, unknown> = {
+        method: '카드',
         customerKey: checkout.customer_key,
-        successUrl: `${location.origin}/payment/billing/success?customerKey=${encodeURIComponent(checkout.customer_key)}`,
-        failUrl:    `${location.origin}/payment/fail`,
-      });
+        successUrl: `${window.location.origin}/payment/billing/success?customerKey=${encodeURIComponent(checkout.customer_key)}`,
+        failUrl:    `${window.location.origin}/payment/fail`,
+      };
+      if (user?.username) billingParams.customerName = user.username;
+      if (user?.email) billingParams.customerEmail = user.email;
+      await toss.requestBillingAuth(billingParams);
     } catch (e: unknown) {
       if (e instanceof Error && !e.message.includes('CANCEL')) alert(e.message || '카드 등록 중 오류가 발생했습니다.');
     } finally { setPayLoading(false); }
@@ -103,14 +108,20 @@ export default function PaymentPage() {
       const checkout = await createCheckout('yearly');
       const toss    = window.TossPayments(TOSS_CLIENT_KEY);
       const orderId = `fs_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
-      await toss.requestPayment('카드', {
-        amount:              YEARLY_AMOUNT,
+      const phoneRaw = user?.phone?.replace(/[^0-9]/g, '') || '';
+      const paymentParams: Record<string, unknown> = {
+        method: '카드',
+        amount: { currency: 'KRW', value: YEARLY_AMOUNT },
         orderId,
-        orderName:           'FarmSense 연간 구독',
-        customerMobilePhone: user?.phone?.replace(/[^0-9]/g, '') || '',
-        successUrl: `${location.origin}/payment/success`,
-        failUrl:    `${location.origin}/payment/fail`,
-      });
+        orderName: 'FarmSense 연간 구독',
+        customerKey: checkout.customer_key,
+        successUrl: `${window.location.origin}/payment/success`,
+        failUrl:    `${window.location.origin}/payment/fail`,
+      };
+      if (phoneRaw.length >= 10) paymentParams.customerMobilePhone = phoneRaw;
+      if (user?.username) paymentParams.customerName = user.username;
+      if (user?.email) paymentParams.customerEmail = user.email;
+      await toss.requestPayment(paymentParams);
     } catch (e: unknown) {
       if (e instanceof Error && !e.message.includes('CANCEL')) alert(e.message || '결제 중 오류가 발생했습니다.');
     } finally { setPayLoading(false); }
