@@ -11,7 +11,7 @@ interface PhoneMockupProps {
 export function PhoneMockup({ image, overlayImage, className, children }: PhoneMockupProps) {
     return (
         <div className={cn("relative w-[280px] h-[580px] mx-auto", className)}>
-            {/* iPhone Frame */}
+            {/* Phone Frame */}
             <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 rounded-[40px] p-3 shadow-2xl shadow-purple-500/20 border-4 border-gray-800">
                 {/* Notch */}
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-full z-20" />

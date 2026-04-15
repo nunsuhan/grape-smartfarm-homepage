@@ -7,7 +7,6 @@ import {
   Shield,
   Wifi,
   Camera,
-  BarChart3,
   MessageSquare,
   ChevronRight,
   CheckCircle,
@@ -17,11 +16,6 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 
 const appFeatures = [
-  {
-    icon: BarChart3,
-    title: '실시간 센서 모니터링',
-    desc: '기온, 습도, 토양수분, 토양온도를 실시간으로 확인',
-  },
   {
     icon: Camera,
     title: 'AI 병해충 진단',
@@ -87,7 +81,7 @@ export default function DownloadPage() {
           </h1>
           <p className="text-neutral-cream/60 max-w-lg mx-auto">
             스마트폰으로 언제 어디서나 내 농장을 관리하세요.
-            센서 데이터 확인, AI 진단, 영농일지까지 한 번에.
+            AI 진단, 농업 상담, 영농일지까지 한 번에.
           </p>
         </div>
       </motion.div>
@@ -197,10 +191,6 @@ export default function DownloadPage() {
                 <li className="flex items-start gap-2">
                   <ChevronRight className="w-3 h-3 shrink-0 mt-1" />
                   설치 시 "출처를 알 수 없는 앱" 경고가 나타날 수 있으며, 이는 정상입니다.
-                </li>
-                <li className="flex items-start gap-2">
-                  <ChevronRight className="w-3 h-3 shrink-0 mt-1" />
-                  iOS(아이폰)는 현재 지원하지 않습니다. 추후 업데이트 예정입니다.
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="w-3 h-3 shrink-0 mt-1" />

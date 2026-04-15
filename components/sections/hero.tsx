@@ -30,14 +30,12 @@ export function Hero() {
           </h1>
 
           <p className="text-lg leading-relaxed text-white/90">
-            센서가 아닙니다. <strong className="text-white">데이터 플랫폼</strong>입니다.<br />
+            <strong className="text-white">데이터 플랫폼</strong>으로 농업의 미래를 열다.<br />
             수집 → 분석 → 의사결정 → 수익화까지, 하나의 플랫폼으로.
           </p>
 
           {/* 파이프라인 */}
           <div className="flex flex-wrap items-center gap-2 text-sm">
-            <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-white/80">🌡 Sensors</span>
-            <span className="text-white/40">→</span>
             <span className="rounded-full border border-green-400/30 bg-green-500/20 px-3 py-1.5 text-green-200">⚡ AI Platform</span>
             <span className="text-white/40">→</span>
             <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-white/80">🍇 Premium</span>

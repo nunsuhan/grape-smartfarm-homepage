@@ -28,7 +28,6 @@ const footerLinks = {
     title: '스마트팜',
     links: [
       { label: '대시보드', href: '/smartfarm/dashboard' },
-      { label: '센서 모니터링', href: '/smartfarm/sensors' },
       { label: 'AI 상담', href: '/smartfarm/ai-chat' },
       { label: '영농일지', href: '/smartfarm/field-book' },
       { label: '커뮤니티', href: '/smartfarm/community' },
@@ -38,7 +37,6 @@ const footerLinks = {
     title: '고객지원',
     links: [
       { label: 'FAQ', href: '/faq' },
-      { label: '센서 설치 도우미', href: '/sensor-installation-guide' },
       { label: 'AI 스마트 도우미', href: '/support/ai-assistant' },
       { label: '문의하기', href: '/support' },
     ],

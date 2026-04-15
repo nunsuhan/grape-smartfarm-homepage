@@ -7,7 +7,6 @@ import clsx from 'clsx';
 import { Container } from '@/components/ui/container';
 import {
   LayoutDashboard,
-  Activity,
   MessageSquare,
   Search,
   Bell,
@@ -19,7 +18,6 @@ import { useAuthStore } from '@/lib/auth-store';
 
 const sidebarItems = [
   { label: '대시보드', href: '/smartfarm/dashboard', icon: LayoutDashboard },
-  { label: '센서 모니터링', href: '/smartfarm/sensors', icon: Activity },
   { label: 'AI 상담', href: '/smartfarm/ai-chat', icon: MessageSquare },
   { label: '질병 진단', href: '/smartfarm/diagnosis', icon: Search },
   { label: '영농일지', href: '/smartfarm/field-book', icon: BookOpen },

@@ -43,9 +43,6 @@ const staticPaths = [
     '/platform/how-it-works',
     '/privacy-policy',
     '/refund-policy',
-    '/sensor-configurator',
-    '/sensor-installation-guide',
-    '/sensors',
     '/services',
     '/solutions',
     '/solutions/climate',
@@ -77,7 +74,6 @@ const staticPaths = [
     '/technology/rag-system',
     '/terms',
     '/verified-farms',
-    '/vineyard-sensor-guide',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

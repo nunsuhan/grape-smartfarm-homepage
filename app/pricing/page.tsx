@@ -8,28 +8,15 @@ export const metadata = {
 };
 
 const FEATURES = [
-  '실시간 센서 모니터링 (온도·습도·토양수분)',
   'AI 병해 진단 및 예측 알림',
   '관개·시비 자동 추천',
   '수확량 예측 리포트',
   '영농일지 기록 및 분석',
   '카카오톡·SMS 알림 연동',
-  'FarmSense 앱 (iOS/Android)',
+  'FarmSense 앱 (Android)',
   '블록체인 생산이력 추적 (베타)',
 ];
 
-const SENSOR_PRODUCTS = [
-  { name: '온도·습도 센서',          price: 15000,  unit: '개',  desc: '하우스/노지 실시간 온습도 측정' },
-  { name: '토양수분 센서',           price: 12000,  unit: '개',  desc: '관수 타이밍 자동 판단' },
-  { name: '잎 젖음 센서',            price: 40000,  unit: '개',  desc: '곰팡이병 조기 예방' },
-  { name: '토양 EC 센서',            price: 40000,  unit: '개',  desc: '비료 과다 실시간 감지' },
-  { name: '적외선 잎 온도 센서',     price: 25000,  unit: '개',  desc: '열 스트레스·수분 부족 감지' },
-  { name: 'CO₂ 센서 (하우스 전용)', price: 75000,  unit: '개',  desc: '환기 타이밍 자동 알림' },
-  { name: '바깥 날씨 스테이션',      price: 120000, unit: '세트', desc: '서리·풍속·강우량 정밀 측정' },
-  { name: '열화상 카메라 (FLIR)',    price: 500000, unit: '대',  desc: '병 3~5일 전 조기 발견' },
-  { name: '센서 게이트웨이 (LoRa)', price: 180000, unit: '대',  desc: '최대 20개 센서 통합 수집' },
-  { name: '평생회원권 (창립 한정)',  price: 490000, unit: '회',  desc: '영구 무료 업데이트 포함' },
-];
 
 export default function PricingPage() {
   return (
@@ -104,34 +91,6 @@ export default function PricingPage() {
               </Link>
             </div>
 
-          </div>
-        </Container>
-      </section>
-
-      {/* 센서·하드웨어 */}
-      <section className="py-20 bg-white/3 border-t border-white/10">
-        <Container>
-          <h2 className="text-2xl font-bold text-center mb-3">센서·하드웨어 제품 가격</h2>
-          <p className="text-gray-400 text-center text-sm mb-10">모든 제품은 FarmSense 앱과 즉시 연동됩니다.</p>
-          <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {SENSOR_PRODUCTS.map((p) => (
-              <div key={p.name} className="flex items-center justify-between px-5 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-green-500/30 transition-colors">
-                <div>
-                  <p className="font-semibold text-white text-sm">{p.name}</p>
-                  <p className="text-gray-400 text-xs mt-0.5">{p.desc}</p>
-                </div>
-                <div className="text-right ml-4 flex-shrink-0">
-                  <p className="font-bold text-green-400 text-sm">{p.price.toLocaleString()}원</p>
-                  <p className="text-gray-500 text-xs">/{p.unit}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/sensor-configurator"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-500 text-white rounded-xl font-bold text-sm transition-colors">
-              센서 구성 자동 계산기 →
-            </Link>
           </div>
         </Container>
       </section>

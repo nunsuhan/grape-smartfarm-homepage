@@ -69,11 +69,6 @@ export const navItems: NavItem[] = [
         description: 'DASHBOARD',
       },
       {
-        label: '센서 모니터링',
-        href: '/smartfarm/sensors',
-        description: 'SENSORS',
-      },
-      {
         label: 'AI 상담',
         href: '/smartfarm/ai-chat',
         description: 'AI CHAT',
