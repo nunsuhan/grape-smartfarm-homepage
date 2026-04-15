@@ -14,7 +14,7 @@ interface User {
 interface AuthState {
   user: User | null;
   isLoggedIn: boolean;
-  isLoading: boolean;
+  hydrated: boolean;
 
   logout: () => void;
   fetchProfile: () => Promise<void>;
@@ -24,19 +24,20 @@ interface AuthState {
 export const useAuthStore = create<AuthState>((set, get) => ({
   user: null,
   isLoggedIn: false,
-  isLoading: false,
+  hydrated: false,
 
   hydrate: () => {
     const token = getAccessToken();
+    const alreadyLoggedIn = get().isLoggedIn;
+    // 이미 hydrate 완료 & 토큰 상태 변동 없으면 스킵
+    if (get().hydrated && alreadyLoggedIn === !!token) return;
+    set({ isLoggedIn: !!token, hydrated: true });
     if (token) {
-      set({ isLoggedIn: true });
-      setTimeout(() => {
-        get().fetchProfile().catch(() => {
-          clearTokens();
-          document.cookie = 'access_token=; path=/; max-age=0';
-          set({ user: null, isLoggedIn: false });
-        });
-      }, 100);
+      get().fetchProfile().catch(() => {
+        clearTokens();
+        document.cookie = 'access_token=; path=/; max-age=0';
+        set({ user: null, isLoggedIn: false });
+      });
     }
   },
 
@@ -47,19 +48,15 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   fetchProfile: async () => {
-    try {
-      const { data } = await api.get('/auth/profile/');
-      set({
-        user: {
-          id: data.id,
-          phone: data.phone,
-          username: data.username,
-          email: data.email,
-          farm_name: data.farm_name,
-        },
-      });
-    } catch {
-      // 프로필 조회 실패해도 로그인 상태 유지
-    }
+    const { data } = await api.get('/auth/profile/');
+    set({
+      user: {
+        id: data.id,
+        phone: data.phone,
+        username: data.username,
+        email: data.email,
+        farm_name: data.farm_name,
+      },
+    });
   },
 }));

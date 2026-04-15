@@ -33,7 +33,7 @@ export default function PaymentPage() {
   const [cycle, setCycle] = useState<Cycle>('monthly');
 
   // 로그인 상태
-  const { user, isLoggedIn, hydrate } = useAuthStore();
+  const { user, isLoggedIn, hydrated, hydrate } = useAuthStore();
 
   // 휴대폰 인증
   const [phone,         setPhone]         = useState('');
@@ -58,10 +58,10 @@ export default function PaymentPage() {
 
   // 비로그인 상태이면 /login으로 리다이렉트
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (hydrated && !isLoggedIn) {
       router.push('/login?next=/payment');
     }
-  }, [isLoggedIn, router]);
+  }, [hydrated, isLoggedIn, router]);
 
   useEffect(() => {
     if (document.querySelector('script[src*="tosspayments"]')) { setSdkReady(true); return; }
@@ -182,8 +182,8 @@ export default function PaymentPage() {
 
   const amount = cycle === 'monthly' ? MONTHLY_AMOUNT : YEARLY_AMOUNT;
 
-  // 비로그인 상태 렌더링
-  if (!isLoggedIn) {
+  // hydrate 완료 전이거나 비로그인이면 렌더 없음
+  if (!hydrated || !isLoggedIn) {
     return null;
   }
 

@@ -65,7 +65,9 @@ export function Navbar() {
   const [mobileExpandedItem, setMobileExpandedItem] = useState<string | null>(null);
   const { locale, setLocale, t } = useLocale();
   const [isBuyerContext, setIsBuyerContext] = useState(false);
-  const { isLoggedIn, user, logout, hydrate } = useAuthStore();
+  const { isLoggedIn, hydrated, user, logout, hydrate } = useAuthStore();
+  // 서버 렌더링과 일치시키기 위해 hydrate 전에는 로그아웃 상태로 표시
+  const showLoggedIn = hydrated && isLoggedIn;
 
   useEffect(() => {
     hydrate();
@@ -155,7 +157,7 @@ export function Navbar() {
         </button>
 
         {/* Auth Buttons */}
-        {isLoggedIn ? (
+        {showLoggedIn ? (
           <div className="flex items-center gap-1.5 ml-2">
             <Link
               href="/account"
@@ -268,7 +270,7 @@ export function Navbar() {
 
           {/* Mobile Auth */}
           <div className="border-t border-white/10 mt-3 pt-3">
-            {isLoggedIn ? (
+            {showLoggedIn ? (
               <>
                 <Link
                   href="/account"

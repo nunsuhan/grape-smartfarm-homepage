@@ -23,7 +23,7 @@ function isValidPhone(phone: string): boolean {
 export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { isLoggedIn, hydrate } = useAuthStore();
+  const { isLoggedIn, hydrated, hydrate } = useAuthStore();
 
   const [step, setStep] = useState<Step>('phone');
   const [phone, setPhone] = useState('');
@@ -42,11 +42,11 @@ export default function LoginPage() {
   }, [hydrate]);
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (hydrated && isLoggedIn) {
       const next = searchParams.get('next') || '/account';
       router.replace(next);
     }
-  }, [isLoggedIn, router, searchParams]);
+  }, [hydrated, isLoggedIn, router, searchParams]);
 
   // Main countdown timer
   useEffect(() => {
@@ -205,7 +205,7 @@ export default function LoginPage() {
     return `${m}:${String(sec).padStart(2, '0')}`;
   };
 
-  if (isLoggedIn) return null;
+  if (hydrated && isLoggedIn) return null;
 
   return (
     <main className="min-h-screen bg-[#111] text-white flex items-center justify-center px-4 font-sans">

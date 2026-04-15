@@ -16,7 +16,7 @@ interface Subscription {
 
 export default function AccountPage() {
   const router = useRouter();
-  const { user, isLoggedIn, logout, hydrate } = useAuthStore();
+  const { user, isLoggedIn, hydrated, logout, hydrate } = useAuthStore();
   const [subscription, setSubscription] = useState<Subscription | null>(null);
   const [subLoading, setSubLoading] = useState(true);
 
@@ -50,7 +50,7 @@ export default function AccountPage() {
     router.push('/');
   };
 
-  if (!isLoggedIn) return null;
+  if (!hydrated || !isLoggedIn) return null;
 
   return (
     <main className="min-h-screen bg-[#111] text-white pt-20 font-sans">
