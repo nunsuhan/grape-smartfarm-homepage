@@ -6,6 +6,13 @@ import Link from 'next/link';
 import { Container } from '@/components/ui/container';
 import { getAccessToken } from '@/lib/api-client';
 
+function getCookie(name: string): string | null {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+  return null;
+}
+
 function BillingSuccessContent() {
   const searchParams = useSearchParams();
   const [done, setDone] = useState(false);
@@ -27,7 +34,13 @@ function BillingSuccessContent() {
       return;
     }
 
-    const token = getAccessToken();
+    const token = getAccessToken() || getCookie('access_token');
+    if (!token) {
+      setError('로그인 정보가 만료됐습니다. 다시 로그인해주세요.');
+      setLoading(false);
+      return;
+    }
+
     fetch('/api/billing/confirm', {
       method: 'POST',
       headers: {
@@ -36,17 +49,21 @@ function BillingSuccessContent() {
       },
       body: JSON.stringify({ authKey, customerKey }),
     })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.success) {
+      .then(async (r) => {
+        const data = await r.json();
+        return { ok: r.ok, status: r.status, data };
+      })
+      .then(({ ok, status, data }) => {
+        if (ok && (data.success || data.billing_key || data.billingKey)) {
           setDone(true);
           setBillingInfo({
-            amount: data.billing.amount,
-            orderName: data.billing.orderName || 'FarmSense 월간 구독',
-            approvedAt: data.billing.approvedAt,
+            amount: data.billing?.amount ?? data.amount ?? 10000,
+            orderName: data.billing?.orderName ?? data.orderName ?? 'FarmSense 월간 구독',
+            approvedAt: data.billing?.approvedAt ?? data.approvedAt,
           });
         } else {
-          setError(data.message || '빌링키 등록에 실패했습니다.');
+          const msg = data.message || data.error || data.detail || '빌링키 등록에 실패했습니다.';
+          setError(`${msg} (코드: ${status})`);
         }
       })
       .catch((err) => {
