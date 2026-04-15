@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
@@ -22,7 +22,7 @@ const MONTHLY_AMOUNT = 10000;
 const YEARLY_AMOUNT  = 100000;
 
 type Cycle = 'monthly' | 'yearly';
-type Step  = 'plan' | 'phone' | 'pay';
+type Step  = 'plan' | 'pay';
 
 export default function PaymentPage() {
   const router = useRouter();
@@ -35,21 +35,9 @@ export default function PaymentPage() {
   // 로그인 상태
   const { user, isLoggedIn, hydrated, hydrate } = useAuthStore();
 
-  // 휴대폰 인증
-  const [phone,         setPhone]         = useState('');
-  const [codeSent,      setCodeSent]      = useState(false);
-  const [inputCode,     setInputCode]     = useState('');
-  const [verified,      setVerified]      = useState(false);
-  const [smsLoading,    setSmsLoading]    = useState(false);
-  const [verifyLoading, setVerifyLoading] = useState(false);
-  const [smsMsg,        setSmsMsg]        = useState('');
-  const [countdown,     setCountdown]     = useState(0);
-  const [verifiedToken, setVerifiedToken] = useState('');
-
   // 결제
   const [sdkReady,  setSdkReady]  = useState(false);
   const [payLoading, setPayLoading] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // 초기 hydrate
   useEffect(() => {
@@ -72,58 +60,6 @@ export default function PaymentPage() {
     document.head.appendChild(s);
   }, []);
 
-  // 카운트다운
-  useEffect(() => {
-    if (countdown <= 0) return;
-    timerRef.current = setInterval(() => {
-      setCountdown((c) => {
-        if (c <= 1) { clearInterval(timerRef.current!); return 0; }
-        return c - 1;
-      });
-    }, 1000);
-    return () => clearInterval(timerRef.current!);
-  }, [codeSent]);
-
-  const formatPhone = (v: string) => {
-    const d = v.replace(/[^0-9]/g, '').slice(0, 11);
-    if (d.length < 4) return d;
-    if (d.length < 8) return `${d.slice(0,3)}-${d.slice(3)}`;
-    return `${d.slice(0,3)}-${d.slice(3,7)}-${d.slice(7)}`;
-  };
-
-  // SMS 발송
-  const sendCode = async () => {
-    const cleaned = phone.replace(/[^0-9]/g, '');
-    if (!/^01[0-9]{8,9}$/.test(cleaned)) { setSmsMsg('올바른 휴대폰 번호를 입력해주세요.'); return; }
-    setSmsLoading(true); setSmsMsg('');
-    try {
-      const res  = await fetch('/api/auth/phone/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: cleaned }) });
-      const data = await res.json();
-      if (data.success) { setCodeSent(true); setCountdown(180); setSmsMsg('인증번호가 발송됐습니다. (3분 이내 입력)'); }
-      else setSmsMsg(data.message || '발송 실패');
-    } catch { setSmsMsg('네트워크 오류가 발생했습니다.'); }
-    finally { setSmsLoading(false); }
-  };
-
-  // 인증 확인
-  const verifyCode = async () => {
-    if (inputCode.length !== 6) { setSmsMsg('6자리 인증번호를 입력해주세요.'); return; }
-    setVerifyLoading(true); setSmsMsg('');
-    try {
-      const res  = await fetch('/api/auth/phone/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: phone.replace(/[^0-9]/g, ''), code: inputCode }) });
-      const data = await res.json();
-      if (data.success) {
-        setVerified(true);
-        setSmsMsg('');
-        if (data.verified_token) {
-          setVerifiedToken(data.verified_token);
-        }
-      }
-      else setSmsMsg(data.message || '인증 실패');
-    } catch { setSmsMsg('네트워크 오류가 발생했습니다.'); }
-    finally { setVerifyLoading(false); }
-  };
-
   // checkout API를 통해 customer_key를 받아오는 공통 함수
   const createCheckout = async (plan: 'monthly' | 'yearly') => {
     const token = getAccessToken();
@@ -133,7 +69,7 @@ export default function PaymentPage() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify({ plan, verified_token: verifiedToken }),
+      body: JSON.stringify({ plan }),
     });
     const data = await res.json();
     if (!res.ok || !data.customer_key) {
@@ -171,7 +107,7 @@ export default function PaymentPage() {
         amount:              YEARLY_AMOUNT,
         orderId,
         orderName:           'FarmSense 연간 구독',
-        customerMobilePhone: phone.replace(/[^0-9]/g, ''),
+        customerMobilePhone: user?.phone?.replace(/[^0-9]/g, '') || '',
         successUrl: `${location.origin}/payment/success`,
         failUrl:    `${location.origin}/payment/fail`,
       });
@@ -208,17 +144,17 @@ export default function PaymentPage() {
 
         {/* 단계 표시 */}
         <div className="flex items-center justify-center gap-2 mb-10 text-xs">
-          {(['plan','phone','pay'] as Step[]).map((s, i) => (
+          {(['plan','pay'] as Step[]).map((s, i) => (
             <div key={s} className="flex items-center gap-1.5">
               <div className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs transition-colors ${
                 step === s ? 'bg-green-500 text-white'
-                : (['plan','phone','pay'] as Step[]).indexOf(step) > i ? 'bg-green-800 text-green-300'
+                : (['plan','pay'] as Step[]).indexOf(step) > i ? 'bg-green-800 text-green-300'
                 : 'bg-white/10 text-gray-500'
               }`}>{i+1}</div>
               <span className={step === s ? 'text-white font-semibold' : 'text-gray-500'}>
-                {s === 'plan' ? '요금제' : s === 'phone' ? '휴대폰 인증' : '결제'}
+                {s === 'plan' ? '요금제' : '결제'}
               </span>
-              {i < 2 && <span className="text-gray-600 mx-1">›</span>}
+              {i < 1 && <span className="text-gray-600 mx-1">›</span>}
             </div>
           ))}
         </div>
@@ -275,83 +211,18 @@ export default function PaymentPage() {
               ))}
             </div>
 
-            <button onClick={() => setStep('phone')}
+            <button onClick={() => setStep('pay')}
               className="w-full py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-colors text-base">
-              다음 → 휴대폰 인증
-            </button>
-          </div>
-        )}
-
-        {/* ─── STEP 2: 휴대폰 인증 ─── */}
-        {step === 'phone' && (
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <button onClick={() => setStep('plan')} className="text-gray-400 hover:text-white text-sm">← 뒤로</button>
-              <h1 className="text-2xl font-bold">휴대폰 인증</h1>
-            </div>
-
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-7 space-y-5">
-              {/* 번호 입력 */}
-              <div>
-                <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">휴대폰 번호</label>
-                <div className="flex gap-2">
-                  <input type="tel" value={phone}
-                    onChange={(e) => { setPhone(formatPhone(e.target.value)); setCodeSent(false); setVerified(false); setInputCode(''); setSmsMsg(''); setVerifiedToken(''); }}
-                    placeholder="010-0000-0000"
-                    disabled={verified}
-                    className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-green-500 disabled:opacity-50"
-                  />
-                  <button onClick={sendCode} disabled={smsLoading || verified || countdown > 0}
-                    className="px-4 py-3 rounded-xl bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-sm font-bold whitespace-nowrap transition-colors min-w-[90px]">
-                    {smsLoading ? '발송중' : (codeSent && countdown > 0) ? `${Math.floor(countdown/60)}:${String(countdown%60).padStart(2,'0')}` : '인증번호 받기'}
-                  </button>
-                </div>
-              </div>
-
-              {/* 인증번호 입력 */}
-              {codeSent && !verified && (
-                <div>
-                  <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">인증번호 6자리</label>
-                  <div className="flex gap-2">
-                    <input type="text" inputMode="numeric" maxLength={6}
-                      value={inputCode}
-                      onChange={(e) => setInputCode(e.target.value.replace(/[^0-9]/g,'').slice(0,6))}
-                      placeholder="000000"
-                      className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-center text-xl tracking-[0.4em] placeholder-gray-500 focus:outline-none focus:border-green-500"
-                    />
-                    <button onClick={verifyCode} disabled={verifyLoading || inputCode.length !== 6}
-                      className="px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white text-sm font-bold transition-colors min-w-[72px]">
-                      {verifyLoading ? '확인중' : '확인'}
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* 인증 완료 */}
-              {verified && (
-                <div className="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                  <span className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center text-xs">✓</span>
-                  {phone} 인증 완료
-                </div>
-              )}
-
-              {smsMsg && (
-                <p className={`text-xs ${smsMsg.includes('발송') ? 'text-green-400' : 'text-red-400'}`}>{smsMsg}</p>
-              )}
-            </div>
-
-            <button onClick={() => setStep('pay')} disabled={!verified}
-              className="w-full py-4 bg-green-600 hover:bg-green-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-colors text-base">
               다음 → 결제하기
             </button>
           </div>
         )}
 
-        {/* ─── STEP 3: 결제 ─── */}
+        {/* ─── STEP 2: 결제 ─── */}
         {step === 'pay' && (
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <button onClick={() => setStep('phone')} className="text-gray-400 hover:text-white text-sm">← 뒤로</button>
+              <button onClick={() => setStep('plan')} className="text-gray-400 hover:text-white text-sm">← 뒤로</button>
               <h1 className="text-2xl font-bold">결제</h1>
             </div>
 
@@ -365,10 +236,12 @@ export default function PaymentPage() {
                 <span className="text-gray-400">결제 방식</span>
                 <span className="font-semibold">{cycle === 'monthly' ? '매월 자동결제' : '연 1회 결제'}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-400">휴대폰</span>
-                <span className="font-semibold">{phone}</span>
-              </div>
+              {user?.phone && (
+                <div className="flex justify-between">
+                  <span className="text-gray-400">휴대폰</span>
+                  <span className="font-semibold">{user.phone}</span>
+                </div>
+              )}
               <div className="border-t border-white/10 pt-3 flex justify-between items-baseline">
                 <span className="text-gray-400">결제 금액</span>
                 <span className="text-green-400 font-black text-2xl">
