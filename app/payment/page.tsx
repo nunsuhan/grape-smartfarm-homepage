@@ -107,7 +107,9 @@ export default function PaymentPage() {
         amount:              YEARLY_AMOUNT,
         orderId,
         orderName:           'FarmSense 연간 구독',
-        customerMobilePhone: user?.phone?.replace(/[^0-9]/g, '') || '',
+        customerName:        user?.name || user?.username || '고객',
+        customerMobilePhone: user?.phone?.replace(/[^0-9]/g, '') || undefined,
+        ...(user?.email ? { customerEmail: user.email } : {}),
         successUrl: `${location.origin}/payment/success`,
         failUrl:    `${location.origin}/payment/fail`,
       });
