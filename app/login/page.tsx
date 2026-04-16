@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Loader2, ArrowLeft } from 'lucide-react';
 import { useAuthStore } from '@/lib/auth-store';
@@ -21,7 +21,6 @@ function isValidPhone(phone: string): boolean {
 }
 
 export default function LoginPage() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const { isLoggedIn, hydrated, hydrate } = useAuthStore();
 
@@ -41,12 +40,13 @@ export default function LoginPage() {
     hydrate();
   }, [hydrate]);
 
+  // 이미 로그인된 상태면 바로 리다이렉트
   useEffect(() => {
     if (hydrated && isLoggedIn) {
       const next = searchParams.get('next') || '/account';
-      router.replace(next);
+      window.location.href = next;
     }
-  }, [hydrated, isLoggedIn, router, searchParams]);
+  }, [hydrated, isLoggedIn, searchParams]);
 
   // Main countdown timer
   useEffect(() => {
@@ -56,16 +56,11 @@ export default function LoginPage() {
     }
     timerRef.current = setInterval(() => {
       setCountdown((c) => {
-        if (c <= 1) {
-          clearInterval(timerRef.current!);
-          return 0;
-        }
+        if (c <= 1) { clearInterval(timerRef.current!); return 0; }
         return c - 1;
       });
     }, 1000);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [countdown > 0 ? 'active' : 'inactive']); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Resend cooldown timer
@@ -76,16 +71,11 @@ export default function LoginPage() {
     }
     resendTimerRef.current = setInterval(() => {
       setResendCooldown((c) => {
-        if (c <= 1) {
-          clearInterval(resendTimerRef.current!);
-          return 0;
-        }
+        if (c <= 1) { clearInterval(resendTimerRef.current!); return 0; }
         return c - 1;
       });
     }, 1000);
-    return () => {
-      if (resendTimerRef.current) clearInterval(resendTimerRef.current);
-    };
+    return () => { if (resendTimerRef.current) clearInterval(resendTimerRef.current); };
   }, [resendCooldown > 0 ? 'active' : 'inactive']); // eslint-disable-line react-hooks/exhaustive-deps
 
   const cleanedPhone = phone.replace(/[^0-9]/g, '');
@@ -128,37 +118,37 @@ export default function LoginPage() {
         body: JSON.stringify({ phone: cleanedPhone, code }),
       });
       const data = await res.json();
-      // Django SimpleJWT: { access, refresh } 또는 { token, refresh } 둘 다 처리
+
+      if (!res.ok) {
+        setError(data.message || data.error || '인증에 실패했습니다.');
+        return;
+      }
+
+      // Django SimpleJWT: { access, refresh } 형식
       const accessToken = data.access || data.token;
       const refreshToken = data.refresh;
-      if (res.ok && (accessToken || data.success)) {
-        // Store tokens in localStorage
-        if (accessToken) localStorage.setItem('farmsense_access', accessToken);
-        if (refreshToken) localStorage.setItem('farmsense_refresh', refreshToken);
 
-        // Also set cookie for middleware
-        if (accessToken) {
-          document.cookie = `access_token=${accessToken}; path=/; max-age=${7 * 24 * 3600}; SameSite=Lax`;
-        }
-
-        // Hydrate auth store
-        hydrate();
-
-        // Redirect based on user type
-        if (data.is_new_user) {
-          router.push('/payment?welcome=1');
-        } else {
-          router.push(searchParams.get('next') || '/account');
-        }
-      } else {
-        setError(data.message || data.error || '인증에 실패했습니다.');
+      if (!accessToken) {
+        setError('서버에서 토큰을 받지 못했습니다. 다시 시도해주세요.');
+        return;
       }
+
+      // localStorage 저장
+      localStorage.setItem('farmsense_access', accessToken);
+      if (refreshToken) localStorage.setItem('farmsense_refresh', refreshToken);
+
+      // 쿠키 저장 (미들웨어용)
+      document.cookie = `access_token=${accessToken}; path=/; max-age=${7 * 24 * 3600}; SameSite=Lax`;
+
+      // ★ window.location으로 확실한 이동 (router.push는 store 갱신 타이밍 이슈 있음)
+      const next = searchParams.get('next') || (data.is_new_user ? '/payment?welcome=1' : '/account');
+      window.location.href = data.is_new_user ? '/payment?welcome=1' : next;
     } catch {
       setError('네트워크 오류가 발생했습니다.');
     } finally {
       setVerifyLoading(false);
     }
-  }, [cleanedPhone, verifyLoading, hydrate, router, searchParams]);
+  }, [cleanedPhone, verifyLoading, searchParams]);
 
   const handleResend = async () => {
     if (resendCooldown > 0) return;
@@ -189,9 +179,7 @@ export default function LoginPage() {
   const handleOtpChange = (value: string) => {
     const cleaned = value.replace(/[^0-9]/g, '').slice(0, 6);
     setOtp(cleaned);
-    if (cleaned.length === 6) {
-      handleVerify(cleaned);
-    }
+    if (cleaned.length === 6) handleVerify(cleaned);
   };
 
   const handleGoBack = () => {
@@ -227,7 +215,6 @@ export default function LoginPage() {
             <h1 className="text-xl font-bold text-center">
               휴대폰 번호로 시작하세요
             </h1>
-
             <div className="space-y-4">
               <div>
                 <label className="block text-xs font-medium text-gray-400 mb-2">
@@ -244,13 +231,11 @@ export default function LoginPage() {
                   autoFocus
                 />
               </div>
-
               {error && (
                 <div className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
                   {error}
                 </div>
               )}
-
               <button
                 onClick={handleSendCode}
                 disabled={!isValidPhone(phone) || sendLoading}
@@ -266,17 +251,11 @@ export default function LoginPage() {
                 )}
               </button>
             </div>
-
             <p className="text-center text-xs text-gray-500 leading-relaxed">
               인증번호를 받으시면{' '}
-              <Link href="/terms" className="text-green-400 hover:underline">
-                이용약관
-              </Link>
-              과{' '}
-              <Link href="/privacy" className="text-green-400 hover:underline">
-                개인정보처리방침
-              </Link>
-              에 동의한 것으로 간주됩니다.
+              <Link href="/terms" className="text-green-400 hover:underline">이용약관</Link>과{' '}
+              <Link href="/privacy" className="text-green-400 hover:underline">개인정보처리방침</Link>에
+              동의한 것으로 간주됩니다.
             </p>
           </div>
         )}
@@ -293,7 +272,6 @@ export default function LoginPage() {
               </button>
               <h1 className="text-xl font-bold">인증번호 6자리</h1>
             </div>
-
             <div className="space-y-4">
               <div>
                 <input
@@ -309,33 +287,23 @@ export default function LoginPage() {
                   autoComplete="one-time-code"
                 />
                 <div className="flex items-center justify-between mt-2">
-                  <span
-                    className={`text-sm font-mono ${
-                      countdown > 0 ? 'text-green-400' : 'text-red-400'
-                    }`}
-                  >
-                    {countdown > 0
-                      ? `유효시간 ${formatCountdown(countdown)}`
-                      : '인증시간이 만료되었습니다'}
+                  <span className={`text-sm font-mono ${countdown > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                    {countdown > 0 ? `유효시간 ${formatCountdown(countdown)}` : '인증시간이 만료되었습니다'}
                   </span>
                   <button
                     onClick={handleResend}
                     disabled={resendCooldown > 0 || sendLoading}
                     className="text-sm text-green-400 hover:text-green-300 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors"
                   >
-                    {resendCooldown > 0
-                      ? `재발송 (${resendCooldown}초)`
-                      : '재발송'}
+                    {resendCooldown > 0 ? `재발송 (${resendCooldown}초)` : '재발송'}
                   </button>
                 </div>
               </div>
-
               {error && (
                 <div className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
                   {error}
                 </div>
               )}
-
               <button
                 onClick={() => handleVerify(otp)}
                 disabled={otp.length !== 6 || verifyLoading || countdown === 0}
