@@ -31,7 +31,7 @@ function SuccessContent() {
     }
 
     const token = getAccessToken();
-    fetch('/api/billing/confirm', {
+    fetch('/api/billing/payment/confirm', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
