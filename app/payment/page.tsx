@@ -8,8 +8,9 @@ import Link from 'next/link';
 declare global {
   interface Window {
     TossPayments: (clientKey: string) => {
-      requestPayment: (options: Record<string, unknown>) => Promise<void>;
-      requestBillingAuth: (options: Record<string, unknown>) => Promise<void>;
+      // v1 SDK: 첫 번째 인자가 method 문자열
+      requestPayment: (method: string, options: Record<string, unknown>) => Promise<void>;
+      requestBillingAuth: (method: string, options: Record<string, unknown>) => Promise<void>;
     };
   }
 }
@@ -100,9 +101,8 @@ export default function PaymentPage() {
       const customerKey = await createCheckout('monthly');
       const toss = window.TossPayments(TOSS_CLIENT_KEY);
 
-      // 토스 v1 SDK — 빌링키 발급 (amount 없음)
-      await toss.requestBillingAuth({
-        method: '카드',
+      // 토스 v1 SDK — 빌링키 발급
+      await toss.requestBillingAuth('카드', {
         customerKey,
         successUrl: `${window.location.origin}/payment/billing/success`,
         failUrl:    `${window.location.origin}/payment/fail`,
@@ -124,14 +124,13 @@ export default function PaymentPage() {
       const toss    = window.TossPayments(TOSS_CLIENT_KEY);
       const orderId = `fs_yearly_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
 
-      await toss.requestPayment({
-        method: '카드',
+      // 토스 v1 SDK — 단건결제
+      await toss.requestPayment('카드', {
         amount: YEARLY_AMOUNT,
         orderId,
         orderName: 'FarmSense 연간 구독',
         successUrl: `${window.location.origin}/payment/success?type=yearly`,
         failUrl:    `${window.location.origin}/payment/fail`,
-        // customerKey 없음 — 단건결제는 미지원
       });
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : '결제 중 오류가 발생했습니다.';
