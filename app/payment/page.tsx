@@ -38,6 +38,7 @@ export default function PaymentPage() {
   // 결제
   const [sdkReady,  setSdkReady]  = useState(false);
   const [payLoading, setPayLoading] = useState(false);
+  const [payError, setPayError] = useState<string | null>(null);
 
   // 초기 hydrate
   useEffect(() => {
@@ -63,6 +64,10 @@ export default function PaymentPage() {
   // checkout API를 통해 customer_key를 받아오는 공통 함수
   const createCheckout = async (plan: 'monthly' | 'yearly') => {
     const token = getAccessToken();
+    if (!token) {
+      throw new Error('로그인이 필요합니다.');
+    }
+
     const res = await fetch('/api/billing/checkout', {
       method: 'POST',
       headers: {
@@ -71,18 +76,31 @@ export default function PaymentPage() {
       },
       body: JSON.stringify({ plan }),
     });
-    const data = await res.json();
-    const customerKey = data.customer_key || data.customerKey;
-    if (!res.ok || !customerKey) {
-      throw new Error(data.error || data.detail || '결제 세션 생성에 실패했습니다.');
+
+    const text = await res.text();
+    let data: Record<string, unknown> = {};
+    try {
+      data = JSON.parse(text);
+    } catch {
+      throw new Error(`서버 응답 오류: ${text.slice(0, 100)}`);
     }
-    return { ...data, customer_key: customerKey };
+
+    if (!res.ok) {
+      throw new Error((data.error || data.detail || `결제 세션 생성 실패 (${res.status})`) as string);
+    }
+
+    const customerKey = data.customer_key || data.customerKey;
+    if (!customerKey) {
+      throw new Error(`customer_key가 응답에 없습니다.`);
+    }
+    return { ...data, customer_key: customerKey as string };
   };
 
   // 월간 — 빌링키(자동결제)
   const handleMonthly = async () => {
     if (!sdkReady) return;
     setPayLoading(true);
+    setPayError(null);
     try {
       const checkout = await createCheckout('monthly');
       const toss = window.TossPayments(TOSS_CLIENT_KEY);
@@ -96,7 +114,8 @@ export default function PaymentPage() {
       if (user?.email) billingParams.customerEmail = user.email;
       await toss.requestBillingAuth(billingParams);
     } catch (e: unknown) {
-      if (e instanceof Error && !e.message.includes('CANCEL')) alert(e.message || '카드 등록 중 오류가 발생했습니다.');
+      const msg = e instanceof Error ? e.message : '카드 등록 중 오류가 발생했습니다.';
+      if (!msg.includes('CANCEL')) setPayError(msg);
     } finally { setPayLoading(false); }
   };
 
@@ -104,6 +123,7 @@ export default function PaymentPage() {
   const handleYearly = async () => {
     if (!sdkReady) return;
     setPayLoading(true);
+    setPayError(null);
     try {
       const checkout = await createCheckout('yearly');
       const toss    = window.TossPayments(TOSS_CLIENT_KEY);
@@ -111,9 +131,9 @@ export default function PaymentPage() {
       const phoneRaw = user?.phone?.replace(/[^0-9]/g, '') || '';
       const paymentParams: Record<string, unknown> = {
         method: '카드',
-        amount: { currency: 'KRW', value: YEARLY_AMOUNT },
+        amount: YEARLY_AMOUNT,
         orderId,
-        orderName: 'FarmSense 연간 구독',
+        orderName: 'FarmSense 1Year',
         customerKey: checkout.customer_key,
         successUrl: `${window.location.origin}/payment/success`,
         failUrl:    `${window.location.origin}/payment/fail`,
@@ -123,7 +143,8 @@ export default function PaymentPage() {
       if (user?.email) paymentParams.customerEmail = user.email;
       await toss.requestPayment(paymentParams);
     } catch (e: unknown) {
-      if (e instanceof Error && !e.message.includes('CANCEL')) alert(e.message || '결제 중 오류가 발생했습니다.');
+      const msg = e instanceof Error ? e.message : '결제 중 오류가 발생했습니다.';
+      if (!msg.includes('CANCEL')) setPayError(msg);
     } finally { setPayLoading(false); }
   };
 
@@ -269,6 +290,12 @@ export default function PaymentPage() {
               {cycle === 'monthly' && (
                 <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl px-4 py-3 text-xs text-blue-200 leading-relaxed">
                   카드를 한 번 등록하면 매월 자동으로 결제됩니다. 앱 내 설정에서 언제든지 해지 가능합니다.
+                </div>
+              )}
+
+              {payError && (
+                <div className="bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 text-sm text-red-300">
+                  {payError}
                 </div>
               )}
 
