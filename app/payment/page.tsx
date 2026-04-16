@@ -119,13 +119,12 @@ export default function PaymentPage() {
     } finally { setPayLoading(false); }
   };
 
-  // 연간 — 단건 결제
+  // 연간 — 단건 결제 (customerKey 없이 일반 카드 결제)
   const handleYearly = async () => {
     if (!sdkReady) return;
     setPayLoading(true);
     setPayError(null);
     try {
-      const checkout = await createCheckout('yearly');
       const toss    = window.TossPayments(TOSS_CLIENT_KEY);
       const orderId = `fs_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
       const phoneRaw = user?.phone?.replace(/[^0-9]/g, '') || '';
@@ -133,8 +132,7 @@ export default function PaymentPage() {
         method: '카드',
         amount: YEARLY_AMOUNT,
         orderId,
-        orderName: 'FarmSense 1Year',
-        customerKey: checkout.customer_key,
+        orderName: 'FarmSense 연간 구독',
         successUrl: `${window.location.origin}/payment/success`,
         failUrl:    `${window.location.origin}/payment/fail`,
       };
