@@ -128,14 +128,17 @@ export default function LoginPage() {
         body: JSON.stringify({ phone: cleanedPhone, code }),
       });
       const data = await res.json();
-      if (res.ok && (data.token || data.success)) {
+      // Django SimpleJWT: { access, refresh } 또는 { token, refresh } 둘 다 처리
+      const accessToken = data.access || data.token;
+      const refreshToken = data.refresh;
+      if (res.ok && (accessToken || data.success)) {
         // Store tokens in localStorage
-        if (data.token) localStorage.setItem('farmsense_access', data.token);
-        if (data.refresh) localStorage.setItem('farmsense_refresh', data.refresh);
+        if (accessToken) localStorage.setItem('farmsense_access', accessToken);
+        if (refreshToken) localStorage.setItem('farmsense_refresh', refreshToken);
 
         // Also set cookie for middleware
-        if (data.token) {
-          document.cookie = `access_token=${data.token}; path=/; max-age=${7 * 24 * 3600}; SameSite=Lax`;
+        if (accessToken) {
+          document.cookie = `access_token=${accessToken}; path=/; max-age=${7 * 24 * 3600}; SameSite=Lax`;
         }
 
         // Hydrate auth store
