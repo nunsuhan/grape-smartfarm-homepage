@@ -100,15 +100,10 @@ export default function PaymentPage() {
       const customerKey = await createCheckout('monthly');
       const toss = window.TossPayments(TOSS_CLIENT_KEY);
 
-      // 토스 v1 SDK — requestPayment에 flowMode: 'DEFAULT'로 빌링 인증 진행
-      await toss.requestPayment({
+      // 토스 v1 SDK — 빌링키 발급 (amount 없음)
+      await toss.requestBillingAuth({
         method: '카드',
-        amount: 0,                           // 빌링 인증 시 결제 금액 0
-        orderId: `billing_${customerKey}_${Date.now()}`,
-        orderName: 'FarmSense 월간 구독 카드 등록',
         customerKey,
-        flowMode: 'DEFAULT',                 // 빌링 인증 플로우
-        cardCompany: undefined,
         successUrl: `${window.location.origin}/payment/billing/success`,
         failUrl:    `${window.location.origin}/payment/fail`,
       });
@@ -271,12 +266,6 @@ export default function PaymentPage() {
               {cycle === 'monthly' && (
                 <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl px-4 py-3 text-xs text-blue-200 leading-relaxed">
                   카드를 한 번 등록하면 매월 자동으로 결제됩니다. 앱 내 설정에서 언제든지 해지 가능합니다.
-                </div>
-              )}
-
-              {payError && (
-                <div className="bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 text-sm text-red-300">
-                  {payError}
                 </div>
               )}
 
