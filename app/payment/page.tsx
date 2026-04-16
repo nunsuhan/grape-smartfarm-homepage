@@ -100,10 +100,15 @@ export default function PaymentPage() {
       const customerKey = await createCheckout('monthly');
       const toss = window.TossPayments(TOSS_CLIENT_KEY);
 
-      // successUrl에 customerKey를 포함 — billing/success에서 confirm 시 사용
-      await toss.requestBillingAuth({
+      // 토스 v1 SDK — requestPayment에 flowMode: 'DEFAULT'로 빌링 인증 진행
+      await toss.requestPayment({
         method: '카드',
+        amount: 0,                           // 빌링 인증 시 결제 금액 0
+        orderId: `billing_${customerKey}_${Date.now()}`,
+        orderName: 'FarmSense 월간 구독 카드 등록',
         customerKey,
+        flowMode: 'DEFAULT',                 // 빌링 인증 플로우
+        cardCompany: undefined,
         successUrl: `${window.location.origin}/payment/billing/success`,
         failUrl:    `${window.location.origin}/payment/fail`,
       });
