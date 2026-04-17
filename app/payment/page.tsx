@@ -16,6 +16,12 @@ declare global {
 }
 
 const TOSS_CLIENT_KEY = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY || 'test_ck_Poxy1XQL8R96EXw9Zxg9r7nO5Wml';
+// 리다이렉트 없는 www primary 도메인 고정 (307 Authorization 헤더 유실 방지)
+const BASE_URL = typeof window !== 'undefined'
+  ? (window.location.hostname.endsWith('farmsense.kr')
+      ? 'https://www.farmsense.kr'
+      : window.location.origin)
+  : 'https://www.farmsense.kr';
 const MONTHLY_AMOUNT = 10000;
 const YEARLY_AMOUNT  = 100000;
 
@@ -104,8 +110,8 @@ export default function PaymentPage() {
       // 토스 v1 SDK — 빌링키 발급
       await toss.requestBillingAuth('카드', {
         customerKey,
-        successUrl: `${window.location.origin}/payment/billing/success`,
-        failUrl:    `${window.location.origin}/payment/fail`,
+        successUrl: `${BASE_URL}/payment/billing/success`,
+        failUrl:    `${BASE_URL}/payment/fail`,
       });
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : '카드 등록 중 오류가 발생했습니다.';
@@ -129,8 +135,8 @@ export default function PaymentPage() {
         amount: YEARLY_AMOUNT,
         orderId,
         orderName: 'FarmSense 연간 구독',
-        successUrl: `${window.location.origin}/payment/success?type=yearly`,
-        failUrl:    `${window.location.origin}/payment/fail`,
+        successUrl: `${BASE_URL}/payment/success?type=yearly`,
+        failUrl:    `${BASE_URL}/payment/fail`,
       });
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : '결제 중 오류가 발생했습니다.';
