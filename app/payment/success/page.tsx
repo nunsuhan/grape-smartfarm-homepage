@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Container } from '@/components/ui/container';
@@ -18,11 +18,16 @@ function SuccessContent() {
   const [info, setInfo] = useState<PaymentInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const confirmedRef = useRef(false);
 
   useEffect(() => {
+    // 중복 호출 방지 (React StrictMode 2회 실행 + 리렌더 대비)
+    if (confirmedRef.current) return;
+    confirmedRef.current = true;
+
     const paymentKey = searchParams.get('paymentKey');
-    const orderId = searchParams.get('orderId');
-    const amount = searchParams.get('amount');
+    const orderId    = searchParams.get('orderId');
+    const amount     = searchParams.get('amount');
 
     if (!paymentKey || !orderId || !amount) {
       setError('결제 정보가 올바르지 않습니다.');
@@ -43,18 +48,42 @@ function SuccessContent() {
         amount: Number(amount),
       }),
     })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.success) {
-          setInfo({
-            orderName: data.payment.orderName || 'FarmSense 연간 구독',
-            amount: data.payment.amount,
-            method: data.payment.method,
-            approvedAt: data.payment.approvedAt,
-          });
-        } else {
-          setError(data.message || '결제 승인에 실패했습니다.');
+      .then(async (r) => {
+        const data = await r.json();
+
+        // 400: 이미 처리된 결제(중복) → 성공으로 간주
+        if (r.status === 400) {
+          const msg: string = data.error || data.message || data.detail || '';
+          if (
+            msg.includes('이미') ||
+            msg.includes('already') ||
+            msg.includes('duplicate') ||
+            msg.includes('ALREADY')
+          ) {
+            setInfo({
+              orderName:  'FarmSense 연간 구독',
+              amount:     Number(amount),
+              approvedAt: undefined,
+            });
+            return;
+          }
+          setError(msg || '결제 승인에 실패했습니다.');
+          return;
         }
+
+        if (!r.ok) {
+          setError(data.error || data.message || data.detail || `결제 승인 실패 (${r.status})`);
+          return;
+        }
+
+        // 성공 — Django 응답: { success, payment: {...} } 또는 { success, orderName, amount, ... }
+        const payment = data.payment ?? data;
+        setInfo({
+          orderName:  payment.orderName  ?? data.orderName  ?? 'FarmSense 연간 구독',
+          amount:     payment.amount     ?? data.amount     ?? Number(amount),
+          method:     payment.method     ?? data.method,
+          approvedAt: payment.approvedAt ?? data.approvedAt,
+        });
       })
       .catch(() => {
         setError('결제 승인 요청 중 오류가 발생했습니다.');
@@ -62,7 +91,7 @@ function SuccessContent() {
       .finally(() => {
         setLoading(false);
       });
-  }, [searchParams]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return (
@@ -118,7 +147,9 @@ function SuccessContent() {
           {info.approvedAt && (
             <div className="flex justify-between">
               <span className="text-gray-400">승인 일시</span>
-              <span className="text-white text-xs">{new Date(info.approvedAt).toLocaleString('ko-KR')}</span>
+              <span className="text-white text-xs">
+                {new Date(info.approvedAt).toLocaleString('ko-KR')}
+              </span>
             </div>
           )}
         </div>
