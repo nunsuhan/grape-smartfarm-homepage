@@ -127,7 +127,22 @@ export function Footer() {
             <span className="font-semibold text-gray-400">팜센스(FarmSense)</span>
             &nbsp;&nbsp;대표자: 한문수
             &nbsp;&nbsp;사업자등록번호: 646-18-02527
-            &nbsp;&nbsp;업태: 정보통신업 / 종목: 앱개발
+          </p>
+          <p className="mb-1">
+            업태: 도매 및 소매업
+            &nbsp;&nbsp;종목: 전자상거래 소매업 / (47912) 전자상거래 소매업
+          </p>
+          <p className="mb-1">
+            통신판매신고번호: 제 2026-대구북구-0406호
+            &nbsp;&nbsp;
+            <a
+              href="https://hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index_pp.xml&menuCd=index4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors underline underline-offset-2"
+            >
+              사업자 확인하기
+            </a>
           </p>
           <p className="mb-1">
             소재지: 대구광역시 북구 학남로 60, 704-905호
