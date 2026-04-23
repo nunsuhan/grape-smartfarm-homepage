@@ -41,16 +41,6 @@ const footerLinks = {
       { label: '문의하기', href: '/support' },
     ],
   },
-  payment: {
-    title: '서비스·결제',
-    links: [
-      { label: '요금제 안내', href: '/pricing' },
-      { label: '결제하기', href: '/payment' },
-      { label: '이용약관', href: '/terms' },
-      { label: '환불정책', href: '/refund' },
-      { label: '결제 문의', href: '/support' },
-    ],
-  },
 };
 
 export function Footer() {
@@ -60,7 +50,7 @@ export function Footer() {
     <footer className="bg-[#1a1a1a] py-16 border-t border-white/10 text-gray-400">
       <Container>
         {/* Main Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-7 gap-10 md:gap-8 mb-14 px-5 md:px-0">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-10 md:gap-8 mb-14 px-5 md:px-0">
           {/* Brand Column - spans 2 on md */}
           <div className="col-span-2 space-y-4">
             <Link href="/" className="inline-block">
@@ -158,14 +148,11 @@ export function Footer() {
         <div className="border-t border-white/10 pt-6 px-5 md:px-0 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
           <p>&copy; 2026 FarmSense. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/terms" className="hover:text-white transition-colors">
-              이용약관
-            </Link>
             <Link href="/privacy" className="hover:text-white transition-colors">
               개인정보처리방침
             </Link>
-            <Link href="/refund" className="hover:text-white transition-colors">
-              환불정책
+            <Link href="/terms" className="hover:text-white transition-colors">
+              이용약관
             </Link>
           </div>
         </div>
